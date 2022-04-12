@@ -1,2 +1,2 @@
-# Web-Based-Completion-of-Grade-System
-Accenture Web-Based Completion of Grade System
+# Web-Based-Grade-Completion-System
+Accenture Web-Based Grade Completion System
