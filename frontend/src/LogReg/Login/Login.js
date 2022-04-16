@@ -19,13 +19,13 @@ const Login = () => {
           onClick={setLogin}
           className={`no3 ${choice === "login" ? "no1" : null}`}
         >
-          Login
+          LOGIN
         </div>
         <div
           onClick={setRegister}
           className={`no3 ${choice === "register" ? "no2" : null}`}
         >
-          Register
+          REGISTER
         </div>
       </div>
 
