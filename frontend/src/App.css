@@ -18,21 +18,21 @@ body {
   display: inline-block;
   vertical-align: middle;
 }
-#bulsu-logo {
+/* #bulsu-logo {
   width: 4.5em;
   margin-top: 2%;
   margin-left: 2%;
-}
+} */
 #site-name {
   margin-top: 2%;
   color: white;
   font-size: 2.3em;
 }
-#logreg-design {
+/* #logreg-design {
   position: absolute;
   margin-top: 12%;
   margin-left: 5%;
-}
+} */
 /* .logreg-body{
   margin-left: auto;
   background-color: #EEEEEE;
@@ -189,9 +189,9 @@ span {
   transition: 0.5s;
   padding: 6%;
 } */
-#register-form {
+/* #register-form {
   display: none;
-}
+} */
 .pass-form {
   position: relative;
   margin: 3% auto;

@@ -1,29 +1,6 @@
 .input-group {
-  position: absolute;
+  position: relative;
   transition: 0.5s;
   padding: 6%;
 }
 
-.box {
-  height: 60px;
-  background-color: white;
-  display: flex;
-  box-shadow: 0 0 20px 9px #ff61241f;
-  border-radius: 2em;
-}
-.no3 {
-  height: 100%;
-  width: 50%;
-  border-radius: 2em;
-  text-align: center;
-  font-size: 23px;
-  line-height: 55px;
-}
-.no1 {
-  background: linear-gradient(to right, #E42929,#ff105f);
-  color: white;
-}
-.no2 {
-  background: linear-gradient(to right, #E42929,#ff105f);
-  color: white;
-}

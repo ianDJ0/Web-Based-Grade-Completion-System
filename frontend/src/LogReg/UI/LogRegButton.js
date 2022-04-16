@@ -1,46 +1,33 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./LogRegButton.css";
 
-const LogRegButton = () => {
+const LogRegButton = (props) => {
   const navigate = useNavigate();
-  const [login, setLogin] = useState(true);
-  const [register, setRegister] = useState(false);
 
   const loginHandler = () => {
-    setLogin(true);
-    setRegister(false);
-
     navigate("/");
   };
 
   const registerHandler = () => {
-    setLogin(false);
-    setRegister(true);
-
     navigate("/register");
   };
+  const choice = props.choice;
 
   return (
-    <div className="btn-box">
-      <div id="btn"></div>
-      <button
-        type="button"
-        className="toggle-btn"
-        id="log-btn"
+    <div className="box btn-box">
+      <div
         onClick={loginHandler}
+        className={`option ${choice === "login" ? "option-login" : null}`}
       >
         LOGIN
-      </button>
-      <button
-        type="button"
-        className="toggle-btn"
-        id="reg-btn"
+      </div>
+      <div
         onClick={registerHandler}
+        className={`option ${choice === "register" ? "option-register" : null}`}
       >
         REGISTER
-      </button>
+      </div>
     </div>
   );
 };

@@ -34,6 +34,27 @@
   position: relative;
 }
 
-.try {
-  color: blue;
+.box {
+  height: 60px;
+  background-color: white;
+  display: flex;
+  box-shadow: 0 0 20px 9px #ff61241f;
+  border-radius: 2em;
+}
+.option {
+  height: 100%;
+  width: 50%;
+  border-radius: 2em;
+  text-align: center;
+  font-size: 23px;
+  line-height: 55px;
+  cursor: pointer;
+}
+.option-login {
+  background: linear-gradient(to right, #e42929, #ff105f);
+  color: white;
+}
+.option-register {
+  background: linear-gradient(to right, #e42929, #ff105f);
+  color: white;
 }
