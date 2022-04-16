@@ -3,3 +3,21 @@
   transition: 0.5s;
   padding: 6%;
 }
+
+.box {
+  border: 1px solid black;
+  height: 50px;
+  display: flex;
+}
+.no3 {
+  border: 1px solid green;
+  background-color: white;
+  height: 100%;
+  width: 50%;
+}
+.no1 {
+  background-color: green;
+}
+.no2 {
+  background-color: red;
+}

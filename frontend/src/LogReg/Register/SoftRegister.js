@@ -45,13 +45,14 @@ const SoftRegister = () => {
           required
         />
         {exists && (
-          <div>
-            <span>An account is linked with this email. </span>
+          <div className="red">
+            <span>An account is already linked with this email. </span>
             <span onClick={redirectHandler} className="link">
-              Sign Up Now.
+              Sign In.
             </span>
           </div>
         )}
+        <br />
         <label>Password</label>
         <input type="Password" placeholder="Password" className="input-field" />
         <input type="Checkbox" className="check-box" />

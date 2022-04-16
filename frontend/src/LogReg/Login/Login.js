@@ -1,14 +1,44 @@
 import LogReg from "../UI/LogReg";
 import "./Login.css";
 
+import { useState } from "react";
+
 const Login = () => {
+  const [choice, setChoice] = useState("login");
+
+  const setLogin = () => {
+    setChoice("login");
+  };
+  const setRegister = () => {
+    setChoice("register");
+  };
   return (
     <LogReg>
+      <div className="box">
+        <div
+          onClick={setLogin}
+          className={`no3 ${choice === "login" ? "no1" : null}`}
+        >
+          Login
+        </div>
+        <div
+          onClick={setRegister}
+          className={`no3 ${choice === "register" ? "no2" : null}`}
+        >
+          Register
+        </div>
+      </div>
+
       <form id="login-form" className="input-group">
         <h3 id="logreg-label">Log In</h3>
         <label>Email</label>
         <br />
-        <input type="text" placeholder="Email" className="input-field" required />
+        <input
+          type="text"
+          placeholder="Email"
+          className="input-field"
+          required
+        />
         <br />
         <label>Password</label>
         <br />
