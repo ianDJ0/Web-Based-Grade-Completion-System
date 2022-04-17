@@ -14,6 +14,7 @@ const FullRegister = () => {
   const submitRegistrationHandler = (event) => {
     event.preventDefault();
   };
+
   return (
     <React.Fragment>
       <Logo />
@@ -26,12 +27,13 @@ const FullRegister = () => {
           >
             <h3 id="logreg-label">Create An Account</h3>
             <label>Account Type</label>
-            <input
+            <select
               type="text"
-              placeholder="Account Type"
               className="reg-input-field"
-              required
-            />
+            >
+              <option value="student">Student</option>
+              <option value="faculty">Faculty</option>
+            </select>
             <label>Email</label>
             <input
               type="text"

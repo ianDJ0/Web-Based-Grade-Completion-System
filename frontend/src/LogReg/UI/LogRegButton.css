@@ -19,7 +19,7 @@
   background-color: white;
   width: 45%;
   height: 7%;
-  margin: 9% auto 0 auto;
+  margin: 5% auto 0 auto;
   position: relative;
   box-shadow: 0 0 20px 9px #ff61241f;
   border-radius: 2em;
@@ -47,14 +47,22 @@
   border-radius: 2em;
   text-align: center;
   font-size: 23px;
-  line-height: 55px;
+  line-height: 60px;
   cursor: pointer;
 }
 .option-login {
   background: linear-gradient(to right, #e42929, #ff105f);
   color: white;
+  transition: 0.3s;
+}
+.option-login:hover{
+  transform: translateY(-0.15em);
 }
 .option-register {
   background: linear-gradient(to right, #e42929, #ff105f);
   color: white;
+  transition: 0.3s;
+}
+.option-register:hover{
+  transform: translateY(-0.15em);
 }

@@ -68,6 +68,14 @@ const SoftRegister = () => {
             onChange={setPWHandler}
             value={enteredPW}
           />
+           <label>Confirm New Password</label>
+          <input
+            type="Password"
+            placeholder="Password"
+            className="input-field"
+            onChange={setPWHandler}
+            value={enteredPW}
+          />
           <input type="Checkbox" className="check-box" />
           <span> I have read the terms and conditions.</span>
           <button type="submit" id="btn-submit">
