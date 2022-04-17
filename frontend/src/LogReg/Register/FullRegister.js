@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import Logo from "../UI/Logo";
 
 import "../UI/LogReg.css";
+import "../Shared/shared.css";
 import "./FullRegister.css";
 
 const FullRegister = () => {
@@ -12,14 +13,17 @@ const FullRegister = () => {
 
   const submitRegistrationHandler = (event) => {
     event.preventDefault();
-
-  } 
+  };
   return (
     <React.Fragment>
       <Logo />
       <div className="logreg-body body">
         <div className="logreg-form card">
-          <form id="login-form" className="input-group" onSubmit={submitRegistrationHandler}>
+          <form
+            id="login-form"
+            className="input-group"
+            onSubmit={submitRegistrationHandler}
+          >
             <h3 id="logreg-label">Create An Account</h3>
             <label>Account Type</label>
             <input

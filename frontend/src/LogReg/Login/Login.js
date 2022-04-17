@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+
 import Logo from "../UI/Logo";
 import LogReg from "../UI/LogReg";
-import "./Login.css";
+// import "./Login.css";
+import "../Shared/shared.css";
 
 const Login = () => {
   const [enteredEmail, setEnteredEmail] = useState("");

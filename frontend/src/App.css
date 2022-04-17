@@ -135,7 +135,7 @@ label {
   background: transparent;
   font-size: 15px;
 }
-.reg-input-field {
+/* .reg-input-field {
   height: 5px;
   width: 96%;
   padding: 3% 2%;
@@ -143,8 +143,8 @@ label {
   border: 1px solid #999;
   background: transparent;
   font-size: 15px;
-}
-.name-input-field {
+} */
+/* .name-input-field {
   height: 25px;
   width: 96%;
   padding: 4% 2%;
@@ -152,7 +152,7 @@ label {
   border: 1px solid #999;
   background: transparent;
   font-size: 15px;
-}
+} */
 
 #pass-input {
   margin-bottom: 1%;
@@ -162,7 +162,7 @@ label {
   font-style: italic;
   color: #810000;
 }
-#btn-submit {
+/* #btn-submit {
   background-color: #810000;
   border: none;
   color: white;
@@ -172,14 +172,14 @@ label {
   margin-top: 4%;
   margin-bottom: 4%;
   width: 100%;
-}
+} */
 #btn-login:hover {
   background-color: #e42929;
   cursor: pointer;
 }
-.check-box {
+/* .check-box {
   vertical-align: middle;
-}
+} */
 span {
   font-size: 15px;
   vertical-align: middle;

@@ -1,6 +1,38 @@
-.body{
-    width: 60%;
+#btn-submit {
+  background-color: #810000;
+  border: none;
+  color: white;
+  font-size: 17px;
+  padding: 3% 0;
+  border-radius: 1em;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  width: 100%;
 }
-.card{
-    height: fit-content;
+.body {
+  width: 60%;
+}
+.card {
+  height: fit-content;
+}
+.reg-input-field {
+  height: 5px;
+  width: 96%;
+  padding: 3% 2%;
+  margin: 2% 0;
+  border: 1px solid #999;
+  background: transparent;
+  font-size: 15px;
+}
+.name-input-field {
+  height: 25px;
+  width: 96%;
+  padding: 4% 2%;
+  margin: 2% 0;
+  border: 1px solid #999;
+  background: transparent;
+  font-size: 15px;
+}
+.check-box {
+  vertical-align: middle;
 }
