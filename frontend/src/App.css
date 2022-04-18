@@ -13,11 +13,11 @@ body {
   flex-direction: row;
   justify-content: flex-end;
 }
-#bulsu-logo,
+/*#bulsu-logo,
 #site-name {
   display: inline-block;
   vertical-align: middle;
-}
+}*/
 /* #bulsu-logo {
   width: 4.5em;
   margin-top: 2%;
@@ -121,8 +121,8 @@ body {
 #logreg-label {
   text-align: center;
   font-size: 25px;
-  margin-top: 2.5%;
-  margin-bottom: 6%;
+  margin-top: 2%;
+  margin-bottom: 3%;
 }
 label {
   color: #1b1717;
