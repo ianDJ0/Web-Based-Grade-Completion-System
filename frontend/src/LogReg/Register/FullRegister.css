@@ -16,9 +16,11 @@
   height: fit-content;
 }
 .reg-input-field {
-  height: 5px;
+  height: 2.5em;
+  padding: 0% 2%;
+  /* height: 5px; */
+  /* padding: 3% 2%; */
   width: 96%;
-  padding: 3% 2%;
   margin: 2% 0;
   border: 1px solid #999;
   background: transparent;
@@ -35,4 +37,7 @@
 }
 .check-box {
   vertical-align: middle;
+}
+.full-width {
+  width: 100%;
 }
