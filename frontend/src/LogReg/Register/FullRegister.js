@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
@@ -21,9 +22,40 @@ const FullRegister = () => {
   const [birthDate, setBirthDate] = useState("");
   const [isTACRead, setIfRead] = useState(false);
 
+
   const submitRegistrationHandler = (event) => {
     event.preventDefault();
-
+    if (acctType === "Faculty") {
+      axios.post('http://localhost:7700/api/users/signup', {
+        registerName: firstName + middleInit + lastName,
+        registerEmail: email,
+        registerPassword: password,
+        registerContactNumber: contactNumber,
+        registerUserType: acctType
+      })
+        .then(function (response) {
+          setIfRead(true);
+        })
+        .catch(function (error) {
+          alert(error.response.data.message);
+        });
+    } else {
+      axios.post('http://localhost:7700/api/users/signup', {
+        registerName: firstName + middleInit + lastName,
+        registerEmail: email,
+        registerPassword: password,
+        registerContactNumber: contactNumber,
+        registerUserType: acctType,
+        registerStudentNumber: studentNumber,
+      })
+        .then(function (response) {
+          console.log(response);
+          setIfRead(true);
+        })
+        .catch(function (error) {
+          alert(error.response.data.message);
+        });
+    }
     //do something
     //prolly check if TAC is checked?
   };

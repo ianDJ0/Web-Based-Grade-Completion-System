@@ -9,6 +9,7 @@ const router = express.Router();
 //Get Single User API
 router.post('/login', userController.getSingleUserByID);
 router.post('/type', userController.getAllUserByType);
+router.post('/softValidate',userController.checkEmailIfExist);
 //Create New User API
 router.post('/signup',
     [
@@ -16,11 +17,11 @@ router.post('/signup',
         check('registerEmail').isEmail(),
         check('registerContactNumber').isNumeric(),
         check('registerPassword').isLength({min:6}),
-        check('registerUserType').isLength({min:3})
+        check('registerUserType').isLength({min:3}),
     ],
     userController.createUser);
 //Edit or delete User by ID API
-router.patch('/:uID', userController.updateUser);
+// router.patch('/:uID', userController.updateUser);
 router.delete('/:uID', userController.deleteUser);
 
 module.exports = router;

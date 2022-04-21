@@ -10,8 +10,9 @@ const user = new mongoose.Schema({
     yearAndSection: { type: String },
     dateRegistered: { type: Date, default: Date.now() }
 
-}, {collection:'User',
-versionKey: false
+}, {
+    collection: 'User',
+    versionKey: false
 });
 
 module.exports = mongoose.model('User', user)

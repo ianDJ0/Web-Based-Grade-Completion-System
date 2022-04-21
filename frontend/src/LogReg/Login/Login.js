@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import axios from 'axios';
 import Logo from "../UI/Logo";
 import LogReg from "../UI/LogReg";
 // import "./Login.css";
@@ -8,7 +8,7 @@ import "../Shared/shared.css";
 const Login = () => {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPW, setEnteredPW] = useState("");
-  const [isValid, setIfValid] = useState(true);
+  const [isValid, setIfValid] = useState(false);
 
   const enteredEmailHandler = (event) => {
     setEnteredEmail(event.target.value);
@@ -18,16 +18,28 @@ const Login = () => {
     setEnteredPW(event.target.value);
   };
 
-  const submitLoginHandler = (event) => {
+  const submitLoginHandler = async (event) => {
     event.preventDefault();
-    alert("Email: " + enteredEmail + "\nPassword: " + enteredPW);
+    
 
-    //add a validation if cred are valid, use setIfValid and assign if it is valid[true], otherwise set false
+    axios.get('http://localhost:7700/api/users/login', {
+      loginEmail: enteredEmail,
+      loginPassword: enteredPW
+    })
+    .then(function (response) {
+      console.log(response);
+      setIfValid(true)
+    })
+    .catch(function (error) {
+      setIfValid(false)
+      alert(error.response.data.message);
+    });
 
     //if the creds entered are valid
     if (isValid) {
       setEnteredEmail("");
       setEnteredPW("");
+      
       //prolly some useNavigate to the main/next page
     } else {
       //show alert/error message

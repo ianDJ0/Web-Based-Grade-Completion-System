@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from 'axios';
 import LogReg from "../UI/LogReg";
 import Logo from "../UI/Logo";
 import "./SoftRegister.css";
@@ -23,12 +23,19 @@ const SoftRegister = () => {
 
   const checkEmailHandler = (event) => {
     event.preventDefault();
-    setExists(DUMMY_EMAIL.some((check) => check === enteredEmail));
-    if (!exists) {
+    axios.post('http://localhost:7700/api/users/softValidate', {
+      registerEmail:enteredEmail
+    })
+    .then(function (response) {
+      //Soft Register email validation
       navigate("/register/full", {
         state: { email: enteredEmail, password: enteredPW },
       });
-    }
+    })
+    .catch(function (error) {
+      alert(error.response.data.message);
+    });
+
   };
 
   const redirectHandler = () => {
