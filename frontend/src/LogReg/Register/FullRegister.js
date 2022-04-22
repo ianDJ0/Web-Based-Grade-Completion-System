@@ -23,47 +23,43 @@ const FullRegister = () => {
   const [contactNumber, setContactNumber] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [isTACRead, setIfRead] = useState(false);
-
   const [course, setCourse] = useState("");
   const [year, setYear] = useState("");
   const [section, setSection] = useState("");
-  const [signature, setSignature] = useState("");
+  let signature;
+
 
   const submitRegistrationHandler = (event) => {
     event.preventDefault();
+    let formData = new FormData();
+    formData.append('registerName', firstName + '' + middleInit + '' + lastName);
+    formData.append('registerEmail', email);
+    formData.append('registerPassword', acctPWD);
+    formData.append('registerContactNumber', contactNumber);
+    formData.append('registerUserType', acctType);
+    formData.append('image', signature)
     if (acctType === "Faculty") {
       axios
-        .post("http://localhost:7700/api/users/signup", {
-          registerName: firstName + middleInit + lastName,
-          registerEmail: email,
-          registerPassword: acctPWD,
-          registerContactNumber: contactNumber,
-          registerUserType: acctType,
-        })
+        .post("http://localhost:7700/api/users/signup", formData)
         .then(function (response) {
           setIfRead(true);
         })
         .catch(function (error) {
-          alert(error.response.data.message);
+          alert(error);
         });
     } else {
+      formData.append('registerCourseYearAndSection', course + ' ' + year + '' + section);
       axios
-        .post("http://localhost:7700/api/users/signup", {
-          registerName: firstName + middleInit + lastName,
-          registerEmail: email,
-          registerPassword: acctPWD,
-          registerContactNumber: contactNumber,
-          registerUserType: acctType,
-          registerStudentNumber: studentNumber,
-        })
+        .post("http://localhost:7700/api/users/signup", formData)
         .then(function (response) {
           console.log(response);
           setIfRead(true);
         })
         .catch(function (error) {
-          alert(error.response.data.message);
+          alert(error);
         });
     }
+    signature='';
     //do something
     //prolly check if TAC is checked?
   };
@@ -102,7 +98,15 @@ const FullRegister = () => {
     console.log(event.target.checked);
     setIfRead(event.target.checked);
   };
-
+  const pickHandle=(event)=>{
+    const reader = new FileReader();
+    if(event.target.files && event.target.files.length===1){
+      const [file] = event.target.files;
+      signature=event.target.files[0]
+      reader.readAsDataURL(file);
+    }
+  
+  }
   const studentOnly =
     acctType === "Student" ? (
       <div>
@@ -180,6 +184,7 @@ const FullRegister = () => {
             id="login-form"
             className="input-group"
             onSubmit={submitRegistrationHandler}
+            enctype="multipart/form-data"
           >
             <h3 id="logreg-label">Create An Account</h3>
             <label>Account Type</label>
@@ -212,7 +217,7 @@ const FullRegister = () => {
               onChange={(event) => {
                 setPWD(event.target.value);
               }}
-              readOnly
+
               required
             />
             <label htmlFor="conpwd">Confirm Password</label>
@@ -225,7 +230,7 @@ const FullRegister = () => {
               onChange={(event) => {
                 setConPWD(event.target.value);
               }}
-              readOnly
+
               required
             />
 
@@ -301,11 +306,10 @@ const FullRegister = () => {
             <input
               id="signature"
               type="file"
+              accept=".jpg,.png,.jpeg"
               placeholder="Digital Signature"
               value={signature}
-              onChange={(event) => {
-                setSignature(event.target.value);
-              }}
+              onChange={pickHandle}
               required
             />
             <br />

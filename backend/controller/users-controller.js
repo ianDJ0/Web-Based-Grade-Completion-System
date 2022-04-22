@@ -1,10 +1,10 @@
 
-const HttpError = require('../models/https-error');
 const uuid = require('uuid');
+const nodemailer = require('nodemailer');
 const mongoose = require('mongoose');
-const MongoClient = require('mongodb').MongoClient;
 const userModel = require('../models/user-model');
 const { check, validationResult } = require('express-validator');
+const { find } = require('../models/user-model');
 
 const atlasUrl = 'mongodb+srv://public-user:PHCrtQ2AuZAIcE6p@cluster0.c8pz2.mongodb.net/user?retryWrites=true&w=majority';
 mongoose.connect(atlasUrl)
@@ -59,6 +59,7 @@ const createUser = async (req, res) => {
             password: req.body.registerPassword,
             contactNumber: req.body.registerContactNumber,
             userType: req.body.registerUserType,
+            image: req.file.path
         });
     }else{
         registerUser = new userModel({
@@ -69,26 +70,46 @@ const createUser = async (req, res) => {
             userType: req.body.registerUserType,
             studentNumber: req.body.registerStudentNumber,
             yearAndSection: req.body.registerCourseYearAndSection,
+            image: req.file.path
         });
     }
     const result = await registerUser.save();
     res.status(201).json(result);
 }
 //Change name or email
-// const updateUser = (req, res, next) => {
-//     const { name, email, password } = req.body;
-//     const userID = req.params.uID;
-//     const userUpdated = { ...DUMMY_USERS.find(user => user.id == userID) };
-//     const userIndex = DUMMY_USERS.findIndex(user => user.id == userID);
-//     userUpdated.name = name;
-//     userUpdated.email = email;
-//     userUpdated.password = password;
+const updateUser = async (req, res, next) => {
+    const findUser = await userModel.findOne({email:req.body.registerEmail}).exec();
+    if (!findUser){
+        return res.status(422).json({message:'User does not exist'});
+    }
+    let transporter = nodemailer.createTransport({
+      host: "smtp.ethereal.email",
+      port: 587,
+      secure: false,
+      auth: {
+        user: "cole.goldner41@ethereal.email", 
+        pass: "BVPVEBXyWYpU47tAgr",
+      },
+    });
+    const message = {
+        from: '"Grade Completion System" <cole.goldner41@ethereal.email>', // sender address
+        to: `${req.body.registerEmail}`, // list of receivers
+        subject: "Change Password", 
+        text: "", 
+        html: "<b>Hello world?</b>", //insert forgot password hyperlink
+    }
+    let info = await transporter.sendMail(message);
 
-//     DUMMY_USERS[userIndex] = userUpdated;
-
-//     res.status(200).json({ user: userUpdated })
-// }
-
+    res.status(200).json( nodemailer.getTestMessageUrl(info) );
+}
+//Reset Password middleware
+const resetPassword = async(req, res) =>{
+    const findUser = await userModel.findByIdAndUpdate(req.body.userID, {password: req.body.newPassword}).exec();
+    if(!findUser){
+        res.status(404).json({ message:"User di makita" })
+    }
+    res.status(204).json({ message:"Password updated!" })
+}
 const deleteUser = async (req, res, next) => {
     await userModel.findByIdAndDelete(req.params.uID).then(()=>{
         res.status(202).json({ message:"User has been deleted" })
@@ -103,5 +124,7 @@ exports.getSingleUserByID = getSingleUserByID;
 exports.getAllUserByType = getAllUserByType;
 exports.createUser = createUser;
 exports.deleteUser = deleteUser;
+exports.updateUser = updateUser;
+exports.resetPassword = resetPassword;
 exports.checkEmailIfExist = checkEmailIfExist;
 

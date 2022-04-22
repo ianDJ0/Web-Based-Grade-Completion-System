@@ -23,7 +23,8 @@ router.post('/signup',
     ],
     userController.createUser);
 //Edit or delete User by ID API
-// router.patch('/:uID', userController.updateUser);
+router.post('/resetEmail', userController.updateUser);
+router.patch('/changePassword', userController.resetPassword);
 router.delete('/:uID', userController.deleteUser);
 
 module.exports = router;

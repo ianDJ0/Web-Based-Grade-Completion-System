@@ -14,13 +14,14 @@ const fileUpload = multer({
             callback(null, 'uploads/images')
         },
         filename: (req, file, callback) => {
-            const ext = !!MIME_TYPE_MAP[file.mimetype];
+            let ext = MIME_TYPE_MAP[file.mimetype];
             callback(null, uuid.v4() + '.' + ext);
         }
     }),
     fileFilter: (req,file, callback)=>{
         const fileIsValid = !!MIME_TYPE_MAP[file.mimetype];
         let err = fileIsValid ? null : new Error('Invalid File Type');
+        console.log(file);
         callback(err, fileIsValid);
     }
 });
