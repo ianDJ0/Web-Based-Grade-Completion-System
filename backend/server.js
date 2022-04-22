@@ -10,6 +10,7 @@ const HttpError = require('./models/https-error');
 const app = express();
 
 app.use(bodyParser.json());
+app.use('/uploads/images', express.static('images'))
 app.use(cors());
 app.use('/api/users', userRoutes);
 
