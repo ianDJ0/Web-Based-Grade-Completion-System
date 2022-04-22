@@ -185,14 +185,14 @@ span{
     font-size: 30px;
     margin: 3% auto 7% auto;
 }
-.forgot-emailpass{
+/* .forgot-emailpass{
     width: 90%;
     padding: 2% 2%;
     margin: 4% 0;
     border: 1px solid #999;
     font-size: 17px;
-}
-#btn-forgot{
+} */
+/* #btn-forgot{
     background-color: #810000;
     border: none;
     color: white;
@@ -202,12 +202,12 @@ span{
     margin-top: 4%;
     margin-bottom: 4%;
     width: 95%;
-}
+} */
 a{
     text-decoration: none;
     color: white;
 }
-#btn-forgot:hover{
+/* #btn-forgot:hover{
     background-color: #E42929;
     cursor: pointer;
-}
+} */

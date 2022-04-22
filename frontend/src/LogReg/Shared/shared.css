@@ -3,3 +3,21 @@
   transition: 0.5s;
   padding: 6%;
 }
+.logreg-body {
+  background-color: #eeeeee;
+  width: 51%;
+  height: 100vh;
+  border-top-left-radius: 5em;
+  border-bottom-left-radius: 5em;
+  box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.5);
+  float: right;
+}
+/* .logreg-form {
+  position: relative;
+  margin: 3% auto;
+  border-radius: 2em;
+  background-color: #fafafa;
+  width: 65%;
+  height: 70%;
+  box-shadow: 5px 1px 10px 2px rgba(0, 0, 0, 0.2);
+} */

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import axios from 'axios';
+import React, { useEffect, useRef, useState } from "react";
+import axios from "axios";
 import Logo from "../UI/Logo";
 import LogReg from "../UI/LogReg";
 // import "./Login.css";
@@ -9,6 +9,19 @@ const Login = () => {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPW, setEnteredPW] = useState("");
   const [isValid, setIfValid] = useState(false);
+
+  const [errMsg, setErrMsg] = useState("");
+
+  const userRef = useRef();
+
+  useEffect(() => {
+    userRef.current.focus();
+    if (!isValid) userRef.current.focus();
+  }, [isValid]);
+
+  useEffect(() => {
+    setErrMsg("");
+  }, [enteredEmail, enteredPW]);
 
   const enteredEmailHandler = (event) => {
     setEnteredEmail(event.target.value);
@@ -20,26 +33,26 @@ const Login = () => {
 
   const submitLoginHandler = async (event) => {
     event.preventDefault();
-    
 
-    axios.get('http://localhost:7700/api/users/login', {
-      loginEmail: enteredEmail,
-      loginPassword: enteredPW
-    })
-    .then(function (response) {
-      console.log(response);
-      setIfValid(true)
-    })
-    .catch(function (error) {
-      setIfValid(false)
-      alert(error.response.data.message);
-    });
+    axios
+      .post("http://localhost:7700/api/users/login", {
+        loginEmail: enteredEmail,
+        loginPassword: enteredPW,
+      })
+      .then(function (response) {
+        console.log(response);
+        setIfValid(true);
+      })
+      .catch(function (error) {
+        setIfValid(false);
+        setErrMsg(error.response.data.message);
+      });
 
     //if the creds entered are valid
     if (isValid) {
       setEnteredEmail("");
       setEnteredPW("");
-      
+
       //prolly some useNavigate to the main/next page
     } else {
       //show alert/error message
@@ -56,18 +69,21 @@ const Login = () => {
           onSubmit={submitLoginHandler}
         >
           <h3 id="logreg-label">Log In</h3>
-          <label>Email</label>
+          <label htmlFor="email">Email</label>
           <br />
           <input
+            id="email"
+            ref={userRef}
             type="text"
             placeholder="Email"
             className="input-field"
             onChange={enteredEmailHandler}
             value={enteredEmail}
+            autoComplete="off"
             required
           />
           <br />
-          <label>Password</label>
+          <label htmlFor="pass-input">Password</label>
           <br />
           <input
             type="Password"
@@ -81,6 +97,9 @@ const Login = () => {
           <a href="/#" id="forgot-pass">
             Forgot Password?
           </a>
+
+          {!isValid && <div> {errMsg}</div>}
+
           <button type="submit" id="btn-submit">
             SIGN IN
           </button>

@@ -11,8 +11,10 @@ import "./FullRegister.css";
 
 const FullRegister = () => {
   const { state } = useLocation();
-  const { email, password } = state;
+  const { email } = state;
 
+  const [acctPWD, setPWD] = useState("");
+  const [conPWD, setConPWD] = useState("");
   const [acctType, setAcctType] = useState("Faculty");
   const [studentNumber, setStudentNumber] = useState("");
   const [lastName, setLastName] = useState("");
@@ -22,17 +24,22 @@ const FullRegister = () => {
   const [birthDate, setBirthDate] = useState("");
   const [isTACRead, setIfRead] = useState(false);
 
+  const [course, setCourse] = useState("");
+  const [year, setYear] = useState("");
+  const [section, setSection] = useState("");
+  const [signature, setSignature] = useState("");
 
   const submitRegistrationHandler = (event) => {
     event.preventDefault();
     if (acctType === "Faculty") {
-      axios.post('http://localhost:7700/api/users/signup', {
-        registerName: firstName + middleInit + lastName,
-        registerEmail: email,
-        registerPassword: password,
-        registerContactNumber: contactNumber,
-        registerUserType: acctType
-      })
+      axios
+        .post("http://localhost:7700/api/users/signup", {
+          registerName: firstName + middleInit + lastName,
+          registerEmail: email,
+          registerPassword: acctPWD,
+          registerContactNumber: contactNumber,
+          registerUserType: acctType,
+        })
         .then(function (response) {
           setIfRead(true);
         })
@@ -40,14 +47,15 @@ const FullRegister = () => {
           alert(error.response.data.message);
         });
     } else {
-      axios.post('http://localhost:7700/api/users/signup', {
-        registerName: firstName + middleInit + lastName,
-        registerEmail: email,
-        registerPassword: password,
-        registerContactNumber: contactNumber,
-        registerUserType: acctType,
-        registerStudentNumber: studentNumber,
-      })
+      axios
+        .post("http://localhost:7700/api/users/signup", {
+          registerName: firstName + middleInit + lastName,
+          registerEmail: email,
+          registerPassword: acctPWD,
+          registerContactNumber: contactNumber,
+          registerUserType: acctType,
+          registerStudentNumber: studentNumber,
+        })
         .then(function (response) {
           console.log(response);
           setIfRead(true);
@@ -107,6 +115,57 @@ const FullRegister = () => {
           onChange={setStudentNumberHandler}
           required
         />
+        <table className="full-width">
+          <thead>
+            <tr>
+              <th>Course</th>
+              <th>Year</th>
+              <th>Section</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  type="text"
+                  placeholder="Course"
+                  className="name-input-field"
+                  value={course}
+                  onChange={(event) => {
+                    setCourse(event.target.value);
+                  }}
+                  required
+                />
+              </td>
+              <td>
+                <input
+                  type="number"
+                  placeholder="Year"
+                  className="name-input-field"
+                  min="1"
+                  max="4"
+                  value={year}
+                  onChange={(event) => {
+                    setYear(event.target.value);
+                  }}
+                  required
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  placeholder="Section"
+                  className="name-input-field"
+                  value={section}
+                  onChange={(event) => {
+                    setSection(event.target.value);
+                  }}
+                  required
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     ) : (
       ""
@@ -133,9 +192,9 @@ const FullRegister = () => {
               <option value="Faculty">Faculty</option>
               <option value="Student">Student</option>
             </select>
-            {studentOnly}
-            <label>Email</label>
+            <label htmlFor="email">Email</label>
             <input
+              id="email"
               type="email"
               placeholder="Email"
               className="reg-input-field"
@@ -143,6 +202,34 @@ const FullRegister = () => {
               readOnly
               required
             />
+            <label htmlFor="pwd">Password</label>
+            <input
+              id="pwd"
+              type="password"
+              placeholder="Password"
+              className="reg-input-field"
+              value={acctPWD}
+              onChange={(event) => {
+                setPWD(event.target.value);
+              }}
+              readOnly
+              required
+            />
+            <label htmlFor="conpwd">Confirm Password</label>
+            <input
+              id="conpwd"
+              type="password"
+              placeholder="Confirm Password"
+              className="reg-input-field"
+              value={conPWD}
+              onChange={(event) => {
+                setConPWD(event.target.value);
+              }}
+              readOnly
+              required
+            />
+
+            {studentOnly}
 
             <table className="full-width">
               <thead>
@@ -187,6 +274,7 @@ const FullRegister = () => {
                 </tr>
               </tbody>
             </table>
+
             <label>Contact Number</label>
             <input
               type="number"
@@ -198,6 +286,7 @@ const FullRegister = () => {
             />
 
             {/*Change date picker. IDK, maybe use some bootstrap? */}
+
             <label>Birthdate</label>
             <input
               type="date"
@@ -207,6 +296,20 @@ const FullRegister = () => {
               onChange={setBirthDateHandler}
               required
             />
+            <label htmlFor="signature">Signature</label>
+            <br />
+            <input
+              id="signature"
+              type="file"
+              placeholder="Digital Signature"
+              value={signature}
+              onChange={(event) => {
+                setSignature(event.target.value);
+              }}
+              required
+            />
+            <br />
+            <br />
             <input
               type="Checkbox"
               className="check-box"

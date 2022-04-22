@@ -1,46 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 import LogReg from "../UI/LogReg";
 import Logo from "../UI/Logo";
 import "./SoftRegister.css";
-
-const DUMMY_EMAIL = ["test@email.com", "123@email.com"];
 
 const SoftRegister = () => {
   const navigate = useNavigate();
 
   const [enteredEmail, setEnteredEmail] = useState("");
-  const [enteredPW, setEnteredPW] = useState("");
-  const [exists, setExists] = useState(false);
+
+  const [emailChk, setEmailChk] = useState();
 
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
   };
-  const setPWHandler = (event) => {
-    setEnteredPW(event.target.value);
-  };
 
   const checkEmailHandler = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:7700/api/users/softValidate', {
-      registerEmail:enteredEmail
-    })
-    .then(function (response) {
-      //Soft Register email validation
-      navigate("/register/full", {
-        state: { email: enteredEmail, password: enteredPW },
+    axios
+      .post("http://localhost:7700/api/users/softValidate", {
+        registerEmail: enteredEmail,
+      })
+      .then(function (response) {
+        //Soft Register email validation
+        navigate("/register/full", {
+          state: { email: enteredEmail },
+        });
+      })
+      .catch(function (error) {
+        setEmailChk(error.response.data.message + ". Sign in instead.");
       });
-    })
-    .catch(function (error) {
-      alert(error.response.data.message);
-    });
-
   };
 
-  const redirectHandler = () => {
-    navigate("/");
-  };
+  useEffect(() => {
+    setEmailChk("");
+  }, []);
 
   return (
     <React.Fragment>
@@ -51,42 +46,38 @@ const SoftRegister = () => {
           <label>Email</label>
           <br />
           <input
-            type="text"
+            type="email"
             placeholder="Email"
             className="input-field"
             value={enteredEmail}
             onChange={emailChangeHandler}
             required
           />
-          {exists && (
+          {
             <div className="red">
-              <span>An account is already linked with this email. </span>
-              <span onClick={redirectHandler} className="link">
-                Sign In.
-              </span>
+              <span>{emailChk}</span>
             </div>
-          )}
+          }
           <br />
-          <label>Password</label>
+          {/* <label>Password</label>
           <input
             type="Password"
             placeholder="Password"
             className="input-field"
             onChange={setPWHandler}
             value={enteredPW}
-          />
-           <label>Confirm New Password</label>
+          /> */}
+          {/* <label>Confirm New Password</label>
           <input
             type="Password"
             placeholder="Password"
             className="input-field"
             onChange={setPWHandler}
             value={enteredPW}
-          />
-          <input type="Checkbox" className="check-box" />
-          <span> I have read the terms and conditions.</span>
+          /> */}
+          
           <button type="submit" id="btn-submit">
-            SIGN UP
+            REGISTER EMAIL
           </button>
           <div className="separator-logreg">OR SIGN UP USING</div>
           <div className="social-logreg">
