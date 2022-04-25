@@ -1,0 +1,33 @@
+#home-nav {
+  margin-top: 50%;
+}
+.active {
+  background-color: #862323;
+}
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 15%;
+  background-color: #810000;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+.sidebar span {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 1.5vw;
+  padding: 15%;
+}
+.sidebar span:hover {
+  background-color: #862323;
+}
+.name-logo {
+  margin: 9% 0% 0% 10%;
+  white-space: nowrap;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

@@ -1,0 +1,13 @@
+
+#logreg-design {
+  position: absolute;
+  margin-top: 12%;
+  margin-left: 5%;
+}
+.logo-name-icon {
+  white-space: nowrap;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

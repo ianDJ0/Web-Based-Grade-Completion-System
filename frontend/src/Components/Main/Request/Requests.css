@@ -1,0 +1,49 @@
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0%;
+}
+/* this contradicts with the logreg pages' background color */
+body { 
+  /* background-color: #fafafa; */
+}
+#request-form-btn {
+  margin-top: 6%;
+  border: none;
+  padding: 1%;
+  border-radius: 2em;
+  margin-bottom: 2%;
+  margin-left: 85%;
+  color: white;
+  font-weight: bold;
+  background-color: #8c0000;
+}
+#request-form-btn:hover {
+  background-color: #bd3a3a;
+}
+#request-label {
+  margin-left: 50.5%;
+}
+#request-log {
+  width: 100%;
+}
+.request-content {
+  position: absolute;
+  width: 80%;
+  height: auto;
+  margin-top: 13%;
+  margin-left: 17.5%;
+}
+table,
+tr,
+th {
+  border-collapse: collapse;
+  border: 0.5px solid black;
+  padding: 2%;
+}
+table {
+  box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+tr:first-child {
+  background-color: #8c0000;
+  color: white;
+}

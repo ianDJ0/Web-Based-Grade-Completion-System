@@ -1,25 +1,24 @@
 import { Route, Routes } from "react-router-dom";
 
-import Login from "./LogReg/Login/Login";
-import SoftRegister from "./LogReg/Register/SoftRegister";
-import FullRegister from "./LogReg/Register/FullRegister";
-import NewPass from "./LogReg/ForgotPW/NewPass";
-import ForgotPW from "./LogReg/ForgotPW/ForgotPW";
-import StudentHomepage from "./Homepage/StudentHomepage";
+import Homepage from "./Components/Main/Homepage";
+import Login from "./Components/LogReg/Login/Login";
+import Register from "./Components/LogReg/Register/Register";
+import RegisterFull from "./Components/LogReg/Register/RegisterFull";
+
 import "./App.css";
+import Request from "./Components/Main/Request/Request";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/register" element={<SoftRegister />} />
-        <Route path="/register/full" element={<FullRegister />} />
-        <Route path="/newpass" element={<NewPass />} />
-        <Route path="/forgotpass" element={<ForgotPW />} />
-        <Route path="/homepage" element={<StudentHomepage />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/register/complete" element={<RegisterFull />} />
+        <Route path="/homepage" element={<Homepage />} />
+        <Route path="/requests" element={<Request />} />
       </Routes>
-    </div>
+    </>
   );
 }
 
