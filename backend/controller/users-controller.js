@@ -53,7 +53,7 @@ const createUser = async (req, res) => {
         return res.status(422).json({message:'Invalid inputs please enter the proper fields'});
     }
     let registerUser;
-    if(req.body.registerUserType === "Faculty"){
+    if(req.body.registerUserType === "Faculty" || req.body.registerUserType === "faculty"){
         registerUser = new userModel({
             fullName: req.body.registerName,
             email: req.body.registerEmail,
