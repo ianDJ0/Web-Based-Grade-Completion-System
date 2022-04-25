@@ -32,7 +32,7 @@ const FullRegister = () => {
   const submitRegistrationHandler = (event) => {
     event.preventDefault();
     let formData = new FormData();
-    formData.append('registerName', firstName + '' + middleInit + '' + lastName);
+    formData.append('registerName', firstName + ' ' + middleInit + ' ' + lastName);
     formData.append('registerEmail', email);
     formData.append('registerPassword', acctPWD);
     formData.append('registerContactNumber', contactNumber);
@@ -184,7 +184,7 @@ const FullRegister = () => {
             id="login-form"
             className="input-group"
             onSubmit={submitRegistrationHandler}
-            enctype="multipart/form-data"
+            encType="application/json; charset=utf-8"
           >
             <h3 id="logreg-label">Create An Account</h3>
             <label>Account Type</label>

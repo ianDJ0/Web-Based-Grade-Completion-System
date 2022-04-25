@@ -12,7 +12,7 @@ router.post('/login', userController.getSingleUserByID);
 router.post('/type', userController.getAllUserByType);
 router.post('/softValidate',userController.checkEmailIfExist);
 //Create New User API
-router.post('/signup',
+router.post('/signup',check('registerName').isEmpty(),
     fileUpload.single('image'),
     [
         check('registerName').notEmpty(),

@@ -41,7 +41,7 @@ const SoftRegister = () => {
     <React.Fragment>
       <Logo />
       <LogReg choice="register">
-        <form className="input-group" onSubmit={checkEmailHandler}>
+        <form className="input-group" onSubmit={checkEmailHandler} encType="application-json">
           <h3 id="logreg-label">Create An Account</h3>
           <label>Email</label>
           <br />

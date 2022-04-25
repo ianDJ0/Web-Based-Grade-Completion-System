@@ -49,6 +49,7 @@ const createUser = async (req, res) => {
         return res.status(422).json({message:'Email already been used'});
     }
     if(!errors.isEmpty()){
+        console.log(errors)
         return res.status(422).json({message:'Invalid inputs please enter the proper fields'});
     }
     let registerUser;

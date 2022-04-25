@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
+const path = require('path');
 //ROUTES
 const userRoutes = require('./routes/user-routes');
 const HttpError = require('./models/https-error');
@@ -11,9 +12,10 @@ const HttpError = require('./models/https-error');
 const app = express();
 
 app.use(bodyParser.json());
-app.use('/uploads/images', express.static('images'));
 app.use(cors());
+app.use('/uploads/images', express.static(path.join('uploads','images')));
 app.use('/api/users', userRoutes);
+
 
 app.use((req,res,next)=>{
     throw new HttpError('Cound not find this route.', 404);
