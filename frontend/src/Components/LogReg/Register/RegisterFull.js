@@ -9,6 +9,8 @@ import LogRegForm from "../../UI/LogReg_UI/LogRegForm";
 import "../../Shared/Shared.css";
 import "./RegisterFull.css";
 
+let formData = new FormData();
+
 const RegisterFull = (props) => {
   const navigate = useNavigate();
 
@@ -72,14 +74,12 @@ const RegisterFull = (props) => {
     setIsEqual(pwd.trim() === conPWD.trim());
 
     if (isEqual && errMsg.trim().length < 1) {
-      let formData = new FormData();
       formData.append("registerName", fname + " " + mname + " " + lname);
       formData.append("registerEmail", email);
       formData.append("registerPassword", pwd);
       formData.append("registerContactNumber", contact);
       formData.append("registerUserType", acctType);
-      formData.append("image", signature);
-      console.log(signature);
+      console.log(formData.get("image"));
       if (acctType === "Faculty") {
         axios
           .post("http://localhost:7700/api/users/signup", formData)
@@ -338,7 +338,11 @@ const RegisterFull = (props) => {
               accept=".jpg,.png,.jpeg"
               placeholder="Digital Signature"
               value={signature}
-              onChange={pickHandle}
+              onChange={(event) => {
+                formData.delete("image");
+                formData.append("image", event.target.files[0]);
+                console.log(formData.get("image"));
+              }}
               required
             />
             <br />
