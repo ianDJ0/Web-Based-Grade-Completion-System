@@ -3,8 +3,12 @@
   margin: 0%;
 }
 /* this contradicts with the logreg pages' background color */
-body {
-  /* background-color: #fafafa; */
+.request-body{
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-color: #fafafa;
 }
 #request-form-btn {
   margin-top: 6%;
@@ -34,11 +38,9 @@ body {
   margin-top: 13%;
   margin-left: 17.5%;
 }
-#request-log table,
-#request-log tr,
-#request-log th {
-  border-collapse: collapse;
+#request-log, .request-content tr, .request-content th{
   border: 0.5px solid black;
+  border-collapse: collapse;
   padding: 2%;
 }
 

@@ -37,3 +37,14 @@
   content: "\A";
   white-space: pre;
 }
+#clear-filter{
+  border: none;
+  margin-left: 3%;
+  padding: 1%;
+  border-radius: 1em;
+  background-color: #8c0000;
+  color: white;
+}
+#clear-filter:hover{
+  background-color: #bd3a3a;
+}

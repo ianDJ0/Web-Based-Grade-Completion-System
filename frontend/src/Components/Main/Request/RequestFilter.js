@@ -63,7 +63,7 @@ const RequestFilter = (props) => {
               setEndDate(event.target.value);
             }}
           />
-          <button onClick={clearFilterHandler}>Clear Filter</button>
+          <button onClick={clearFilterHandler} id="clear-filter">Clear Filter</button>
         </div>
       </div>
     </>

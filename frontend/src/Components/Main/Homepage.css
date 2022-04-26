@@ -6,3 +6,10 @@
   margin-top: 15%;
   margin-left: 17.5%;
 }
+.body-home{
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-color: #fafafa;
+}
