@@ -3,7 +3,7 @@
   margin: 0%;
 }
 /* this contradicts with the logreg pages' background color */
-body { 
+body {
   /* background-color: #fafafa; */
 }
 #request-form-btn {
@@ -40,6 +40,8 @@ th {
   border: 0.5px solid black;
   padding: 2%;
 }
+
+/* this contradicts with the design in logreg(registerfull) */
 table {
   box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.2);
 }
