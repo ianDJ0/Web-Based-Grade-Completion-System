@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>BULACAN STATE UNIVERSITY</title>
+    <link rel="icon" href="https://bit.ly/3rmsS90">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <img src="https://bit.ly/3EgPvkD" id="logreg-design">
+    <div class="logreg-index">
+        <div class="logo-name-icon">
+            <img src="https://bit.ly/3rmsS90" id="bulsu-logo">
+            <h3 id="site-name">BULACAN STATE UNIVERSITY</h3>
+        </div> -->
+        <div class="logreg-body">
+            <!-- <div class="btn-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" id="log-btn" onclick="login()">LOGIN</button>
+                <button type="button" class="toggle-btn" id="reg-btn" onclick="register()">REGISTER</button>
+            </div> -->
+            <div class="logreg-form">
+                <form id="login-form" class="input-group">
+                    <h3 id="logreg-label">Log In</h3>
+                    <label>Email</label><Br>
+                    <input type="text" placeholder="Email" class="input-field" required><br>
+                    <label>Password</label><br>
+                    <input type="Password"id="pass-input" placeholder="Password" class="input-field" required>
+                    <a href="#" id="forgot-pass">Forgot Password?</a>
+                    <button type="submit" id="btn-submit">SIGN IN</button>
+                    <div class="separator-logreg">OR LOGIN USING</div>
+                    <div class="social-logreg">
+                        <img src="https://bit.ly/3rn9ed6" id="google-account">
+                        <img src="https://bit.ly/3vfdU61" id="ms-account">
+                    </div>
+                </form>
+                <form id="register-form" class="input-group">
+                    <h3 id="logreg-label">Create An Account</h3>
+                    <label>Email</label><Br>
+                    <input type="text" placeholder="Email" class="input-field" required><br>
+                    <label>Password</label><br>
+                    <input type="Password" placeholder="Password" class="input-field" required>
+                    <input type="Checkbox" class="check-box"><span> I have read the terms and conditions.</span>
+                    <button type="submit" id="btn-submit">SIGN UP</button>
+                    <div class="separator-logreg">OR SIGN UP USING</div>
+                    <div class="social-logreg">
+                        <img src="https://bit.ly/3rn9ed6" id="google-account">
+                        <img src="https://bit.ly/3vfdU61" id="ms-account">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        var logbtn = document.getElementById("log-btn");
+        var regbtn = document.getElementById("reg-btn");
+        var x = document.getElementById("login-form");
+        var y = document.getElementById("register-form");
+        var z = document.getElementById("btn");
+
+        function login(){
+            x.style.display = "block";
+            y.style.diplay = "none";
+            z.style.left = "0"
+            logbtn.style.color = "white";
+            regbtn.style.color = "black";
+            var displaySetting = y.style.display;
+            if (displaySetting == 'block'){
+                y.style.display = "none";
+            } 
+        }
+        function register(){
+            y.style.display = "block";
+            x.style.display = "none";
+            z.style.left = "50%"
+            logbtn.style.color = "black";
+            regbtn.style.color = "white";
+        }
+    </script>
+</body>
+</html>

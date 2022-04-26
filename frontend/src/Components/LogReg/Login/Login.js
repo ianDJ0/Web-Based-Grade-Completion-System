@@ -9,6 +9,7 @@ import LogRegForm from "../../UI/LogReg_UI/LogRegForm";
 
 import "../../Shared/Shared.css";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -17,6 +18,7 @@ const Login = () => {
   const [isValid, setIsValid] = useState(false);
 
   const emailRef = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
     //sets the cursor focus to the email field
@@ -29,14 +31,12 @@ const Login = () => {
   }, [email, pwd]);
 
   useEffect(() => {
-    if (isValid) success();
-  }, [isValid]);
-
-  const success = () => {
-    setEmail("");
-    setPWD("");
-    alert("success");
-  };
+    if (isValid) {
+      setEmail("");
+      setPWD("");
+      navigate("/homepage");
+    }
+  }, [isValid, navigate]);
 
   const loginHandler = (event) => {
     event.preventDefault();

@@ -15,7 +15,7 @@ const RegisterFull = (props) => {
   const { email } = state;
 
   //field states
-  const [acctType, setAcctType] = useState("faculty");
+  const [acctType, setAcctType] = useState("Faculty");
   const [pwd, setPWD] = useState("");
   const [conPWD, setConPWD] = useState("");
 
@@ -316,7 +316,9 @@ const RegisterFull = (props) => {
                 required
               />
             </div>
-            <label htmlFor="signature" id="sign-label">Signature</label>
+            <label htmlFor="signature" id="sign-label">
+              Signature
+            </label>
             <br />
             <input
               id="signature"
@@ -333,7 +335,7 @@ const RegisterFull = (props) => {
               type="Checkbox"
               className="check-box"
               onChange={(event) => {
-                setIfRead(event.target.value);
+                setIfRead((prevState) => !prevState);
               }}
               checked={isTACRead}
               required
