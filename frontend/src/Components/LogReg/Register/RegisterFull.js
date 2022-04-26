@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import Logo from "../../UI/LogReg_UI/Logo";
@@ -10,6 +10,8 @@ import "../../Shared/Shared.css";
 import "./RegisterFull.css";
 
 const RegisterFull = (props) => {
+  const navigate = useNavigate();
+
   //email from register
   const { state } = useLocation();
   const { email } = state;
@@ -28,6 +30,7 @@ const RegisterFull = (props) => {
   const [contact, setContact] = useState("");
   const [birthday, setBirthday] = useState("");
   const [isTACRead, setIfRead] = useState(false);
+  const [isValid, setIsValid] = useState(false);
   let signature;
 
   //student only fields
@@ -55,6 +58,14 @@ const RegisterFull = (props) => {
     else setErrMsg("");
   }, [pwd]);
 
+  useEffect(() => {
+    if (isValid) {
+      //not sure where to redirect user after successful registration
+      navigate("/homepage");
+      // navigate("/");
+    }
+  }, [isValid, navigate]);
+
   const submitRegistrationHandler = (event) => {
     event.preventDefault();
 
@@ -72,7 +83,7 @@ const RegisterFull = (props) => {
         axios
           .post("http://localhost:7700/api/users/signup", formData)
           .then(function (response) {
-            setIfRead(true);
+            setIsValid(true);
           })
           .catch(function (error) {
             alert(error);
@@ -86,7 +97,7 @@ const RegisterFull = (props) => {
           .post("http://localhost:7700/api/users/signup", formData)
           .then(function (response) {
             console.log(response);
-            setIfRead(true);
+            setIsValid(true);
           })
           .catch(function (error) {
             console.log(error);
@@ -112,7 +123,7 @@ const RegisterFull = (props) => {
         <label>Student Number</label>
         <input
           type="number"
-          placeholder="Student Number (2018123456)"
+          placeholder="Student Number (2018 123456)"
           className="reg-input-field"
           value={studentNumber}
           onChange={(event) => {
