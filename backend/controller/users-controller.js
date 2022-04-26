@@ -42,6 +42,8 @@ const checkEmailIfExist = async(req,res)=>{
     res.status(201).json({message:'Email Available'});
 }
 
+///
+
 const createUser = async (req, res) => {
     const errors = validationResult(req);
     const findUser = await userModel.findOne({email:req.body.registerEmail}).exec();
