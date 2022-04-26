@@ -22,3 +22,25 @@
 .same-row {
   display: inline-block;
 }
+.contact-detail, .birth-details{
+  display: inline-block;
+}
+#sign-label::before{
+  content: "\A";
+  white-space: pre;
+}
+#contact-no{
+  height: 2.5em;
+  padding: 0% 2%;
+  width: 13vw;
+}
+.birth-details{
+  margin-left: 6%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+#birth-date{
+  height: 2.5em;
+  padding: 0% 2%;
+  width: 13vw;
+}

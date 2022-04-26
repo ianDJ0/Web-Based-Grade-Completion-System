@@ -16,8 +16,8 @@
 #logreg-label {
   text-align: center;
   font-size: 25px;
-  margin-top: 3%;
-  margin-bottom: 7%;
+  margin-top: 2%;
+  margin-bottom: 6%;
 }
 #btn-submit {
   background-color: #810000;
@@ -26,8 +26,8 @@
   font-size: 17px;
   padding: 3% 0;
   border-radius: 1em;
-  margin-top: 4%;
-  margin-bottom: 4%;
+  margin-top: 3%;
+  margin-bottom: 3%;
   width: 100%;
 }
 #google-account {

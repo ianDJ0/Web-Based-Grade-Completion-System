@@ -288,33 +288,35 @@ const RegisterFull = (props) => {
             </table>
 
             {studentOnly}
-
-            <label>Contact Number</label>
-            <input
-              type="number"
-              placeholder="Contact Number"
-              className="reg-input-field"
-              value={contact}
-              onChange={(event) => {
-                setContact(event.target.value);
-              }}
-              required
-            />
+            <div className="contact-detail">
+              <p>Contact Number</p>
+              <input
+                type="number"
+                placeholder="Contact Number"
+                id="contact-no"
+                value={contact}
+                onChange={(event) => {
+                  setContact(event.target.value);
+                }}
+                required
+              />
+            </div>
 
             {/*Change date picker. IDK, maybe use some bootstrap? */}
-
-            <label>Birthdate</label>
-            <input
-              type="date"
-              placeholder="Birthdate"
-              className="reg-input-field"
-              value={birthday}
-              onChange={(event) => {
-                setBirthday(event.target.value);
-              }}
-              required
-            />
-            <label htmlFor="signature">Signature</label>
+            <div className="birth-details">
+              <p>Birthdate</p>
+              <input
+                type="date"
+                placeholder="Birthdate"
+                id="birth-date"
+                value={birthday}
+                onChange={(event) => {
+                  setBirthday(event.target.value);
+                }}
+                required
+              />
+            </div>
+            <label htmlFor="signature" id="sign-label">Signature</label>
             <br />
             <input
               id="signature"
