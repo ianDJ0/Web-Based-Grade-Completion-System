@@ -134,7 +134,7 @@ const RegisterFull = (props) => {
                 <input
                   type="text"
                   placeholder="Course"
-                  className="name-input-field"
+                  id="student-course"
                   value={course}
                   onChange={(event) => {
                     setCourse(event.target.value);
@@ -146,7 +146,7 @@ const RegisterFull = (props) => {
                 <input
                   type="number"
                   placeholder="Year"
-                  className="name-input-field"
+                  id="student-year"
                   min="1"
                   max="4"
                   value={year}
@@ -160,7 +160,7 @@ const RegisterFull = (props) => {
                 <input
                   type="text"
                   placeholder="Section"
-                  className="name-input-field"
+                  id="student-section"
                   value={section}
                   onChange={(event) => {
                     setSection(event.target.value);

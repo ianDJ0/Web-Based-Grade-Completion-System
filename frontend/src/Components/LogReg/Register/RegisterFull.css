@@ -7,8 +7,28 @@
   background: transparent;
   font-size: 15px;
 }
+.account-details{
+  height: 50%;
+}
 .full-width {
   width: 100%;
+}
+#student-course{
+  height: 4vh;
+  padding: 0% 2%;
+  width: 9vw;
+}
+#student-year{
+  height: 4vh;
+  padding: 0% 2%;
+  margin: 0% 5%;
+  width: 7vw;
+}
+#student-section{
+  height: 4vh;
+  padding: 0% 2%;
+  margin: 0% 5%;
+  width: 9vw;
 }
 .name-input-field {
   height: 25px;
