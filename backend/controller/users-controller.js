@@ -47,6 +47,7 @@ const checkEmailIfExist = async(req,res)=>{
 const createUser = async (req, res) => {
     const errors = validationResult(req);
     const findUser = await userModel.findOne({email:req.body.registerEmail}).exec();
+    console.log(req.file);
     if(findUser){
         return res.status(422).json({message:'Email already been used'});
     }

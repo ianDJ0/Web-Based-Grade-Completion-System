@@ -79,6 +79,7 @@ const RegisterFull = (props) => {
       formData.append("registerContactNumber", contact);
       formData.append("registerUserType", acctType);
       formData.append("image", signature);
+      console.log(signature);
       if (acctType === "Faculty") {
         axios
           .post("http://localhost:7700/api/users/signup", formData)
