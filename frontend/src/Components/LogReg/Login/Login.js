@@ -16,7 +16,6 @@ const Login = () => {
   const [pwd, setPWD] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [isValid, setIsValid] = useState(false);
-
   const emailRef = useRef();
   const navigate = useNavigate();
 

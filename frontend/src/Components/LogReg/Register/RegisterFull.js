@@ -78,8 +78,6 @@ const RegisterFull = (props) => {
 
     if (isEqual && errMsg.trim().length < 1) {
 
-      
-      console.log(signature);
       if (acctType === "Faculty") {
         axios
           .post("http://localhost:7700/api/users/signup", formData)
@@ -109,14 +107,14 @@ const RegisterFull = (props) => {
     }
   };
 
-  const pickHandle = (event) => {
-    const reader = new FileReader();
-    if (event.target.files && event.target.files.length === 1) {
-      const [file] = event.target.files;
-      signature = event.target.files[0];
-      reader.readAsDataURL(file);
-    }
-  };
+  // const pickHandle = (event) => {
+  //   const reader = new FileReader();
+  //   if (event.target.files && event.target.files.length === 1) {
+  //     const [file] = event.target.files;
+  //     signature = event.target.files[0];
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
 
   const studentOnly =
     acctType === "Student" ? (

@@ -10,11 +10,8 @@ const checkAuth = require('../middleware/Authentication');
 
 //Get Single User API
 router.post('/softValidate',userController.checkEmailIfExist);
-
 router.post('/login', userController.login);
 router.post('/type', userController.getAllUserByType);
-
-
 
 //Create New User API
 router.post('/signup',check('registerName').isEmpty(),
@@ -27,7 +24,9 @@ router.post('/signup',check('registerName').isEmpty(),
         check('registerUserType').isLength({min:3}),
     ],
     userController.createUser);
+    
 //Edit or delete User by ID API
+router.use(checkAuth)
 router.post('/resetEmail', userController.updateUser);
 router.patch('/changePassword', userController.resetPassword);
 router.delete('/:uID', userController.deleteUser);
