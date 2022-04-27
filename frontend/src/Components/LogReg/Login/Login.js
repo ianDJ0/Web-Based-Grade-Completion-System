@@ -47,7 +47,7 @@ const Login = () => {
         loginPassword: pwd,
       })
       .then(function (response) {
-        console.log(response);
+        alert(response.data.token)
         setIsValid(true);
       })
       .catch(function (error) {

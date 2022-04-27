@@ -4,13 +4,18 @@ const HttpError = require('../models/https-error');
 const userController = require('../controller/users-controller');
 const fileUpload = require('../middleware/file-upload');
 const router = express.Router();
+const checkAuth = require('../middleware/Authentication');
 
 
 
 //Get Single User API
-router.post('/login', userController.getSingleUserByID);
-router.post('/type', userController.getAllUserByType);
 router.post('/softValidate',userController.checkEmailIfExist);
+
+router.post('/login', userController.login);
+router.post('/type', userController.getAllUserByType);
+
+
+
 //Create New User API
 router.post('/signup',check('registerName').isEmpty(),
     fileUpload.single('image'),

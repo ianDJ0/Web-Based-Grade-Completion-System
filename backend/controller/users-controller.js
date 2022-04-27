@@ -1,4 +1,6 @@
 const uuid = require("uuid");
+const bcrypt = require("bcryptjs");
+const jwt = require('jsonwebtoken');
 const nodemailer = require("nodemailer");
 const mongoose = require("mongoose");
 const userModel = require("../models/user-model");
@@ -16,16 +18,40 @@ mongoose
     console.log("Connection Failed");
   });
 
-const getSingleUserByID = async (req, res, next) => {
+const login = async (req, res, next) => {
   const { loginEmail, loginPassword } = req.body;
-  const user = await userModel
-    .find({ email: loginEmail, password: loginPassword })
-    .exec();
-  console.log();
-  if (user.length == 0) {
-    return res.status(401).json({ message: "Wrong email or password" });
+  let user, isValidPassword = false;
+  try {
+    user = await userModel.findOne({ email: loginEmail });
+    isValidPassword = await bcrypt.compare(loginPassword, user.password);
+    if (user == null) {
+      return res.status(401).json({ message: "Wrong email or password" });
+    }
+  } catch {
+    return res.status(500).json({ message: "Try logging in later" });
   }
-  res.json(user);
+  let token;
+  try {
+    token = jwt.sign(
+      { user: user.toObject({ getters: true }) },
+      'secret_pickHandle',
+      { expiresIn: '1h' }
+    );
+  } catch (error) {
+    return next(error);
+  }
+
+  // login check password
+  try {
+    if (isValidPassword) {
+      res.json({ user: user.toObject({ getters: true }) , token:token});
+    } else {
+      return res.status(500).json({ message: "Invalid Credentials" });
+    }
+  } catch (error) {
+    return next(error);
+  }
+
 };
 //Find User Faculty or Student with filterable character
 const getAllUserByType = async (req, res, next) => {
@@ -51,13 +77,11 @@ const checkEmailIfExist = async (req, res) => {
 };
 
 ///
-
-const createUser = async (req, res) => {
+const createUser = async (req, res, next) => {
   const errors = validationResult(req);
   const findUser = await userModel
     .findOne({ email: req.body.registerEmail })
     .exec();
-  console.log(req.file);
   if (findUser) {
     return res.status(422).json({ message: "Email already been used" });
   }
@@ -68,6 +92,14 @@ const createUser = async (req, res) => {
       .json({ message: "Invalid inputs please enter the proper fields" });
   }
   let registerUser;
+  let hashedPassword;
+
+  try {
+    hashedPassword = await bcrypt.hash(req.body.registerPassword, 6);
+  } catch (error) {
+    return next(error);
+  }
+
   if (
     req.body.registerUserType === "Faculty" ||
     req.body.registerUserType === "faculty"
@@ -75,7 +107,7 @@ const createUser = async (req, res) => {
     registerUser = new userModel({
       fullName: req.body.registerName,
       email: req.body.registerEmail,
-      password: req.body.registerPassword,
+      password: hashedPassword,
       contactNumber: req.body.registerContactNumber,
       userType: req.body.registerUserType,
       image: req.file.path,
@@ -84,7 +116,7 @@ const createUser = async (req, res) => {
     registerUser = new userModel({
       fullName: req.body.registerName,
       email: req.body.registerEmail,
-      password: req.body.registerPassword,
+      password: hashedPassword,
       contactNumber: req.body.registerContactNumber,
       userType: req.body.registerUserType,
       studentNumber: req.body.registerStudentNumber,
@@ -92,8 +124,19 @@ const createUser = async (req, res) => {
       image: req.file.path,
     });
   }
+  let token;
+  try {
+    token = jwt.sign(
+      { user: registerUser.toObject({ getters: true }) },
+      'secret_pickHandle',
+      { expiresIn: '1h' }
+    );
+  } catch (error) {
+    return next(error);
+  }
   const result = await registerUser.save();
-  res.status(201).json(result);
+
+  res.status(201).json({new:registerUser.toObject({getters: true}), token});
 };
 //Change name or email
 const updateUser = async (req, res, next) => {
@@ -144,7 +187,7 @@ const deleteUser = async (req, res, next) => {
     });
 };
 
-exports.getSingleUserByID = getSingleUserByID;
+exports.login = login;
 exports.getAllUserByType = getAllUserByType;
 exports.createUser = createUser;
 exports.deleteUser = deleteUser;

@@ -9,8 +9,6 @@ import LogRegForm from "../../UI/LogReg_UI/LogRegForm";
 import "../../Shared/Shared.css";
 import "./RegisterFull.css";
 
-let formData = new FormData();
-
 const RegisterFull = (props) => {
   const navigate = useNavigate();
 
@@ -67,19 +65,21 @@ const RegisterFull = (props) => {
       // navigate("/");
     }
   }, [isValid, navigate]);
-
+  let formData = new FormData();
+  formData.append("registerName", fname + " " + mname + " " + lname);
+  formData.append("registerEmail", email);
+  formData.append("registerPassword", pwd);
+  formData.append("registerContactNumber", contact);
+  formData.append("registerUserType", acctType);
   const submitRegistrationHandler = (event) => {
     event.preventDefault();
 
     setIsEqual(pwd.trim() === conPWD.trim());
 
     if (isEqual && errMsg.trim().length < 1) {
-      formData.append("registerName", fname + " " + mname + " " + lname);
-      formData.append("registerEmail", email);
-      formData.append("registerPassword", pwd);
-      formData.append("registerContactNumber", contact);
-      formData.append("registerUserType", acctType);
-      console.log(formData.get("image"));
+
+      
+      console.log(signature);
       if (acctType === "Faculty") {
         axios
           .post("http://localhost:7700/api/users/signup", formData)
@@ -338,10 +338,10 @@ const RegisterFull = (props) => {
               accept=".jpg,.png,.jpeg"
               placeholder="Digital Signature"
               value={signature}
-              onChange={(event) => {
-                formData.delete("image");
-                formData.append("image", event.target.files[0]);
-                console.log(formData.get("image"));
+              onChange={(event)=>{
+                formData.delete('image');
+                formData.append('image', event.target.files[0]);
+                console.log(formData.get('image'));
               }}
               required
             />
