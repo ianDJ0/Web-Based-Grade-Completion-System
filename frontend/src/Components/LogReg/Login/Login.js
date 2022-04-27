@@ -1,12 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-
+import React, { useEffect, useRef, useState, useContext } from "react";
 import axios from "axios";
-
 import Logo from "../../UI/LogReg_UI/Logo";
 import LogRegBody from "../../UI/LogReg_UI/LogRegBody";
 import LogRegButton from "../../UI/LogReg_UI/LogRegButton";
 import LogRegForm from "../../UI/LogReg_UI/LogRegForm";
-
+import { AuthenticationContext } from "../../Shared/context/auth-context";
 import "../../Shared/Shared.css";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +15,7 @@ const Login = () => {
   const [errMsg, setErrMsg] = useState("");
   const [isValid, setIsValid] = useState(false);
   const emailRef = useRef();
+  const auth = useContext(AuthenticationContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,7 +34,7 @@ const Login = () => {
       setPWD("");
       navigate("/homepage");
     }
-  }, [isValid, navigate]);
+  }, [isValid, navigate, auth]);
 
   const loginHandler = (event) => {
     event.preventDefault();
@@ -46,7 +45,14 @@ const Login = () => {
         loginPassword: pwd,
       })
       .then(function (response) {
-        alert(response.data.token)
+        auth.isLoggedIn= true;
+        auth.userId = response.data.user.id;
+        auth.userEmail = response.data.user.email;
+        auth.userFullName = response.data.user.fullName;
+        auth.userContactNumber = response.data.user.contactNumber;
+        auth.userSignature = response.data.user.image;
+        auth.userType = response.data.user.userType;
+
         setIsValid(true);
       })
       .catch(function (error) {

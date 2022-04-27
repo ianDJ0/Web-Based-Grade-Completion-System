@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import "../../Shared/Shared.css";
 import "./TopNav.css";
+import { AuthenticationContext } from "../../Shared/context/auth-context";
 
 const TopNav = (props) => {
-  const [query, setQuery] = useState("");
-
+const [query, setQuery] = useState("");
+const auth = useContext(AuthenticationContext);
   return (
     <div className="top-navigation">
       <input
@@ -24,9 +25,9 @@ const TopNav = (props) => {
       />
       <div className="name-type">
         <span>
-          <p id="user-name">Jane Doe</p>{" "}
+          <p id="user-name">{auth.userFullName}</p>{" "}
           {/** will prolly use useNavigate/useLocation to set values here, or dependes on how the backend works */}
-          <p id="user-type">Student</p>
+          <p id="user-type">{auth.userType}</p>
         </span>
       </div>
       <img
