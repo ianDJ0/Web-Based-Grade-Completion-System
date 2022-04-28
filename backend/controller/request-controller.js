@@ -79,6 +79,31 @@ const instructorRespondRequest = async (req, res) => {
     }
     return res.status(201).json(instructorUpdate);
 }
+
+const officeRespondRequest = async (req,res)=>{
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        console.log(errors);
+        return res
+            .status(422)
+            .json({ message: "Invalid inputs please enter the proper fields" });
+    }
+    let officeUpdate;
+    const mongooseID = mongoose.Types.ObjectId(req.body.requestID);
+    try{
+        officeUpdate = await requestModel
+        .findOneAndUpdate({id:mongooseID},{
+            "$set":{"dateLog.dateOffice":Date.now(), "signature.officeSignature":req.body.officeSignature},
+        },{returnOriginal: false})
+        .exec();
+    }catch(err){
+        return res
+        .status(422)
+        ,json(err)
+    }
+    return res.status(201).json(officeUpdate);
+}
 exports.studentCreateRequest = studentCreateRequest;
 exports.instructorRespondRequest = instructorRespondRequest;
+exports.officeRespondRequest = officeRespondRequest; 
 

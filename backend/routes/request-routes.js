@@ -3,6 +3,7 @@ const { check } = require('express-validator');
 const HttpError = require('../models/https-error');
 const requestController = require('../controller/request-controller');
 const router = express.Router();
+const checkAuth = require('../middleware/Authentication');
 
 
 //Student create Request
@@ -17,5 +18,6 @@ router.post('/studentCreateRequest',
     requestController.studentCreateRequest);
 
 router.post('/instructorRespondRequest', requestController.instructorRespondRequest)
+router.post('/officeRespondRequest', requestController.officeRespondRequest)
 
 module.exports = router;

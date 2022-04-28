@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useContext} from "react";
 import Sidebar from "../UI/Home_UI/Sidebar";
 import TopNav from "../UI/Home_UI/TopNav";
-
+import { AuthenticationContext } from "../Shared/context/auth-context";
+import TokenCheck from "../Shared/Auth";
 import "./Homepage.css";
 
 const Homepage = (props) => {
+  const auth = useContext(AuthenticationContext);
   //THIS IS THE HOMEPAGE FOR STUDENT USER TYPES
-
+  console.log(auth);
   return (
     <>
+      <TokenCheck/>
       <TopNav />
       <Sidebar active={"homepage"} />
       <div className="body-home">
@@ -30,6 +33,7 @@ const Homepage = (props) => {
             lectus mauris ultrices. Sed elementum tempus egestas sed sed risus
             pretium quam vulputate.
           </p>
+          <img src={`http://localhost:7700/${auth.userSignature}`} alt="Signature ni user"/>
         </div>
       </div>
     </>

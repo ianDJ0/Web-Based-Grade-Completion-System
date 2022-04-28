@@ -52,7 +52,7 @@ const Login = () => {
         auth.userContactNumber = response.data.user.contactNumber;
         auth.userSignature = response.data.user.image;
         auth.userType = response.data.user.userType;
-
+        localStorage.setItem('token', response.data.token)
         setIsValid(true);
       })
       .catch(function (error) {

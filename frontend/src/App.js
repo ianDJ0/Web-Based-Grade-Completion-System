@@ -1,17 +1,19 @@
 import { Route, Routes } from "react-router-dom";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useContext } from "react";
 import Homepage from "./Components/Main/Homepage";
 import Login from "./Components/LogReg/Login/Login";
 import Register from "./Components/LogReg/Register/Register";
 import RegisterFull from "./Components/LogReg/Register/RegisterFull";
-
 import "./App.css";
 import Request from "./Components/Main/Request/Request";
 import { AuthenticationContext } from "./Components/Shared/context/auth-context"
+import jwtDecode from "jwt-decode";
 
 function App() {
+  
   const [isLoggedIn, setIsLoggedIn]= useState(false);
-
+  const auth = useContext(AuthenticationContext);
+  
   const login = useCallback(()=>{
     setIsLoggedIn(true);
   },[])
@@ -19,7 +21,17 @@ function App() {
     setIsLoggedIn(false);
   },[])
 
-  
+  const token = localStorage.getItem('token');
+  if (token) {
+    const tokenContent = jwtDecode(token);
+    auth.isLoggedIn= true;
+    auth.userId = tokenContent.user.id;
+    auth.userEmail = tokenContent.user.email;
+    auth.userFullName = tokenContent.user.fullName;
+    auth.userContactNumber = tokenContent.user.contactNumber;
+    auth.userSignature = tokenContent.user.image;
+    auth.userType = tokenContent.user.userType;
+}
 
   return (
     <AuthenticationContext.Provider value={{isLoggedIn:isLoggedIn, login:login, logout:logout}}>

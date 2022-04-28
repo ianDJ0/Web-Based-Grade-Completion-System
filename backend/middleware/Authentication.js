@@ -7,11 +7,12 @@ module.exports = (req, res, next) => {
             throw new Error('Authentication Failed');
         }
         const decodedToken = jwt.verify(token, 'secret_pickHandle');
-        req.userData = {userId:decodedToken.user.id}
+        
+        req.userData = {userData:decodedToken.user}
+        res.locals.user = req.userData;
         next();
     } catch(err) {
         const error = new HttpError('Authentication Failed', 401);
         return next(error);
     }
-
 };

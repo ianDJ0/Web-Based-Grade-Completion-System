@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 import Logo from "../../UI/LogReg_UI/Logo";
 import LogRegBody from "../../UI/LogReg_UI/LogRegBody";
 import LogRegForm from "../../UI/LogReg_UI/LogRegForm";
-
+import { AuthenticationContext } from "../../Shared/context/auth-context";
 import "../../Shared/Shared.css";
 import "./RegisterFull.css";
 
 const RegisterFull = (props) => {
   const navigate = useNavigate();
-
+  const auth = useContext(AuthenticationContext);
   //email from register
   const { state } = useLocation();
   const { email } = state;
@@ -64,7 +64,7 @@ const RegisterFull = (props) => {
       navigate("/homepage");
       // navigate("/");
     }
-  }, [isValid, navigate]);
+  }, [isValid, navigate, auth]);
   let formData = new FormData();
   formData.append("registerName", fname + " " + mname + " " + lname);
   formData.append("registerEmail", email);
@@ -82,6 +82,14 @@ const RegisterFull = (props) => {
         axios
           .post("http://localhost:7700/api/users/signup", formData)
           .then(function (response) {
+            auth.isLoggedIn= true;
+            auth.userId = response.data.new.id;
+            auth.userEmail = response.data.new.email;
+            auth.userFullName = response.data.new.fullName;
+            auth.userContactNumber = response.data.new.contactNumber;
+            auth.userSignature = response.data.new.image;
+            auth.userType = response.data.new.userType;
+            localStorage.setItem('token', response.data.token)
             setIsValid(true);
           })
           .catch(function (error) {
