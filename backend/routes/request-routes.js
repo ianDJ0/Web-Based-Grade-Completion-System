@@ -7,14 +7,16 @@ const checkAuth = require('../middleware/Authentication');
 
 
 //Student create Request
-router.post('/studentCreateRequest',
-    [
-        check('studentID').notEmpty(),
-        check('instructorID').notEmpty(),
-        check('subject').notEmpty(),
-        check('incompletePeriod').notEmpty(),
-        check('incompleteYear').notEmpty(),
-    ],
+router.use(checkAuth)
+router.post('/studentCreateRequest'
+,
+    // [
+    //     check('studentID').notEmpty(),
+    //     check('instructorID').notEmpty(),
+    //     check('subject').notEmpty(),
+    //     check('incompletePeriod').notEmpty(),
+    //     check('incompleteYear').notEmpty(),
+    // ],
     requestController.studentCreateRequest);
 
 router.post('/instructorRespondRequest', requestController.instructorRespondRequest)

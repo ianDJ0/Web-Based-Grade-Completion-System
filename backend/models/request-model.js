@@ -6,6 +6,7 @@ const request = new mongoose.Schema({
     incompleteYear: { type: String, required: true },
     reason: { type: String, required: true },
     grade: { type: String},
+    status:{type:String},
     deanName: { type: String },
     student: {
         studentID: { type: mongoose.Types.ObjectId, ref: "User" },

@@ -45,13 +45,17 @@ const Login = () => {
         loginPassword: pwd,
       })
       .then(function (response) {
-        auth.isLoggedIn= true;
+        auth.isLoggedIn = true;
         auth.userId = response.data.user.id;
         auth.userEmail = response.data.user.email;
         auth.userFullName = response.data.user.fullName;
         auth.userContactNumber = response.data.user.contactNumber;
         auth.userSignature = response.data.user.image;
         auth.userType = response.data.user.userType;
+        if (auth.userType === "Student") {
+          auth.userStudentNumber = response.data.user.studentNumber;
+          auth.userCourseYearAndSection = response.data.user.yearAndSection;
+        }
         localStorage.setItem('token', response.data.token)
         setIsValid(true);
       })
@@ -70,8 +74,8 @@ const Login = () => {
 
   const pwdError =
     errMsg.trim().length < 2 &&
-    pwd.trim().length < 6 &&
-    pwd.trim().length > 0 ? (
+      pwd.trim().length < 6 &&
+      pwd.trim().length > 0 ? (
       <div className="error">Password must be at least 6 characters long</div>
     ) : (
       ""

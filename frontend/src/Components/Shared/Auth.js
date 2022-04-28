@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import { AuthenticationContext } from "./context/auth-context";
@@ -6,6 +6,7 @@ import { AuthenticationContext } from "./context/auth-context";
 const TokenCheck = () => {
     const auth = useContext(AuthenticationContext);
     const token = localStorage.getItem('token');
+
     if (token) {
         const tokenContent = jwtDecode(token);
         auth.isLoggedIn = true;
@@ -15,9 +16,12 @@ const TokenCheck = () => {
         auth.userContactNumber = tokenContent.user.contactNumber;
         auth.userSignature = tokenContent.user.image;
         auth.userType = tokenContent.user.userType;
+        if (auth.userType === "Student") {
+            auth.userStudentNumber = tokenContent.user.studentNumber;
+            auth.userCourseYearAndSection = tokenContent.user.yearAndSection;
+        }
     } else {
-        return <Navigate to= '/' />;
+        return <Navigate to='/' />;
     }
-    
 }
 export default TokenCheck;

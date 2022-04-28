@@ -12,7 +12,7 @@ module.exports = (req, res, next) => {
         res.locals.user = req.userData;
         next();
     } catch(err) {
-        const error = new HttpError('Authentication Failed', 401);
+        const error = new HttpError(err, 401);
         return next(error);
     }
 };

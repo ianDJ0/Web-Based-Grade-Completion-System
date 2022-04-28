@@ -71,6 +71,7 @@ const checkEmailIfExist = async (req, res) => {
     .findOne({ email: req.body.registerEmail })
     .exec();
   if (findUser) {
+    
     return res.status(422).json({ message: "Email already been used" });
   }
   res.status(201).json({ message: "Email Available" });
@@ -93,7 +94,6 @@ const createUser = async (req, res, next) => {
   }
   let registerUser;
   let hashedPassword;
-
   try {
     hashedPassword = await bcrypt.hash(req.body.registerPassword, 6);
   } catch (error) {

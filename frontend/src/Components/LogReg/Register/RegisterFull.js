@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import SignaturePad from "signature_pad";
 
 import Logo from "../../UI/LogReg_UI/Logo";
 import LogRegBody from "../../UI/LogReg_UI/LogRegBody";
@@ -12,6 +13,8 @@ import "./RegisterFull.css";
 const RegisterFull = (props) => {
   const navigate = useNavigate();
   const auth = useContext(AuthenticationContext);
+  const pad = useRef();
+  const refSignature = useRef();
   //email from register
   const { state } = useLocation();
   const { email } = state;
@@ -65,24 +68,25 @@ const RegisterFull = (props) => {
       // navigate("/");
     }
   }, [isValid, navigate, auth]);
-  let formData = new FormData();
-  formData.append("registerName", fname + " " + mname + " " + lname);
-  formData.append("registerEmail", email);
-  formData.append("registerPassword", pwd);
-  formData.append("registerContactNumber", contact);
-  formData.append("registerUserType", acctType);
+
+  var formData = new FormData();
+
   const submitRegistrationHandler = (event) => {
     event.preventDefault();
-
     setIsEqual(pwd.trim() === conPWD.trim());
-
     if (isEqual && errMsg.trim().length < 1) {
-
+      formData.append("registerName", fname + " " + mname + " " + lname);
+      formData.append("registerEmail", email);
+      formData.append("registerPassword", pwd);
+      formData.append("registerContactNumber", contact);
+      formData.append("registerUserType", acctType);
+      
       if (acctType === "Faculty") {
+        console.log("axios",formData.get("image"));
         axios
           .post("http://localhost:7700/api/users/signup", formData)
           .then(function (response) {
-            auth.isLoggedIn= true;
+            auth.isLoggedIn = true;
             auth.userId = response.data.new.id;
             auth.userEmail = response.data.new.email;
             auth.userFullName = response.data.new.fullName;
@@ -93,6 +97,7 @@ const RegisterFull = (props) => {
             setIsValid(true);
           })
           .catch(function (error) {
+            console.log(formData.get('image'));
             alert(error);
           });
       } else {
@@ -110,20 +115,43 @@ const RegisterFull = (props) => {
             console.log(error);
           });
       }
-
+      for (var key of formData.keys()) {
+        console.log(key);
+        formData.delete(key)
+      };
       signature = "";
     }
   };
+  let signaturePad;
+  useEffect(() => {
+    let canvas = document.getElementById('signature-pad');
+    signaturePad = new SignaturePad(canvas, {
+      backgroundColor: 'rgb(255, 255, 255)'
+    });
+    document.getElementById('clear').addEventListener('click', function () {
+      signaturePad.clear();
+    });
+    document.getElementById('save-png').addEventListener('click', function () {
 
-  // const pickHandle = (event) => {
-  //   const reader = new FileReader();
-  //   if (event.target.files && event.target.files.length === 1) {
-  //     const [file] = event.target.files;
-  //     signature = event.target.files[0];
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
+    });
+  }, [formData])
+  //https://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
+  function dataURItoBlob(dataURI) {
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+      byteString = atob(dataURI.split(',')[1]);
+    else
+      byteString = unescape(dataURI.split(',')[1]);
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
 
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ia], { type: mimeString });
+  }
+  const [visible, setVisible] = useState(false);
   const studentOnly =
     acctType === "Student" ? (
       <div>
@@ -338,18 +366,33 @@ const RegisterFull = (props) => {
               Signature
             </label>
             <br />
+            <div className="wrapper" ref={pad} style={{ display: visible ? 'block' : 'none' }}>
+              <canvas id="signature-pad" className="signature-pad" width={400} height={200} />
+              <input type="button" id="clear" value="Clear Canvas" />
+              <input type="button" id="save-png" value="Use Signature" onClick={(event)=>{
+                      formData.delete('image');
+                      if (signaturePad.isEmpty()) {
+                        return alert("Please provide a signature first.");
+                      }
+                      let data = signaturePad.toDataURL('image/png');
+                      let blob = dataURItoBlob(data);
+                      formData.append("image", blob);
+                      console.log(formData.get('image'));
+              }} />
+            </div>
+            <input type="button" onClick={() => setVisible(!visible)} value="Show Signature Pad" />
             <input
               id="signature"
+              ref={refSignature}
               type="file"
               accept=".jpg,.png,.jpeg"
               placeholder="Digital Signature"
               value={signature}
-              onChange={(event)=>{
+              onChange={(event) => {
                 formData.delete('image');
                 formData.append('image', event.target.files[0]);
                 console.log(formData.get('image'));
               }}
-              required
             />
             <br />
             <br />
@@ -374,5 +417,6 @@ const RegisterFull = (props) => {
       </LogRegBody>
     </>
   );
+
 };
 export default RegisterFull;

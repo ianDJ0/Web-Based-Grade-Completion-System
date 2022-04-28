@@ -6,12 +6,12 @@ import TokenCheck from "../Shared/Auth";
 import "./Homepage.css";
 
 const Homepage = (props) => {
+  TokenCheck();
   const auth = useContext(AuthenticationContext);
   //THIS IS THE HOMEPAGE FOR STUDENT USER TYPES
-  console.log(auth);
   return (
     <>
-      <TokenCheck/>
+      <TokenCheck />
       <TopNav />
       <Sidebar active={"homepage"} />
       <div className="body-home">
