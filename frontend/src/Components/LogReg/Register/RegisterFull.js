@@ -80,9 +80,9 @@ const RegisterFull = (props) => {
       formData.append("registerPassword", pwd);
       formData.append("registerContactNumber", contact);
       formData.append("registerUserType", acctType);
-      
+
       if (acctType === "Faculty") {
-        console.log("axios",formData.get("image"));
+        console.log("axios", formData.get("image"));
         axios
           .post("http://localhost:7700/api/users/signup", formData)
           .then(function (response) {
@@ -128,12 +128,7 @@ const RegisterFull = (props) => {
     signaturePad = new SignaturePad(canvas, {
       backgroundColor: 'rgb(255, 255, 255)'
     });
-    document.getElementById('clear').addEventListener('click', function () {
-      signaturePad.clear();
-    });
-    document.getElementById('save-png').addEventListener('click', function () {
 
-    });
   }, [formData])
   //https://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
   function dataURItoBlob(dataURI) {
@@ -368,19 +363,21 @@ const RegisterFull = (props) => {
             <br />
             <div className="wrapper" ref={pad} style={{ display: visible ? 'block' : 'none' }}>
               <canvas id="signature-pad" className="signature-pad" width={400} height={200} />
-              <input type="button" id="clear" value="Clear Canvas" />
-              <input type="button" id="save-png" value="Use Signature" onClick={(event)=>{
-                      formData.delete('image');
-                      if (signaturePad.isEmpty()) {
-                        return alert("Please provide a signature first.");
-                      }
-                      let data = signaturePad.toDataURL('image/png');
-                      let blob = dataURItoBlob(data);
-                      formData.append("image", blob);
-                      console.log(formData.get('image'));
+              <input type="button" id="clear" value="Clear Canvas" onClick={(event) => {
+                signaturePad.clear();
+              }} />
+              <input type="button" id="save-png" value="Use Signature" onClick={(event) => {
+                formData.delete('image');
+                if (signaturePad.isEmpty()) {
+                  return alert("Please provide a signature first.");
+                }
+                let data = signaturePad.toDataURL('image/png');
+                let blob = dataURItoBlob(data);
+                formData.append("image", blob);
+                console.log(formData.get('image'));
               }} />
             </div>
-            <input type="button" onClick={() => setVisible(!visible)} value="Show Signature Pad" />
+            <input type="button" onClick={() => setVisible(!visible)} value="Show/Hide Signature Pad" />
             <input
               id="signature"
               ref={refSignature}
