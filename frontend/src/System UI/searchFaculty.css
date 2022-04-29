@@ -7,71 +7,117 @@
 body{
     background-color: #FAFAFA;
 }
-.faculty-form{
+.search-faculty-profile{
     position: absolute;
-    width: 40vw;
-    height: 40vh;
-    padding: 2%;
-    margin-top: 10%;
-    margin-left: 25%;
-    background-color: rgb(243, 243, 243);
-    box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.2);
-    border-radius: 2em;
+    width: 60vw;
+    height: 60vh;
+    margin-top: 12%;
+    margin-left: 28%;
+    background-color: white;
+    box-shadow: 0px 3px 5px 0px;
 }
-#faculty-img{
-    width: 23%;
-    margin: 5% 38%;
-    margin-bottom: 0;
+#bulsu-header{
+    width: 100%;
+    height: 40%;
+    background: transparent no-repeat bottom;
+    background-size: cover;
+    background: url('Icons/bulsu.jpg');
 }
-.fac-header{
+#search-faculty-img{
+    margin: 7% 0 0 9%;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 12px solid white;
+}
+#search-faculty-name{
+    font-size: 2vw;
+    margin: 0 0 1% 14%;
+}
+#search-faculty-college{
+    width: 19vw;
+    margin-left: 5.5%;
+    font-size: 1vw;
+    font-style: italic;
+    text-align: center;
+}
+.search-faculty-email{
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 17vh;
-    border-top-left-radius: 2em;
-    border-top-right-radius: 2em;
-    background-color: rgb(225, 225, 225);
-}
-#fac-name{
-    font-size: 2vw;
-    font-weight: bold;
-    text-align: center;
-}
-#fac-college{
-    text-align: center;
-    font-style: italic;
-    font-size: 1vw;
-    margin-top: 1%;
-    margin-bottom: 4%;
-}
-#request-fac{
-    border: none;
-    background-color: rgb(247, 170, 170);
-    border-radius: 2em;
-    font-size: 1vw;
+    margin-top: 23%;
+    margin-left: 49%;
+    width: 25vw;
+    height: 5vh;
     padding: 1% 2%;
-    margin-left: 17%;
+    background-color: white;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
 }
-#fac-req{
-    width: 2vw;
-    vertical-align: middle;
+.search-faculty-email:hover{
+    transform: translateY(-0.15em);
 }
-#request-fac:hover{
-    background-color: rgb(245, 120, 120);
+.search-faculty-number{
+    position: absolute;
+    top: 0;
+    margin-top: 31%;
+    margin-left: 49%;
+    width: 25vw;
+    height: 5vh;
+    padding: 1% 2%;
+    background-color: white;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.search-faculty-number:hover{
+    transform: translateY(-0.15em);
+}
+.search-faculty-bday{
+    position: absolute;
+    top: 0;
+    margin-top: 39%;
+    margin-left: 49%;
+    width: 25vw;
+    height: 5vh;
+    padding: 1% 2%;
+    background-color: white;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.search-faculty-bday:hover{
+    transform: translateY(-0.15em);
+}
+#search-email, #search-number, #search-bday{
+    font-size: 1.25vw;
+    font-style: italic;
+    text-align: center;
+}
+#request-faculty{
+    position: absolute;
+    width: 16vw;
+    margin: 13% 0 0 49%;
+    font-size: 1vw;
+    padding: 1.5% 0;
+    border: none;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border: 2px solid white;
+}
+#request-faculty:hover{
+    cursor: pointer;
+    background-color: rgb(148, 7, 7);
+    color: white;
 }
 #send-msg{
-    border: none;
-    background-color: rgb(235, 203, 143);
-    border-radius: 2em;
+    position: absolute;
+    width: 10vw;
+    margin: 13% 0 0 78%;
     font-size: 1vw;
-    padding: 1% 2%;
-    margin-left: 5%;
-}
-#fac-msg{
-    width: 2vw;
-    vertical-align: middle;
+    padding: 1.5% 0;
+    border: none;
+    background-color: black;
+    border: 2px solid white;
+    color: rgb(255, 252, 252);
 }
 #send-msg:hover{
-    background-color: rgb(229, 181, 92);
+    cursor: pointer;
+    background-color: #850606;
+    color: white;
 }
