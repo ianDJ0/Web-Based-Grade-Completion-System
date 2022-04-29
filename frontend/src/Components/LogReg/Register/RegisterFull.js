@@ -54,7 +54,7 @@ const RegisterFull = (props) => {
     );
 
   useEffect(() => {
-    if (pwd.trim().length < 5 && pwd.trim().length > 0)
+    if (pwd.trim().length < 6 && pwd.trim().length > 0)
       setErrMsg(
         <div className="error">Password must be at least 6 characters long</div>
       );
@@ -74,7 +74,7 @@ const RegisterFull = (props) => {
   const submitRegistrationHandler = (event) => {
     event.preventDefault();
     setIsEqual(pwd.trim() === conPWD.trim());
-    if (isEqual && errMsg.trim().length < 1) {
+    if (pwd.trim() === conPWD.trim() && errMsg.trim().length < 1) {
       formData.append("registerName", fname + " " + mname + " " + lname);
       formData.append("registerEmail", email);
       formData.append("registerPassword", pwd);
@@ -93,11 +93,11 @@ const RegisterFull = (props) => {
             auth.userContactNumber = response.data.new.contactNumber;
             auth.userSignature = response.data.new.image;
             auth.userType = response.data.new.userType;
-            localStorage.setItem('token', response.data.token)
+            localStorage.setItem("token", response.data.token);
             setIsValid(true);
           })
           .catch(function (error) {
-            console.log(formData.get('image'));
+            console.log(formData.get("image"));
             alert(error);
           });
       } else {
@@ -117,27 +117,27 @@ const RegisterFull = (props) => {
       }
       for (var key of formData.keys()) {
         console.log(key);
-        formData.delete(key)
-      };
+        formData.delete(key);
+      }
       signature = "";
     }
   };
   let signaturePad;
   useEffect(() => {
-    let canvas = document.getElementById('signature-pad');
+    // will edit this, signaturepad's value will be gone everytime you changed something in the regFull form
+    // this will only work if you added the signature after inputting all the other required fields
+    let canvas = document.getElementById("signature-pad");
     signaturePad = new SignaturePad(canvas, {
-      backgroundColor: 'rgb(255, 255, 255)'
+      backgroundColor: "rgb(255, 255, 255)",
     });
-
-  }, [formData])
+  }, [formData]);
   //https://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
   function dataURItoBlob(dataURI) {
     var byteString;
-    if (dataURI.split(',')[0].indexOf('base64') >= 0)
-      byteString = atob(dataURI.split(',')[1]);
-    else
-      byteString = unescape(dataURI.split(',')[1]);
-    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    if (dataURI.split(",")[0].indexOf("base64") >= 0)
+      byteString = atob(dataURI.split(",")[1]);
+    else byteString = unescape(dataURI.split(",")[1]);
+    var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
 
     // write the bytes of the string to a typed array
     var ia = new Uint8Array(byteString.length);
@@ -361,23 +361,46 @@ const RegisterFull = (props) => {
               Signature
             </label>
             <br />
-            <div className="wrapper" ref={pad} style={{ display: visible ? 'block' : 'none' }}>
-              <canvas id="signature-pad" className="signature-pad" width={400} height={200} />
-              <input type="button" id="clear" value="Clear Canvas" onClick={(event) => {
-                signaturePad.clear();
-              }} />
-              <input type="button" id="save-png" value="Use Signature" onClick={(event) => {
-                formData.delete('image');
-                if (signaturePad.isEmpty()) {
-                  return alert("Please provide a signature first.");
-                }
-                let data = signaturePad.toDataURL('image/png');
-                let blob = dataURItoBlob(data);
-                formData.append("image", blob);
-                console.log(formData.get('image'));
-              }} />
+            <div
+              className="wrapper"
+              ref={pad}
+              style={{ display: visible ? "block" : "none" }}
+            >
+              <canvas
+                id="signature-pad"
+                className="signature-pad"
+                width={400}
+                height={200}
+              />
+              <input
+                type="button"
+                id="clear"
+                value="Clear Canvas"
+                onClick={(event) => {
+                  signaturePad.clear();
+                }}
+              />
+              <input
+                type="button"
+                id="save-png"
+                value="Use Signature"
+                onClick={(event) => {
+                  formData.delete("image");
+                  if (signaturePad.isEmpty()) {
+                    return alert("Please provide a signature first.");
+                  }
+                  let data = signaturePad.toDataURL("image/png");
+                  let blob = dataURItoBlob(data);
+                  formData.append("image", blob);
+                  console.log(formData.get("image"));
+                }}
+              />
             </div>
-            <input type="button" onClick={() => setVisible(!visible)} value="Show/Hide Signature Pad" />
+            <input
+              type="button"
+              onClick={() => setVisible(!visible)}
+              value="Show/Hide Signature Pad"
+            />
             <input
               id="signature"
               ref={refSignature}
@@ -386,9 +409,9 @@ const RegisterFull = (props) => {
               placeholder="Digital Signature"
               value={signature}
               onChange={(event) => {
-                formData.delete('image');
-                formData.append('image', event.target.files[0]);
-                console.log(formData.get('image'));
+                formData.delete("image");
+                formData.append("image", event.target.files[0]);
+                console.log(formData.get("image"));
               }}
             />
             <br />
@@ -414,6 +437,5 @@ const RegisterFull = (props) => {
       </LogRegBody>
     </>
   );
-
 };
 export default RegisterFull;

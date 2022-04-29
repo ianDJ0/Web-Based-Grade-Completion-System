@@ -9,7 +9,6 @@ const RequestFilter = (props) => {
 
   const clearFilterHandler = () => {};
 
-
   //will prolly use useEffect on the request.js to call changes from here + props
 
   return (
@@ -35,7 +34,7 @@ const RequestFilter = (props) => {
               setStatus(event.target.value);
             }}
           >
-            <option selected hidden disabled>
+            <option hidden disabled>
               Status
             </option>
             <option value={"requested"}>Requested</option>
@@ -63,7 +62,9 @@ const RequestFilter = (props) => {
               setEndDate(event.target.value);
             }}
           />
-          <button onClick={clearFilterHandler} id="clear-filter">Clear Filter</button>
+          <button onClick={clearFilterHandler} id="clear-filter">
+            Clear Filter
+          </button>
         </div>
       </div>
     </>
