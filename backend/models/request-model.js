@@ -27,6 +27,7 @@ const request = new mongoose.Schema({
         dateStudent: { type: Date, default: Date.now() },
         dateInstructor: { type: Date },
         dateOffice: { type: Date },
+        dateProccessed: { type: Date },
     }
 }, {
     collection: 'Request',

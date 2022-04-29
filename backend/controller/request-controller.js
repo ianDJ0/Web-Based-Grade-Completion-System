@@ -110,10 +110,12 @@ const officeRespondRequest = async (req,res)=>{
     // let mm = today.toLocaleString('default', { month: 'long' });
     // var yyyy = today.getFullYear();
     try{
+        const d = new Date();
+        d.setDate(d.getDate() + 14);
         officeUpdate = await requestModel
         .findByIdAndUpdate(req.body.requestID,{
             status:"ON PROCESS",
-            "$set":{"dateLog.dateOffice":Date.now(), "signature.officeSignature":req.body.officeSignature},
+            "$set":{"dateLog.dateOffice":Date.now(), "dateLog.dateProccessed":d, "signature.officeSignature":req.body.officeSignature},
         },{returnOriginal: false})
         .exec();
     }catch(err){
