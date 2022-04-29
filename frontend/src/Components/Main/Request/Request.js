@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import RequestModal from "../../UI/Home_UI/RequestModal";
 import Sidebar from "../../UI/Home_UI/Sidebar";
 import TopNav from "../../UI/Home_UI/TopNav";
 import RequestFilter from "./RequestFilter";
@@ -6,16 +7,18 @@ import RequestFilter from "./RequestFilter";
 import "./Requests.css";
 
 const Request = (props) => {
-  const btnRequestHandler = () => {
-    alert("I click");
-  };
+  const [isOpen, setOpen] = useState(false); //for modal
 
   return (
     <>
+      <RequestModal open={isOpen} onClose={() => setOpen(false)} />
       <TopNav />
       <Sidebar active={"requests"} />
       <div className="request-body">
-        <button id="request-form-btn" onClick={btnRequestHandler}>
+        <button
+          id="request-form-btn"
+          onClick={() => setOpen((prevState) => !prevState)}
+        >
           Request Completion Form
         </button>
         <h2 id="request-label">REQUEST LOGS</h2>

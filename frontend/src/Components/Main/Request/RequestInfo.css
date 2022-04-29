@@ -1,0 +1,54 @@
+#request-fac {
+  width: 30vw;
+  height: 5vh;
+  margin-bottom: 3%;
+}
+#request-info-label {
+  margin-bottom: 3%;
+  font-size: 1.25vw;
+}
+#request-reason {
+  width: 45.5vw;
+  height: 5vh;
+  padding: 0 2%;
+}
+#request-subj-desc {
+  width: 25vw;
+  height: 5vh;
+  padding: 0 2%;
+}
+#request-subj-code {
+  width: 17vw;
+  height: 5vh;
+  padding: 0 2%;
+}
+#request-subj-sem {
+  width: 17vw;
+  height: 5vh;
+  padding: 0 2%;
+}
+#request-subj-year {
+  width: 25vw;
+  height: 5vh;
+  padding: 0 2%;
+}
+.request-info {
+  padding: 3%;
+  border: 2px solid black;
+}
+.request-info-two,
+.request-info-three {
+  display: inline-block;
+  margin-bottom: 3%;
+}
+.request-info-three {
+  margin-left: 8%;
+}
+.request-info-four,
+.request-info-five {
+  display: inline-block;
+  margin-bottom: 3%;
+}
+.request-info-five {
+  margin-left: 8%;
+}

@@ -1,0 +1,54 @@
+#stud-course {
+  width: 13.75vw;
+  height: 5vh;
+  padding: 0 2%;
+}
+#stud-info-label {
+  margin-bottom: 3%;
+  font-size: 1.25vw;
+}
+#stud-name {
+  width: 21vw;
+  height: 5vh;
+  padding: 0 2%;
+}
+#stud-no {
+  width: 21vw;
+  height: 5vh;
+  padding: 0 2%;
+  margin-bottom: 5%;
+}
+#stud-section {
+  width: 13.75vw;
+  height: 5vh;
+  padding: 0 2%;
+}
+#stud-year {
+  width: 13.75vw;
+  height: 5vh;
+  padding: 0 2%;
+}
+.student-info {
+  padding: 3%;
+  border: 2px solid black;
+  margin-bottom: 5%;
+}
+.stud-info-three,
+.stud-info-four,
+.stud-info-five {
+  display: inline-block;
+  margin-bottom: 4%;
+}
+.stud-info-five {
+  margin-left: 4%;
+}
+.stud-info-four {
+  margin-left: 4%;
+}
+.stud-info-one,
+.stud-info-two {
+  display: inline-block;
+}
+.stud-info-two {
+  margin-left: 7%;
+}
