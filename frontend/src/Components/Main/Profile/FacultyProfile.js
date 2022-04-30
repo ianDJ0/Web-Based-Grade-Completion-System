@@ -20,20 +20,19 @@ const FacultyProfile = (props) => {
     birthday: "",
   });
 
-  useEffect(() => {
+  if(id !== facultyInfo._id){
     axios
-      .get(`http://localhost:7700/api/users/findUser/${id}`)
-      .then((response) => {
-        setFacultyInfo(response.data);
-        if (id !== response.data.id) {
-          setLoad(!load);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [load]);
-
+    .get(`http://localhost:7700/api/users/findUser/${id}`)
+    .then((response) => {
+      setFacultyInfo(response.data);
+      if (id !== response.data.id) {
+        setLoad(!load);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
   return (
     <>
       <TopNav />

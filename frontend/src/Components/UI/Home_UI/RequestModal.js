@@ -73,7 +73,6 @@ const RequestModal = (props) => {
   if (!props.open) return null;
   return (
     <RequestContent.Provider value={requestContent}>
-      {/* <TokenCheck/> */}
       <ModalBackdrop onClose={props.onClose}>
         <div className="request-modal">
           <h2 id="modal-label">GRADE COMPLETION FORM</h2>

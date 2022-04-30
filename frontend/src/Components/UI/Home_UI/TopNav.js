@@ -9,7 +9,6 @@ const TopNav = (props) => {
   const [query, setQuery] = useState("");
   const auth = useContext(AuthenticationContext);
   const [search, setSearch] = useState(["User is not Registered"]);
-  const [searchBar, setSearchBar] = useState(true);
 
   const navigate = useNavigate();
   const profileHandler = () => {
@@ -20,7 +19,7 @@ const TopNav = (props) => {
 
   const logoutHandler = () => {
     alert("logout");
-    //clear auth?
+      localStorage.removeItem('token');
     navigate("/");
   };
 

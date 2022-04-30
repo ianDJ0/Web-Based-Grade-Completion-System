@@ -29,7 +29,7 @@ router.post('/signup',check('registerName').isEmpty(),
 //Edit or delete User by ID API
 router.use(checkAuth)
 router.post('/resetEmail', userController.updateUser);
-router.patch('/changePassword', userController.resetPassword);
+router.post('/changePassword', userController.resetPassword);
 router.delete('/:uID', userController.deleteUser);
 
 module.exports = router;

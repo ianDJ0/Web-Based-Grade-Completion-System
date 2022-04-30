@@ -27,7 +27,7 @@ const login = async (req, res, next) => {
     if (!user) {
       return res.status(401).json({ message: "Wrong email or password" });
     }
-  } catch(err) {
+  } catch (err) {
     console.log(err)
     return res.status(500).json({ message: "Try logging in later" });
   }
@@ -45,7 +45,7 @@ const login = async (req, res, next) => {
   // login check password
   try {
     if (isValidPassword) {
-      res.json({ user: user.toObject({ getters: true }) , token:token});
+      res.json({ user: user.toObject({ getters: true }), token: token });
     } else {
       return res.status(500).json({ message: "Invalid Credentials" });
     }
@@ -56,8 +56,8 @@ const login = async (req, res, next) => {
 };
 //Find User Faculty or Student with filterable character
 const getAllUserByType = async (req, res, next) => {
-  if(req.body.findInName === ["User is not Registered"]){
-    req.body.findInName="";
+  if (req.body.findInName === ["User is not Registered"]) {
+    req.body.findInName = "";
   }
   const allUserType = await userModel
     .find({
@@ -75,11 +75,11 @@ const getAllUserByType = async (req, res, next) => {
 //Find Single User by ID
 const getSingle = async (req, res, next) => {
   let user
-  try{
-      user = await userModel
-    .findById(req.params.uID);
-  }catch(error){
-    return res.status(404).json({message:'User is not Registered'});
+  try {
+    user = await userModel
+      .findById(req.params.uID);
+  } catch (error) {
+    return res.status(404).json({ message: 'User is not Registered' });
   }
   if (user.length == 0) {
     return res.status(404).json(['User is not Registered']);
@@ -92,7 +92,7 @@ const checkEmailIfExist = async (req, res) => {
     .findOne({ email: req.body.registerEmail })
     .exec();
   if (findUser) {
-    
+
     return res.status(422).json({ message: "Email already been used" });
   }
   res.status(201).json({ message: "Email Available" });
@@ -131,7 +131,7 @@ const createUser = async (req, res, next) => {
       password: hashedPassword,
       contactNumber: req.body.registerContactNumber,
       userType: req.body.registerUserType,
-      birthday:req.body.registerBirthday,
+      birthday: req.body.registerBirthday,
       image: req.file.path,
     });
   } else {
@@ -141,7 +141,7 @@ const createUser = async (req, res, next) => {
       password: hashedPassword,
       contactNumber: req.body.registerContactNumber,
       userType: req.body.registerUserType,
-      birthday:req.body.registerBirthday,
+      birthday: req.body.registerBirthday,
       studentNumber: req.body.registerStudentNumber,
       yearAndSection: req.body.registerCourseYearAndSection,
       image: req.file.path,
@@ -159,7 +159,7 @@ const createUser = async (req, res, next) => {
   }
   const result = await registerUser.save();
 
-  res.status(201).json({new:registerUser.toObject({getters: true}), token});
+  res.status(201).json({ new: registerUser.toObject({ getters: true }), token });
 };
 //Change name or email
 const updateUser = async (req, res, next) => {
@@ -191,19 +191,38 @@ const updateUser = async (req, res, next) => {
 };
 //Reset Password middleware
 const resetPassword = async (req, res) => {
-  const findUser = await userModel
-    .findByIdAndUpdate(req.body.userID, { password: req.body.newPassword })
-    .exec();
-  if (!findUser) {
-    res.status(404).json({ message: "User di makita" });
+
+  let isValidPassword = false;
+  let user;
+  try {
+    user = await userModel.findById(req.body.userID);
+    isValidPassword = await bcrypt.compare(req.body.verifyPassword, user.password);
+
+  } catch (error) {
+    return res.status(201).json({ error });
   }
-  res.status(204).json({ message: "Password updated!" });
+  if (isValidPassword === true) {
+    hashedPassword = await bcrypt.hash(req.body.newPassword, 6);
+  }else{
+    return res.status(401).json({message:"Wrong Password Confirmation"})
+  }
+  try{
+    await userModel.findByIdAndUpdate(user._id,{password:hashedPassword})
+  }catch(error){
+    return res.status(401).json(error);
+  }
+  res.status(201).json(user);
+
 };
+
+
+
+
 const deleteUser = async (req, res, next) => {
   const dataObject = JSON.parse(JSON.stringify(res.locals.user.userData));
-  if(dataObject.userType !== "Admin"){
+  if (dataObject.userType !== "Admin") {
     console.log(dataObject);
-    return res.status(403).json({message: "No Access!"});
+    return res.status(403).json({ message: "No Access!" });
   }
   await userModel
     .findByIdAndDelete(req.params.uID)
