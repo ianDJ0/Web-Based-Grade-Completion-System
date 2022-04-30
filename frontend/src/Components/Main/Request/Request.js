@@ -10,7 +10,7 @@ import "./Requests.css";
 const Request = (props) => {
   const [isOpen, setOpen] = useState(false); //for modal
   const auth = useContext(AuthenticationContext);
-
+  console.log("USER TYPE-----------", auth.userType);
   
   return (
     <>
@@ -18,7 +18,7 @@ const Request = (props) => {
       <TopNav />
       <Sidebar active={"requests"} />
       <div className="request-body">
-        {auth.userType !== "Admin"|| auth.userType !== "Faculty" &&
+        {(auth.userType !== "Admin"|| auth.userType !== "Faculty") &&
           <button
             id="request-form-btn"
             onClick={() => setOpen((prevState) => !prevState)}>
