@@ -7,6 +7,9 @@ const checkAuth = require('../middleware/Authentication');
 
 
 //Student create Request
+router.post('/studentRequest', requestController.getRequestForStudent);
+router.post('/facultyRequest', requestController.getRequestForFaculty);
+
 router.use(checkAuth)
 router.post('/studentCreateRequest'
 ,
@@ -21,5 +24,6 @@ router.post('/studentCreateRequest'
 
 router.post('/instructorRespondRequest', requestController.instructorRespondRequest)
 router.post('/officeRespondRequest', requestController.officeRespondRequest)
+
 
 module.exports = router;

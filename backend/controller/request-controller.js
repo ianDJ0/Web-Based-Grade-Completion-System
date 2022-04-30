@@ -73,6 +73,7 @@ const instructorRespondRequest = async (req, res) => {
     if(userData.userType !=="Faculty"){
         return res.status(403).json({message: "Requesting with invalid user type"})
     }
+
     let instructorUpdate;
     let insructorStatus = parseFloat(req.body.grade)<=3?"APPROVED":"DENIED";
         
@@ -126,6 +127,37 @@ const officeRespondRequest = async (req,res)=>{
     }
     return res.status(201).json(officeUpdate);
 }
+//Get Requests for List Display
+const getRequestForStudent = async (req, res)=>{
+    let getRequestStudent
+    try{
+        getRequestStudent = await requestModel
+        .find({"student.studentID":req.body.studentId});
+    }catch(err){
+        return res
+        .status(422)
+        .json({error: err, message:"Search Failed"})
+    }
+    return res.status(201).json(getRequestStudent);
+
+}
+
+const getRequestForFaculty = async (req, res)=>{
+    let getRequestFaculty
+    try{
+        getRequestFaculty = await requestModel
+        .find({"instructor.instructorID":req.body.facultyId});
+    }catch(err){
+        return res
+        .status(422)
+        .json({error: err, message:"Search Failed"})
+    }
+    return res.status(201).json(getRequestFaculty);
+
+}
+
+exports.getRequestForFaculty = getRequestForFaculty;
+exports.getRequestForStudent = getRequestForStudent;
 exports.studentCreateRequest = studentCreateRequest;
 exports.instructorRespondRequest = instructorRespondRequest;
 exports.officeRespondRequest = officeRespondRequest; 
