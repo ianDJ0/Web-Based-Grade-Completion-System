@@ -34,6 +34,7 @@ function App() {
     auth.userType = tokenContent.user.userType;
   }
 
+
   return (
     <AuthenticationContext.Provider
       value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}

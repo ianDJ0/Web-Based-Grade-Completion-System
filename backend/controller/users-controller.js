@@ -55,6 +55,9 @@ const login = async (req, res, next) => {
 };
 //Find User Faculty or Student with filterable character
 const getAllUserByType = async (req, res, next) => {
+  if(req.body.findInName === ["User is not Registered"]){
+    req.body.findInName="";
+  }
   const allUserType = await userModel
     .find({
       userType: req.body.uType,
@@ -62,10 +65,11 @@ const getAllUserByType = async (req, res, next) => {
     })
     .exec();
   if (allUserType.length == 0) {
-    return res.status(404).json({ message: "No user has been found" });
+    return res.status(201).json({ message: "User is not Registered" });
   }
   res.json(allUserType);
 };
+
 const checkEmailIfExist = async (req, res) => {
   const findUser = await userModel
     .findOne({ email: req.body.registerEmail })

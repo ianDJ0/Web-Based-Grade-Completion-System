@@ -7,6 +7,7 @@ const path = require('path');
 //ROUTES
 const userRoutes = require('./routes/user-routes');
 const requestRoutes = require('./routes/request-routes')
+const announcementRoutes = require('./routes/announcement-routes');
 const HttpError = require('./models/https-error');
 
 
@@ -17,6 +18,7 @@ app.use(cors());
 app.use('/uploads/images', express.static(path.join('uploads','images')));
 app.use('/api/request',requestRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/announcements', announcementRoutes);
 
 app.use((req,res,next)=>{
     res.setHeader('Access-Control-Allow-Origin','*');

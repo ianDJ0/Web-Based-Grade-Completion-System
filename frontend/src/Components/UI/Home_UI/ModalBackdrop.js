@@ -4,7 +4,8 @@ import "./ModalBackdrop.css";
 
 const ModalBackdrop = (props) => {
   return ReactDom.createPortal(
-    <div className="modal-bg" onClick={props.onClose}>
+    //dapat i portal tong modal bg para onClick={props.onClose}
+    <div className="modal-bg" >
       <button id="cancel-request" onClick={props.onClose}>
         X
       </button>

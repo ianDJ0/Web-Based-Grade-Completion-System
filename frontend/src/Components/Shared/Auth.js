@@ -1,11 +1,23 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+import axios from "axios";
 import { AuthenticationContext } from "./context/auth-context";
 
 const TokenCheck = () => {
     const auth = useContext(AuthenticationContext);
     const token = localStorage.getItem('token');
+
+    if(localStorage.getItem('announcements')=== null){
+        console.log("WALANG LAMAN")
+        axios.post('http://localhost:7700/api/announcements/announcement')
+        .then(response=>{
+          let content = JSON.stringify(response.data)
+          localStorage.setItem('announcements', content);
+        }).catch(err=>{
+          alert(err);
+        })  
+      }
 
     if (token) {
         const tokenContent = jwtDecode(token);
@@ -23,5 +35,6 @@ const TokenCheck = () => {
     } else {
         return <Navigate to='/' />;
     }
+
 }
 export default TokenCheck;

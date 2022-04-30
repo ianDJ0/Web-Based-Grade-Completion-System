@@ -1,26 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import RequestModal from "../../UI/Home_UI/RequestModal";
 import Sidebar from "../../UI/Home_UI/Sidebar";
 import TopNav from "../../UI/Home_UI/TopNav";
 import RequestFilter from "./RequestFilter";
+import { AuthenticationContext } from "../../Shared/context/auth-context";
 
 import "./Requests.css";
 
 const Request = (props) => {
   const [isOpen, setOpen] = useState(false); //for modal
+  const auth = useContext(AuthenticationContext);
 
+  
   return (
     <>
       <RequestModal open={isOpen} onClose={() => setOpen(false)} />
       <TopNav />
       <Sidebar active={"requests"} />
       <div className="request-body">
-        <button
-          id="request-form-btn"
-          onClick={() => setOpen((prevState) => !prevState)}
-        >
-          Request Completion Form
-        </button>
+        {auth.userType !== "Admin"|| auth.userType !== "Faculty" &&
+          <button
+            id="request-form-btn"
+            onClick={() => setOpen((prevState) => !prevState)}>
+            Request Completion Form
+          </button>
+        }
         <h2 id="request-label">REQUEST LOGS</h2>
         <RequestFilter />
         <div className="request-content">

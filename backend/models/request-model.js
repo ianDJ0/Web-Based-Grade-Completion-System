@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const request = new mongoose.Schema({
-    subject: { type: String, required: true },
+    subjectCode: { type: String, required: true },
+    subjectDescription: { type: String, required: true },
     incompletePeriod: { type: String, required: true },
     incompleteYear: { type: String, required: true },
     reason: { type: String, required: true },

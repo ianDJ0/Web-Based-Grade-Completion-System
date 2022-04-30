@@ -31,7 +31,8 @@ const studentCreateRequest = async (req, res) => {
     let studentRequest;
     studentRequest = new requestModel({
 
-        subject: req.body.subject,
+        subjectCode: req.body.subject,
+        subjectDescription: req.body.subjectDescription,
         incompletePeriod: req.body.incompletePeriod,
         incompleteYear: req.body.incompleteYear,
         reason: req.body.reason,

@@ -102,13 +102,26 @@ const RegisterFull = (props) => {
           });
       } else {
         formData.append(
+          "registerStudentNumber",
+          studentNumber
+        )
+        formData.append(
           "registerCourseYearAndSection",
-          course + " " + year + "" + section
+          course + "-" + year + "-" + section
         );
         axios
           .post("http://localhost:7700/api/users/signup", formData)
           .then(function (response) {
-            console.log(response);
+            auth.isLoggedIn = true;
+            auth.userId = response.data.new.id;
+            auth.userEmail = response.data.new.email;
+            auth.userFullName = response.data.new.fullName;
+            auth.userContactNumber = response.data.new.contactNumber;
+            auth.userSignature = response.data.new.image;
+            auth.userType = response.data.new.userType;
+            localStorage.setItem("token", response.data.token);
+            auth.userStudentNumber = response.data.new.studentNumber;
+            auth.userCourseYearAndSection = response.data.new.yearAndSection;
             setIsValid(true);
           })
           .catch(function (error) {
