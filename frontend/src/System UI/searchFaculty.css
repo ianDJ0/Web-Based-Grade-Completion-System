@@ -19,7 +19,7 @@ body{
 #bulsu-header{
     width: 100%;
     height: 40%;
-    background: transparent no-repeat bottom;
+    background: transparent no-repeat;
     background-size: cover;
     background: url('Icons/bulsu.jpg');
 }
