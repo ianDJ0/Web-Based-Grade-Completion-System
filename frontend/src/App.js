@@ -15,6 +15,7 @@ import StudentProfile from "./Components/Main/Profile/StudentProfile";
 import RequestForm from "./Components/Main/Request/RequestForm";
 import ChangePassword from "./Components/Main/Profile/Edit/ChangePassword";
 import EditProfile from "./Components/Main/Profile/Edit/EditProfile";
+import TokenCheck from "./Components/Shared/Auth";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -37,8 +38,9 @@ function App() {
     auth.userContactNumber = tokenContent.user.contactNumber;
     auth.userSignature = tokenContent.user.image;
     auth.userType = tokenContent.user.userType;
+    auth.userBirthday = tokenContent.user.birthday;
   }
-
+  TokenCheck();
   return (
     <AuthenticationContext.Provider
       value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}

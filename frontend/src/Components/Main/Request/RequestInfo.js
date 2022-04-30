@@ -25,29 +25,29 @@ const RequestInfo = (props) => {
           </div>
         }
         {instructor.length < 3 && <div className="search-Faculty" >
-        <input
-          placeholder="Search for Faculty"
-          name="request-fac"
-          id="request-fac"
-          onChange={(e) => {
-            if(e.target.value )
-            axios.post(`http://localhost:7700/api/users/type`, {
-              uType: "Faculty",
-              findInName: e.target.value ===null ?"zyqqyx":e.target.value
-            }).then((response) => {
-              setSearch(response.data);
-            }).catch((err) => {
-              alert(err)
-            })
-            if(e.target.value===""){
-              setVisible(true);
-            }else{
-              setVisible(false);
-            }
-          }}
-        />
-        <FindInstructor componentIsVisible={visible} searchFac={search} setInstructor insertInstructor={(insertI)=>{setInstructor(insertI)}}/>
-        
+          <input
+            placeholder="Search for Faculty"
+            name="request-fac"
+            id="request-fac"
+            onChange={(e) => {
+              if (e.target.value)
+                axios.post(`http://localhost:7700/api/users/type`, {
+                  uType: "Faculty",
+                  findInName: e.target.value === null ? "zyqqyx" : e.target.value
+                }).then((response) => {
+                  setSearch(response.data);
+                }).catch((err) => {
+                  alert(err)
+                })
+              if (e.target.value === "") {
+                setVisible(true);
+              } else {
+                setVisible(false);
+              }
+            }}
+          />
+          <FindInstructor componentIsVisible={visible} searchFac={search} setInstructor insertInstructor={(insertI) => { setInstructor(insertI) }} />
+
         </div>}
       </div>
       <div className="request-info-two">

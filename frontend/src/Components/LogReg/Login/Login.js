@@ -38,7 +38,6 @@ const Login = () => {
 
   const loginHandler = (event) => {
     event.preventDefault();
-
     axios
       .post("http://localhost:7700/api/users/login", {
         loginEmail: email,
@@ -52,6 +51,8 @@ const Login = () => {
         auth.userContactNumber = response.data.user.contactNumber;
         auth.userSignature = response.data.user.image;
         auth.userType = response.data.user.userType;
+        auth.userBirthday = response.data.user.birthday;
+
         if (auth.userType === "Student") {
           auth.userStudentNumber = response.data.user.studentNumber;
           auth.userCourseYearAndSection = response.data.user.yearAndSection;

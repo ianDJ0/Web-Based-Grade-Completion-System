@@ -8,6 +8,7 @@ export const AuthenticationContext = createContext({
     userContactNumber:"",
     userSignature:"",
     userStudentNumber:"",
+    userBirthday:"",
     userCourseYearAndSection:"",
     userType:"",
     login: ()=>{},

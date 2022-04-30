@@ -24,10 +24,11 @@ const login = async (req, res, next) => {
   try {
     user = await userModel.findOne({ email: loginEmail });
     isValidPassword = await bcrypt.compare(loginPassword, user.password);
-    if (user == null) {
+    if (!user) {
       return res.status(401).json({ message: "Wrong email or password" });
     }
-  } catch {
+  } catch(err) {
+    console.log(err)
     return res.status(500).json({ message: "Try logging in later" });
   }
   let token;
@@ -65,9 +66,25 @@ const getAllUserByType = async (req, res, next) => {
     })
     .exec();
   if (allUserType.length == 0) {
-    return res.status(201).json({ message: "User is not Registered" });
+    return res.status(201).json(['User is not Registered']);
   }
   res.json(allUserType);
+};
+
+
+//Find Single User by ID
+const getSingle = async (req, res, next) => {
+  let user
+  try{
+      user = await userModel
+    .findById(req.params.uID);
+  }catch(error){
+    return res.status(404).json({message:'User is not Registered'});
+  }
+  if (user.length == 0) {
+    return res.status(404).json(['User is not Registered']);
+  }
+  res.json(user);
 };
 
 const checkEmailIfExist = async (req, res) => {
@@ -114,6 +131,7 @@ const createUser = async (req, res, next) => {
       password: hashedPassword,
       contactNumber: req.body.registerContactNumber,
       userType: req.body.registerUserType,
+      birthday:req.body.registerBirthday,
       image: req.file.path,
     });
   } else {
@@ -123,6 +141,7 @@ const createUser = async (req, res, next) => {
       password: hashedPassword,
       contactNumber: req.body.registerContactNumber,
       userType: req.body.registerUserType,
+      birthday:req.body.registerBirthday,
       studentNumber: req.body.registerStudentNumber,
       yearAndSection: req.body.registerCourseYearAndSection,
       image: req.file.path,
@@ -203,3 +222,4 @@ exports.deleteUser = deleteUser;
 exports.updateUser = updateUser;
 exports.resetPassword = resetPassword;
 exports.checkEmailIfExist = checkEmailIfExist;
+exports.getSingle = getSingle

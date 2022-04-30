@@ -8,7 +8,7 @@ const user = new mongoose.Schema({
     userType: { type: String, required: true },
     studentNumber: { type: String },
     yearAndSection: { type: String },
-    dateRegistered: { type: Date, default: Date.now() },
+    birthday: { type: Date},
     image: { type: String, required: true }
 }, {
     collection: 'User',

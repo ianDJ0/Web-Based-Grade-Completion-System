@@ -27,6 +27,7 @@ const TokenCheck = () => {
         auth.userFullName = tokenContent.user.fullName;
         auth.userContactNumber = tokenContent.user.contactNumber;
         auth.userSignature = tokenContent.user.image;
+        auth.userBirthday = tokenContent.user.birthday;
         auth.userType = tokenContent.user.userType;
         if (auth.userType === "Student") {
             auth.userStudentNumber = tokenContent.user.studentNumber;

@@ -12,6 +12,7 @@ const checkAuth = require('../middleware/Authentication');
 router.post('/softValidate',userController.checkEmailIfExist);
 router.post('/login', userController.login);
 router.post('/type', userController.getAllUserByType);
+router.get('/findUser/:uID', userController.getSingle);
 
 //Create New User API
 router.post('/signup',check('registerName').isEmpty(),
