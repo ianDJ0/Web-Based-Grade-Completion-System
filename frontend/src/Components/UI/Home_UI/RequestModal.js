@@ -11,7 +11,7 @@ import TokenCheck from "../../Shared/Auth";
 const RequestModal = (props) => {
   const auth = useContext(AuthenticationContext);
   const requestContent = useContext(RequestContent);
-  
+
   //StudentInformation later student can change his information in the form
   // const [studentId, setStudentId] = useState();
   // const [studentName, setStudentName] = useState();
@@ -22,49 +22,58 @@ const RequestModal = (props) => {
   // const [studentSignature, setStudentSignature] = useState();
 
   //RequestInformation
-  const [instructorId, setInstructorId] = useState();
-  const [instructor, setInstructor] = useState();
-  const [reason, setReason] = useState();
-  const [subjectYear, setSubjectYear] = useState();
-  const [subjectSemester, setSubjectSemester] = useState();
-  const [subjectCode, setSubjectCode] = useState();
-  const [subjectDescription, setSubjectDescription] = useState();
+  // const [instructorId, setInstructorId] = useState();
+  // const [instructor, setInstructor] = useState();
+  // const [reason, setReason] = useState();
+  // const [subjectYear, setSubjectYear] = useState();
+  // const [subjectSemester, setSubjectSemester] = useState();
+  // const [subjectCode, setSubjectCode] = useState();
+  // const [subjectDescription, setSubjectDescription] = useState();
 
   requestContent.request_StudentId = auth.userId;
   requestContent.request_StudentFullName = auth.userFullName;
   requestContent.request_StudentNumber = auth.userStudentNumber;
-  requestContent.request_StudentCourseYearAndSetion = auth.userCourseYearAndSection;
+  requestContent.request_StudentCourseYearAndSetion =
+    auth.userCourseYearAndSection;
   requestContent.request_StudentSignature = auth.userSignature;
 
-
   const submitStudentRequest = () => {
-    axios.post('http://localhost:7700/api/request/studentCreateRequest', {
-      subject: requestContent.request_SubjectCode,
-      subjectDescription: requestContent.request_SubjectDescription,
-      incompletePeriod: requestContent.request_SemesterIncomplete,
-      incompleteYear: requestContent.request_YearIncomplete,
-      reason: requestContent.request_Reason,
-      studentID: requestContent.request_StudentId,
-      studentFullname: requestContent.request_StudentFullName,
-      studentNumber: requestContent.request_StudentNumber,
-      studentYearAndSection: requestContent.request_StudentCourseYearAndSetion,
-      studentSignature: requestContent.request_StudentSignature,
-      instructorID: requestContent.request_InstructorId,
-      instructorName: requestContent.request_InstructorName
-    }, { headers: { "Authorization": `Bearer ${localStorage.getItem('token')}` } })
+    axios
+      .post(
+        "http://localhost:7700/api/request/studentCreateRequest",
+        {
+          subject: requestContent.request_SubjectCode,
+          subjectDescription: requestContent.request_SubjectDescription,
+          incompletePeriod: requestContent.request_SemesterIncomplete,
+          incompleteYear: requestContent.request_YearIncomplete,
+          reason: requestContent.request_Reason,
+          studentID: requestContent.request_StudentId,
+          studentFullname: requestContent.request_StudentFullName,
+          studentNumber: requestContent.request_StudentNumber,
+          studentYearAndSection:
+            requestContent.request_StudentCourseYearAndSetion,
+          studentSignature: requestContent.request_StudentSignature,
+          instructorID: requestContent.request_InstructorId,
+          instructorName: requestContent.request_InstructorName,
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      )
       .then((response) => {
-        console.log("Success",response)
+        console.log("Success", response);
         props.onClose();
-      }).catch((error) => {
-        alert(error);
       })
-  }
+      .catch((error) => {
+        alert(error);
+      });
+  };
 
   TokenCheck();
   if (!props.open) return null;
   return (
     <RequestContent.Provider value={requestContent}>
-    {/* <TokenCheck/> */}
+      {/* <TokenCheck/> */}
       <ModalBackdrop onClose={props.onClose}>
         <div className="request-modal">
           <h2 id="modal-label">GRADE COMPLETION FORM</h2>
@@ -97,7 +106,7 @@ const RequestModal = (props) => {
           </div>
           <StudentInfo studentInformation={auth} />
 
-          <RequestInfo
+          {/* <RequestInfo
             requestInstructorId={(childInstructorId) => { setInstructorId(childInstructorId) }}
             requestInstructorName={(childInstructorId) => { setInstructorId(childInstructorId) }}
 
@@ -108,10 +117,12 @@ const RequestModal = (props) => {
             requestSemester={(childInstructorId) => { setInstructorId(childInstructorId) }}
 
             requestReason={(childInstructorId) => { setInstructorId(childInstructorId) }}
-          />
+          /> */}
 
           <div className="wrap">
-            <button id="request-complete" onClick={submitStudentRequest}>Request Grade Completion</button>
+            <button id="request-complete" onClick={submitStudentRequest}>
+              Request Grade Completion
+            </button>
           </div>
         </div>
       </ModalBackdrop>

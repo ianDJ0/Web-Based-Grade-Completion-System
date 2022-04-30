@@ -2,18 +2,33 @@
   position: absolute;
   width: 16vw;
   margin: 16.8% 0 0 72%;
-  font-size: 1vw;
+  margin: 16.8% 0 0 52%;
+  font-size: 1.2vw;
   padding: 1.5% 0;
   border: none;
-  background-color: #000000;
+  background-color: #ff0000;
   color: rgb(255, 255, 255);
   border: 2px solid white;
+  transition: all 0.5s;
 }
+#change-password:hover,
 #edit-profile:hover {
   cursor: pointer;
   background-color: #850606;
   color: white;
   transform: translateY(-0.15em);
+}
+#change-password {
+  position: absolute;
+  width: 16vw;
+  margin: 16.8% 0 0 76%;
+  font-size: 1.2vw;
+  padding: 1.5% 0;
+  border: none;
+  background-color: #ff0000;
+  color: rgb(255, 255, 255);
+  border: 2px solid white;
+  transition: all 0.5s;
 }
 #name-of-user {
   font-size: 2.5vw;
@@ -27,9 +42,9 @@
   text-align: center;
 }
 #profile-picture {
-  margin: 7% 0 0 9%;
-  height: 36vh;
-  width: 18vw;
+  margin: 8% 0 0 10%;
+  height: 34vh;
+  width: 17vw;
   object-fit: cover;
   border-radius: 50%;
   border: 12px solid white;

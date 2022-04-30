@@ -6,8 +6,10 @@ import RequestFilter from "./RequestFilter";
 import { AuthenticationContext } from "../../Shared/context/auth-context";
 
 import "./Requests.css";
+import { useNavigate } from "react-router-dom";
 
 const Request = (props) => {
+  const navigate = useNavigate();
   const [isOpen, setOpen] = useState(false);
   const auth = useContext(AuthenticationContext);
   return (
@@ -16,13 +18,16 @@ const Request = (props) => {
       <TopNav />
       <Sidebar active={"requests"} />
       <div className="request-body">
-        {(auth.userType !== "Admin" && auth.userType !== "Faculty") &&
+        {auth.userType !== "Admin" && auth.userType !== "Faculty" && (
           <button
             id="request-form-btn"
-            onClick={() => setOpen((prevState) => !prevState)}>
+            onClick={() => {
+              navigate("/request/form");
+            }}
+          >
             Request Completion Form
           </button>
-        }
+        )}
         <h2 id="request-label">REQUEST LOGS</h2>
         <RequestFilter />
         <div className="request-content">

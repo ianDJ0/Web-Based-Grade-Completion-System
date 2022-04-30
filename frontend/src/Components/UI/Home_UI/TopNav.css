@@ -98,3 +98,51 @@
   height: 9vh;
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
 }
+
+/* For Dropdown Top Nav */
+.dropdown-content {
+  position: absolute;
+  right: 0;
+  margin-top: 0.61%;
+  background-color: white;
+  height: auto;
+  padding: 1.5% 0.25%;
+  width: 12vw;
+  border-radius: 0.5em;
+  box-shadow: 3px 0px 4px 0px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+hr {
+  border: 0.02px solid rgba(0, 0, 0, 0.2);
+  width: 11.5vw;
+  margin-left: 12%;
+}
+#edit-profile-nav,
+#edit-profile-icon {
+  display: inline-block;
+  margin-left: 15%;
+  margin-bottom: 6%;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+#edit-profile-nav:hover {
+  cursor: pointer;
+}
+#logout-profile,
+#logout-icon {
+  display: inline-block;
+  margin-left: 15%;
+  margin-top: 6%;
+}
+#logout-profile {
+  cursor: pointer;
+}
+li {
+  list-style-type: none;
+}
+
+.space {
+  padding-left: 0.5em;
+}

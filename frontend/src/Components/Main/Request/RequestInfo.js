@@ -14,10 +14,10 @@ const RequestInfo = (props) => {
     <div className="request-info">
       <p id="request-info-label">Request Information</p>
       <div className="request-info-one">
-        <p for="request-fac">Faculty Name</p>
+        <p htmlFor="request-fac">Faculty Name</p>
         {instructor &&
           <div className="added-Instructor">
-            <p for="request-fac">{instructor}</p>
+            <p htmlFor="request-fac">{instructor}</p>
             <button onClick={() => {
               setInstructor('');
               setSearch(['User is not Registered']);
@@ -51,7 +51,7 @@ const RequestInfo = (props) => {
         </div>}
       </div>
       <div className="request-info-two">
-        <p for="request-subj-code">Subject Code</p>
+        <p htmlFor="request-subj-code">Subject Code</p>
         <input
           placeholder="Subject Code"
           name="request-subj-code"
@@ -62,7 +62,7 @@ const RequestInfo = (props) => {
         />
       </div>
       <div className="request-info-three">
-        <p for="request-subj-desc">Subject Description</p>
+        <p htmlFor="request-subj-desc">Subject Description</p>
         <input
           placeholder="Subject Description"
           name="request-subj-desc"
@@ -73,7 +73,7 @@ const RequestInfo = (props) => {
         />
       </div>
       <div className="request-info-four">
-        <p for="request-subj-sem">Subject Semester</p>
+        <p htmlFor="request-subj-sem">Subject Semester</p>
         <input
           placeholder="Subject Semester"
           name="request-subj-sem"
@@ -84,7 +84,7 @@ const RequestInfo = (props) => {
         />
       </div>
       <div className="request-info-five">
-        <p for="request-subj-year">Subject Year</p>
+        <p htmlFor="request-subj-year">Subject Year</p>
         <input
           placeholder="Subject Year"
           name="request-subj-year"
@@ -95,7 +95,7 @@ const RequestInfo = (props) => {
         />
       </div>
       <div className="request-info-six">
-        <p for="request-reason">Reason</p>
+        <p htmlFor="request-reason">Reason</p>
         <input placeholder="Reason" name="request-reason" id="request-reason" onChange={(e) => {
           requestContent.request_Reason = e.target.value
         }} />

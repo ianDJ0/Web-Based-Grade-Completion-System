@@ -12,6 +12,9 @@ import Anouncement from "./Components/Main/Announcement/Anouncement";
 import Tutorial from "./Components/Main/Tutorial/Tutorial";
 import FacultyProfile from "./Components/Main/Profile/FacultyProfile";
 import StudentProfile from "./Components/Main/Profile/StudentProfile";
+import RequestForm from "./Components/Main/Request/RequestForm";
+import ChangePassword from "./Components/Main/Profile/Edit/ChangePassword";
+import EditProfile from "./Components/Main/Profile/Edit/EditProfile";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -51,6 +54,9 @@ function App() {
           <Route path="/tutorial" element={<Tutorial />} />
           <Route path="/profile" element={<StudentProfile />} />
           <Route path="/search/:id" element={<FacultyProfile />} />
+          <Route path="/request/form" element={<RequestForm />} />
+          <Route path="/account/edit-account" element={<EditProfile />} />
+          <Route path="/account/change-password" element={<ChangePassword />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </>

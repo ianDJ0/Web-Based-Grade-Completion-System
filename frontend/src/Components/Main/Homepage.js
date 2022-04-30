@@ -7,6 +7,7 @@ import "./Homepage.css";
 import Footer from "../UI/Home_UI/Footer/Footer";
 
 const Homepage = (props) => {
+  document.body.style = "background: white";
   TokenCheck();
   const auth = useContext(AuthenticationContext);
   return (

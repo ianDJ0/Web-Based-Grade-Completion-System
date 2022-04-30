@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import TopNav from "../../UI/Home_UI/TopNav";
 import Sidebar from "../../UI/Home_UI/Sidebar";
 import "./FacultyProfile.css";
@@ -6,6 +6,7 @@ import "./FacultyProfile.css";
 const FacultyProfile = (props) => {
   const params = useParams();
   const id = params.id;
+  const navigate = useNavigate();
   return (
     <>
       <TopNav />
@@ -15,7 +16,7 @@ const FacultyProfile = (props) => {
           <button
             id="request-faculty"
             onClick={() => {
-              alert("request click");
+              navigate("/request/form");
             }}
           >
             Request Completion Form

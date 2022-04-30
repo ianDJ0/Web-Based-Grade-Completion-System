@@ -1,21 +1,37 @@
 import TopNav from "../../UI/Home_UI/TopNav";
 import Sidebar from "../../UI/Home_UI/Sidebar";
+import { useNavigate } from "react-router-dom";
 import "./StudentProfile.css";
 
 function StudentProfile() {
+  const navigate = useNavigate();
   return (
     <>
       <TopNav />
       <Sidebar active={""} />
       <div className="user-profile">
         <div className="profile-header">
-          <button id="edit-profile">Edit Profile</button>
+          <button
+            id="edit-profile"
+            onClick={() => {
+              navigate("/account/edit-account");
+            }}
+          >
+            Edit Profile
+          </button>
+          <button
+            id="change-password"
+            onClick={() => {
+              navigate("/account/change-password");
+            }}
+          >
+            Change Password
+          </button>
           <img
             src={require("../../UI/Home_UI/Icons/image-wallpaper-15.jpg")}
             id="profile-picture"
             alt="wallpaper-img"
           />
-          {/* <img src="Icons/image-wallpaper-15.jpg" id="profile-picture" /> */}
           <div id="user-details">
             <p id="name-of-user">John Doe</p>
             <p id="user-account-type">Student</p>
