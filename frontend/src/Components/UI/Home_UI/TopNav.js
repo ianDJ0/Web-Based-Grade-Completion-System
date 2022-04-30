@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../Shared/Shared.css";
 import "./TopNav.css";
 import { AuthenticationContext } from "../../Shared/context/auth-context";
@@ -7,11 +8,15 @@ const TopNav = (props) => {
   const [query, setQuery] = useState("");
   const auth = useContext(AuthenticationContext);
 
+  const navigate = useNavigate();
+  const profileHandler = () => {
+    navigate("/profile");
+  };
 
   return (
     <>
       <AuthenticationContext.Provider value={auth}>
-      <TokenCheck/>
+      <TokenCheck />
       <div className="top-navigation">
         <input
           placeholder="Search for Instructor..."
@@ -26,11 +31,11 @@ const TopNav = (props) => {
           alt="icon-profile"
           src={require("./Icons/profile.png")}
           id="profile-icon"
+          onClick={profileHandler}
         />
-        <div className="name-type">
+        <div className="name-type" onClick={profileHandler}>
           <span>
             <p id="user-name">{auth.userFullName}</p>{" "}
-            {/** will prolly use useNavigate/useLocation to set values here, or dependes on how the backend works */}
             <p id="user-type">{auth.userType}</p>
           </span>
         </div>

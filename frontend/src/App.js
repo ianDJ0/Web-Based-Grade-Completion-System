@@ -11,6 +11,7 @@ import jwtDecode from "jwt-decode";
 import Anouncement from "./Components/Main/Announcement/Anouncement";
 import Tutorial from "./Components/Main/Tutorial/Tutorial";
 import FacultyProfile from "./Components/Main/Profile/FacultyProfile";
+import StudentProfile from "./Components/Main/Profile/StudentProfile";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -48,6 +49,7 @@ function App() {
           <Route path="/requests" element={<Request />} />
           <Route path="/announcements" element={<Anouncement />} />
           <Route path="/tutorial" element={<Tutorial />} />
+          <Route path="/profile" element={<StudentProfile />} />
           <Route path="/search/:id" element={<FacultyProfile />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
