@@ -141,3 +141,43 @@
 #dropdown-icon:hover{
     background-color: #e2e2e2;
 }
+/* For Dropdown Top Nav */
+.dropdown-content{
+    position: absolute;
+    right: 0;
+    margin-top: 0.61%;
+    background-color: white;
+    height: auto;
+    padding: 1.5% 0.25%;
+    width: 15vw;
+    border-radius: 0.5em;
+    box-shadow: 3px 0px 4px 0px rgba(0, 0, 0, 0.2);
+}
+hr{
+    border: 0.02px solid rgba(0, 0, 0, 0.2);
+    width: 11.5vw;
+    margin-left: 12%;
+}
+#edit-profile-nav, #edit-profile-icon{
+    display: inline-block;
+    margin-left: 15%;
+    margin-bottom: 6%;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+#edit-profile-nav:hover{
+    cursor: pointer;
+}
+#logout-profile, #logout-icon{
+    display: inline-block;
+    margin-left: 15%;
+    margin-top: 6%;
+}
+#logout-profile{
+    cursor: pointer;
+}
+li{
+    list-style-type: none;
+}
