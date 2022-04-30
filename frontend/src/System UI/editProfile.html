@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" href="editProfile.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" 
+    integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="sidebar">
+    <div class="name-logo">
+        <img src="https://bit.ly/3rmsS90" id="bulsu-logo">
+        <h3 id="site-name">BULSU</h3>
+    </div>
+    <a href="homepage(student).html" id="home-nav">Home</a>
+    <a href="#" id="speak-nav">Announcement</a>
+    <a href="requests(student).html" id="req-nav">Requests</a>
+    <a href="#" id="tutorial-nav">Tutorial</a>
+</div>
+<div class="top-navigation">
+    <input placeholder="Search for Instructor..." id="search-bar">
+    <button id="search-btn"></button>
+    <a href="#" class="profile-page">
+        <img src="Icons/profile.png" id="profile-icon" class="active-class">
+        <div class="name-type">
+            <p id="user-name">Jane Doe</p>
+            <p id="user-type">Student</p>
+        </a></div>
+    <img src="Icons/Message.png" id="message-icon">
+    <img src="Icons/Bell.png" id="notify-bell">
+    <img src="Icons/dropdown.png" id="dropdown-icon">
+</div>
+<div class="user-profile">
+    <div class="profile-header">
+        <button id="save-changes-btn">Save Changes</button>
+        <button id="cancel-btn">Cancel</button>
+        <div class="hover-change">
+            <button class="fa fa-plus-circle" style="font-size: 3em;"></button>
+        </div>
+        <img src="Icons/image-wallpaper-15.jpg" id="edit-profile-picture">
+    </div>
+    <div class="edit-profile-details">
+        <div class="edit-first-name">
+            <label>First Name</label>
+            <input placeholder="John" id="edit-fname-input">
+        </div>
+        <div class="edit-mi">
+            <label>M.I.</label>
+            <input placeholder="D." id="edit-mi-input">
+        </div>
+        <div class="edit-last-name">
+            <label>Last Name</label>
+            <input placeholder="Doe" id="edit-lname-input">
+        </div>
+        <label class="leftover-label">Email</label>
+        <input placeholder="Email" id="edit-email-input">
+        <label class="leftover-label">Contact Number</label>
+        <input placeholder="Contact Number" id="edit-num-input">
+        <label class="leftover-label">Birthday</label>
+        <input type="date" placeholder="Birthday" id="edit-bday-input">
+    </div>
+</div>
+</body>
+</html>

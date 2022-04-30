@@ -54,9 +54,9 @@ body{
     background: url('Icons/bulsu.jpg');
 }
 #profile-picture{
-    margin: 7% 0 0 9%;
-    height: 36vh;
-    width: 18vw;
+    margin: 8% 0 0 10%;
+    height: 34vh;
+    width: 17vw;
     object-fit: cover;
     border-radius: 50%;
     border: 12px solid white;
