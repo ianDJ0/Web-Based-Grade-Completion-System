@@ -8,17 +8,15 @@ import { AuthenticationContext } from "../../Shared/context/auth-context";
 import "./Requests.css";
 
 const Request = (props) => {
-  const [isOpen, setOpen] = useState(false); //for modal
+  const [isOpen, setOpen] = useState(false); 
   const auth = useContext(AuthenticationContext);
-  console.log("USER TYPE-----------", auth.userType);
-  
   return (
     <>
       <RequestModal open={isOpen} onClose={() => setOpen(false)} />
       <TopNav />
       <Sidebar active={"requests"} />
       <div className="request-body">
-        {(auth.userType !== "Admin"|| auth.userType !== "Faculty") &&
+        {(auth.userType !== "Admin" && auth.userType !== "Faculty") &&
           <button
             id="request-form-btn"
             onClick={() => setOpen((prevState) => !prevState)}>
