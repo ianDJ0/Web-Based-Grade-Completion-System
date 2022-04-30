@@ -8,7 +8,6 @@ import "./Homepage.css";
 const Homepage = (props) => {
   TokenCheck();
   const auth = useContext(AuthenticationContext);
-  //THIS IS THE HOMEPAGE FOR STUDENT USER TYPES
   return (
     <>
       <TokenCheck />

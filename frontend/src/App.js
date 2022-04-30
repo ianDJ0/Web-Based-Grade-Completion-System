@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { useState, useCallback, useContext } from "react";
 import Homepage from "./Components/Main/Homepage";
 import Login from "./Components/LogReg/Login/Login";
@@ -10,6 +10,7 @@ import { AuthenticationContext } from "./Components/Shared/context/auth-context"
 import jwtDecode from "jwt-decode";
 import Anouncement from "./Components/Main/Announcement/Anouncement";
 import Tutorial from "./Components/Main/Tutorial/Tutorial";
+import FacultyProfile from "./Components/Main/FacultyProfile/FacultyProfile";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -34,7 +35,6 @@ function App() {
     auth.userType = tokenContent.user.userType;
   }
 
-
   return (
     <AuthenticationContext.Provider
       value={{ isLoggedIn: isLoggedIn, login: login, logout: logout }}
@@ -48,6 +48,8 @@ function App() {
           <Route path="/requests" element={<Request />} />
           <Route path="/announcements" element={<Anouncement />} />
           <Route path="/tutorial" element={<Tutorial />} />
+          <Route path="/search/:id" element={<FacultyProfile />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </>
     </AuthenticationContext.Provider>
