@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import RequestModal from "../../UI/Home_UI/RequestModal";
 import Sidebar from "../../UI/Home_UI/Sidebar";
 import TopNav from "../../UI/Home_UI/TopNav";
@@ -7,11 +7,31 @@ import { AuthenticationContext } from "../../Shared/context/auth-context";
 
 import "./Requests.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Request = (props) => {
   const navigate = useNavigate();
   const [isOpen, setOpen] = useState(false);
   const auth = useContext(AuthenticationContext);
+
+  const [status, setStatus] = useState();
+  const [toDate, setToDate] = useState();
+  const [fromDate, setFromDate] = useState();
+  const [list, setList]=useState([]);
+  useEffect(()=>{
+    let url;
+    if(auth.userType ==="Student"){
+      url="http://localhost:7700/api/request/studentRequest"
+    }else{
+      url="http://localhost:7700/api/request/facultyRequest"
+    }
+    axios.post(url,{uID:auth.userId})
+    .then((response)=>{
+      setList(response.data)
+    }).catch((error)=>{
+      alert(error)
+    })
+  },[status, toDate, fromDate])
   return (
     <>
       <RequestModal open={isOpen} onClose={() => setOpen(false)} />
@@ -36,11 +56,27 @@ const Request = (props) => {
               <tr>
                 <th>Subject Code</th>
                 <th>Subject Description</th>
-                <th>Instructor</th>
+                {auth.userType ==="Student"&&
+                  <th>Instructor</th>
+                }
+                {auth.userType ==="Faculty"&&
+                  <th>Student</th>
+                }
                 <th>Date Requested</th>
                 <th>Status</th>
               </tr>
-              <tr>
+              {
+                list.map(listItem=>{
+                return <tr key={listItem._id}>
+                  <th>{listItem.subjectCode}</th>
+                  <th>{listItem.subjectDescription}</th>
+                  {auth.userType==="Student"?<th>{listItem.instructor.instructorName}</th> : <th>{listItem.student.studentFullname}</th>}
+                  <th>{listItem.dateLog.dateStudent}</th>
+                  <th>{listItem.status}</th>
+                </tr>
+                })
+              }
+              {/* <tr>
                 <th>IT 404</th>
                 <th>Internship</th>
                 <th>Mr. Aaron Paul M. Dela Rosa</th>
@@ -67,7 +103,7 @@ const Request = (props) => {
                 <th>Dummy Name</th>
                 <th>December 4, 2018</th>
                 <th>Processed</th>
-              </tr>
+              </tr> */}
             </tbody>
           </table>
         </div>

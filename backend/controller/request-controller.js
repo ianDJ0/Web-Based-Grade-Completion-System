@@ -132,21 +132,20 @@ const getRequestForStudent = async (req, res)=>{
     let getRequestStudent
     try{
         getRequestStudent = await requestModel
-        .find({"student.studentID":req.body.studentId});
+        .find({'student.studentID':req.body.uID});
     }catch(err){
         return res
         .status(422)
         .json({error: err, message:"Search Failed"})
     }
-    return res.status(201).json(getRequestStudent);
-
+    return res.status(202).json(getRequestStudent);
 }
 
 const getRequestForFaculty = async (req, res)=>{
     let getRequestFaculty
     try{
         getRequestFaculty = await requestModel
-        .find({"instructor.instructorID":req.body.facultyId});
+        .find({'instructor.instructorID':req.body.uID});
     }catch(err){
         return res
         .status(422)
