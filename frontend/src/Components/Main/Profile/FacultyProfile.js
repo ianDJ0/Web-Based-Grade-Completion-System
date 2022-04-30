@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthenticationContext } from "../../Shared/context/auth-context";
 import TokenCheck from "../../Shared/Auth";
 import TopNav from "../../UI/Home_UI/TopNav";
 import Sidebar from "../../UI/Home_UI/Sidebar";
@@ -8,11 +9,11 @@ import axios from "axios";
 
 const FacultyProfile = (props) => {
   TokenCheck();
+  const auth = useContext(AuthenticationContext);
   const params = useParams();
   const id = params.id;
   const navigate = useNavigate();
   const [image, setImage]=useState(false);
-  const [load, setLoad] = useState(false);
   const [facultyInfo, setFacultyInfo] = useState({
     profilePicture: "",
     _id: "",
@@ -44,6 +45,7 @@ const FacultyProfile = (props) => {
 
       <div className="search-faculty-profile">
         <div id="bulsu-header">
+          {auth.userType!=="Faculty"&&
           <button
             id="request-faculty"
             onClick={() => {
@@ -52,6 +54,7 @@ const FacultyProfile = (props) => {
           >
             Request Completion Form
           </button>
+          }
           <button
             id="send-msg"
             onClick={() => {
