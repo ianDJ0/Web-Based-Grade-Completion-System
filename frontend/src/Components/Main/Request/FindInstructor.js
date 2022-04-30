@@ -14,10 +14,12 @@ const FindInstructor = (props) => {
         
     return (
         <ul className="find-instructor" style={{ display: visible }}>
-            {getData.map(person =>{
+            { getData.length>1 &&
+            getData.map(person =>{
                 return <li key={person._id} onClick={()=>{
                     requestContent.request_InstructorId = person._id;
                     requestContent.request_InstructorName = person.fullName;
+                    props.insertInstructor(requestContent.request_InstructorName);
                 }}>{person.fullName}</li>
             })
             }

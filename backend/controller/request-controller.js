@@ -17,13 +17,13 @@ mongoose
     });
 
 const studentCreateRequest = async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        console.log(errors);
-        return res
-            .status(422)
-            .json({ message: "Invalid inputs please enter the proper fields" });
-    }
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //     console.log(errors);
+    //     return res
+    //         .status(422)
+    //         .json({ message: "Invalid inputs please enter the proper fields" });
+    // }
     const userData = JSON.parse(JSON.stringify(res.locals.user.userData));
     if(userData.userType !=="Student"){
         return res.status(403).json({message: "Requesting with invalid user type"})

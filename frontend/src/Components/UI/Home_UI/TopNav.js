@@ -10,6 +10,7 @@ const TopNav = (props) => {
 
   return (
     <>
+      <AuthenticationContext.Provider value={auth}>
       <TokenCheck/>
       <div className="top-navigation">
         <input
@@ -49,6 +50,7 @@ const TopNav = (props) => {
           id="dropdown-icon"
         />
       </div>
+      </AuthenticationContext.Provider>
     </>);
 
 };

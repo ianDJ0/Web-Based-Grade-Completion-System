@@ -8,7 +8,7 @@ import { AuthenticationContext } from "../../Shared/context/auth-context";
 import "./Requests.css";
 
 const Request = (props) => {
-  const [isOpen, setOpen] = useState(false); 
+  const [isOpen, setOpen] = useState(false);
   const auth = useContext(AuthenticationContext);
   return (
     <>
