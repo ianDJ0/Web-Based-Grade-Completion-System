@@ -215,9 +215,6 @@ const resetPassword = async (req, res) => {
 
 };
 
-
-
-
 const deleteUser = async (req, res, next) => {
   const dataObject = JSON.parse(JSON.stringify(res.locals.user.userData));
   if (dataObject.userType !== "Admin") {
@@ -233,7 +230,32 @@ const deleteUser = async (req, res, next) => {
       res.status(404).json({ message: "Failed to delete user" });
     });
 };
-
+const profilePicture = async(req,res)=>{
+  let userToUpdate;
+  
+  try{
+    userToUpdate = await userModel.findByIdAndUpdate(req.body.userId,{ 
+      profilePicture: req.file.path,
+      email: req.body.email,
+      contactNumber: req.body.contactNumber,
+  },{returnOriginal: false})
+  .exec();
+  
+  }catch(err){
+    return res.json(err)
+  }
+  try {
+    token = jwt.sign(
+      { user: userToUpdate.toObject({ getters: true }) },
+      'secret_pickHandle',
+      { expiresIn: '5h' }
+    );
+  } catch (error) {
+    return next(error);
+  }
+  return res.json({ new: userToUpdate.toObject({ getters: true }), token });
+}
+exports.profilePicture = profilePicture;
 exports.login = login;
 exports.getAllUserByType = getAllUserByType;
 exports.createUser = createUser;

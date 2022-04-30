@@ -7,9 +7,9 @@ import { AuthenticationContext } from "./context/auth-context";
 const TokenCheck = () => {
     const auth = useContext(AuthenticationContext);
     const token = localStorage.getItem('token');
-
+    
     if(localStorage.getItem('announcements')=== null){
-        console.log("WALANG LAMAN")
+        
         axios.post('http://localhost:7700/api/announcements/announcement')
         .then(response=>{
           let content = JSON.stringify(response.data)
@@ -18,7 +18,9 @@ const TokenCheck = () => {
           alert(err);
         })  
       }
-
+    if(token==="undefined"){
+      localStorage.removeItem('token');
+    }
     if (token) {
         const tokenContent = jwtDecode(token);
         auth.isLoggedIn = true;

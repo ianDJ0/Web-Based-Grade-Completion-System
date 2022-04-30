@@ -20,7 +20,7 @@ const ChangePassword = () => {
         userID: auth.userId,
         verifyPassword: oldPass,
         newPassword: newPass
-      }, {
+      },{
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         }
