@@ -10,7 +10,7 @@ import { AuthenticationContext } from "./Components/Shared/context/auth-context"
 import jwtDecode from "jwt-decode";
 import Anouncement from "./Components/Main/Announcement/Anouncement";
 import Tutorial from "./Components/Main/Tutorial/Tutorial";
-import FacultyProfile from "./Components/Main/FacultyProfile/FacultyProfile";
+import FacultyProfile from "./Components/Main/Profile/FacultyProfile";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

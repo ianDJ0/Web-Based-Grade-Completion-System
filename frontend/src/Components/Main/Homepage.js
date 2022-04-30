@@ -4,6 +4,7 @@ import TopNav from "../UI/Home_UI/TopNav";
 import { AuthenticationContext } from "../Shared/context/auth-context";
 import TokenCheck from "../Shared/Auth";
 import "./Homepage.css";
+import Footer from "../UI/Home_UI/Footer/Footer";
 
 const Homepage = (props) => {
   TokenCheck();
@@ -38,6 +39,7 @@ const Homepage = (props) => {
           />
         </div>
       </div>
+      <Footer />
     </>
   );
 };

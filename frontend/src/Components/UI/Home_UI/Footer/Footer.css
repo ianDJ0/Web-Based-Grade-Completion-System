@@ -1,0 +1,104 @@
+#copyright-bulsu {
+  color: #606060;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 1%;
+  width: 20vw;
+}
+#copyright-bulsu::before {
+  content: "\00a9";
+  color: #606060;
+  margin-right: 0.5%;
+  margin-left: 15%;
+}
+#footer-fb {
+  color: rgb(190, 190, 190);
+  font-size: 1.1vw;
+}
+#footer-label {
+  color: rgb(190, 190, 190);
+  font-size: 1.25vw;
+  position: absolute;
+  right: 0;
+  margin-top: 1%;
+  margin-right: 36.5%;
+}
+#footer-uni {
+  color: white;
+  font-size: 2vw;
+  width: 15vw;
+  position: absolute;
+  margin-top: 5%;
+  margin-left: 3%;
+}
+.fb-icon,
+#footer-fb {
+  display: inline-block;
+}
+#footer-phone {
+  color: rgb(190, 190, 190);
+  font-size: 1.1vw;
+}
+.email-icon,
+#footer-email {
+  display: inline-block;
+}
+#footer-email {
+  color: rgb(190, 190, 190);
+  font-size: 1.1vw;
+}
+.email-icon {
+  background-color: #911f27;
+  padding: 1.5% 2%;
+  border-radius: 0.25em;
+}
+.fb-icon {
+  background-color: #911f27;
+  padding: 1.5% 2.5%;
+  border-radius: 0.25em;
+  margin-bottom: 1.5%;
+}
+.footer {
+  position: absolute;
+  width: 82vw;
+  height: 28vh;
+  bottom: 0;
+  margin-left: 15.5%;
+  background-color: #262626;
+  padding: 1%;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.footer-contact {
+  position: absolute;
+  right: 0;
+  margin-right: 5%;
+  margin-top: 4%;
+  width: 35vw;
+}
+.loc-icon {
+  background-color: #911f27;
+  padding: 1.5% 2.25%;
+  border-radius: 0.25em;
+  margin-bottom: 1.5%;
+}
+.loc-icon,
+#footer-loc {
+  display: inline-block;
+}
+#footer-loc {
+  color: rgb(190, 190, 190);
+  font-size: 1.1vw;
+}
+.phone-icon,
+#footer-phone {
+  display: inline-block;
+}
+.phone-icon {
+  background-color: #911f27;
+  padding: 1.5% 1.7%;
+  border-radius: 0.25em;
+  margin-bottom: 1.5%;
+}
+.size {
+  font-size: 1.25em;
+}
