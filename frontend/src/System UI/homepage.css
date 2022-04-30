@@ -15,3 +15,103 @@ body{
     margin-top: 15%;
     margin-left: 17.5%;
 }
+.footer{
+    position: absolute;
+    width: 82vw;
+    height: 28vh;
+    bottom: 0;
+    margin-left: 15.5%;
+    background-color: #262626;
+    padding: 1%;
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+#footer-uni{
+    color: white;
+    font-size: 2vw;
+    width: 15vw;
+    position: absolute;
+    margin-top: 5%;
+    margin-left: 3%;
+}
+#footer-label{
+    color: rgb(190, 190, 190);
+    font-size: 1.25vw;
+    position: absolute;
+    right: 0;
+    margin-top: 1%;
+    margin-right: 36.5%;
+}
+.footer-contact{
+    position: absolute;
+    right: 0;
+    margin-right: 5%;
+    margin-top: 4%;
+    width: 35vw;
+}
+.fb-page{
+    text-decoration: none;
+}
+.fb-icon, #footer-fb{
+    display: inline-block;
+}
+#footer-fb{
+    color: rgb(190, 190, 190);
+    font-size: 1.1vw;
+}
+.fb-icon{
+    background-color: #911F27;
+    padding: 1.5% 2.5%;
+    border-radius: 0.25em;
+    margin-bottom: 1.5%;
+}
+.phone-icon, #footer-phone{
+    display: inline-block;
+}
+#footer-phone{
+    color: rgb(190, 190, 190);
+    font-size: 1.1vw;
+}
+.phone-icon{
+    background-color: #911F27;
+    padding: 1.5% 1.7%;
+    border-radius: 0.25em;
+    margin-bottom: 1.5%;
+}
+.loc-icon, #footer-loc{
+    display: inline-block;
+}
+#footer-loc{
+    color: rgb(190, 190, 190);
+    font-size: 1.1vw;
+}
+.loc-icon{
+    background-color: #911F27;
+    padding: 1.5% 2.25%;
+    border-radius: 0.25em;
+    margin-bottom: 1.5%;
+}
+.email-icon, #footer-email{
+    display: inline-block;
+}
+#footer-email{
+    color: rgb(190, 190, 190);
+    font-size: 1.1vw;
+}
+.email-icon{
+    background-color: #911F27;
+    padding: 1.5% 2%;
+    border-radius: 0.25em;
+}
+#copyright-bulsu{
+    color: #606060;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 1%;
+    width: 20vw;
+}
+#copyright-bulsu::before{
+    content: "\00a9";
+    color: #606060;
+    margin-right: 0.5%;
+    margin-left: 15%;
+}
