@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
+import React, { useEffect, useState, useContext, useRef, Component } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import SignaturePad from "signature_pad";
@@ -80,6 +80,8 @@ const RegisterFull = (props) => {
       formData.append("registerPassword", pwd);
       formData.append("registerContactNumber", contact);
       formData.append("registerUserType", acctType);
+      formData.append("registerBirthday", birthday);
+
 
       if (acctType === "Faculty") {
         console.log("axios", formData.get("image"));
@@ -92,6 +94,7 @@ const RegisterFull = (props) => {
             auth.userFullName = response.data.new.fullName;
             auth.userContactNumber = response.data.new.contactNumber;
             auth.userSignature = response.data.new.image;
+            auth.userBirthday = response.data.new.birthday;
             auth.userType = response.data.new.userType;
             localStorage.setItem("token", response.data.token);
             setIsValid(true);
@@ -118,6 +121,7 @@ const RegisterFull = (props) => {
             auth.userFullName = response.data.new.fullName;
             auth.userContactNumber = response.data.new.contactNumber;
             auth.userSignature = response.data.new.image;
+            auth.userBirthday = response.data.new.birthday;
             auth.userType = response.data.new.userType;
             localStorage.setItem("token", response.data.token);
             auth.userStudentNumber = response.data.new.studentNumber;
@@ -366,6 +370,7 @@ const RegisterFull = (props) => {
                 value={birthday}
                 onChange={(event) => {
                   setBirthday(event.target.value);
+                  
                 }}
                 required
               />

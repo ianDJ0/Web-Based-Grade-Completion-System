@@ -11,31 +11,12 @@ import TokenCheck from "../../Shared/Auth";
 const RequestModal = (props) => {
   const auth = useContext(AuthenticationContext);
   const requestContent = useContext(RequestContent);
-  
-  //StudentInformation later student can change his information in the form
-  // const [studentId, setStudentId] = useState();
-  // const [studentName, setStudentName] = useState();
-  // const [studentNumber, setStudentNumber] = useState();
-  // const [studentCourse, setStudentCouse] = useState();
-  // const [studentYear, setStudentYear] = useState();
-  // const [studentSection, setStudentSection] = useState();
-  // const [studentSignature, setStudentSignature] = useState();
-
-  //RequestInformation
-  const [instructorId, setInstructorId] = useState();
-  const [instructor, setInstructor] = useState();
-  const [reason, setReason] = useState();
-  const [subjectYear, setSubjectYear] = useState();
-  const [subjectSemester, setSubjectSemester] = useState();
-  const [subjectCode, setSubjectCode] = useState();
-  const [subjectDescription, setSubjectDescription] = useState();
 
   requestContent.request_StudentId = auth.userId;
   requestContent.request_StudentFullName = auth.userFullName;
   requestContent.request_StudentNumber = auth.userStudentNumber;
   requestContent.request_StudentCourseYearAndSetion = auth.userCourseYearAndSection;
   requestContent.request_StudentSignature = auth.userSignature;
-
 
   const submitStudentRequest = () => {
     axios.post('http://localhost:7700/api/request/studentCreateRequest', {
@@ -98,16 +79,6 @@ const RequestModal = (props) => {
           <StudentInfo studentInformation={auth} />
 
           <RequestInfo
-            requestInstructorId={(childInstructorId) => { setInstructorId(childInstructorId) }}
-            requestInstructorName={(childInstructorId) => { setInstructorId(childInstructorId) }}
-
-            requestSubjectCode={(childInstructorId) => { setInstructorId(childInstructorId) }}
-            requestSubjectDescription={(childInstructorId) => { setInstructorId(childInstructorId) }}
-
-            requestSubjectYear={(childInstructorId) => { setInstructorId(childInstructorId) }}
-            requestSemester={(childInstructorId) => { setInstructorId(childInstructorId) }}
-
-            requestReason={(childInstructorId) => { setInstructorId(childInstructorId) }}
           />
 
           <div className="wrap">
