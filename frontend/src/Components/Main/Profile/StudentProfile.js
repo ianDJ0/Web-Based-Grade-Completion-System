@@ -33,11 +33,18 @@ const StudentProfile = () => {
           >
             Change Password
           </button>
+          {auth.userProfilePic === ""&& 
           <img
             src={require("../../UI/Home_UI/Icons/image-wallpaper-15.jpg")}
             id="profile-picture"
             alt="wallpaper-img"
-          />
+          />}
+          {auth.userProfilePic !==""&& 
+          <img
+            src={`http://localhost:7700/${auth.userProfilePic}`}
+            id="profile-picture"
+            alt="Picture"
+          />}
           <div id="user-details">
             <p id="name-of-user">{auth.userFullName}</p>
             <p id="user-account-type">{auth.userType}</p>

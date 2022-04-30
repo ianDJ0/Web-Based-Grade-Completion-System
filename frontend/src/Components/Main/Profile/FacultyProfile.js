@@ -11,8 +11,10 @@ const FacultyProfile = (props) => {
   const params = useParams();
   const id = params.id;
   const navigate = useNavigate();
+  const [image, setImage]=useState(false);
   const [load, setLoad] = useState(false);
   const [facultyInfo, setFacultyInfo] = useState({
+    profilePicture: "",
     _id: "",
     fullName: "",
     email: "",
@@ -20,18 +22,20 @@ const FacultyProfile = (props) => {
     birthday: "",
   });
 
-  if(id !== facultyInfo._id){
+  if (id !== facultyInfo._id) {
     axios
-    .get(`http://localhost:7700/api/users/findUser/${id}`)
-    .then((response) => {
-      setFacultyInfo(response.data);
-      if (id !== response.data.id) {
-        setLoad(!load);
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .get(`http://localhost:7700/api/users/findUser/${id}`)
+      .then((response) => {
+        setFacultyInfo(response.data);
+        if(response.data.profilePicture){
+          setImage(true)
+        }else{
+          setImage(false)
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
   return (
     <>
@@ -57,11 +61,20 @@ const FacultyProfile = (props) => {
             Message
           </button>
           <div id="search-faculty-profile">
-            <img
-              alt={"wallpaper-img"}
+
+            {!image &&
+              <img
+              alt={"default-img"}
               src={require("../../UI/Home_UI/Icons/image-wallpaper-15.jpg")}
               id="search-faculty-img"
-            />
+            />}
+            {image &&
+              <img
+                alt={"wallpaper-img"}
+                src={`http://localhost:7700/${facultyInfo.profilePicture}`}
+                id="search-faculty-img"
+              />
+            }
             <p id="search-faculty-name">{facultyInfo.fullName}</p>
             <p id="search-faculty-college">
               College of Information and Communications Technology

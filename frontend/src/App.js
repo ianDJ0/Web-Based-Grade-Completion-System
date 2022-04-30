@@ -37,6 +37,7 @@ function App() {
     auth.userFullName = tokenContent.user.fullName;
     auth.userContactNumber = tokenContent.user.contactNumber;
     auth.userSignature = tokenContent.user.image;
+    auth.userProfilePic = tokenContent.user.profilePicture? tokenContent.user.profilePicture: "";
     auth.userType = tokenContent.user.userType;
     auth.userBirthday = tokenContent.user.birthday;
   }

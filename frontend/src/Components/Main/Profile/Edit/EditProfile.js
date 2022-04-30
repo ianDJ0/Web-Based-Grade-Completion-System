@@ -13,7 +13,7 @@ const EditProfile = () => {
   const [isValid, setValid] = useState(false);
   const [email, setEmail] = useState('');
   const [contactNumber, setContactNumber] = useState('')
-
+  TokenCheck();
   const filePickerRef = useRef();
   useEffect(() => {
     if (!file) {
@@ -28,15 +28,12 @@ const EditProfile = () => {
   }, [file])
   const pickedHandler = event => {
     let pickedFile;
-    let fileIsValid = isValid;
     if (event.target.files && event.target.files.length === 1) {
       pickedFile = event.target.files[0]
       setFile(pickedFile);
       setValid(true);
-      fileIsValid = true;
     } else {
       setValid(false)
-      fileIsValid = false
     }
 
   };
@@ -48,6 +45,8 @@ const EditProfile = () => {
     formData.append('userId', auth.userId);
     if (file) {
       formData.append('image', file)
+    }else{
+      console.log(isValid)
     }
     if (email) {
       formData.append('email', email)
@@ -61,7 +60,6 @@ const EditProfile = () => {
         auth.userProfilePic = response.data.new.profilePicture;
         auth.userEmail = response.data.new.email;
         auth.userContactNumber = response.data.new.contactNumber;
-
         localStorage.setItem("token", response.data.token);
       }).catch(error=>{
 
