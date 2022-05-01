@@ -34,7 +34,8 @@ const Request = (props) => {
   },[status, toDate, fromDate])
   return (
     <>
-      <RequestModal open={isOpen} onClose={() => setOpen(false)} />
+      {/* <RequestModal open={isOpen} onClose={() => setOpen(false)} /> */}
+      
       <TopNav />
       <Sidebar active={"requests"} />
       <div className="request-body">

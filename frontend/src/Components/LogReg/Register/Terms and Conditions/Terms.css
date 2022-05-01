@@ -1,0 +1,41 @@
+iframe {
+  margin: 0.5em;
+  border-radius: 20px;
+  background-color: #fff;
+  display: relative;
+  height: 80vh;
+  width: 45vw;
+}
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  height: 95vh;
+}
+.btn-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cancel-btn,
+.accept-btn {
+  /* height: 5vh; */
+  /* width: 5vw; */
+  /* margin: 16.8% 0 0 76%; */
+  margin: 1em;
+  font-size: 1.5vw;
+  padding: 0.8em 1em;
+  /* padding: 1.5% 0; */
+  border: none;
+  background-color: #ff0000;
+  color: rgb(255, 255, 255);
+  border: 2px solid white;
+  transition: all 0.5s;
+}
+.cancel-btn:hover,
+.accept-btn:hover {
+  cursor: pointer;
+  background-color: #850606;
+  color: white;
+  transform: translateY(-0.15em);
+}

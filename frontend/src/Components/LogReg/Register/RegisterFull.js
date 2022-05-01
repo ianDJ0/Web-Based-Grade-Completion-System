@@ -1,4 +1,10 @@
-import React, { useEffect, useState, useContext, useRef, Component } from "react";
+import React, {
+  useEffect,
+  useState,
+  useContext,
+  useRef,
+  Component,
+} from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import SignaturePad from "signature_pad";
@@ -9,6 +15,7 @@ import LogRegForm from "../../UI/LogReg_UI/LogRegForm";
 import { AuthenticationContext } from "../../Shared/context/auth-context";
 import "../../Shared/Shared.css";
 import "./RegisterFull.css";
+import Terms from "./Terms and Conditions/Terms";
 
 const RegisterFull = (props) => {
   const navigate = useNavigate();
@@ -35,6 +42,7 @@ const RegisterFull = (props) => {
   const [isTACRead, setIfRead] = useState(false);
   const [isValid, setIsValid] = useState(false);
   let signature;
+  const [terms, setTerms] = useState(false);
 
   //student only fields
   const [studentNumber, setStudentNumber] = useState();
@@ -82,7 +90,6 @@ const RegisterFull = (props) => {
       formData.append("registerUserType", acctType);
       formData.append("registerBirthday", birthday);
 
-
       if (acctType === "Faculty") {
         console.log("axios", formData.get("image"));
         axios
@@ -104,10 +111,7 @@ const RegisterFull = (props) => {
             alert(error);
           });
       } else {
-        formData.append(
-          "registerStudentNumber",
-          studentNumber
-        )
+        formData.append("registerStudentNumber", studentNumber);
         formData.append(
           "registerCourseYearAndSection",
           course + "-" + year + "-" + section
@@ -148,6 +152,7 @@ const RegisterFull = (props) => {
       backgroundColor: "rgb(255, 255, 255)",
     });
   }, [formData]);
+
   //https://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
   function dataURItoBlob(dataURI) {
     var byteString;
@@ -234,8 +239,18 @@ const RegisterFull = (props) => {
       ""
     );
 
+  const cancelHandler = () => {
+    setTerms((prevState) => !prevState);
+  };
+
+  const acceptHandler = () => {
+    setTerms((prevState) => !prevState);
+    setIfRead((prevState) => !prevState);
+  };
+
   return (
     <>
+      {terms && <Terms cancel={cancelHandler} accept={acceptHandler} />}
       <Logo />
       <LogRegBody>
         <LogRegForm>
@@ -370,7 +385,6 @@ const RegisterFull = (props) => {
                 value={birthday}
                 onChange={(event) => {
                   setBirthday(event.target.value);
-                  
                 }}
                 required
               />
@@ -443,8 +457,18 @@ const RegisterFull = (props) => {
               checked={isTACRead}
               required
             />
-            {/* Will add a link to the Terms and Conditions */}
-            <span> I have read the terms and conditions.</span>
+            <span>
+              {" "}
+              I have read the{" "}
+              <strong
+                className={"terms"}
+                onClick={() => {
+                  setTerms((prevState) => !prevState);
+                }}
+              >
+                terms and conditions.
+              </strong>
+            </span>
 
             {/*So, do we need some password inputs here? */}
             <button type="submit" id="btn-submit">
