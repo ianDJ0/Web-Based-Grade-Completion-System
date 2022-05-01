@@ -7,24 +7,24 @@
   background: transparent;
   font-size: 15px;
 }
-.account-details{
+.account-details {
   height: 50%;
 }
 .full-width {
   width: 100%;
 }
-#student-course{
+#student-course {
   height: 4vh;
   padding: 0% 2%;
   width: 9vw;
 }
-#student-year{
+#student-year {
   height: 4vh;
   padding: 0% 2%;
   margin: 0% 5%;
   width: 7vw;
 }
-#student-section{
+#student-section {
   height: 4vh;
   padding: 0% 2%;
   margin: 0% 5%;
@@ -42,25 +42,29 @@
 .same-row {
   display: inline-block;
 }
-.contact-detail, .birth-details{
+.contact-detail,
+.birth-details {
   display: inline-block;
 }
-#sign-label::before{
+#sign-label::before {
   content: "\A";
   white-space: pre;
 }
-#contact-no{
+#contact-no {
   height: 2.5em;
   padding: 0% 2%;
   width: 13vw;
 }
-.birth-details{
+.birth-details {
   margin-left: 6%;
   margin-top: 1%;
   margin-bottom: 1%;
 }
-#birth-date{
+#birth-date {
   height: 2.5em;
   padding: 0% 2%;
   width: 13vw;
+}
+.terms {
+  cursor: pointer;
 }

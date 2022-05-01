@@ -16,6 +16,7 @@ import RequestForm from "./Components/Main/Request/RequestForm";
 import ChangePassword from "./Components/Main/Profile/Edit/ChangePassword";
 import EditProfile from "./Components/Main/Profile/Edit/EditProfile";
 import TokenCheck from "./Components/Shared/Auth";
+import Terms from "./Components/LogReg/Register/Terms and Conditions/Terms";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -48,6 +49,7 @@ function App() {
     >
       <>
         <Routes>
+          <Route path="/pdf" element={<Terms />} />
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/register/complete" element={<RegisterFull />} />
