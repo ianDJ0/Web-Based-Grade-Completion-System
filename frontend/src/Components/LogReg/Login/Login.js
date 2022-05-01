@@ -17,12 +17,15 @@ const Login = () => {
   const emailRef = useRef();
   const auth = useContext(AuthenticationContext);
   const navigate = useNavigate();
-
+  
+  if(localStorage.getItem('token')){
+    navigate("/homepage");
+  }
   useEffect(() => {
     //sets the cursor focus to the email field
     emailRef.current.focus();
   }, []);
-
+  
   useEffect(() => {
     //clears out the error message when you type in the fields
     setErrMsg("");

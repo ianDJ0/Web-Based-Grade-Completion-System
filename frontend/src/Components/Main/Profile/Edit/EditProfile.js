@@ -92,8 +92,6 @@ const EditProfile = () => {
             <img
               alt="wallpaper-img"
               src={preview}
-              // require("../../../UI/Home_UI/Icons/image-wallpaper-15.jpg")
-              // src="Icons/image-wallpaper-15.jpg"
               id="edit-profile-picture"
             />
           }
@@ -101,10 +99,10 @@ const EditProfile = () => {
             <img
               alt="wallpaper-img"
               src={require("../../../UI/Home_UI/Icons/image-wallpaper-15.jpg")}
-              // src="Icons/image-wallpaper-15.jpg"
               id="edit-profile-picture"
             />
           }
+          
         </div>
         <div className="edit-profile-details">
           {/* <div class="edit-first-name">
