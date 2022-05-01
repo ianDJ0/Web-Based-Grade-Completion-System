@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useContext, useState } from "react";
 import { AuthenticationContext } from "../../Shared/context/auth-context";
+import { RequestContent } from "../../Shared/context/request-context";
 import TokenCheck from "../../Shared/Auth";
 import TopNav from "../../UI/Home_UI/TopNav";
 import Sidebar from "../../UI/Home_UI/Sidebar";
@@ -10,6 +11,7 @@ import axios from "axios";
 const FacultyProfile = (props) => {
   TokenCheck();
   const auth = useContext(AuthenticationContext);
+  const requestInfo = useContext(RequestContent);
   const params = useParams();
   const id = params.id;
   const navigate = useNavigate();
@@ -49,7 +51,10 @@ const FacultyProfile = (props) => {
           <button
             id="request-faculty"
             onClick={() => {
-              navigate("/request/form");
+              requestInfo.request_InstructorId = "";
+              navigate("/request/form", {
+                state: { autoInstructor: facultyInfo },
+              });
             }}
           >
             Request Completion Form

@@ -13,12 +13,17 @@ import Swal from 'sweetalert2';
 
 
 const RequestForm = (props) => {
-  const { state } = useLocation();
+  let { state } = useLocation();
   let requestItem = { status: "" };
+  let autoCompleteInstructor = '';
   let cys1 = ""
-  if (state) {
+  if (state && state.requestItem) {
     requestItem = state;
     cys1 = requestItem.requestItem.student.studentYearAndSection.split("-");
+  }
+  if (state && state.autoInstructor) {
+    autoCompleteInstructor = state.autoInstructor;
+    state="";
   }
   const auth = useContext(AuthenticationContext);
   const requestContent = useContext(RequestContent);
@@ -124,25 +129,25 @@ const RequestForm = (props) => {
         });
     }
   }
-  const submitDenyRespose = () =>{
+  const submitDenyRespose = () => {
     axios
-        .post(
-          "http://localhost:7700/api/request/instructorRespondRequest",
-          {
-            requestID: requestItem.requestItem._id,
-            grade: "5.00",
-            instructorSignature: auth.userSignature
-          },
-          {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-          }
-        )
-        .then((response) => {
-          console.log("Success", response);
-        })
-        .catch((error) => {
-          alert(error);
-        });
+      .post(
+        "http://localhost:7700/api/request/instructorRespondRequest",
+        {
+          requestID: requestItem.requestItem._id,
+          grade: "5.00",
+          instructorSignature: auth.userSignature
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      )
+      .then((response) => {
+        console.log("Success", response);
+      })
+      .catch((error) => {
+        alert(error);
+      });
   }
   return (
     <>
@@ -181,28 +186,28 @@ const RequestForm = (props) => {
         {!state &&
           <div>
             <StudentInfo studentInformation={auth} />
-            <RequestInfo
-              // requestInstructorId={(childInstructorId) => {
-              //   setInstructorId(childInstructorId);
-              // }}
-              // requestInstructorName={(childInstructorId) => {
-              //   setInstructor(childInstructorId);
-              // }}
-              // requestSubjectCode={(childInstructorId) => {
-              //   setSubjectCode(childInstructorId);
-              // }}
-              // requestSubjectDescription={(childInstructorId) => {
-              //   setSubjectDescription(childInstructorId);
-              // }}
-              // requestSubjectYear={(childInstructorId) => {
-              //   setSubjectYear(childInstructorId);
-              // }}
-              // requestSemester={(childInstructorId) => {
-              //   setSubjectSemester(childInstructorId);
-              // }}
-              // requestReason={(childInstructorId) => {
-              //   setReason(childInstructorId);
-              // }}
+            <RequestInfo autoInt={autoCompleteInstructor}
+            // requestInstructorId={(childInstructorId) => {
+            //   setInstructorId(childInstructorId);
+            // }}
+            // requestInstructorName={(childInstructorId) => {
+            //   setInstructor(childInstructorId);
+            // }}
+            // requestSubjectCode={(childInstructorId) => {
+            //   setSubjectCode(childInstructorId);
+            // }}
+            // requestSubjectDescription={(childInstructorId) => {
+            //   setSubjectDescription(childInstructorId);
+            // }}
+            // requestSubjectYear={(childInstructorId) => {
+            //   setSubjectYear(childInstructorId);
+            // }}
+            // requestSemester={(childInstructorId) => {
+            //   setSubjectSemester(childInstructorId);
+            // }}
+            // requestReason={(childInstructorId) => {
+            //   setReason(childInstructorId);
+            // }}
             />
             <div className="wrap">
               <button id="request-complete" onClick={submitStudentRequest}>
@@ -212,7 +217,7 @@ const RequestForm = (props) => {
           </div>
         }
         {/* CONTENTS IF REQUEST IS VIEW FROM LIST */}
-        {console.log(requestItem.requestItem)}
+
         {state &&
           (requestItem.requestItem.status === "REQUESTED" || requestItem.requestItem.status === "SUBMITTED" || requestItem.requestItem.status === "DENIED") && auth.userType === "Faculty"
           &&
@@ -261,14 +266,14 @@ const RequestForm = (props) => {
                 <p>Faculty Response</p>
                 {requestItem.requestItem.grade &&
                   <div>
-                    <di>
+                    <div>
                       <p>Grade Given</p>
                       <input type="textarea" name="stud-name" id="stud-name" value={requestItem.requestItem.grade} readOnly />
-                    </di>
-                    <di>
+                    </div>
+                    <div>
                       <p>Instructor Signature</p>
                       <img src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`} alt="Student Signature" />
-                    </di>
+                    </div>
                   </div>
                 }
                 <button onClick={submitFacultyResponse}>Approve</button>
@@ -297,6 +302,10 @@ const RequestForm = (props) => {
             {/* Faculty response Request */}
 
           </div>
+        }
+        {console.log(requestItem.requestItem)}
+        {
+
         }
 
       </div>

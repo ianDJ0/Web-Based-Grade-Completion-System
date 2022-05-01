@@ -7,8 +7,16 @@ import axios from "axios";
 const RequestInfo = (props) => {
   const [search, setSearch] = useState(['User is not Registered']);
   const [visible, setVisible] = useState(false);
-  const [instructor, setInstructor] = useState("")
+  const [instructor, setInstructor] = useState("");
+  let auto;
   const requestContent = useContext(RequestContent);
+  if(requestContent.request_InstructorId){
+    auto='a';
+  }
+  if(props && auto!=="a"){
+    auto = props.autoInt;
+  }
+  console.log("AAAAAAAAAAAAAAAAAAAA",props.autoInt);
   return (
 
     <div className="request-info">
@@ -46,7 +54,7 @@ const RequestInfo = (props) => {
               }
             }}
           />
-          <FindInstructor componentIsVisible={visible} searchFac={search} setInstructor insertInstructor={(insertI) => { setInstructor(insertI) }} />
+          <FindInstructor componentIsVisible={visible} searchFac={search} autoSearch={auto} insertInstructor={(insertI) => { setInstructor(insertI) }} />
 
         </div>}
       </div>
