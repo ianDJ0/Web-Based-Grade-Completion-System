@@ -25,7 +25,12 @@ const Request = (props) => {
     }else{
       url="http://localhost:7700/api/request/facultyRequest"
     }
-    axios.post(url,{uID:auth.userId})
+    axios.post(url,{
+      uID:auth.userId, 
+      requestStatus:status, 
+      requestToDate: toDate, 
+      requestFromDate: fromDate
+    })
     .then((response)=>{
       setList(response.data)
     }).catch((error)=>{
@@ -49,7 +54,9 @@ const Request = (props) => {
           </button>
         )}
         <h2 id="request-label">REQUEST LOGS</h2>
-        <RequestFilter />
+        <RequestFilter filterStatus={(newStatus)=>{setStatus(newStatus)}}
+                       filterToDate={(newToDate)=>{setToDate(newToDate)}}
+                       filterFromDate={(newFromDate)=>{setFromDate(newFromDate)}}/>
         <div className="request-content">
           <table id="request-log">
             <tbody>
@@ -67,7 +74,11 @@ const Request = (props) => {
               </tr>
               {
                 list.map(listItem=>{
-                return <tr key={listItem._id}>
+                return <tr key={listItem._id} onClick={()=>{
+                  navigate("/request/form", {
+                    state: { requestItem: listItem },
+                  });
+                }}>
                   <th>{listItem.subjectCode}</th>
                   <th>{listItem.subjectDescription}</th>
                   {auth.userType==="Student"?<th>{listItem.instructor.instructorName}</th> : <th>{listItem.student.studentFullname}</th>}
@@ -76,34 +87,7 @@ const Request = (props) => {
                 </tr>
                 })
               }
-              {/* <tr>
-                <th>IT 404</th>
-                <th>Internship</th>
-                <th>Mr. Aaron Paul M. Dela Rosa</th>
-                <th>April 22, 2022</th>
-                <th>Requested</th>
-              </tr>
-              <tr>
-                <th>CAP 401</th>
-                <th>Capstone</th>
-                <th>John Doe</th>
-                <th>March 27, 2022</th>
-                <th>Submitted</th>
-              </tr>
-              <tr>
-                <th>SAMP 301</th>
-                <th>Sample</th>
-                <th>Sample Name</th>
-                <th>October 14, 2021</th>
-                <th>On Process</th>
-              </tr>
-              <tr>
-                <th>DUM 101</th>
-                <th>Dummy</th>
-                <th>Dummy Name</th>
-                <th>December 4, 2018</th>
-                <th>Processed</th>
-              </tr> */}
+    
             </tbody>
           </table>
         </div>

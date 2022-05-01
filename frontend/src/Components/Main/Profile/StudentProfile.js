@@ -33,7 +33,7 @@ const StudentProfile = () => {
           >
             Change Password
           </button>
-          {auth.userProfilePic === ""&& 
+          {auth.userProfilePic === "" && 
           <img
             src={require("../../UI/Home_UI/Icons/image-wallpaper-15.jpg")}
             id="profile-picture"

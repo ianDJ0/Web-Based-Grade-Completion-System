@@ -75,7 +75,7 @@ const instructorRespondRequest = async (req, res) => {
     }
 
     let instructorUpdate;
-    let insructorStatus = parseFloat(req.body.grade)<=3?"APPROVED":"DENIED";
+    let insructorStatus = parseFloat(req.body.grade)<=3?"SUBMITTED":"DENIED";
         
     
     try{
@@ -129,10 +129,25 @@ const officeRespondRequest = async (req,res)=>{
 }
 //Get Requests for List Display
 const getRequestForStudent = async (req, res)=>{
+    let searchFilter={'student.studentID':req.body.uID};
+
+    if(req.body.requestStatus){
+        newStatus = {'status':req.body.requestStatus}
+        searchFilter= Object.assign(newStatus,searchFilter)
+    }
+    if(req.body.requestToDate){
+        newToDate = {'dateLog.dateStudent':{'$gte':req.body.requestToDate}}
+        searchFilter= Object.assign(newToDate,searchFilter)
+    }
+    if(req.body.requestFromDate){
+        newFromDate = {'dateLog.dateStudent':{'$lte':req.body.requestFromDate}}
+        searchFilter= Object.assign(newFromDate,searchFilter)
+    }
+
     let getRequestStudent
     try{
         getRequestStudent = await requestModel
-        .find({'student.studentID':req.body.uID});
+        .find(searchFilter);
     }catch(err){
         return res
         .status(422)
@@ -142,10 +157,25 @@ const getRequestForStudent = async (req, res)=>{
 }
 
 const getRequestForFaculty = async (req, res)=>{
+    let searchFilter={'instructor.instructorID':req.body.uID};
+
+    if(req.body.requestStatus){
+        newStatus = {'status':req.body.requestStatus}
+        searchFilter= Object.assign(newStatus,searchFilter)
+    }
+    if(req.body.requestToDate){
+        newToDate = {'dateLog.dateStudent':{'$gte':req.body.requestToDate}}
+        searchFilter= Object.assign(newToDate,searchFilter)
+    }
+    if(req.body.requestFromDate){
+        newFromDate = {'dateLog.dateStudent':{'$lte':req.body.requestFromDate}}
+        searchFilter= Object.assign(newFromDate,searchFilter)
+    }
+
     let getRequestFaculty
     try{
         getRequestFaculty = await requestModel
-        .find({'instructor.instructorID':req.body.uID});
+        .find(searchFilter);
     }catch(err){
         return res
         .status(422)

@@ -11,7 +11,7 @@ const checkAuth = require('../middleware/Authentication');
 //Get Single User API
 router.post('/softValidate',userController.checkEmailIfExist);
 router.post('/login', userController.login);
-router.post('/profileChange',check('userId').isEmpty(),fileUpload.single('image'),userController.profilePicture);
+router.post('/profileChange',fileUpload.single('image'),userController.profilePicture);
 router.post('/type', userController.getAllUserByType);
 router.get('/findUser/:uID', userController.getSingle);
 

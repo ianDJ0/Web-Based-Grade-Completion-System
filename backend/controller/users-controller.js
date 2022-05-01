@@ -29,7 +29,7 @@ const login = async (req, res, next) => {
     }
   } catch (err) {
     console.log(err)
-    return res.status(500).json({ message: "Try logging in later" });
+    return res.status(500).json({ message: "Wrong email or password" });
   }
   let token;
   try {
