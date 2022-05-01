@@ -30,13 +30,13 @@ const RequestForm = (props) => {
     auth.userCourseYearAndSection;
   requestContent.request_StudentSignature = auth.userSignature;
 
-  const [instructorId, setInstructorId] = useState();
-  const [instructor, setInstructor] = useState();
-  const [reason, setReason] = useState();
-  const [subjectYear, setSubjectYear] = useState();
-  const [subjectSemester, setSubjectSemester] = useState();
-  const [subjectCode, setSubjectCode] = useState();
-  const [subjectDescription, setSubjectDescription] = useState();
+  // const [instructorId, setInstructorId] = useState();
+  // const [instructor, setInstructor] = useState();
+  // const [reason, setReason] = useState();
+  // const [subjectYear, setSubjectYear] = useState();
+  // const [subjectSemester, setSubjectSemester] = useState();
+  // const [subjectCode, setSubjectCode] = useState();
+  // const [subjectDescription, setSubjectDescription] = useState();
 
   const submitStudentRequest = () => {
     axios
@@ -182,27 +182,27 @@ const RequestForm = (props) => {
           <div>
             <StudentInfo studentInformation={auth} />
             <RequestInfo
-              requestInstructorId={(childInstructorId) => {
-                setInstructorId(childInstructorId);
-              }}
-              requestInstructorName={(childInstructorId) => {
-                setInstructor(childInstructorId);
-              }}
-              requestSubjectCode={(childInstructorId) => {
-                setSubjectCode(childInstructorId);
-              }}
-              requestSubjectDescription={(childInstructorId) => {
-                setSubjectDescription(childInstructorId);
-              }}
-              requestSubjectYear={(childInstructorId) => {
-                setSubjectYear(childInstructorId);
-              }}
-              requestSemester={(childInstructorId) => {
-                setSubjectSemester(childInstructorId);
-              }}
-              requestReason={(childInstructorId) => {
-                setReason(childInstructorId);
-              }}
+              // requestInstructorId={(childInstructorId) => {
+              //   setInstructorId(childInstructorId);
+              // }}
+              // requestInstructorName={(childInstructorId) => {
+              //   setInstructor(childInstructorId);
+              // }}
+              // requestSubjectCode={(childInstructorId) => {
+              //   setSubjectCode(childInstructorId);
+              // }}
+              // requestSubjectDescription={(childInstructorId) => {
+              //   setSubjectDescription(childInstructorId);
+              // }}
+              // requestSubjectYear={(childInstructorId) => {
+              //   setSubjectYear(childInstructorId);
+              // }}
+              // requestSemester={(childInstructorId) => {
+              //   setSubjectSemester(childInstructorId);
+              // }}
+              // requestReason={(childInstructorId) => {
+              //   setReason(childInstructorId);
+              // }}
             />
             <div className="wrap">
               <button id="request-complete" onClick={submitStudentRequest}>
