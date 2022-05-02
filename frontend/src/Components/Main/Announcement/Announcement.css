@@ -1,14 +1,17 @@
+/*Announcemend Label*/
 .announcement {
   margin: 1em;
   margin-top: 1.2em;
   text-align: center;
 }
+/*Background for class announcements*/
 .announcement-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   list-style-type: none;
 }
+/*Background per announcement*/
 .announcement-box {
   background-color: #fff;
   width: 30em;
@@ -27,13 +30,16 @@
   transform: translateY(-0.2em);
   cursor: pointer;
 }
+/*Title per announcement*/
 .announcement-title {
   font-size: 1.3em;
   padding: 1em;
 }
+/*Date per announcement*/
 .announcement-date {
   padding: 0.5em;
 }
+/*Self explanatory*/
 .hr {
   width: 60vw;
 }

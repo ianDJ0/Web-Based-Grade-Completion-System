@@ -94,6 +94,7 @@
   z-index: 1;
   top: 0;
   position: fixed;
+  margin-left: 15%;
   background-color: white;
   width: 85%;
   height: 9.3vh;
@@ -148,6 +149,7 @@ li {
 }
 
 .suggestion-list {
+  z-index: 1;
   margin-left: 3.75%;
   position: absolute;
   background-color: #eeeeee;

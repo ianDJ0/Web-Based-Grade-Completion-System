@@ -46,8 +46,11 @@
   border: 12px solid white;
 }
 #search-faculty-name {
+  max-width: 17vw;
+  width: 100%;
+  text-align: center;
   font-size: 2vw;
-  margin: 0 0 1% 14%;
+  margin: 0 0 1% 8%;
 }
 #search-faculty-college {
   width: 19vw;
@@ -117,6 +120,7 @@
   transform: translateY(-0.15em);
 }
 .search-faculty-profile {
+  z-index: -1;
   position: absolute;
   width: 60vw;
   height: 60vh;
