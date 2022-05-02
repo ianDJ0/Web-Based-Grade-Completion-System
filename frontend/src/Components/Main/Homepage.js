@@ -35,14 +35,25 @@ const Homepage = (props) => {
       </div>
 
       <div className="home-get-started">
-        <img alt="bulsu-logo" src={require('../UI/Home_UI/Icons/bulsu-logo.png')} id="home-bulsu-logo" />
+        <img
+          alt="bulsu-logo"
+          src={require("../UI/Home_UI/Icons/bulsu-logo.png")}
+          id="home-bulsu-logo"
+        />
         <div className="to-tutorial">
           <h3 id="system-title-label">Document Tracking System</h3>
           <p id="tutorial-sub-desc">
             Know more about how to use the Bulacan Stated University document
             tracking system
           </p>
-          <button id="navigate-tutorial">GO TO TUTORIALS PAGE</button>
+          <button
+            id="navigate-tutorial"
+            onClick={() => {
+              navigate("/tutorial");
+            }}
+          >
+            GO TO TUTORIALS PAGE
+          </button>
         </div>
       </div>
 

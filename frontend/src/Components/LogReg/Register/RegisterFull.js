@@ -405,37 +405,44 @@ const RegisterFull = (props) => {
               ref={pad}
               style={{ display: visible ? "block" : "none" }}
             >
-              <canvas
-                id="signature-pad"
-                className="signature-pad"
-                width={400}
-                height={200}
-              />
-              <input
-                type="button"
-                id="clear"
-                value="Clear Canvas"
-                onClick={(event) => {
-                  signaturePad.clear();
-                }}
-              />
-              <input
-                type="button"
-                id="save-png"
-                value="Use Signature"
-                onClick={(event) => {
-                  formData.delete("image");
-                  if (signaturePad.isEmpty()) {
-                    return alert("Please provide a signature first.");
-                  }
-                  let data = signaturePad.toDataURL("image/png");
-                  let blob = dataURItoBlob(data);
-                  formData.append("image", blob);
-                  console.log(formData.get("image"));
-                }}
-              />
+              <div className="btn-wrapper canvas-wrapper ">
+                <canvas
+                  id="signature-pad"
+                  className="signature-pad"
+                  width={400}
+                  height={200}
+                />
+              </div>
+              <div className="btn-wrapper">
+                <input
+                  className="save-btn"
+                  type="button"
+                  id="save-png"
+                  value="Use Signature"
+                  onClick={(event) => {
+                    formData.delete("image");
+                    if (signaturePad.isEmpty()) {
+                      return alert("Please provide a signature first.");
+                    }
+                    let data = signaturePad.toDataURL("image/png");
+                    let blob = dataURItoBlob(data);
+                    formData.append("image", blob);
+                    console.log(formData.get("image"));
+                  }}
+                />
+                <input
+                  className="clear-btn"
+                  type="button"
+                  id="clear"
+                  value="Clear Canvas"
+                  onClick={(event) => {
+                    signaturePad.clear();
+                  }}
+                />
+              </div>
             </div>
             <input
+              className="btn-signature"
               type="button"
               onClick={() => setVisible(!visible)}
               value={visible ? "Hide Signature Pad" : "Show Signature Pad"}
