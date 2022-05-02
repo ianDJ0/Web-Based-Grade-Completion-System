@@ -16,7 +16,7 @@ const Anouncement = () => {
       <Sidebar active={"announcements"} />
       
       <div className="body-home">
-        <div className="home-content">
+        <div className="announcement-content">
           <SingleAnnouncement AnList={events}/>
         </div>
       </div>

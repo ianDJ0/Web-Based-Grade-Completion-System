@@ -9,24 +9,26 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  list-style-type: none;
 }
 /*Background per announcement*/
 .announcement-box {
-  background-color: #fff;
-  width: 30em;
-  min-height: 10em;
-  margin: 10px;
-  border: 1px solid #ff0000;
-  border-radius: 10px;
+  background-color: #DFD8CA;
+  background-image: url('https://www.nicepng.com/png/full/874-8745231_announcement-announce-icon-png-white.png');
+  background-size: 150px 150px;
+  background-repeat: no-repeat;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  width: 57em;
+  min-height: 9em;
+  height: auto;
+  margin: 2%;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  transition: all 0.5s;
+  transition: all 1s;
 }
 .announcement-box:hover {
-  background-color: #ffa7a7;
+  background-color: #D2D3C9;
   transform: translateY(-0.2em);
   cursor: pointer;
 }

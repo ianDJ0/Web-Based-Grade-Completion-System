@@ -34,30 +34,12 @@
   background-color: #8c0000;
   color: white;
 }
-.home-aboutus {
-  position: absolute;
-  width: 69%;
-  height: 15vh;
-  margin: 29% 0 0 15%;
-  padding: 5% 8%;
-}
-#home-aboutus-label {
-  text-align: center;
-  font-size: 2.5em;
-  color: #8c0000;
-  margin-bottom: 2%;
-}
-#home-aboutus-info {
-  text-align: justify;
-  font-size: 1.2em;
-  padding: 0 5%;
-}
 .home-get-started {
   position: absolute;
   background-color: #d8b6a4;
   width: 69%;
   height: auto;
-  margin: 29% 0 0 15%;
+  margin: 55% 0 0 15%;
   padding: 5% 8%;
   color: rgb(0, 0, 0);
 }
@@ -93,4 +75,35 @@
 #navigate-tutorial:hover {
   background-color: #000000;
   color: white;
+}
+.home-aboutus {
+  position: absolute;
+  width: 69%;
+  height: 15vh;
+  margin: 29% 0 0 15%;
+  padding: 5% 8%;
+}
+#home-aboutus-label {
+  text-align: center;
+  font-size: 2.5em;
+  color: #8c0000;
+  margin-bottom: 2%;
+}
+#home-aboutus-info {
+  text-align: justify;
+  font-size: 1.2em;
+  padding: 0 5%;
+}
+.announcement-content{
+  width: 80%;
+  margin-left: 18%;
+  margin-top: 17vh;
+}
+.body-home {
+  position: absolute;
+  z-index: -1;
+  min-height: 100vh;
+  height: auto;
+  width: 100%;
+  background-color: #fafafa;
 }
