@@ -19,7 +19,7 @@ const TopNav = (props) => {
 
   const logoutHandler = () => {
     alert("logout");
-      localStorage.removeItem('token');
+    localStorage.removeItem("token");
     navigate("/");
   };
 
@@ -63,20 +63,21 @@ const TopNav = (props) => {
           />
           {/* dito yung div ng mga searched instructor */}
           {search.length !== 0 && search[0] !== "User is not Registered" && (
-            <ul>
+            <p className="suggestion-list">
               {search.map((faculty) => {
                 return (
-                  <li
+                  <p
+                    className="suggestions"
                     key={faculty._id}
                     onClick={(event) => {
                       navigate(`/search/${faculty._id}`);
                     }}
                   >
                     {faculty.fullName}
-                  </li>
+                  </p>
                 );
               })}
-            </ul>
+            </p>
           )}
           <div className="name-type" onClick={profileHandler}>
             <span>
@@ -84,6 +85,7 @@ const TopNav = (props) => {
               <p id="user-type">{auth.userType}</p>
             </span>
           </div>
+
           <img
             alt="icon-message"
             src={require("./Icons/Message.png")}

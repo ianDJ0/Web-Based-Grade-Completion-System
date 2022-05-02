@@ -17,15 +17,15 @@ const Login = () => {
   const emailRef = useRef();
   const auth = useContext(AuthenticationContext);
   const navigate = useNavigate();
-  
-  if(localStorage.getItem('token')){
+
+  if (localStorage.getItem("token")) {
     navigate("/homepage");
   }
   useEffect(() => {
     //sets the cursor focus to the email field
     emailRef.current.focus();
   }, []);
-  
+
   useEffect(() => {
     //clears out the error message when you type in the fields
     setErrMsg("");
@@ -60,7 +60,7 @@ const Login = () => {
           auth.userStudentNumber = response.data.user.studentNumber;
           auth.userCourseYearAndSection = response.data.user.yearAndSection;
         }
-        localStorage.setItem('token', response.data.token)
+        localStorage.setItem("token", response.data.token);
         setIsValid(true);
       })
       .catch(function (error) {
@@ -78,13 +78,12 @@ const Login = () => {
 
   const pwdError =
     errMsg.trim().length < 2 &&
-      pwd.trim().length < 6 &&
-      pwd.trim().length > 0 ? (
+    pwd.trim().length < 6 &&
+    pwd.trim().length > 0 ? (
       <div className="error">Password must be at least 6 characters long</div>
     ) : (
       ""
     );
-
   return (
     <>
       <Logo />

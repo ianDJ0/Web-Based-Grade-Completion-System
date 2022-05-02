@@ -146,3 +146,24 @@ li {
 .space {
   padding-left: 0.5em;
 }
+
+.suggestion-list {
+  margin-left: 5%;
+  margin-top: -0.4em;
+  position: absolute;
+  background-color: #eeeeee;
+  width: 20%;
+  border-bottom-left-radius: 0.8em;
+  border-bottom-right-radius: 0.8em;
+}
+
+.suggestions {
+  margin: 0.3em 0;
+  font-size: 1.2em;
+  padding: 0.1em 0;
+  padding-left: 1em;
+  width: 14vw;
+}
+.suggestions:hover {
+  background-color: #cfc6c6;
+}
