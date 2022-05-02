@@ -67,5 +67,24 @@
 }
 .terms {
   cursor: pointer;
-  color: #8C0000;
+  color: #8c0000;
+}
+input[type="file"]::file-selector-button {
+  background-color: #810000;
+  border: none;
+  color: white;
+  font-size: 17px;
+  padding: 3% 0;
+  border-radius: 10px;
+  margin: 3% 0.5em;
+  margin-bottom: 10px;
+  width: 50%;
+  transition: all 0.4s;
+}
+
+input[type="file"]::file-selector-button:hover {
+  cursor: pointer;
+  background-color: #8c0000;
+  color: white;
+  transform: translateY(-0.15em);
 }

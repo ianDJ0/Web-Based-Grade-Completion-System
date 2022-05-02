@@ -52,3 +52,45 @@
   font-size: 1.2em;
   padding: 0 5%;
 }
+.home-get-started {
+  position: absolute;
+  background-color: #d8b6a4;
+  width: 69%;
+  height: auto;
+  margin: 29% 0 0 15%;
+  padding: 5% 8%;
+  color: rgb(0, 0, 0);
+}
+#home-bulsu-logo {
+  width: 12vw;
+  margin: 1% 0 0 4%;
+}
+#home-bulsu-logo,
+.to-tutorial {
+  display: inline-block;
+  vertical-align: middle;
+}
+.to-tutorial {
+  margin-left: 15%;
+}
+#system-title-label {
+  font-size: 2em;
+  margin-bottom: 2.5%;
+}
+#tutorial-sub-desc {
+  font-size: 1.05em;
+  margin-bottom: 2.5%;
+}
+#navigate-tutorial {
+  border: 2px solid #000000;
+  background-color: transparent;
+  margin-top: 2%;
+  padding: 2% 4%;
+  font-weight: 550;
+  color: #000000;
+  transition: all 0.4s;
+}
+#navigate-tutorial:hover {
+  background-color: #000000;
+  color: white;
+}

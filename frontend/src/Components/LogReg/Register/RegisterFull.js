@@ -438,7 +438,8 @@ const RegisterFull = (props) => {
             <input
               type="button"
               onClick={() => setVisible(!visible)}
-              value="Show/Hide Signature Pad"
+              value={visible ? "Hide Signature Pad" : "Show Signature Pad"}
+              // value="Show/Hide Signature Pad"
             />
             <input
               id="signature"
