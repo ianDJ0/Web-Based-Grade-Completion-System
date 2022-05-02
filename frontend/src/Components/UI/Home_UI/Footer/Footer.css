@@ -60,11 +60,11 @@
 }
 .footer {
   position: absolute;
-  width: 82vw;
+  width: 83vw;
   height: 15vh;
   /* bottom: 0; */
   margin-top: 80%;
-  margin-left: 15.5%;
+  margin-left: 15%;
   background-color: #262626;
   padding: 1%;
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
