@@ -9,6 +9,11 @@ import "./StudentProfile.css";
 const StudentProfile = () => {
   const navigate = useNavigate();
   const auth = useContext(AuthenticationContext);
+  const DATE_OPTIONS = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
   TokenCheck();
   return (
     <>
@@ -32,19 +37,22 @@ const StudentProfile = () => {
             }}
           >
             Change Password
-          </button>{console.log(auth.userProfilePic)}
-          {auth.userProfilePic === "" && 
-          <img
-            src={require("../../UI/Home_UI/Icons/image-wallpaper-15.jpg")}
-            id="profile-picture"
-            alt="wallpaper-img"
-          />}
-          {auth.userProfilePic !== "" && 
-          <img
-            src={`http://localhost:7700/${auth.userProfilePic}`}
-            id="profile-picture"
-            alt="Picture"
-          />}
+          </button>
+          {console.log(auth.userProfilePic)}
+          {auth.userProfilePic === "" && (
+            <img
+              src={require("../../UI/Home_UI/Icons/image-wallpaper-15.jpg")}
+              id="profile-picture"
+              alt="wallpaper-img"
+            />
+          )}
+          {auth.userProfilePic !== "" && (
+            <img
+              src={`http://localhost:7700/${auth.userProfilePic}`}
+              id="profile-picture"
+              alt="user-img"
+            />
+          )}
           <div id="user-details">
             <p id="name-of-user">{auth.userFullName}</p>
             <p id="user-account-type">{auth.userType}</p>
@@ -63,7 +71,12 @@ const StudentProfile = () => {
           </div>
           <div className="user-profile-bday">
             <p>Birthday</p>
-            <p id="profile-bday">{auth.userBirthday}</p>
+            <p id="profile-bday">
+              {new Date(auth.userBirthday).toLocaleDateString(
+                "en-US",
+                DATE_OPTIONS
+              )}
+            </p>
           </div>
         </div>
       </div>

@@ -5,14 +5,16 @@ import { AuthenticationContext } from "../../../Shared/context/auth-context";
 import TokenCheck from "../../../Shared/Auth";
 import axios from "axios";
 import "./EditProfile.css";
+import { useNavigate } from "react-router-dom";
 
 const EditProfile = () => {
+  const navigate = useNavigate();
   const auth = useContext(AuthenticationContext);
   const [file, setFile] = useState();
   const [preview, setPreview] = useState();
   const [isValid, setValid] = useState(false);
-  const [email, setEmail] = useState('');
-  const [contactNumber, setContactNumber] = useState('')
+  const [email, setEmail] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
   TokenCheck();
   const filePickerRef = useRef();
   useEffect(() => {
@@ -24,35 +26,33 @@ const EditProfile = () => {
       setPreview(fileReader.result);
     };
     fileReader.readAsDataURL(file);
-
-  }, [file])
-  const pickedHandler = event => {
+  }, [file]);
+  const pickedHandler = (event) => {
     let pickedFile;
     if (event.target.files && event.target.files.length === 1) {
-      pickedFile = event.target.files[0]
+      pickedFile = event.target.files[0];
       setFile(pickedFile);
       setValid(true);
     } else {
-      setValid(false)
+      setValid(false);
     }
-
   };
   const pickImageHandler = () => {
     filePickerRef.current.click();
   };
   const submitChange = () => {
     let formData = new FormData();
-    formData.append('userId', auth.userId);
+    formData.append("userId", auth.userId);
     if (file) {
-      formData.append('image', file)
-    }else{
-      console.log(isValid)
+      formData.append("image", file);
+    } else {
+      console.log(isValid);
     }
     if (email) {
-      formData.append('email', email)
+      formData.append("email", email);
     }
     if (contactNumber) {
-      formData.append('contactNumber', contactNumber)
+      formData.append("contactNumber", contactNumber);
     }
     axios
       .post("http://localhost:7700/api/users/profileChange", formData)
@@ -61,18 +61,26 @@ const EditProfile = () => {
         auth.userEmail = response.data.new.email;
         auth.userContactNumber = response.data.new.contactNumber;
         localStorage.setItem("token", response.data.token);
-      }).catch(error=>{
-
-      });
-  }
+      })
+      .catch((error) => {});
+  };
   return (
     <>
       <TopNav />
       <Sidebar active={""} />
       <div className="user-profile">
         <div className="profile-header">
-          <button id="save-changes-btn" onClick={submitChange}>Save Changes</button>
-          <button id="cancel-btn">Cancel</button>
+          <button id="save-changes-btn" onClick={submitChange}>
+            Save Changes
+          </button>
+          <button
+            id="cancel-btn"
+            onClick={() => {
+              navigate("/profile");
+            }}
+          >
+            Cancel
+          </button>
           <div className="hover-change">
             <button
               className="fa fa-plus-circle"
@@ -83,26 +91,21 @@ const EditProfile = () => {
           <input
             type="file"
             ref={filePickerRef}
-            style={{ display: 'none' }}
+            style={{ display: "none" }}
             accept=".jpg,.png,.jpeg"
             onChange={pickedHandler}
           />
 
-          {preview &&
-            <img
-              alt="wallpaper-img"
-              src={preview}
-              id="edit-profile-picture"
-            />
-          }
-          {!preview &&
+          {preview && (
+            <img alt="wallpaper-img" src={preview} id="edit-profile-picture" />
+          )}
+          {!preview && (
             <img
               alt="wallpaper-img"
               src={require("../../../UI/Home_UI/Icons/image-wallpaper-15.jpg")}
               id="edit-profile-picture"
             />
-          }
-          
+          )}
         </div>
         <div className="edit-profile-details">
           {/* <div class="edit-first-name">
@@ -118,9 +121,23 @@ const EditProfile = () => {
             <input placeholder="Doe" id="edit-lname-input" />
           </div> */}
           <label className="leftover-label">Email</label>
-          <input placeholder="Email" id="edit-email-input" onChange={(event)=>{setEmail(event.target.value)}}/>
+          <input
+            placeholder="Email"
+            id="edit-email-input"
+            onChange={(event) => {
+              setEmail(event.target.value);
+            }}
+            value={auth.userEmail}
+          />
           <label className="leftover-label">Contact Number</label>
-          <input placeholder="Contact Number" id="edit-num-input" onChange={(event)=>{setContactNumber(event.target.value)}}/>
+          <input
+            placeholder="Contact Number"
+            id="edit-num-input"
+            onChange={(event) => {
+              setContactNumber(event.target.value);
+            }}
+            value={auth.userContactNumber}
+          />
           {/* <label class="leftover-label">Birthday</label>
           <input type="date" placeholder="Birthday" id="edit-bday-input" /> */}
         </div>

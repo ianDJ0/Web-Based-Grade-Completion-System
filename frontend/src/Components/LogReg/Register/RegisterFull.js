@@ -260,6 +260,13 @@ const RegisterFull = (props) => {
             onSubmit={submitRegistrationHandler}
             encType="application/json; charset=utf-8"
           >
+            <i
+              onClick={() => {
+                navigate("/");
+              }}
+              className="fa fa-times-circle close-form click"
+              style={{ fontSize: "2em" }}
+            ></i>
             <h3 id="logreg-label">Create An Account</h3>
             <label>Account Type</label>
             <select
@@ -470,7 +477,6 @@ const RegisterFull = (props) => {
               </strong>
             </span>
 
-            {/*So, do we need some password inputs here? */}
             <button type="submit" id="btn-submit">
               PROCEED
             </button>
