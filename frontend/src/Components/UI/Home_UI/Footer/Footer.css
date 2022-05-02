@@ -28,7 +28,7 @@
   font-size: 2vw;
   width: 15vw;
   position: absolute;
-  margin-top: 5%;
+  margin-top: 0.8em;
   margin-left: 3%;
 }
 .fb-icon,
@@ -61,7 +61,7 @@
 .footer {
   position: absolute;
   width: 82vw;
-  height: 28vh;
+  height: 15vh;
   bottom: 0;
   margin-left: 15.5%;
   background-color: #262626;
@@ -73,7 +73,13 @@
   right: 0;
   margin-right: 5%;
   margin-top: 4%;
-  width: 35vw;
+  width: 50vw;
+  height: 6vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+.contact {
+  width: 20vw;
 }
 .loc-icon {
   background-color: #911f27;
@@ -101,4 +107,7 @@
 }
 .size {
   font-size: 1.25em;
+}
+.contact-space {
+  margin-left: 0.5em;
 }

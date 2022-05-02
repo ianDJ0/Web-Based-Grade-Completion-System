@@ -2,11 +2,13 @@
   background-color: antiquewhite;
   position: absolute;
   width: 80%;
-  height: 50%;
-  margin-top: 15%;
-  margin-left: 17.5%;
+  margin-left: 18%;
+  margin-top: 10vh;
+  /* height: 50%; */
+  /* margin-top: 15%; */
+  /* margin-left: 17.5%; */
 }
-.body-home{
+.body-home {
   position: absolute;
   z-index: -1;
   height: 100%;

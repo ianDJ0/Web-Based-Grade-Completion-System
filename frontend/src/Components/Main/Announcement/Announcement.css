@@ -1,0 +1,39 @@
+.announcement {
+  margin: 1em;
+  margin-top: 1.2em;
+  text-align: center;
+}
+.announcement-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style-type: none;
+}
+.announcement-box {
+  background-color: #fff;
+  width: 30em;
+  min-height: 10em;
+  margin: 10px;
+  border: 1px solid #ff0000;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: all 0.5s;
+}
+.announcement-box:hover {
+  background-color: #ffa7a7;
+  transform: translateY(-0.2em);
+  cursor: pointer;
+}
+.announcement-title {
+  font-size: 1.3em;
+  padding: 1em;
+}
+.announcement-date {
+  padding: 0.5em;
+}
+.hr {
+  width: 60vw;
+}
