@@ -96,8 +96,11 @@
 }
 .announcement-content{
   width: 80%;
-  margin-left: 18%;
-  margin-top: 17vh;
+  background-color: #F4F6F6;
+  padding: 3% 2%;
+  margin-left: 15.5%;
+  margin-top: 7%;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
 }
 .body-home {
   position: absolute;
