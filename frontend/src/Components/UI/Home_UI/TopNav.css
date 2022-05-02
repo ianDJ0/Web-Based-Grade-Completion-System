@@ -39,7 +39,7 @@
   top: 0;
   position: absolute;
   margin-right: 5%;
-  margin-top: 1.6%;
+  margin-top: 1.3%;
   margin-left: 73%;
   width: 10vw;
   text-align: justify;
@@ -95,7 +95,7 @@
   margin-left: 15%;
   background-color: white;
   width: 85%;
-  height: 9vh;
+  height: 9.3vh;
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
 }
 
@@ -142,28 +142,23 @@ a {
 li {
   list-style-type: none;
 }
-
 .space {
   padding-left: 0.5em;
 }
 
 .suggestion-list {
-  margin-left: 5%;
-  margin-top: -0.4em;
+  margin-left: 3.75%;
   position: absolute;
   background-color: #eeeeee;
-  width: 20%;
-  border-bottom-left-radius: 0.8em;
-  border-bottom-right-radius: 0.8em;
+  width: 21.25%;
 }
-
 .suggestions {
-  margin: 0.3em 0;
-  font-size: 1.2em;
-  padding: 0.1em 0;
-  padding-left: 1em;
+  color: #707070;
+  padding: 1em 0 1em 2em;
+  font-size: 1em;
   width: 14vw;
 }
 .suggestions:hover {
   background-color: #cfc6c6;
+  width: 88.2%;
 }
