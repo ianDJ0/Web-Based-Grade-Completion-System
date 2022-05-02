@@ -35,12 +35,12 @@ body{
 }
 .home-get-started{
     position: absolute;
-    background-color: #8C0000;
+    background-color: #D8B6A4;
     width: 69%;
     height: auto;
     margin: 29% 0 0 15%;
     padding: 5% 8%;
-    color: white;
+    color: rgb(0, 0, 0);
 }
 #home-bulsu-logo{
     width: 12vw;
@@ -62,12 +62,17 @@ body{
     margin-bottom: 2.5%;
 }
 #navigate-tutorial{
-    border: 2px solid #ffffff;
+    border: 2px solid #000000;
     background-color: transparent;
     margin-top: 2%;
     padding: 2% 4%;
-    color: #ffffff;
+    font-weight: 550;
+    color: #000000;
     transition: all 0.4s;
+}
+#navigate-tutorial:hover{
+    background-color: #000000;
+    color: white;
 }
 .home-aboutus{
     position: absolute;
