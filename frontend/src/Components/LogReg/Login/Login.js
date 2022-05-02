@@ -84,6 +84,7 @@ const Login = () => {
     ) : (
       ""
     );
+  document.body.style = "background: #810000";
   return (
     <>
       <Logo />

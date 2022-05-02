@@ -8,6 +8,7 @@ const Sidebar = (props) => {
   const active = props.active;
 
   const navigate = useNavigate();
+  document.body.style = "background: white";
 
   return (
     <>

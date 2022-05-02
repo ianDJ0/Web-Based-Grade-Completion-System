@@ -81,9 +81,9 @@ const EditProfile = () => {
           >
             Cancel
           </button>
-          <div className="hover-change">
+          <div className={`hover-change ${preview ? "hide" : ""}`}>
             <button
-              className="fa fa-plus-circle"
+              className={`fa fa-plus-circle   ${preview ? "darken" : ""}`}
               style={{ fontSize: "3em" }}
               onClick={pickImageHandler}
             ></button>

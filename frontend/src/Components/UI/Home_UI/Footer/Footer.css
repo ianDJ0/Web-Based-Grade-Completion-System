@@ -62,7 +62,8 @@
   position: absolute;
   width: 82vw;
   height: 15vh;
-  bottom: 0;
+  /* bottom: 0; */
+  margin-top: 55%;
   margin-left: 15.5%;
   background-color: #262626;
   padding: 1%;

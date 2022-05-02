@@ -1,44 +1,48 @@
-import React, { useContext } from "react";
+// import React, { useContext } from "react";
 import Sidebar from "../UI/Home_UI/Sidebar";
 import TopNav from "../UI/Home_UI/TopNav";
-import { AuthenticationContext } from "../Shared/context/auth-context";
+// import { AuthenticationContext } from "../Shared/context/auth-context";
 import TokenCheck from "../Shared/Auth";
 import "./Homepage.css";
 import Footer from "../UI/Home_UI/Footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Homepage = (props) => {
-  document.body.style = "background: white";
   TokenCheck();
-  const auth = useContext(AuthenticationContext);
+  // const auth = useContext(AuthenticationContext);
+  const navigate = useNavigate();
   return (
     <>
       <TokenCheck />
       <TopNav />
       <Sidebar active={"homepage"} />
-      <div className="body-home">
-        <div className="home-content">
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Tempor
-            orci dapibus ultrices in iaculis nunc. Risus nec feugiat in
-            fermentum posuere urna nec. Ultricies integer quis auctor elit sed
-            vulputate. Convallis convallis tellus id interdum velit laoreet.
-            Dictumst vestibulum rhoncus est pellentesque. Quis lectus nulla at
-            volutpat diam ut. Aliquet sagittis id consectetur purus ut. Ante
-            metus dictum at tempor. Sapien et ligula ullamcorper malesuada proin
-            libero nunc. Scelerisque viverra mauris in aliquam sem. Pellentesque
-            pulvinar pellentesque habitant morbi tristique. Gravida in fermentum
-            et sollicitudin ac orci. Enim praesent elementum facilisis leo vel
-            fringilla est ullamcorper. Sit amet dictum sit amet justo donec
-            enim. Fermentum odio eu feugiat pretium nibh. Ac placerat vestibulum
-            lectus mauris ultrices. Sed elementum tempus egestas sed sed risus
-            pretium quam vulputate.
-          </p>
-          <img
-            src={`http://localhost:7700/${auth.userSignature}`}
-            alt="Signature ni user"
-          />
-        </div>
+      <div className="home-punch">
+        <h3 id="home-opening-line">Keep track of your form requests.</h3>
+        <p id="home-opening-sub">
+          Find out the status of your request yada yada yada.
+        </p>
+        <span
+          onClick={() => {
+            navigate("/requests");
+          }}
+          id="opening-navigate-btn"
+        >
+          <button className="home-opening-btn">
+            FIND OUT NOW
+            <span className="fas fa-angle-double-right"></span>
+          </button>
+        </span>
+      </div>
+      <div className="home-aboutus">
+        <h3 id="home-aboutus-label">About Us</h3>
+        <p id="home-aboutus-info">
+          The students with an incomplete grade can request for completion
+          requirements. The user can monitor the students requirements that need
+          to be complete. May help the user to track a given activities to the
+          students until it was completed. The Students will be notified for
+          processing period about 14 days once the completion form has been
+          made.
+        </p>
       </div>
       <Footer />
     </>

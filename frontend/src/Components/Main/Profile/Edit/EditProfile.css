@@ -147,3 +147,10 @@
   height: 6vh;
   width: 46.5vw;
 }
+
+.darken {
+  color: rgb(23, 22, 22);
+}
+.hide {
+  background-color: transparent;
+}

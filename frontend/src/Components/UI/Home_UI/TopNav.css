@@ -85,14 +85,15 @@
   padding: 1.25% 1.05%;
   border-radius: 6em;
   margin-left: 24%;
+  margin-left: 15%;
 }
 #dropdown-icon:hover {
   background-color: #e2e2e2;
 }
 .top-navigation {
+  z-index: 1;
   top: 0;
-  position: absolute;
-  margin-left: 15%;
+  position: fixed;
   background-color: white;
   width: 85%;
   height: 9.3vh;
