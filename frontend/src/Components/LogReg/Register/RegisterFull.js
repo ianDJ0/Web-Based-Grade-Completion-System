@@ -467,14 +467,14 @@ const RegisterFull = (props) => {
             <span>
               {" "}
               I have read the{" "}
-              <strong
+              <i
                 className={"terms"}
                 onClick={() => {
                   setTerms((prevState) => !prevState);
                 }}
               >
                 terms and conditions.
-              </strong>
+              </i>
             </span>
 
             <button type="submit" id="btn-submit">

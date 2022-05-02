@@ -2,7 +2,8 @@
   margin-left: auto;
   background-color: #eeeeee;
   width: 51%;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   border-top-left-radius: 5em;
   border-bottom-left-radius: 5em;
   box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.5);
