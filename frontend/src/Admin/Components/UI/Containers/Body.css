@@ -1,0 +1,10 @@
+.body-container {
+  background-color: #bcbcbc;
+  position: fixed;
+  width: 88vw;
+  height: 90vh;
+  margin-left: -1vw;
+  margin-top: 10vh;
+  left: 250px;
+  overflow: auto;
+}

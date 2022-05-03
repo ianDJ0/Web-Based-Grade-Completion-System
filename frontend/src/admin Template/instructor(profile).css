@@ -1,0 +1,184 @@
+@import url("navigation.css");
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0%;
+  padding: 0%;
+}
+body {
+  background-color: #fafafa;
+}
+.sidebar {
+  position: fixed;
+  width: 210px;
+  height: 100%;
+  background-color: #8c0000;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  z-index: 2;
+}
+.sidebar ul li {
+  width: 100%;
+  list-style: none;
+}
+.sidebar ul li:hover {
+  background-color: #444;
+}
+
+.sidebar ul li:first-child:hover {
+  background-color: none;
+}
+.sidebar ul li:first-child {
+  line-height: 60px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #fff;
+  margin-top: 80px;
+}
+.sidebar ul li a {
+  width: 100%;
+  text-decoration: none;
+  color: #ffff;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+.sedebar ul li a i {
+  min-width: 60px;
+  font-size: 24px;
+  text-align: center;
+}
+.instructor-profile {
+  position: absolute;
+  width: 60vw;
+  height: 60vh;
+  margin-top: 12%;
+  margin-left: 28%;
+  background-color: white;
+  box-shadow: 0px 3px 5px 0px;
+}
+#bulsu-header {
+  width: 100%;
+  height: 40%;
+  background: transparent no-repeat;
+  background-size: cover;
+  background: url("Icons/bulsu.jpg");
+}
+#instructor-img {
+  margin: 7% 0 0 9%;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 12px solid white;
+}
+#instructor-name {
+  font-size: 2vw;
+  margin: 0 0 1% 14%;
+  width: 250px;
+}
+#instructor-college {
+  width: 19vw;
+  margin-left: 5.5%;
+  font-size: 1vw;
+  font-style: italic;
+  text-align: center;
+}
+.instructor-email {
+  position: absolute;
+  top: 0;
+  margin-top: 23%;
+  margin-left: 49%;
+  width: 25vw;
+  height: 5vh;
+  padding: 1% 2%;
+  background-color: white;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.instructor-email:hover {
+  transform: translateY(-0.15em);
+}
+.instructor-number {
+  position: absolute;
+  top: 0;
+  margin-top: 31%;
+  margin-left: 49%;
+  width: 25vw;
+  height: 5vh;
+  padding: 1% 2%;
+  background-color: white;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.instructor-number:hover {
+  transform: translateY(-0.15em);
+}
+.instructor-bday {
+  position: absolute;
+  top: 0;
+  margin-top: 39%;
+  margin-left: 49%;
+  width: 25vw;
+  height: 5vh;
+  padding: 1% 2%;
+  background-color: white;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.instructor-bday:hover {
+  transform: translateY(-0.15em);
+}
+#instructor-email,
+#instructor-number,
+#instructor-bday {
+  font-size: 1.25vw;
+  font-style: italic;
+  text-align: center;
+}
+#verify-instructor {
+  position: absolute;
+  width: 16vw;
+  margin: 13% 0 0 49%;
+  font-size: 1vw;
+  padding: 1.5% 0;
+  border: none;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  border: 2px solid white;
+}
+#verify-instructor:hover {
+  cursor: pointer;
+  background-color: rgb(148, 7, 7);
+  color: white;
+}
+.request-content {
+  position: absolute;
+  width: 60vw;
+  height: 60vh;
+  margin-top: 13%;
+  margin-left: 0%;
+}
+#request-log {
+  width: 100%;
+}
+#admin-request-label {
+  margin-left: 50.5%;
+}
+table,
+tr,
+th {
+  border-collapse: collapse;
+  border: 0.5px solid black;
+  padding: 2%;
+}
+table {
+  box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+tr:first-child {
+  background-color: #8c0000;
+  color: white;
+}
+#req-list {
+  text-align: center;
+  font-size: 500px;
+  font-weight: bold;
+  font-weight: 100px;
+}

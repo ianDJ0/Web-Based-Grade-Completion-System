@@ -22,7 +22,6 @@ const Sidebar = (props) => {
           <h3 id="site-name">BULSU</h3>
         </div>
         <span
-          //   href="/#"
           id="home-nav"
           className={active === "homepage" ? "active" : ""}
           onClick={() => {
@@ -32,7 +31,6 @@ const Sidebar = (props) => {
           Home
         </span>
         <span
-          //   href="/#"
           id="speak-nav"
           className={active === "announcements" ? "active" : ""}
           onClick={() => {
@@ -42,7 +40,6 @@ const Sidebar = (props) => {
           Announcements
         </span>
         <span
-          //   href={"requests(student).html"}
           id="req-nav"
           className={active === "requests" ? "active" : ""}
           onClick={() => {
@@ -52,7 +49,6 @@ const Sidebar = (props) => {
           Requests
         </span>
         <span
-          //   href="/#"
           id="tutorial-nav"
           className={active === "tutorial" ? "active" : ""}
           onClick={() => {

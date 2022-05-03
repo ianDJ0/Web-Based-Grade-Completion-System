@@ -1,0 +1,57 @@
+.admin-sidebar {
+  position: fixed;
+  width: 12vw;
+  height: 100vh;
+  background-color: #8c0000;
+  overflow: hidden;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  z-index: 2;
+}
+.admin-name-logo {
+  /* margin: 9% 0% 0% 10%; */
+  margin-top: 2em;
+  white-space: nowrap;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#bulsu-logo {
+  width: 28%;
+}
+#admin-site-name {
+  color: white;
+  font-size: 2vw;
+  margin-left: 5%;
+}
+
+.admin-sidebar span {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 1.5vw;
+  padding: 5%;
+}
+.admin-sidebar span:hover {
+  background-color: #862323;
+}
+.admin-sidebar span {
+  width: 100%;
+  text-decoration: none;
+  color: #ffff;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+}
+.admin-sidebar span i {
+  min-width: 1.2em;
+  font-size: 24px;
+  text-align: center;
+  margin-right: 0.3em;
+}
+#nav-dashboard {
+  margin-top: 15vh;
+}

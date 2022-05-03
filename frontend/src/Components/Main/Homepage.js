@@ -3,9 +3,9 @@ import Sidebar from "../UI/Home_UI/Sidebar";
 import TopNav from "../UI/Home_UI/TopNav";
 // import { AuthenticationContext } from "../Shared/context/auth-context";
 import TokenCheck from "../Shared/Auth";
-import "./Homepage.css";
 import Footer from "../UI/Home_UI/Footer/Footer";
 import { useNavigate } from "react-router-dom";
+import "./Homepage.css";
 
 const Homepage = (props) => {
   TokenCheck();

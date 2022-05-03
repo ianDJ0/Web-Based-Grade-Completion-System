@@ -1,0 +1,12 @@
+.card-component {
+  background-color: #8c0000;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+}
+.icon-box i {
+  font-size: 45px;
+  color: #ff8f42;
+}

@@ -1,0 +1,149 @@
+    <!DOCTYPE HTML>
+    <html>
+    <head>
+        <link rel="stylesheet" href="dashboard.css">
+        <link rel=”stylesheet” href=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css” rel=”nofollow” 
+        integrity=”sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm” crossorigin=”anonymous”>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet"href="path/to/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="sidebar">
+                <div class="name-logo">
+                    <img src="https://bit.ly/3rmsS90" id="bulsu-logo">
+                    <h3 id="site-name">BULSU</h3><br>
+                </div>
+            <ul>
+                <li>
+                    <a href = "dashboard(admin).html">
+                        <i class="fa fa-tachometer"></i>
+                        <div class="title"> Dashboard </div>
+                    </a>
+                    <li>
+                        <a href ="instructor.html">
+                            <i class ="fa fa-user"></i>
+                            <div class="title"> Instructors</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href  ="students(admin).html">
+                            <i class ="fa fa-users"></i>
+                            <div class="title"> Students </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href  "#">
+                            <i class ="fa fa-envelope"></i>
+                            <div class="title"> Requests </div>
+                        </a>
+                    </li>
+                </li>
+            </ul>
+            </div>
+            <div class="top-navigation">
+                <input placeholder="Search..." id="search-bar">
+                <button id="search-btn"></button>
+                <img src="Icons/profile.png" id="profile-icon">
+                    <div class="name-type"><a href="#" style="text-decoration: none;">
+                        <p id="user-name">Ms. Admin</p>
+                        <p id="user-type">Admin</p>
+                    </a></div>
+                <img src="Icons/Message.png" id="message-icon">
+                <img src="Icons/Bell.png" id="notify-bell">
+                <img src="Icons/dropdown.png" id="dropdown-icon">
+            </div>
+            <div class="main">
+            <div class="cards">
+                <div class="card">
+                    <div class="card-contend">
+                        <div class="number">100</div>
+                        <div class="card-name">Active Registered Students</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class ="fa fa-users"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-contend">
+                        <div class="number">99</div>
+                        <div class="card-name">Active Registered faculty</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class ="fa fa-user"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-contend">
+                        <div class="number">98</div>
+                        <div class="card-name">Active Pending Requests</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class ="fa fa-envelope-open"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-contend">
+                        <div class="number">97</div>
+                        <div class="card-name">Pending Request</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class ="fa fa-spinner"></i>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-contend">
+                        <div class="number">96</div>
+                        <div class="card-name">Instructors to be Verified</div>
+                    </div>
+                    <div class="icon-box">
+                        <i class ="fa fa-user-circle"></i>
+                    </div>
+                </div>
+            </div>
+            <h2 id="list-label">REQUEST LIST</h2>
+            <div class="list-content">
+                <table id="log">
+                        <tr id="list-label">
+                            <th>Requested By</th>
+                            <th>Requested To</th>
+                            <th>Subject Code</th>
+                            <th>Subject Description</th>
+                            <th>Date Requested</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                            <th>Student 1</th>
+                            <th>Mr. Aaron Paul M. Dela Rosa</th>
+                            <th>IT 404</th>
+                            <th>Internship</th>
+                            <th>April 22, 2022</th>
+                            <th>Requested</th>
+                        </tr>
+                        <tr>
+                            <th>Student 2</th>
+                            <th>John Doe</th>
+                            <th>CAP 401</th>
+                            <th>Capstone</th>
+                            <th>March 27, 2022</th>
+                            <th>Submitted</th>
+                        </tr>
+                        <tr>
+                            <th>Student 3</th>
+                            <th>Sample Prof</th>
+                            <th>SAMP 301</th>
+                            <th>Sample</th>
+                            <th>October 14, 2021</th>
+                            <th>On Process</th>
+                        </tr>
+                       
+                </table>
+            </div>
+
+            </div>
+        </div>
+        
+    </body>

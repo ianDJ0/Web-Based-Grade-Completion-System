@@ -1,0 +1,21 @@
+.admin-request-content {
+  position: absolute;
+  width: 60vw;
+  min-height: 60vh;
+  margin-top: 2em;
+}
+.admin-request-content table {
+  background-color: #fff;
+}
+.admin-request-content p {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0.5em;
+}
+#request-log {
+  width: 100%;
+}
+/* #request-label {
+  margin-left: 50.5%;
+} */

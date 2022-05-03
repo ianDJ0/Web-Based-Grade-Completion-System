@@ -1,0 +1,25 @@
+#instructor-img {
+  /* margin: 7% 0 0 9%; */
+  margin-top: 6em;
+  margin-bottom: 1em;
+  margin-left: 8em;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 12px solid white;
+}
+#instructor-name {
+  font-size: 2vw;
+  margin: 1em 3em;
+  width: 15vw;
+  text-align: center;
+}
+#instructor-college {
+  text-align: center;
+  width: 20vw;
+  margin: 1em 3em;
+  font-size: 1vw;
+  font-style: italic;
+  text-align: center;
+}

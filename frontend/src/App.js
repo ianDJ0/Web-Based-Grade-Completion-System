@@ -4,7 +4,6 @@ import Homepage from "./Components/Main/Homepage";
 import Login from "./Components/LogReg/Login/Login";
 import Register from "./Components/LogReg/Register/Register";
 import RegisterFull from "./Components/LogReg/Register/RegisterFull";
-import "./App.css";
 import Request from "./Components/Main/Request/Request";
 import { AuthenticationContext } from "./Components/Shared/context/auth-context";
 import jwtDecode from "jwt-decode";
@@ -16,6 +15,12 @@ import RequestForm from "./Components/Main/Request/RequestForm";
 import ChangePassword from "./Components/Main/Profile/Edit/ChangePassword";
 import EditProfile from "./Components/Main/Profile/Edit/EditProfile";
 import TokenCheck from "./Components/Shared/Auth";
+
+import Dashboard from "./Admin/Components/Main/Dashboard";
+import Instructors from "./Admin/Components/Main/Instructors/Instructors";
+import Student from "./Admin/Components/Main/Students/Student";
+import AccountProfile from "./Admin/Components/Main/Profile/AccountProfile";
+import "./App.css";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -63,6 +68,12 @@ function App() {
           <Route path="/account/edit-account" element={<EditProfile />} />
           <Route path="/account/change-password" element={<ChangePassword />} />
           <Route path="*" element={<Navigate to="/" replace />} />
+
+          {/**Admin Routes */}
+          <Route path="/admin/" element={<Dashboard />} />
+          <Route path="/admin/faculty" element={<Instructors />} />
+          <Route path="/admin/student" element={<Student />} />
+          <Route path="/admin/profile" element={<AccountProfile />} />
         </Routes>
       </>
     </AuthenticationContext.Provider>

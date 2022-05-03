@@ -1,0 +1,115 @@
+@import url('navigation.css');
+*{
+    margin: 0%;
+    padding: 0;
+    font-family: sans-serif;
+}
+body{
+    overflow: hidden;
+}
+.container{
+    position: relative;
+    width: 100%;
+
+}
+.sidebar{
+    position: fixed;
+    width: 210px;
+    height: 100%;
+    background-color: #8C0000;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+    z-index: 2;
+}
+.sidebar ul li{
+    width: 100%;
+    list-style: none;
+}
+.sidebar ul li:hover{
+    background-color: #444;
+}
+
+.sidebar ul li:first-child:hover{
+    background-color: none;
+}
+.sidebar ul li:first-child{
+    line-height: 60px;margin-bottom: 20px;
+    border-bottom: 1px solid #fff;
+    margin-top: 80px;
+}
+.sidebar ul li a{
+    width: 100%;
+    text-decoration: none;
+    color: #ffff;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}.sedebar ul li a i{
+    min-width: 60px;
+    font-size: 24px;
+    text-align: center;
+}
+.main{
+    position: absolute;
+    width: cal(100% - 210px);
+    min-height: 100vh;
+    left: 250px;
+ 
+}
+.cards{
+    margin-top: 100px;
+    width: 90%;
+    padding: 35px 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+}
+.cards .card{
+    background-color: #8C0000;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
+}
+.number{
+    font-size: 35px;
+    font-weight: 500;
+    color: #ff8f42;
+}
+.card-name{
+    color: #fff;
+    font-weight: 600;
+}
+.icon-box i{
+font-size: 45px;
+color: #ff8f42;
+}
+.list-content{
+    position: absolute;
+    width: 95%;
+    height: auto;
+    margin-top: 2%;
+    margin-left: 1.5%;
+}
+#log{
+    width: 100%;
+}
+#list-label{
+    margin-left: 2.5%;
+}
+table, tr, th{
+    border-collapse: collapse;
+    border: 0.5px solid black;
+    padding: 2%;
+}
+table{
+    box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+tr:first-child{
+    background-color: #8C0000;
+    color: white;
+}
+
+
