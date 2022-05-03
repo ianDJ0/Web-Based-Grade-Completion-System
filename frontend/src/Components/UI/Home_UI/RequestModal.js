@@ -81,7 +81,7 @@ const RequestModal = (props) => {
             <div className="col-3">
               <div className="snippet">
                 <div className="stage">
-                  <div className="dot-flashing finished-process"></div>
+                  <div className="dot-flashing active-process"></div>
                 </div>
               </div>
             </div>
@@ -89,7 +89,7 @@ const RequestModal = (props) => {
             <div className="col-3">
               <div className="snippet">
                 <div className="stage">
-                  <div className="dot-flashing active-process"></div>
+                  <div className="dot-flashing non-active-process"></div>
                 </div>
               </div>
             </div>

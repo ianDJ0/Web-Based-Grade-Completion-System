@@ -103,7 +103,7 @@ const RequestInfo = (props) => {
         />
       </div>
       <div className="request-info-six">
-        <p htmlFor="request-reason">Reason</p>
+        <p htmlFor="request-reason" id="request-reason-label">Reason</p>
         <input placeholder="Reason" name="request-reason" id="request-reason" onChange={(e) => {
           requestContent.request_Reason = e.target.value
         }} />
