@@ -10,6 +10,10 @@ const checkAuth = require('../middleware/Authentication');
 router.post('/studentRequest', requestController.getRequestForStudent);
 router.post('/facultyRequest', requestController.getRequestForFaculty);
 
+//should add headertoken for admin access
+router.post('/admin/getRequests', requestController.adminGetRequests);
+
+
 router.use(checkAuth)
 router.post('/studentCreateRequest'
 ,

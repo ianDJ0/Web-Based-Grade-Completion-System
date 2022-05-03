@@ -3,8 +3,10 @@ import TopNav from "../../UI/TopNav";
 import Body from "../../UI/Containers/Body";
 import "../../UI/Shared.css";
 import "./Instructors.css";
-
+import axios from "axios";
+import { useState } from "react";
 const Instructors = () => {
+  const [instructor,setIntructor] = useState();
   return (
     <>
       <Sidebar />

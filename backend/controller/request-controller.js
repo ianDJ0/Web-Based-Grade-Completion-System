@@ -25,8 +25,8 @@ const studentCreateRequest = async (req, res) => {
     //         .json({ message: "Invalid inputs please enter the proper fields" });
     // }
     const userData = JSON.parse(JSON.stringify(res.locals.user.userData));
-    if(userData.userType !=="Student"){
-        return res.status(403).json({message: "Requesting with invalid user type"})
+    if (userData.userType !== "Student") {
+        return res.status(403).json({ message: "Requesting with invalid user type" })
     }
     let studentRequest;
     studentRequest = new requestModel({
@@ -49,7 +49,7 @@ const studentCreateRequest = async (req, res) => {
             studentNumber: req.body.studentNumber,
             studentYearAndSection: req.body.studentYearAndSection
         },
-        status:"REQUESTED"
+        status: "REQUESTED"
     })
     console.log(studentRequest);
     let result
@@ -70,31 +70,31 @@ const instructorRespondRequest = async (req, res) => {
             .json({ message: "Invalid inputs please enter the proper fields" });
     }
     const userData = JSON.parse(JSON.stringify(res.locals.user.userData));
-    if(userData.userType !=="Faculty"){
-        return res.status(403).json({message: "Requesting with invalid user type"})
+    if (userData.userType !== "Faculty") {
+        return res.status(403).json({ message: "Requesting with invalid user type" })
     }
 
     let instructorUpdate;
-    let insructorStatus = parseFloat(req.body.grade)<=3?"SUBMITTED":"DENIED";
-        
-    
-    try{
+    let insructorStatus = parseFloat(req.body.grade) <= 3 ? "SUBMITTED" : "DENIED";
+
+
+    try {
         instructorUpdate = await requestModel
-        .findByIdAndUpdate(req.body.requestID,{ 
-            grade: req.body.grade,
-            status: insructorStatus,
-            "$set":{"dateLog.dateInstructor":Date.now(), "signature.instructorSignature":req.body.instructorSignature},
-        },{returnOriginal: false})
-        .exec();
-    }catch(err){
+            .findByIdAndUpdate(req.body.requestID, {
+                grade: req.body.grade,
+                status: insructorStatus,
+                "$set": { "dateLog.dateInstructor": Date.now(), "signature.instructorSignature": req.body.instructorSignature },
+            }, { returnOriginal: false })
+            .exec();
+    } catch (err) {
         return res
-        .status(422)
-        ,json(err)
+            .status(422)
+            , json(err)
     }
     return res.status(201).json(instructorUpdate);
 }
 
-const officeRespondRequest = async (req,res)=>{
+const officeRespondRequest = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         console.log(errors);
@@ -103,91 +103,111 @@ const officeRespondRequest = async (req,res)=>{
             .json({ message: "Invalid inputs please enter the proper fields" });
     }
     const userData = JSON.parse(JSON.stringify(res.locals.user.userData));
-    if(userData.userType !=="Admin"){
-        return res.status(403).json({message: "Requesting with invalid user type"})
+    if (userData.userType !== "Admin") {
+        return res.status(403).json({ message: "Requesting with invalid user type" })
     }
     let officeUpdate;
     // let today = new Date();
     // let dd = today.getDate();
     // let mm = today.toLocaleString('default', { month: 'long' });
     // var yyyy = today.getFullYear();
-    try{
+    try {
         const d = new Date();
         d.setDate(d.getDate() + 14);
         officeUpdate = await requestModel
-        .findByIdAndUpdate(req.body.requestID,{
-            status:"ON PROCESS",
-            "$set":{"dateLog.dateOffice":Date.now(), "dateLog.dateProccessed":d, "signature.officeSignature":req.body.officeSignature},
-        },{returnOriginal: false})
-        .exec();
-    }catch(err){
+            .findByIdAndUpdate(req.body.requestID, {
+                status: "ON PROCESS",
+                "$set": { "dateLog.dateOffice": Date.now(), "dateLog.dateProccessed": d, "signature.officeSignature": req.body.officeSignature },
+            }, { returnOriginal: false })
+            .exec();
+    } catch (err) {
         return res
-        .status(422)
-        .json(err)
+            .status(422)
+            .json(err)
     }
     return res.status(201).json(officeUpdate);
 }
 //Get Requests for List Display
-const getRequestForStudent = async (req, res)=>{
-    let searchFilter={'student.studentID':req.body.uID};
+const getRequestForStudent = async (req, res) => {
+    let searchFilter = { 'student.studentID': req.body.uID };
 
-    if(req.body.requestStatus){
-        newStatus = {'status':req.body.requestStatus}
-        searchFilter= Object.assign(newStatus,searchFilter)
+    if (req.body.requestStatus) {
+        newStatus = { 'status': req.body.requestStatus }
+        searchFilter = Object.assign(newStatus, searchFilter)
     }
-    if(req.body.requestToDate){
-        newToDate = {'dateLog.dateStudent':{'$gte':req.body.requestToDate}}
-        searchFilter= Object.assign(newToDate,searchFilter)
+    if (req.body.requestToDate) {
+        newToDate = { 'dateLog.dateStudent': { '$gte': req.body.requestToDate } }
+        searchFilter = Object.assign(newToDate, searchFilter)
     }
-    if(req.body.requestFromDate){
-        newFromDate = {'dateLog.dateStudent':{'$lte':req.body.requestFromDate}}
-        searchFilter= Object.assign(newFromDate,searchFilter)
+    if (req.body.requestFromDate) {
+        newFromDate = { 'dateLog.dateStudent': { '$lte': req.body.requestFromDate } }
+        searchFilter = Object.assign(newFromDate, searchFilter)
     }
 
     let getRequestStudent
-    try{
+    try {
         getRequestStudent = await requestModel
-        .find(searchFilter);
-    }catch(err){
+            .find(searchFilter);
+    } catch (err) {
         return res
-        .status(422)
-        .json({error: err, message:"Search Failed"})
+            .status(422)
+            .json({ error: err, message: "Search Failed" })
     }
     return res.status(202).json(getRequestStudent);
 }
 
-const getRequestForFaculty = async (req, res)=>{
-    let searchFilter={'instructor.instructorID':req.body.uID};
-
-    if(req.body.requestStatus){
-        newStatus = {'status':req.body.requestStatus}
-        searchFilter= Object.assign(newStatus,searchFilter)
+const getRequestForFaculty = async (req, res) => {
+    let searchFilter = { 'instructor.instructorID': req.body.uID };
+    if (req.body.requestStatus) {
+        newStatus = { 'status': req.body.requestStatus }
+        searchFilter = Object.assign(newStatus, searchFilter)
     }
-    if(req.body.requestToDate){
-        newToDate = {'dateLog.dateStudent':{'$gte':req.body.requestToDate}}
-        searchFilter= Object.assign(newToDate,searchFilter)
+    if (req.body.requestToDate) {
+        newToDate = { 'dateLog.dateStudent': { '$gte': req.body.requestToDate } }
+        searchFilter = Object.assign(newToDate, searchFilter)
     }
-    if(req.body.requestFromDate){
-        newFromDate = {'dateLog.dateStudent':{'$lte':req.body.requestFromDate}}
-        searchFilter= Object.assign(newFromDate,searchFilter)
+    if (req.body.requestFromDate) {
+        newFromDate = { 'dateLog.dateStudent': { '$lte': req.body.requestFromDate } }
+        searchFilter = Object.assign(newFromDate, searchFilter)
     }
-
     let getRequestFaculty
-    try{
+    try {
         getRequestFaculty = await requestModel
-        .find(searchFilter);
-    }catch(err){
+            .find(searchFilter);
+    } catch (err) {
         return res
-        .status(422)
-        .json({error: err, message:"Search Failed"})
+            .status(422)
+            .json({ error: err, message: "Search Failed" })
     }
     return res.status(201).json(getRequestFaculty);
-
 }
+
+const adminGetRequests = async (req, res) => {
+    let getRequestFaculty
+    try {
+        if (req.body.filter) {
+            getRequestFaculty = await requestModel
+                .find({ status: req.body.filter });
+        } else {
+            getRequestFaculty = await requestModel
+                .find();
+        }
+
+    } catch (err) {
+        return res
+            .status(422)
+            .json({ error: err, message: "Search Failed" })
+    }
+    return res.status(201).json(getRequestFaculty);
+}
+
+
 
 exports.getRequestForFaculty = getRequestForFaculty;
 exports.getRequestForStudent = getRequestForStudent;
 exports.studentCreateRequest = studentCreateRequest;
 exports.instructorRespondRequest = instructorRespondRequest;
-exports.officeRespondRequest = officeRespondRequest; 
+exports.officeRespondRequest = officeRespondRequest;
+
+exports.adminGetRequests = adminGetRequests;
 

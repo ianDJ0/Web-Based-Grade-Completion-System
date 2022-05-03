@@ -10,7 +10,8 @@ const user = new mongoose.Schema({
     studentNumber: { type: String },
     yearAndSection: { type: String },
     birthday: { type: Date},
-    image: { type: String, required: true }
+    image: { type: String, required: true },
+    verified:{ type:Boolean, default:false}
 }, {
     collection: 'User',
     versionKey: false

@@ -1,7 +1,7 @@
 import "./Shared.css";
 import "./RequestList.css";
 
-const RequestList = () => {
+const RequestList = (props) => {
   return (
     <>
       <h2 id="list-label">REQUESTS LIST</h2>
@@ -16,7 +16,19 @@ const RequestList = () => {
               <th>Date Requested</th>
               <th>Status</th>
             </tr>
-            <tr>
+            {props.submittedData &&
+              props.submittedData.map(request => {
+                return <tr key={request._id}>
+                  <th>{request.student.studentFullname}</th>
+                  <th>{request.instructor.instructorName}</th>
+                  <th>{request.subjectCode}</th>
+                  <th>{request.subjectDescription}</th>
+                  <th>{request.dateLog.dateStudent}</th>
+                  <th>{request.status}</th>
+                </tr>
+              })
+            }
+            {/* <tr>
               <th>Student 1</th>
               <th>Mr. Aaron Paul M. Dela Rosa</th>
               <th>IT 404</th>
@@ -39,7 +51,7 @@ const RequestList = () => {
               <th>Sample</th>
               <th>October 14, 2021</th>
               <th>On Process</th>
-            </tr>
+            </tr> */}
           </tbody>
         </table>
       </div>

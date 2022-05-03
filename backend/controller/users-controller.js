@@ -255,6 +255,23 @@ const profilePicture = async(req,res)=>{
   }
   return res.json({ new: userToUpdate.toObject({ getters: true }), token });
 }
+//admin middlewares
+const adminGetVerified = async (req, res, next) => {
+  const allUserType = await userModel
+    .find({
+      userType: "Faculty",
+      verified: false,
+    })
+    .exec();
+  if (allUserType.length == 0) {
+    return res.status(201).json({});
+  }
+  res.json(allUserType);
+};
+
+
+
+
 exports.profilePicture = profilePicture;
 exports.login = login;
 exports.getAllUserByType = getAllUserByType;
@@ -264,3 +281,7 @@ exports.updateUser = updateUser;
 exports.resetPassword = resetPassword;
 exports.checkEmailIfExist = checkEmailIfExist;
 exports.getSingle = getSingle
+
+
+//admin middleware
+exports.adminGetVerified = adminGetVerified;
