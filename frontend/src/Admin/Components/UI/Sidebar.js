@@ -10,7 +10,7 @@ const Sidebar = () => {
         <img
           alt="bulsu-logo"
           src={require("../../../Components/UI/Home_UI/Icons/bulsu-logo.png")}
-          id="bulsu-logo"
+          id="sidebar-bulsu-logo"
         />
         <h3 id="admin-site-name">BULSU</h3>
         <br />

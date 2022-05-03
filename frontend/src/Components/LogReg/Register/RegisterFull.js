@@ -382,7 +382,6 @@ const RegisterFull = (props) => {
               />
             </div>
 
-            {/*Change date picker. IDK, maybe use some bootstrap? */}
             <div className="birth-details">
               <p>Birthdate</p>
               <input
