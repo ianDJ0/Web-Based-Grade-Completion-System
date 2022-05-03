@@ -21,6 +21,7 @@ import Instructors from "./Admin/Components/Main/Instructors/Instructors";
 import Student from "./Admin/Components/Main/Students/Student";
 import AccountProfile from "./Admin/Components/Main/Profile/AccountProfile";
 import "./App.css";
+import AdminRequests from "./Admin/Components/Main/Requests/AdminRequests";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -74,6 +75,7 @@ function App() {
           <Route path="/admin/faculty" element={<Instructors />} />
           <Route path="/admin/student" element={<Student />} />
           <Route path="/admin/profile" element={<AccountProfile />} />
+          <Route path="/admin/request" element={<AdminRequests />} />
         </Routes>
       </>
     </AuthenticationContext.Provider>

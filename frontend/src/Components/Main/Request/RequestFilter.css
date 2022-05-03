@@ -25,7 +25,7 @@
   background-color: white;
   height: auto;
   margin-top: 2%;
-  margin-left: 17.5%;
+  /* margin-left: 17.5%; */
   box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.2);
 }
 .filter-labels {
@@ -37,7 +37,7 @@
   content: "\A";
   white-space: pre;
 }
-#clear-filter{
+#clear-filter {
   border: none;
   margin-left: 3%;
   padding: 1%;
@@ -45,6 +45,6 @@
   background-color: #8c0000;
   color: white;
 }
-#clear-filter:hover{
+#clear-filter:hover {
   background-color: #bd3a3a;
 }

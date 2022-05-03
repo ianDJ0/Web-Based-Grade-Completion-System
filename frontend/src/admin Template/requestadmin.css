@@ -1,0 +1,268 @@
+
+*{
+    margin: 0%;
+    padding: 0;
+    font-family: sans-serif;
+}body{
+    overflow: hidden;
+}
+#bulsu-logo{
+    width: 28%;
+}
+#site-name{
+    color: white;
+    font-size: 2vw;
+    margin-left: 5%;
+}
+.name-logo{
+    margin: 9% 0% 0% 10%;
+    white-space: nowrap;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: #810000;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5vw;
+    padding: 15%;
+}
+.sidebar a:hover{
+    background-color: #862323;
+}
+.active{
+    background-color: #862323;
+}
+#home-nav{
+    margin-top: 50%;
+}
+#tutorial-nav{
+    margin-top: 100%;
+}
+.top-navigation{
+    top: 0;
+    position: absolute;
+    margin-left: 10%;
+    background-color: white;
+    width: 90%;
+    height: 10vh;
+    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
+}
+#search-bar{
+    visibility: hidden;
+    margin-top: 13%;
+    margin-left: 5%;
+    border: none;
+    width: 21%;
+    border-radius: 2em;
+    background-color: #EEEEEE;
+    color: #707070;
+    font-size: 1vw;
+    padding: 1% 2%;
+}
+#search-btn{
+    visibility: hidden;
+    left: 0;
+    position: absolute;
+    margin-left: 27%;
+    margin-top: 13%;
+    background: url('http://www.clker.com/cliparts/9/T/2/h/X/7/search-icon-hi.png') no-repeat;
+    background-size: 60%;
+    background-position: center;
+    border: none;
+    width: 3%;
+    height: 58%;
+    border-top-right-radius: 2em;
+    border-bottom-right-radius: 2em;
+    background-color: #8C0000;
+
+}
+#search-btn:hover{
+    background-color: #A20A0A;
+}
+#profile-icon{
+    position: absolute;
+    width: 4%;
+    margin-left: 42%;
+    margin-top: 0.75%;
+}
+.name-type{
+    position: absolute;
+    top: 0;
+    margin-left: 76%;
+    margin-top: 1.6%;
+}
+#user-name{
+    color: black;
+    font-size: 1.2vw;
+    font-weight: bold;
+}
+#user-type{
+    color: black;
+    font-size: 0.85vw;
+}
+.user-profile{
+    margin-left: auto;
+    position: absolute;
+}
+#message-icon{
+    margin-top: 17px;
+    position: absolute;
+    width: 3%;
+    vertical-align: middle;
+    padding: 0.25% 0.25%;
+    border-radius: 6em;
+    margin-left: 60%;
+}
+#message-icon:hover{
+    background-color: #e2e2e2;
+}
+#notify-bell{
+    position: absolute;
+    width: 1.7%;
+    vertical-align: middle;
+    padding: 0.75% 0.75%;
+    border-radius: 6em;
+    margin-left: 64%;
+    margin-top: 17px;
+}
+#notify-bell:hover{
+    background-color: #e2e2e2;
+}
+#dropdown-icon{
+    position: absolute;
+    width: 1%;
+    padding: 1.25% 1.05%;
+    border-radius: 6em;
+    vertical-align: middle;
+    margin-left: 1.5%;
+    margin-top: 17px;
+    margin-left: 67.5%;
+}
+#dropdown-icon:hover{
+    background-color: #e2e2e2;
+}
+.container{
+    position: relative;
+    width: 100%;
+
+}
+.sidebar{
+    position: fixed;
+    width: 210px;
+    height: 100%;
+    background-color: #8C0000;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+
+    z-index: 2;
+}
+.sidebar ul li{
+    width: 100%;
+    list-style: none;
+}
+.sidebar ul li:hover{
+    background-color: #444;
+}
+
+.sidebar ul li:first-child:hover{
+    background-color: none;
+}
+.sidebar ul li:first-child{
+    line-height: 60px;margin-bottom: 20px;
+    border-bottom: 1px solid #fff;
+    margin-top: 80px;
+}
+.sidebar ul li a{
+    width: 100%;
+    text-decoration: none;
+    color: #ffff;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}.sedebar ul li a i{
+    min-width: 60px;
+    font-size: 24px;
+    text-align: center;
+}
+h2{
+    position: absolute;
+    margin-top: 150px;
+    left: 220px;
+}
+.list-content{
+    position: absolute;
+    width: 80%;
+    height: auto;
+    margin-top: 22%;
+    margin-left: 15.5%;
+}
+#log{
+    width: 100%;
+}
+#request-label{
+    margin-left: 2.5%;
+}
+table, tr, th{
+    border-collapse: collapse;
+    border: 0.5px solid black;
+    padding: 2%;
+}
+table{
+    box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+tr:first-child{
+    background-color: #8C0000;
+    color: white;
+}
+
+.filter-logs{
+    position: absolute;
+    width: 74%;
+    padding: 1% 3% 1% 3%;
+    background-color: white;
+    height: auto;
+    margin-top: 12%;
+    margin-left: 15.5%;
+    box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+.filter-labels{
+    margin-top: 2%;
+    margin-bottom: 0.5%;
+    font-weight: bold;
+}
+.filter-labels::after{
+    content: "\A";
+    white-space: pre;
+}
+#to-label{
+    margin-left: 10.5%;
+}
+#from-label{
+    margin-left: 16%;
+}
+#request-status-dropdown{
+    padding: 1% 5% 1% 1%;
+    margin-bottom: 2%;
+}
+.datepicker{
+    padding: 1%;
+    width: 12%;
+}
+#todate-filter{
+    margin-left: 6%;
+}
+#fromdate-filter{
+    margin-left: 3%;
+}

@@ -2,6 +2,12 @@ import "./Shared.css";
 import "./RequestList.css";
 
 const RequestList = (props) => {
+  const DATE_OPTIONS = {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
   return (
     <>
       <h2 id="list-label">REQUESTS LIST</h2>
@@ -17,17 +23,23 @@ const RequestList = (props) => {
               <th>Status</th>
             </tr>
             {props.submittedData &&
-              props.submittedData.map(request => {
-                return <tr key={request._id}>
-                  <th>{request.student.studentFullname}</th>
-                  <th>{request.instructor.instructorName}</th>
-                  <th>{request.subjectCode}</th>
-                  <th>{request.subjectDescription}</th>
-                  <th>{request.dateLog.dateStudent}</th>
-                  <th>{request.status}</th>
-                </tr>
-              })
-            }
+              props.submittedData.map((request) => {
+                return (
+                  <tr key={request._id}>
+                    <th>{request.student.studentFullname}</th>
+                    <th>{request.instructor.instructorName}</th>
+                    <th>{request.subjectCode}</th>
+                    <th>{request.subjectDescription}</th>
+                    <th>
+                      {new Date(request.dateLog.dateStudent).toLocaleDateString(
+                        "en-US",
+                        DATE_OPTIONS
+                      )}
+                    </th>
+                    <th>{request.status}</th>
+                  </tr>
+                );
+              })}
             {/* <tr>
               <th>Student 1</th>
               <th>Mr. Aaron Paul M. Dela Rosa</th>

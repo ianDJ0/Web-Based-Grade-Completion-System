@@ -63,17 +63,19 @@ const Request = (props) => {
           </button>
         )}
         <h2 id="request-label">REQUEST LOGS</h2>
-        <RequestFilter
-          filterStatus={(newStatus) => {
-            setStatus(newStatus);
-          }}
-          filterToDate={(newToDate) => {
-            setToDate(newToDate);
-          }}
-          filterFromDate={(newFromDate) => {
-            setFromDate(newFromDate);
-          }}
-        />
+        <div className="request-filter-center">
+          <RequestFilter
+            filterStatus={(newStatus) => {
+              setStatus(newStatus);
+            }}
+            filterToDate={(newToDate) => {
+              setToDate(newToDate);
+            }}
+            filterFromDate={(newFromDate) => {
+              setFromDate(newFromDate);
+            }}
+          />
+        </div>
         <div className="request-content">
           <table id="request-log">
             <tbody>

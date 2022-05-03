@@ -3,7 +3,7 @@
   margin: 0%;
 }
 /* this contradicts with the logreg pages' background color */
-.request-body{
+.request-body {
   position: absolute;
   z-index: -1;
   height: 100%;
@@ -38,7 +38,9 @@
   margin-top: 13%;
   margin-left: 17.5%;
 }
-#request-log, .request-content tr, .request-content th{
+#request-log,
+.request-content tr,
+.request-content th {
   border: 0.5px solid black;
   border-collapse: collapse;
   padding: 2%;
@@ -47,4 +49,7 @@
 #request-log tr:first-child {
   background-color: #8c0000;
   color: white;
+}
+.request-filter-center {
+  margin-left: 17.5vw;
 }

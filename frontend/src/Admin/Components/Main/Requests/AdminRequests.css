@@ -1,0 +1,12 @@
+.admin-request-filter {
+  /* border: 1px solid red; */
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5vh;
+}
+/* #admin-request-label {
+  text-align: center;
+  margin-top: 3vh;
+} */

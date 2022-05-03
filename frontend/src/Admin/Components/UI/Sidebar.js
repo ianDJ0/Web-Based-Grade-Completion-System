@@ -46,7 +46,7 @@ const Sidebar = () => {
 
       <span
         onClick={() => {
-          alert("Click");
+          navigate("/admin/request");
         }}
       >
         <i className="fa fa-envelope"></i>
