@@ -11,7 +11,7 @@
 }
 #list-label {
   text-align: center;
-  margin-left: 2.5%;
+  /* margin-left: 2.5%; */
 }
 .list-content tr:first-child {
   background-color: #8c0000;
