@@ -53,6 +53,7 @@ const Register = () => {
     ""
   );
 
+ 
   return (
     <>
       <Logo />

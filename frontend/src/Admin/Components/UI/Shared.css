@@ -6,25 +6,26 @@
   margin-top: 2%;
   margin-left: 1.5%;
 }
-#log {
+.log {
   width: 100%;
 }
 #list-label {
   text-align: center;
   margin-left: 2.5%;
 }
-tr:first-child {
+.list-content tr:first-child {
   background-color: #8c0000;
   color: white;
 }
 
-table,
-tr,
-th {
+.list-content table,
+.list-content tr,
+.log th {
   border-collapse: collapse;
   border: 0.5px solid black;
   padding: 2%;
 }
-table {
+.list-content table,
+.admin-request-content table {
   box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.2);
 }

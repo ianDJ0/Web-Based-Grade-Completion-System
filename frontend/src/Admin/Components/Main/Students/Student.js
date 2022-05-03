@@ -12,7 +12,7 @@ const Student = () => {
       <Body>
         <h2 id="instructor-label">STUDENT LIST</h2>
         <div className="list-content">
-          <table id="log">
+          <table className="log">
             <tbody>
               <tr id="instructor-label">
                 <th>Student Number</th>

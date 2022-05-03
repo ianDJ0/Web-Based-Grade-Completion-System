@@ -6,7 +6,7 @@ const RequestList = () => {
     <>
       <h2 id="list-label">REQUESTS LIST</h2>
       <div className="list-content">
-        <table id="log">
+        <table className="log">
           <tbody>
             <tr id="list-label">
               <th>Requested By</th>

@@ -12,7 +12,7 @@ const Instructors = () => {
       <Body>
         <h2 id="instructor-label">INSTRUCTORS LIST</h2>
         <div className="list-content">
-          <table id="log">
+          <table className="log">
             <tbody>
               <tr id="list-label">
                 <th>Name</th>

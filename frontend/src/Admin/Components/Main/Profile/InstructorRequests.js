@@ -5,7 +5,7 @@ const InstructorRequests = (props) => {
   return (
     <div className="admin-request-content">
       <p>Requests List</p>
-      <table id="request-log">
+      <table id="request-log" className="log">
         <tbody>
           <tr id="admin-request-label">
             <th>Subject Code</th>
