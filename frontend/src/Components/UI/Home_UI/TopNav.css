@@ -164,3 +164,9 @@ li {
   background-color: #cfc6c6;
   width: 88.2%;
 }
+.show {
+  display: block;
+}
+.hide {
+  display: none;
+}

@@ -1,0 +1,45 @@
+.find-instructor {
+  z-index: 1;
+  position: absolute;
+  background-color: #eeeeee;
+  width: 20vw;
+  margin-top: -1.55em;
+  margin-left: 0.1em;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.instructor-suggestions {
+  padding: 0.2em;
+  width: 100%;
+}
+.instructor-suggestions:hover {
+  background-color: #cfc6c6;
+  width: 98%;
+  /* padding: 0; */
+  /* margin-left: -0.1em; */
+  /* width: 100%; */
+}
+.faculty-remove-btn {
+  margin-top: 1%;
+  margin-left: 1%;
+  height: 5vh;
+  border-radius: 1em;
+  border: none;
+  background-color: white;
+  color: #a50c0c;
+  border: 1px solid #a50c0c;
+  font-size: 1em;
+  padding: 1.5% 2%;
+  transition: all 0.5s;
+}
+.faculty-remove-btn:hover {
+  cursor: pointer;
+  color: white;
+  background-color: #a50c0c;
+  transform: translateY(-0.3em);
+}

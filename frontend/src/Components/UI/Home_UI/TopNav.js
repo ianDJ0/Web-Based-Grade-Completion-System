@@ -7,6 +7,7 @@ import { AuthenticationContext } from "../../Shared/context/auth-context";
 import TokenCheck from "../../Shared/Auth";
 const TopNav = (props) => {
   const [query, setQuery] = useState("");
+  const [query2, setQuery2] = useState("");
   const auth = useContext(AuthenticationContext);
   const [search, setSearch] = useState(["User is not Registered"]);
 
@@ -22,6 +23,7 @@ const TopNav = (props) => {
     localStorage.removeItem("token");
     navigate("/");
   };
+  const [suggestionView, setSuggestionView] = useState(false);
 
   return (
     <>
@@ -29,11 +31,20 @@ const TopNav = (props) => {
         <TokenCheck />
         <div className="top-navigation">
           <input
+            onBlur={() => {
+              setQuery(query2);
+              setSuggestionView(false);
+            }}
+            onFocus={() => {
+              setSuggestionView(true);
+            }}
             placeholder="Search for Instructor..."
             id="search-bar"
             value={query}
             onChange={(event) => {
+              if (event.target.value.trim().length > 0) setSuggestionView(true);
               setQuery(event.target.value);
+              setQuery2(event.target.value);
               if (event.target.value.length !== 0)
                 axios
                   .post(`http://localhost:7700/api/users/type`, {
@@ -63,21 +74,26 @@ const TopNav = (props) => {
           />
           {/* dito yung div ng mga searched instructor */}
           {search.length !== 0 && search[0] !== "User is not Registered" && (
-            <p className="suggestion-list">
+            <div
+              className={`suggestion-list ${suggestionView ? "show" : "hide"}`}
+            >
               {search.map((faculty) => {
                 return (
                   <p
                     className="suggestions"
                     key={faculty._id}
-                    onClick={(event) => {
-                      navigate(`/search/${faculty._id}`);
+                    onMouseDown={(event) => {
+                      // navigate(`/search/${faculty._id}`);
+                    }}
+                    onMouseEnter={(e) => {
+                      setQuery(e.target.innerText); //could be remove tbh
                     }}
                   >
                     {faculty.fullName}
                   </p>
                 );
               })}
-            </p>
+            </div>
           )}
           <div className="name-type" onClick={profileHandler}>
             <span>
