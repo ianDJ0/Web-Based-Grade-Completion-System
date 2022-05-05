@@ -2,6 +2,7 @@ const uuid = require("uuid");
 const nodemailer = require("nodemailer");
 const mongoose = require("mongoose");
 const requestModel = require("../models/request-model");
+const notificationModel = require("../models/notification-model");
 const { check, validationResult } = require("express-validator");
 const { find } = require("../models/user-model");
 
@@ -30,7 +31,6 @@ const studentCreateRequest = async (req, res) => {
     }
     let studentRequest;
     studentRequest = new requestModel({
-
         subjectCode: req.body.subject,
         subjectDescription: req.body.subjectDescription,
         incompletePeriod: req.body.incompletePeriod,
@@ -50,15 +50,35 @@ const studentCreateRequest = async (req, res) => {
             studentYearAndSection: req.body.studentYearAndSection
         },
         status: "REQUESTED"
-    })
-    console.log(studentRequest);
+    });
+
+
     let result
     try {
         result = await studentRequest.save();
     } catch (error) {
         return res.json(error);
     }
-    return res.json({ new: result });
+    //generate notification
+    let notification;
+    try{
+        notification = new notificationModel({
+            requestCode: studentRequest._id,
+            contents:`${req.body.studentFullname} has requested grade completion`,
+            updater:{
+                updaterID: mongoose.Types.ObjectId(req.body.studentID),
+                updaterName: req.body.studentFullname,
+            },
+            receiver:{
+                receiverID: mongoose.Types.ObjectId(req.body.instructorID),
+                receiverName: req.body.instructorName,
+            },
+        })
+        await notification.save();
+    }catch(error){
+        return console.log(error);
+    }
+    return res.json({ new: result , notification: notification});
 
 }
 const instructorRespondRequest = async (req, res) => {
@@ -91,6 +111,26 @@ const instructorRespondRequest = async (req, res) => {
             .status(422)
             , json(err)
     }
+
+    let notification;
+    try{
+        notification = new notificationModel({
+            requestCode: req.body.requestID,
+            contents:`${instructorUpdate.instructor.instructorName} has submitted your request to Office`,
+            updater:{
+                updaterID: mongoose.Types.ObjectId(instructorUpdate.instructor.instructorID),
+                updaterName: instructorUpdate.instructor.instructorName,
+            },
+            receiver:{
+                receiverID: mongoose.Types.ObjectId(instructorUpdate.student.studentID),
+                receiverName: instructorUpdate.student.studentFullname,
+            },
+        })
+        await notification.save();
+    }catch(error){
+        return console.log(error);
+    }
+
     return res.status(201).json(instructorUpdate);
 }
 
@@ -125,7 +165,32 @@ const officeRespondRequest = async (req, res) => {
             .status(422)
             .json(err)
     }
+
+    let notification;
+    try{
+        notification = new notificationModel({
+            requestCode: req.body.requestID,
+            contents:`Your Grade Completion Form by the office has been processed!`,
+            receiver:{
+                receiverID: mongoose.Types.ObjectId(officeUpdate.student.studentID),
+                receiverName: officeUpdate.student.studentFullname,
+            },
+        })
+        await notification.save();
+    }catch(error){
+        return console.log(error);
+    }
+
+
+
+
     return res.status(201).json(officeUpdate);
+
+
+
+
+
+
 }
 //Get Requests for List Display
 const getRequestForStudent = async (req, res) => {
