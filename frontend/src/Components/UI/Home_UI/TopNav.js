@@ -19,7 +19,7 @@ const TopNav = (props) => {
   const [dropDown, setDropDown] = useState(false);
 
   const logoutHandler = () => {
-    alert("logout");
+    // alert("logout");
     localStorage.removeItem("token");
     navigate("/");
   };
@@ -65,7 +65,7 @@ const TopNav = (props) => {
               }
             }}
           />
-          <button id="search-btn"></button>
+          {/* <button id="search-btn"></button> */}
           <img
             alt="icon-profile"
             src={require("./Icons/profile.png")}
@@ -83,7 +83,7 @@ const TopNav = (props) => {
                     className="suggestions"
                     key={faculty._id}
                     onMouseDown={(event) => {
-                      // navigate(`/search/${faculty._id}`);
+                      navigate(`/search/${faculty._id}`);
                     }}
                     onMouseEnter={(e) => {
                       setQuery(e.target.innerText); //could be remove tbh

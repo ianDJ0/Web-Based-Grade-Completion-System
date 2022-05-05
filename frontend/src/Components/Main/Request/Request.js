@@ -77,45 +77,51 @@ const Request = (props) => {
           />
         </div>
         <div className="request-content">
-          <table id="request-log">
-            <tbody>
-              <tr>
-                <th>Subject Code</th>
-                <th>Subject Description</th>
-                {auth.userType === "Student" && <th>Instructor</th>}
-                {auth.userType === "Faculty" && <th>Student</th>}
-                <th>Date Requested</th>
-                <th>Status</th>
-              </tr>
-              {list.map((listItem) => {
-                return (
-                  <tr
-                    style={{ cursor: "pointer" }}
-                    key={listItem._id}
-                    onClick={() => {
-                      navigate("/request/form", {
-                        state: { requestItem: listItem },
-                      });
-                    }}
-                  >
-                    <th>{listItem.subjectCode}</th>
-                    <th>{listItem.subjectDescription}</th>
-                    {auth.userType === "Student" ? (
-                      <th>{listItem.instructor.instructorName}</th>
-                    ) : (
-                      <th>{listItem.student.studentFullname}</th>
-                    )}
-                    <th>
-                      {new Date(
-                        listItem.dateLog.dateStudent
-                      ).toLocaleDateString("en-US", DATE_OPTIONS)}
-                    </th>
-                    <th>{listItem.status}</th>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          {list.length > 0 ? (
+            <table id="request-log">
+              <tbody>
+                <tr>
+                  <th>Subject Code</th>
+                  <th>Subject Description</th>
+                  {auth.userType === "Student" && <th>Instructor</th>}
+                  {auth.userType === "Faculty" && <th>Student</th>}
+                  <th>Date Requested</th>
+                  <th>Status</th>
+                </tr>
+                {list.map((listItem) => {
+                  return (
+                    <tr
+                      style={{ cursor: "pointer" }}
+                      key={listItem._id}
+                      onClick={() => {
+                        navigate("/request/form", {
+                          state: { requestItem: listItem },
+                        });
+                      }}
+                    >
+                      <th>{listItem.subjectCode}</th>
+                      <th>{listItem.subjectDescription}</th>
+                      {auth.userType === "Student" ? (
+                        <th>{listItem.instructor.instructorName}</th>
+                      ) : (
+                        <th>{listItem.student.studentFullname}</th>
+                      )}
+                      <th>
+                        {new Date(
+                          listItem.dateLog.dateStudent
+                        ).toLocaleDateString("en-US", DATE_OPTIONS)}
+                      </th>
+                      <th>{listItem.status}</th>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          ) : (
+            <div className="pending-request">
+              <h1>NO {status} REQUEST</h1>
+            </div>
+          )}
         </div>
       </div>
     </>

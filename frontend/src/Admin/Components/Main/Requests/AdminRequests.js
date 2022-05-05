@@ -13,6 +13,8 @@ const AdminRequests = () => {
   const [activeRequest, setActiveRequest] = useState(0);
   const [pendingRequest, setPendingRequest] = useState(0);
   const [verifiedFaculty, setVerfiedFaculty] = useState("0");
+  const [status, setStatus] = useState("");
+  const [entries, setEntries] = useState("all"); //number of entries shown
   useEffect(() => {
     axios
       .all([
@@ -56,20 +58,25 @@ const AdminRequests = () => {
           }
         )
       );
-  });
+  }, [entries]);
+
   return (
     <>
       <Sidebar />
       <TopNav />
       <Body>
         <div className="admin-request-filter">
-          <RequestFilter />
+          <RequestFilter
+            filterOn={true}
+            entries={(entry) => setEntries(entry)}
+            filterStatus={(newStatus) => setStatus(newStatus)}
+          />
         </div>
         {pendingRequest.length > 0 ? (
-          <RequestList submittedData={pendingRequest} />
+          <RequestList submittedData={pendingRequest} entries={entries} />
         ) : (
           <div className="pending-request">
-            <h1>NO PENDING REQUEST</h1>
+            <h1>NO {status} REQUEST</h1>
           </div>
         )}
       </Body>

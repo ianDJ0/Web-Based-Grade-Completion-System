@@ -48,3 +48,12 @@
 #clear-filter:hover {
   background-color: #bd3a3a;
 }
+
+#entry-label {
+  margin-left: 15%;
+}
+#filter-entry-dropdown {
+  padding: 1.2% 5% 1% 1%;
+  margin-bottom: 2%;
+  margin-left: 4em;
+}
