@@ -3,7 +3,6 @@ import React, {
   useState,
   useContext,
   useRef,
-  Component,
 } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -77,7 +76,7 @@ const RegisterFull = (props) => {
     }
   }, [isValid, navigate, auth]);
 
-  var formData = new FormData();
+  const [formData, setFormData] = useState(new FormData());
 
   const submitRegistrationHandler = (event) => {
     event.preventDefault();
@@ -91,7 +90,6 @@ const RegisterFull = (props) => {
       formData.append("registerBirthday", birthday);
 
       if (acctType === "Faculty") {
-        console.log("axios", formData.get("image"));
         axios
           .post("http://localhost:7700/api/users/signup", formData)
           .then(function (response) {
@@ -107,7 +105,6 @@ const RegisterFull = (props) => {
             setIsValid(true);
           })
           .catch(function (error) {
-            console.log(formData.get("image"));
             alert(error);
           });
       } else {
@@ -143,16 +140,11 @@ const RegisterFull = (props) => {
       signature = "";
     }
   };
-  let signaturePad;
-  useEffect(() => {
-    // will edit this, signaturepad's value will be gone everytime you changed something in the regFull form
-    // this will only work if you added the signature after inputting all the other required fields
-    let canvas = document.getElementById("signature-pad");
-    signaturePad = new SignaturePad(canvas, {
-      backgroundColor: "rgb(255, 255, 255)",
-    });
-  }, [formData]);
 
+  const canvas = document.getElementById("signature-pad");
+  const signaturePad = new SignaturePad(canvas, {
+    backgroundColor: "rgb(255, 255, 255)",
+  });
   //https://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
   function dataURItoBlob(dataURI) {
     var byteString;
@@ -160,8 +152,6 @@ const RegisterFull = (props) => {
       byteString = atob(dataURI.split(",")[1]);
     else byteString = unescape(dataURI.split(",")[1]);
     var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
-
-    // write the bytes of the string to a typed array
     var ia = new Uint8Array(byteString.length);
     for (var i = 0; i < byteString.length; i++) {
       ia[i] = byteString.charCodeAt(i);
@@ -425,8 +415,9 @@ const RegisterFull = (props) => {
                     }
                     let data = signaturePad.toDataURL("image/png");
                     let blob = dataURItoBlob(data);
+                    console.log(signaturePad.toDataURL("image/png"));
                     formData.append("image", blob);
-                    console.log(formData.get("image"));
+                    // console.log('FORMDATA'.formData.get("image"));
                   }}
                 />
                 <input
@@ -445,7 +436,6 @@ const RegisterFull = (props) => {
               type="button"
               onClick={() => setVisible(!visible)}
               value={visible ? "Hide Signature Pad" : "Show Signature Pad"}
-              // value="Show/Hide Signature Pad"
             />
             <input
               id="signature"
@@ -457,7 +447,7 @@ const RegisterFull = (props) => {
               onChange={(event) => {
                 formData.delete("image");
                 formData.append("image", event.target.files[0]);
-                console.log(formData.get("image"));
+                console.log('Insert signature', formData.get("image"));
               }}
             />
             <br />
