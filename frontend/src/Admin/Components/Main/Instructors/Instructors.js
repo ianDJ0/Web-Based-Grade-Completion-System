@@ -5,8 +5,10 @@ import "../../UI/Shared.css";
 import "./Instructors.css";
 import axios from "axios";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 const Instructors = () => {
-  const [instructor,setIntructor] = useState();
+
+  axios.post()
   return (
     <>
       <Sidebar />

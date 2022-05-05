@@ -83,7 +83,7 @@ const TopNav = (props) => {
                     className="suggestions"
                     key={faculty._id}
                     onMouseDown={(event) => {
-                      // navigate(`/search/${faculty._id}`);
+                      navigate(`/search/${faculty._id}`);
                     }}
                     onMouseEnter={(e) => {
                       setQuery(e.target.innerText); //could be remove tbh
