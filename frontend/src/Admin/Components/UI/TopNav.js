@@ -12,7 +12,9 @@ const TopNav = () => {
   const [message, setMessages] = useState(false);
 
   const tokenContent = jwtDecode(localStorage.getItem('token'));
-
+  if(tokenContent.user!== "Admin"){
+    navigate('/homepage');
+  }
 
   return (
     <div className="admin-top-navigation">
