@@ -6,7 +6,9 @@ const TopNav = () => {
   document.body.style = "background: white";
 
   const tokenContent = jwtDecode(localStorage.getItem('token'));
-
+  if(tokenContent.user!== "Admin"){
+    navigate('/homepage');
+  }
 
   return (
     <div className="admin-top-navigation">
