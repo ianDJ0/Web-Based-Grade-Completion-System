@@ -3,13 +3,17 @@ import { useNavigate } from "react-router-dom";
 import Logout from "../../../Components/UI/Home_UI/Logout";
 import Notifications from "../../../Components/UI/Home_UI/Notifications";
 import "./TopNav.css";
-
+import jwtDecode from "jwt-decode";
 const TopNav = () => {
   const navigate = useNavigate();
   document.body.style = "background: white";
   const [showNotif, setShowNotif] = useState(false);
   const [dropDown, setDropDown] = useState(false);
   const [message, setMessages] = useState(false);
+
+  const tokenContent = jwtDecode(localStorage.getItem('token'));
+
+
   return (
     <div className="admin-top-navigation">
       <h1 className="title-message">Grade Completion System</h1>
@@ -21,7 +25,7 @@ const TopNav = () => {
         />
         <div className="admin-name-type">
           <span style={{ textDecoration: "none" }}>
-            <p id="admin-user-name">Ms. Admin</p>
+            <p id="admin-user-name">{tokenContent.user.fullName}</p>
             <p id="admin-user-type">Admin</p>
           </span>
         </div>
