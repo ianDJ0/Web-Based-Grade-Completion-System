@@ -52,7 +52,8 @@ const TopNav = () => {
       />
       <img
         onClick={() => {
-          alert("Click");
+          localStorage.removeItem('token')
+          navigate("/");
         }}
         alt="dropdown-icon"
         src={require("../../../Components/UI/Home_UI/Icons/dropdown.png")}

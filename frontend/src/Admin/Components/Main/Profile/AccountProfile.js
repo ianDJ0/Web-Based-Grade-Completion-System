@@ -6,7 +6,7 @@ import "./AccountProfile.css";
 import InstructorRequests from "./InstructorRequests";
 import StudentRequests from "./StudentRequests";
 import { useLocation } from "react-router-dom";
-
+import Swal from "sweetalert2";
 const AccountProfile = () => {
   const {state}= useLocation();
   return (
