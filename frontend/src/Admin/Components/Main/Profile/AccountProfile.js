@@ -5,9 +5,10 @@ import TopNav from "../../UI/TopNav";
 import "./AccountProfile.css";
 import InstructorRequests from "./InstructorRequests";
 import StudentRequests from "./StudentRequests";
+import { useLocation } from "react-router-dom";
 
 const AccountProfile = () => {
-  const accountType = "faculty";
+  const {state}= useLocation();
   return (
     <>
       <Sidebar />
@@ -15,34 +16,34 @@ const AccountProfile = () => {
       <Body>
         <div className="instructor-profile">
           <div id="bulsu-header">
-            {accountType === "faculty" ? (
+            {state.user.userType === "Faculty" ? (
               <button id="verify-instructor"> Verify Instructor</button>
             ) : null}
 
             <Profile
-              name={"Aaron Paul Dela Rosa"}
-              img={require("../../../../Components/UI/Home_UI/Icons/image-wallpaper-15.jpg")}
+              name={state.user.fullName}
+              img={state.user.profilePicture?`http://localhost:7700/${state.user.profilePicture}`:require("../../../../Components/UI/Home_UI/Icons/image-wallpaper-15.jpg")}
               college={"College of Information and Communications Technology"}
             />
 
             <div className="instructor-email">
               <p>Email</p>
-              <p id="instructor-email">delarosa@gmail.com</p>
+              <p id="instructor-email">{state.user.email}</p>
             </div>
             <div className="instructor-number">
               <p>Contact Number</p>
-              <p id="instructor-number">09123456789</p>
+              <p id="instructor-number">{state.user.contactNumber}</p>
             </div>
             <div className="instructor-bday">
               <p>Birthday</p>
-              <p id="instructor-bday">January 1, 1968</p>
+              <p id="instructor-bday">{state.user.birthday}</p>
             </div>
 
             {/** */}
-            {accountType === "faculty" ? (
-              <InstructorRequests intructor={"instructor name"} />
+            {state.user.userType === "Faculty" ? (
+              <InstructorRequests intructor={state.user._id} />
             ) : (
-              <StudentRequests student={"student name"} />
+              <StudentRequests student={state.user._id} />
             )}
           </div>
         </div>

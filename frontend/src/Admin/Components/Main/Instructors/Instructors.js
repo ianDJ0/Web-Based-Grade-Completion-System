@@ -5,27 +5,25 @@ import "../../UI/Shared.css";
 import "./Instructors.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Instructors = () => {
-  const {state} = useLocation();
+  const navigate = useNavigate();
   const [searchInstructor, setSearchInstructor] = useState('');
-  const [isVerified, setIsverified]= useState('');
+  const [isVerified, setIsverified] = useState('');
   const [instructors, setInstructors] = useState([]);
-  if(state){
-    setIsverified(false);
-  }
-  useEffect(()=>{
-    axios.post('http://localhost:7700/api/users/type',{
-      uType:'Faculty',
-      findInName:searchInstructor,
-      verified: isVerified, 
-    }).then((response)=>{
+
+  useEffect(() => {
+    axios.post('http://localhost:7700/api/users/type', {
+      uType: 'Faculty',
+      findInName: searchInstructor,
+      verified: isVerified,
+    }).then((response) => {
       setInstructors(response.data)
-    }).catch((error)=>{
+    }).catch((error) => {
       alert(error);
     })
-  },[searchInstructor, isVerified])
-  
+  }, [searchInstructor, isVerified])
+
   return (
     <>
       <Sidebar />
@@ -41,16 +39,19 @@ const Instructors = () => {
                 <th>Contact Number</th>
                 <th>Status</th>
               </tr>
-              {instructors.length>0 &&
+              {instructors.length > 0 &&
                 instructors.map((instructor) => {
                   return (
-                    <tr key={instructor._id} onClick={()=>{
-                      //nevigate to profile page
-                    }}>
+                    <tr key={instructor._id} onClick={() => {
+                      navigate("/admin/profile", {
+                        state: { user: instructor },
+                      })
+                    }
+                    }>
                       <th>{instructor.fullName}</th>
                       <th>{instructor.email}</th>
                       <th>{instructor.contactNumber}</th>
-                      <th>{instructor.verified?"Verified":"Unverified"}</th>
+                      <th>{instructor.verified ? "Verified" : "Unverified"}</th>
                     </tr>
                   );
                 })
