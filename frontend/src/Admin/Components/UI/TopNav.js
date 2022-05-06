@@ -1,9 +1,15 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Logout from "../../../Components/UI/Home_UI/Logout";
+import Notifications from "../../../Components/UI/Home_UI/Notifications";
 import "./TopNav.css";
 
 const TopNav = () => {
   const navigate = useNavigate();
   document.body.style = "background: white";
+  const [showNotif, setShowNotif] = useState(false);
+  const [dropDown, setDropDown] = useState(false);
+  const [message, setMessages] = useState(false);
   return (
     <div className="admin-top-navigation">
       <input
@@ -36,7 +42,9 @@ const TopNav = () => {
       </span>
       <img
         onClick={() => {
-          alert("Click");
+          setDropDown(false);
+          setShowNotif(false);
+          setMessages((state) => !state);
         }}
         alt="message-icon"
         src={require("../../../Components/UI/Home_UI/Icons/Message.png")}
@@ -44,20 +52,26 @@ const TopNav = () => {
       />
       <img
         onClick={() => {
-          alert("Click");
+          setDropDown(false);
+          setShowNotif((state) => !state);
+          setMessages(false);
         }}
         alt="notif-icon"
         src={require("../../../Components/UI/Home_UI/Icons/Bell.png")}
         id="admin-notify-bell"
       />
+      {showNotif && <Notifications />}
       <img
         onClick={() => {
-          alert("Click");
+          setDropDown((state) => !state);
+          setShowNotif(false);
+          setMessages(false);
         }}
         alt="dropdown-icon"
         src={require("../../../Components/UI/Home_UI/Icons/dropdown.png")}
         id="admin-dropdown-icon"
       />
+      {dropDown && <Logout admin={true} />}
     </div>
   );
 };

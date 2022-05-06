@@ -102,6 +102,7 @@
 
 /* For Dropdown Top Nav */
 .dropdown-content {
+  z-index: 1;
   position: absolute;
   right: 0;
   margin-top: 0.61%;

@@ -1,10 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../Shared/Shared.css";
 import "./TopNav.css";
 import { AuthenticationContext } from "../../Shared/context/auth-context";
 import TokenCheck from "../../Shared/Auth";
+import Notifications from "./Notifications";
+import Logout from "./Logout";
 const TopNav = (props) => {
   const [query, setQuery] = useState("");
   const [query2, setQuery2] = useState("");
@@ -15,15 +17,18 @@ const TopNav = (props) => {
   const profileHandler = () => {
     navigate("/profile");
   };
-
   const [dropDown, setDropDown] = useState(false);
+  const [showNotif, setShowNotif] = useState(false);
+  const [messages, setMessages] = useState(false);
 
-  const logoutHandler = () => {
-    // alert("logout");
-    localStorage.removeItem("token");
-    navigate("/");
-  };
   const [suggestionView, setSuggestionView] = useState(false);
+
+  // const notifRef = useRef();
+  // const dropRef = useRef();
+  // useEffect(() => {
+  //   if (showNotif) notifRef.current.focus();
+  //   if (dropRef) dropRef.current.focus();
+  // }, [showNotif, dropDown]);
 
   return (
     <>
@@ -106,43 +111,59 @@ const TopNav = (props) => {
             alt="icon-message"
             src={require("./Icons/Message.png")}
             id="message-icon"
+            onClick={() => {
+              setMessages((prev) => !prev);
+              setDropDown(false);
+              setShowNotif(false);
+            }}
           />
           <img
             alt="icon-notification"
             src={require("./Icons/Bell.png")}
             id="notify-bell"
+            onClick={() => {
+              setShowNotif((prev) => !prev);
+              setDropDown(false);
+              setMessages(false);
+            }}
           />
+          {showNotif && <Notifications />}
           <img
             alt="icon-dropdown"
             src={require("./Icons/dropdown.png")}
             id="dropdown-icon"
             onClick={() => {
               setDropDown((prevState) => !prevState);
+              setShowNotif(false);
             }}
           />
 
           {dropDown && (
-            <div className="dropdown-content">
-              <li
-                onClick={() => {
-                  alert("I click");
-                }}
-              >
-                <span id="edit-profile-nav">Edit Profile </span>
-                <i
-                  className="fa fa-pencil-square-o edit-profile-icon space"
-                  aria-hidden="true"
-                ></i>
-              </li>
-              <hr />
-              <li onClick={logoutHandler}>
-                <span id="logout-profile">Logout </span>
-                <i
-                  className="fa fa-sign-out logout-icon space"
-                  aria-hidden="true"
-                ></i>
-              </li>
-            </div>
+            <Logout admin={false} />
+            // <div
+            //   className="dropdown-content"
+            //   // ref={dropRef}
+            // >
+            //   <li
+            //     onClick={() => {
+            //       navigate("/account/edit-account");
+            //     }}
+            //   >
+            //     <span id="edit-profile-nav">Edit Profile </span>
+            //     <i
+            //       className="fa fa-pencil-square-o edit-profile-icon space"
+            //       aria-hidden="true"
+            //     ></i>
+            //   </li>
+            //   <hr />
+            //   <li onClick={logoutHandler}>
+            //     <span id="logout-profile">Logout </span>
+            //     <i
+            //       className="fa fa-sign-out logout-icon space"
+            //       aria-hidden="true"
+            //     ></i>
+            //   </li>
+            // </div>
           )}
         </div>
       </AuthenticationContext.Provider>
