@@ -269,7 +269,10 @@ const adminGetVerified = async (req, res, next) => {
   res.json(allUserType);
 };
 
-
+const adminVerifyFaculty = async(req,res)=>{
+  const user = await userModel.findByIdAndUpdate(req.body.userID,{verified: true});
+  return res.json(user);
+}
 
 
 exports.profilePicture = profilePicture;

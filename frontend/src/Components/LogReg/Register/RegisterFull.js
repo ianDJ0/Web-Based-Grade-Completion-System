@@ -140,11 +140,13 @@ const RegisterFull = (props) => {
       signature = "";
     }
   };
-
-  const canvas = document.getElementById("signature-pad");
-  const signaturePad = new SignaturePad(canvas, {
-    backgroundColor: "rgb(255, 255, 255)",
-  });
+  let signaturePad
+  useEffect(() => {
+    const canvas = document.getElementById("signature-pad");
+    signaturePad = new SignaturePad(canvas, {
+      backgroundColor: "rgb(255, 255, 255)",
+    });
+  })
   //https://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
   function dataURItoBlob(dataURI) {
     var byteString;
@@ -417,7 +419,6 @@ const RegisterFull = (props) => {
                     let blob = dataURItoBlob(data);
                     console.log(signaturePad.toDataURL("image/png"));
                     formData.append("image", blob);
-                    // console.log('FORMDATA'.formData.get("image"));
                   }}
                 />
                 <input
