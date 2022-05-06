@@ -1,13 +1,12 @@
-import axios from "axios";
 import Sidebar from "../UI/Sidebar";
 import Card from "../UI/Containers/Card";
 import RequestList from "../UI/RequestList";
 import TopNav from "../UI/TopNav";
 import Body from "../UI/Containers/Body";
 import "./Dashboard.css";
+import axios from "axios";
 
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 
 const Dashboard = () => {
   const [registeredStudent, setRegisteredStudent] = useState(0);
@@ -17,72 +16,31 @@ const Dashboard = () => {
   const [verifiedFaculty, setVerfiedFaculty] = useState("0");
 
   useEffect(() => {
-    axios
-      .all([
-        axios.post("http://localhost:7700/api/users/type", {
-          uType: "Student",
-          findInName: "",
-        }),
-        axios.post("http://localhost:7700/api/users/type", {
-          uType: "Faculty",
-          findInName: "",
-        }),
-        axios.post("http://localhost:7700/api/request/admin/getRequests", {}),
-        axios.post("http://localhost:7700/api/request/admin/getRequests", {
-          filter: "SUBMITTED",
-        }),
-        axios.post("http://localhost:7700/api/users/admin/verified", {}),
-      ])
-      .then(
-        axios.spread(
-          (
-            getStudentNo,
-            getFacultyNo,
-            getRequestNo,
-            getSubmittedNo,
-            getVerified
-          ) => {
-            setRegisteredStudent(
-              getStudentNo.data ? getStudentNo.data.length : "0"
-            );
-            setRegisteredFaculty(
-              getFacultyNo.data ? getFacultyNo.data.length : "0"
-            );
-            setActiveRequest(
-              getRequestNo.data ? getRequestNo.data.length : "0"
-            );
-            setPendingRequest(getSubmittedNo.data);
-            setVerfiedFaculty(
-              !getVerified.data.length ? "0" : getVerified.data.length
-            );
-            console.log("getverified", getVerified.data.length);
-          }
-        )
-      );
-  }, []);
-  // axios.post('http://localhost:7700/api/users/type', {
-  //   uType: "Faculty",
-  //   findInName: ""
-  // }).then((response) => {
-  //   setRegisteredFaculty(response.data.length);
-  // }).catch((error) => {
-  //   alert(error)
-  // })
-
-  // axios.post('http://localhost:7700/api/request/admin/getRequests', {
-  // }).then((response) => {
-  //   setActiveRequest(response.data.length);
-  // }).catch((error) => {
-  //   alert(error)
-  // })
-
-  // axios.post('http://localhost:7700/api/request/admin/getRequests', {
-  //   filter: "SUBMITTED"
-  // }).then((response) => {
-  //   setPendingRequest(response.data.length);
-  // }).catch((error) => {
-  //   alert(error)
-  // })
+    axios.all([
+      axios.post('http://localhost:7700/api/users/type', {
+        uType: "Student",
+        findInName: ""
+      }),
+      axios.post('http://localhost:7700/api/users/type', {
+        uType: "Faculty",
+        findInName: ""
+      }),
+      axios.post('http://localhost:7700/api/request/admin/getRequests', {
+      }),
+      axios.post('http://localhost:7700/api/request/admin/getRequests', {
+        filter: "SUBMITTED",
+      }),
+      axios.post('http://localhost:7700/api/users/admin/verified', {
+      })
+    ]).then(axios.spread((getStudentNo, getFacultyNo, getRequestNo, getSubmittedNo, getVerified) => {
+      setRegisteredStudent(getStudentNo.data ? getStudentNo.data.length : "0");
+      setRegisteredFaculty(getFacultyNo.data ? getFacultyNo.data.length : "0");
+      setActiveRequest(getRequestNo.data ? getRequestNo.data.length : "0");
+      setPendingRequest(getSubmittedNo.data);
+      setVerfiedFaculty(!getVerified.data.length ? "0" : getVerified.data.length);
+      console.log("getverified",getVerified.data.length)
+    }))
+  }, [])
 
   return (
     <>
@@ -111,13 +69,7 @@ const Dashboard = () => {
             <div className="card-name">Instructors to be Verified</div>
           </Card>
         </div>
-        {pendingRequest.length > 0 ? (
-          <RequestList submittedData={pendingRequest} />
-        ) : (
-          <div className="pending-request">
-            <h1>NO PENDING REQUEST</h1>
-          </div>
-        )}
+        <RequestList submittedData={pendingRequest} />
       </Body>
     </>
   );
