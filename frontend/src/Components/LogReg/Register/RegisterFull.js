@@ -70,9 +70,7 @@ const RegisterFull = (props) => {
 
   useEffect(() => {
     if (isValid) {
-      //not sure where to redirect user after successful registration
       navigate("/homepage");
-      // navigate("/");
     }
   }, [isValid, navigate, auth]);
 

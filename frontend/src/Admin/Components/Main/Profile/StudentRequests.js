@@ -1,7 +1,24 @@
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import "./Requests.css";
 
 const StudentRequests = (props) => {
-  // const student_name = props.student;
+  const [request, setRequest] = useState([]);
+
+  useEffect(()=>{
+    axios
+    .post("http://localhost:7700/api/request/studentRequest", {
+      uID: props.student,
+    })
+    .then((response) => {
+      setRequest(response.data);
+    })
+    .catch((error) => {
+      alert(error);
+    });
+   },[])
+
   return (
     <div className="admin-request-content">
       <p>Requests List</p>
@@ -14,34 +31,17 @@ const StudentRequests = (props) => {
             <th>Date Requested</th>
             <th>Status</th>
           </tr>
-          <tr>
-            <th>IT 404</th>
-            <th>Internship</th>
-            <th>instructor 1</th>
-            <th>April 22, 2022</th>
-            <th>Requested</th>
-          </tr>
-          <tr>
-            <th>CAP 401</th>
-            <th>Capstone</th>
-            <th>Instructor 2</th>
-            <th>March 27, 2022</th>
-            <th>Submitted</th>
-          </tr>
-          <tr>
-            <th>SAMP 301</th>
-            <th>Sample</th>
-            <th>Instructor 3</th>
-            <th>October 14, 2021</th>
-            <th>On Process</th>
-          </tr>
-          <tr>
-            <th>DUM 101</th>
-            <th>Dummy</th>
-            <th>Instructor 4</th>
-            <th>December 4, 2018</th>
-            <th>Processed</th>
-          </tr>
+          {request.length > 0 &&
+            request.map(req => {
+              return <tr key={req._id}>
+                <th>{req.subjectCode}</th>
+                <th>{req.subjectDescription}</th>
+                <th>{req.instructor.instructorName}</th>
+                <th>{req.dateLog.dateStudent}</th>
+                <th>{req.status}</th>
+              </tr>
+            })
+          }
         </tbody>
       </table>
     </div>

@@ -52,6 +52,8 @@ const TopNav = () => {
           setDropDown((state) => !state);
           setShowNotif(false);
           setMessages(false);
+          localStorage.removeItem("token");
+          navigate("/");
         }}
         alt="dropdown-icon"
         src={require("../../../Components/UI/Home_UI/Icons/dropdown.png")}

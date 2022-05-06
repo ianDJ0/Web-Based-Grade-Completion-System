@@ -31,6 +31,7 @@ router.post('/signup',check('registerName').isEmpty(),
     
 //Edit or delete User by ID API
 router.use(checkAuth)
+router.post('/verifyUser', userController.adminVerifyFaculty);
 router.post('/resetEmail', userController.updateUser);
 router.post('/changePassword', userController.resetPassword);
 router.delete('/:uID', userController.deleteUser);

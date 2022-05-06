@@ -288,3 +288,4 @@ exports.getSingle = getSingle
 
 //admin middleware
 exports.adminGetVerified = adminGetVerified;
+exports.adminVerifyFaculty = adminVerifyFaculty;

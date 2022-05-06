@@ -6,9 +6,14 @@ import "./AccountProfile.css";
 import InstructorRequests from "./InstructorRequests";
 import StudentRequests from "./StudentRequests";
 import { useLocation } from "react-router-dom";
-
+import Swal from "sweetalert2";
+import axios from "axios";
+import { useEffect, useState } from "react";
 const AccountProfile = () => {
-  const {state}= useLocation();
+
+  const { state } = useLocation();
+  const [update, setUpdate] = useState(true);
+
   return (
     <>
       <Sidebar />
@@ -16,13 +21,41 @@ const AccountProfile = () => {
       <Body>
         <div className="instructor-profile">
           <div id="bulsu-header">
-            {state.user.userType === "Faculty" ? (
-              <button id="verify-instructor"> Verify Instructor</button>
+            {state.user.userType === "Faculty" && state.user.verified === false && update ? (
+              <button id="verify-instructor" onClick={() => {
+                Swal.fire({
+                  title: 'Are you sure?',
+                  text: "You won't be able to revert this!",
+                  icon: 'info',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Verify User!'
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    axios.post("http://localhost:7700/api/users/verifyUser", {
+                      userID: state.user._id
+                    }, {
+                      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+                    }).then((response) => {
+                      setUpdate(!update);
+                    }).catch((error) => {
+                      alert(error);
+                    })
+                    Swal.fire(
+                      'Sucess!',
+                      'User has been Verified',
+                      'success'
+                    )
+                  }
+                })
+
+              }}> Verify Instructor</button>
             ) : null}
 
             <Profile
               name={state.user.fullName}
-              img={state.user.profilePicture?`http://localhost:7700/${state.user.profilePicture}`:require("../../../../Components/UI/Home_UI/Icons/image-wallpaper-15.jpg")}
+              img={state.user.profilePicture ? `http://localhost:7700/${state.user.profilePicture}` : require("../../../../Components/UI/Home_UI/Icons/image-wallpaper-15.jpg")}
               college={"College of Information and Communications Technology"}
             />
 
