@@ -4,25 +4,26 @@ import Body from "../../UI/Containers/Body";
 import "../../UI/Shared.css";
 import "./Student.css";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Student = () => {
-  const {state} = useLocation();
+  const { state } = useLocation();
   const [searchStudent, setSearchStudent] = useState('');
   const [students, setStudents] = useState([]);
-
-  useEffect(()=>{
-    axios.post('http://localhost:7700/api/users/type',{
-      uType:'Student',
-      findInName:searchStudent,
-    }).then((response)=>{
+  const navigate = useNavigate();
+  useEffect(() => {
+    
+    axios.post('http://localhost:7700/api/users/type', {
+      uType: 'Student',
+      findInName: searchStudent,
+    }).then((response) => {
       setStudents(response.data)
-    }).catch((error)=>{
+    }).catch((error) => {
       alert(error);
     })
-  },[searchStudent])
-  
+  }, [searchStudent])
+
 
 
   return (
@@ -40,17 +41,19 @@ const Student = () => {
                 <th>Email</th>
                 <th>Contact Number</th>
               </tr>
-              {students.length>0 &&
+              {students.length > 0 &&
                 students.map((student) => {
                   return (
-                    <tr key={student._id} onClick={()=>{
-                      //nevigate to profile page
+                    <tr key={student._id} onClick={() => {
+                      navigate("/admin/profile", {
+                        state: { user: student },
+                      })
                     }}>
                       <th>{student.studentNumber}</th>
                       <th>{student.fullName}</th>
                       <th>{student.email}</th>
                       <th>{student.contactNumber}</th>
-                      
+
                     </tr>
                   );
                 })
