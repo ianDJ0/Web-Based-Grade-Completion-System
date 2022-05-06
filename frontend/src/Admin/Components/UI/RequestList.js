@@ -30,13 +30,16 @@ const RequestList = (props) => {
             </tr>
             {props.submittedData &&
               props.submittedData.map((request) => {
-              // props.submittedData.slice(0, entry).map((request) => {
+                // props.submittedData.slice(0, entry).map((request) => {
                 return (
-                  <tr key={request._id} onClick={()=>{
-                    navigate("/request/form", {
-                      state: { requestItem: request },
-                    });
-                  }}>
+                  <tr
+                    key={request._id}
+                    onClick={() => {
+                      navigate("/admin/request/form", {
+                        state: { requestItem: request },
+                      });
+                    }}
+                  >
                     <th>{request.student.studentFullname}</th>
                     <th>{request.instructor.instructorName}</th>
                     <th>{request.subjectCode}</th>

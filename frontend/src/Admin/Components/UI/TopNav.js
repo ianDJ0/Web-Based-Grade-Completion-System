@@ -60,6 +60,12 @@ const TopNav = () => {
         src={require("../../../Components/UI/Home_UI/Icons/Bell.png")}
         id="admin-notify-bell"
       />
+      {/* <input
+        alt="message"
+        type="image"
+        value={"../../../Components/UI/Home_UI/Icons/Bell.png"}
+        readOnly
+      /> */}
       {showNotif && <Notifications />}
       <img
         onClick={() => {
