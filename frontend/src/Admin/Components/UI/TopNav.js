@@ -12,22 +12,8 @@ const TopNav = () => {
   const [message, setMessages] = useState(false);
   return (
     <div className="admin-top-navigation">
-      <input
-        onChange={(e) => console.log(e.target.value)}
-        placeholder="Search..."
-        id="admin-search-bar"
-      />
-      <button
-        onClick={() => {
-          alert("Click");
-        }}
-        id="admin-search-btn"
-      ></button>
-      <span
-        onClick={() => {
-          navigate("/admin/profile");
-        }}
-      >
+      <h1 className="title-message">Grade Completion System</h1>
+      <span>
         <img
           alt="profile-icon"
           src={require("../../../Components/UI/Home_UI/Icons/profile.png")}
@@ -60,12 +46,6 @@ const TopNav = () => {
         src={require("../../../Components/UI/Home_UI/Icons/Bell.png")}
         id="admin-notify-bell"
       />
-      {/* <input
-        alt="message"
-        type="image"
-        value={"../../../Components/UI/Home_UI/Icons/Bell.png"}
-        readOnly
-      /> */}
       {showNotif && <Notifications />}
       <img
         onClick={() => {

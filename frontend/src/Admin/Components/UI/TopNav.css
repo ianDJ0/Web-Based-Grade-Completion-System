@@ -40,8 +40,9 @@
 #admin-profile-icon {
   position: absolute;
   width: 4%;
-  margin-left: 40%;
-  margin-top: 0.75%;
+  margin-left: 71%;
+  /* margin-top: 0; */
+  top: 1em;
 }
 .admin-name-type {
   position: absolute;
@@ -65,7 +66,8 @@
 #admin-notify-bell,
 #admin-message-icon {
   position: absolute;
-  vertical-align: middle;
+  /* vertical-align: middle; */
+  top: 0.3em;
   border-radius: 6em;
 }
 #admin-message-icon {
@@ -73,21 +75,28 @@
   padding: 0.25% 0.25%;
   margin-top: 17px;
   margin-left: 55%;
+  right: 12em;
 }
 #admin-notify-bell {
   width: 1.7%;
   padding: 0.75% 0.75%;
   margin-left: 60%;
   margin-top: 17px;
+  right: 7em;
 }
 #admin-dropdown-icon {
   width: 1%;
   padding: 1.25% 1.05%;
   margin-top: 17px;
   margin-left: 65%;
+  right: 2em;
 }
 #admin-dropdown-icon:hover,
 #admin-notify-bell:hover,
 #admin-message-icon:hover {
   background-color: #e2e2e2;
+}
+.title-message {
+  margin-left: 3vw;
+  margin-top: 2vh;
 }

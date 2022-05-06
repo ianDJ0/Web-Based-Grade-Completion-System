@@ -9,6 +9,7 @@ import { RequestContent } from "../../../Components/Shared/context/request-conte
 import Swal from "sweetalert2";
 import StudentInfo from "../../../Components/Main/Request/StudentInfo";
 import RequestInfo from "../../../Components/Main/Request/RequestInfo";
+import "./AdminRequestForm.css";
 
 const AdminRequestForm = (props) => {
   let { state } = useLocation();
@@ -141,22 +142,20 @@ const AdminRequestForm = (props) => {
       <TopNav />
       <Sidebar />
       <Body>
-        {!state && (
-          <div>
-            <StudentInfo studentInformation={auth} />
-            <RequestInfo autoInt={autoCompleteInstructor} />
-            <div className="wrap">
-              <button id="request-complete" onClick={submitStudentRequest}>
-                Request Grade Completion
-              </button>
+        <div className="admin-request-modal">
+          {!state && (
+            <div>
+              <StudentInfo studentInformation={auth} />
+              <RequestInfo autoInt={autoCompleteInstructor} />
+              <div className="wrap">
+                <button id="request-complete" onClick={submitStudentRequest}>
+                  Request Grade Completion
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {state &&
-          (requestItem.requestItem.status === "REQUESTED" ||
-            requestItem.requestItem.status === "SUBMITTED" ||
-            requestItem.requestItem.status === "DENIED") && (
+          {state && (
             <div>
               <div className="student-info">
                 <p id="stud-info-label">Student Information</p>
@@ -241,64 +240,69 @@ const AdminRequestForm = (props) => {
                 <div className="stud-info-sign">
                   <p>Signature</p>
                   <img
+                    className="admin-signature"
                     src={`http://localhost:7700/${requestItem.requestItem.signature.studentSignature}`}
                     alt="Student Signature"
                   />
                 </div>
+                {requestItem.requestItem.status !== "REQUESTED" && (
+                  <div className="faculty-info">
+                    <p>Faculty Response</p>
+                    {requestItem.requestItem.grade && (
+                      <div>
+                        <div>
+                          <p>Grade Given</p>
+                          <input
+                            type="textarea"
+                            name="stud-name"
+                            id="stud-name"
+                            value={requestItem.requestItem.grade}
+                            readOnly
+                          />
+                        </div>
+                        <div>
+                          <p>Instructor Signature</p>
+                          <img
+                            className="admin-signature"
+                            src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`}
+                            alt="Student Signature"
+                          />
+                        </div>
+                      </div>
+                    )}
 
-                <div>
-                  <p>Faculty Response</p>
-                  {requestItem.requestItem.grade && (
-                    <div>
-                      <div>
-                        <p>Grade Given</p>
-                        <input
-                          type="textarea"
-                          name="stud-name"
-                          id="stud-name"
-                          value={requestItem.requestItem.grade}
-                          readOnly
-                        />
-                      </div>
-                      <div>
-                        <p>Instructor Signature</p>
-                        <img
-                          src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`}
-                          alt="Student Signature"
-                        />
-                      </div>
-                    </div>
-                  )}
-                  <button onClick={submitFacultyResponse}>Approve</button>
-                  <button
-                    onClick={() => {
-                      Swal.fire({
-                        title: "Are you sure?",
-                        text: "Denying this request will automatically give a grade of 5",
-                        icon: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "Yes",
-                      }).then((result) => {
-                        if (result.isConfirmed) {
-                          Swal.fire(
-                            "Success!",
-                            "Response has been recorded.",
-                            "success"
-                          );
-                          submitDenyRespose();
-                        }
-                      });
-                    }}
-                  >
-                    Deny
-                  </button>
-                </div>
+                    <button onClick={submitFacultyResponse}>Approve</button>
+                    <button
+                      onClick={() => {
+                        Swal.fire({
+                          title: "Are you sure?",
+                          text: "Denying this request will automatically give a grade of 5",
+                          icon: "warning",
+                          showCancelButton: true,
+                          confirmButtonColor: "#3085d6",
+                          cancelButtonColor: "#d33",
+                          confirmButtonText: "Yes",
+                        }).then((result) => {
+                          if (result.isConfirmed) {
+                            Swal.fire(
+                              "Success!",
+                              "Response has been recorded.",
+                              "success"
+                            );
+                            submitDenyRespose();
+                          }
+                        });
+                      }}
+                    >
+                      Deny
+                    </button>
+                  </div>
+                )}
               </div>
               {/* Faculty response Request */}
             </div>
           )}
+        </div>
       </Body>
     </>
   );

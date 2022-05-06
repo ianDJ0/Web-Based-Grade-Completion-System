@@ -9,21 +9,20 @@ import "./RequestForm.css";
 import "./StudentInfo.css";
 import RequestInfo from "./RequestInfo";
 import StudentInfo from "./StudentInfo";
-import Swal from 'sweetalert2';
-
+import Swal from "sweetalert2";
 
 const RequestForm = (props) => {
   let { state } = useLocation();
   let requestItem = { status: "" };
-  let autoCompleteInstructor = '';
-  let cys1 = ""
+  let autoCompleteInstructor = "";
+  let cys1 = "";
   if (state && state.requestItem) {
     requestItem = state;
     cys1 = requestItem.requestItem.student.studentYearAndSection.split("-");
   }
   if (state && state.autoInstructor) {
     autoCompleteInstructor = state.autoInstructor;
-    state="";
+    state = "";
   }
   const auth = useContext(AuthenticationContext);
   const requestContent = useContext(RequestContent);
@@ -34,14 +33,6 @@ const RequestForm = (props) => {
   requestContent.request_StudentCourseYearAndSetion =
     auth.userCourseYearAndSection;
   requestContent.request_StudentSignature = auth.userSignature;
-
-  // const [instructorId, setInstructorId] = useState();
-  // const [instructor, setInstructor] = useState();
-  // const [reason, setReason] = useState();
-  // const [subjectYear, setSubjectYear] = useState();
-  // const [subjectSemester, setSubjectSemester] = useState();
-  // const [subjectCode, setSubjectCode] = useState();
-  // const [subjectDescription, setSubjectDescription] = useState();
 
   const submitStudentRequest = () => {
     axios
@@ -76,37 +67,37 @@ const RequestForm = (props) => {
   };
   const submitFacultyResponse = async () => {
     const { value: grade } = await Swal.fire({
-      title: 'Select grade to give',
-      input: 'select',
+      title: "Select grade to give",
+      input: "select",
       inputOptions: {
-        'Excellent': {
-          1.00: '1.00',
-          1.25: '1.25',
-          1.50: '1.50',
-          1.75: '1.75'
+        Excellent: {
+          1.0: "1.00",
+          1.25: "1.25",
+          1.5: "1.50",
+          1.75: "1.75",
         },
-        'Good': {
-          2.00: '2.00',
-          2.25: '2.25',
-          2.50: '2.50',
-          2.75: '2.75'
+        Good: {
+          2.0: "2.00",
+          2.25: "2.25",
+          2.5: "2.50",
+          2.75: "2.75",
         },
-        'Satisfactory': {
-          3.00: '3.00',
-        }
+        Satisfactory: {
+          3.0: "3.00",
+        },
       },
-      inputPlaceholder: 'Select grade',
+      inputPlaceholder: "Select grade",
       showCancelButton: true,
       inputValidator: (value) => {
         return new Promise((resolve) => {
           if (value) {
-            resolve()
+            resolve();
           } else {
-            resolve('You need to select a grade)')
+            resolve("You need to select a grade)");
           }
-        })
-      }
-    })
+        });
+      },
+    });
 
     if (grade) {
       axios
@@ -115,10 +106,12 @@ const RequestForm = (props) => {
           {
             requestID: requestItem.requestItem._id,
             grade: grade,
-            instructorSignature: auth.userSignature
+            instructorSignature: auth.userSignature,
           },
           {
-            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
           }
         )
         .then((response) => {
@@ -128,7 +121,7 @@ const RequestForm = (props) => {
           alert(error);
         });
     }
-  }
+  };
   const submitDenyRespose = () => {
     axios
       .post(
@@ -136,7 +129,7 @@ const RequestForm = (props) => {
         {
           requestID: requestItem.requestItem._id,
           grade: "5.00",
-          instructorSignature: auth.userSignature
+          instructorSignature: auth.userSignature,
         },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -148,7 +141,7 @@ const RequestForm = (props) => {
       .catch((error) => {
         alert(error);
       });
-  }
+  };
   return (
     <>
       <TopNav />
@@ -183,31 +176,32 @@ const RequestForm = (props) => {
           <p id="fourth-step">4</p>
         </div>
 
-        {!state &&
+        {!state && (
           <div>
             <StudentInfo studentInformation={auth} />
-            <RequestInfo autoInt={autoCompleteInstructor}
-            // requestInstructorId={(childInstructorId) => {
-            //   setInstructorId(childInstructorId);
-            // }}
-            // requestInstructorName={(childInstructorId) => {
-            //   setInstructor(childInstructorId);
-            // }}
-            // requestSubjectCode={(childInstructorId) => {
-            //   setSubjectCode(childInstructorId);
-            // }}
-            // requestSubjectDescription={(childInstructorId) => {
-            //   setSubjectDescription(childInstructorId);
-            // }}
-            // requestSubjectYear={(childInstructorId) => {
-            //   setSubjectYear(childInstructorId);
-            // }}
-            // requestSemester={(childInstructorId) => {
-            //   setSubjectSemester(childInstructorId);
-            // }}
-            // requestReason={(childInstructorId) => {
-            //   setReason(childInstructorId);
-            // }}
+            <RequestInfo
+              autoInt={autoCompleteInstructor}
+              // requestInstructorId={(childInstructorId) => {
+              //   setInstructorId(childInstructorId);
+              // }}
+              // requestInstructorName={(childInstructorId) => {
+              //   setInstructor(childInstructorId);
+              // }}
+              // requestSubjectCode={(childInstructorId) => {
+              //   setSubjectCode(childInstructorId);
+              // }}
+              // requestSubjectDescription={(childInstructorId) => {
+              //   setSubjectDescription(childInstructorId);
+              // }}
+              // requestSubjectYear={(childInstructorId) => {
+              //   setSubjectYear(childInstructorId);
+              // }}
+              // requestSemester={(childInstructorId) => {
+              //   setSubjectSemester(childInstructorId);
+              // }}
+              // requestReason={(childInstructorId) => {
+              //   setReason(childInstructorId);
+              // }}
             />
             <div className="wrap">
               <button id="request-complete" onClick={submitStudentRequest}>
@@ -215,99 +209,158 @@ const RequestForm = (props) => {
               </button>
             </div>
           </div>
-        }
+        )}
         {/* CONTENTS IF REQUEST IS VIEW FROM LIST */}
 
         {state &&
-          (requestItem.requestItem.status === "REQUESTED" || requestItem.requestItem.status === "SUBMITTED" || requestItem.requestItem.status === "DENIED") && auth.userType === "Faculty"
-          &&
-          <div>
-            <div className="student-info">
-              <p id="stud-info-label">Student Information</p>
-              <div className="stud-info-one">
-                <p>Student Name</p>
-                <input placeholder="Student Name" name="stud-name" id="stud-name" value={requestItem.requestItem.student.studentFullname} readOnly />
-              </div>
-              <div className="stud-info-two">
-                <p>Student Number</p>
-                <input placeholder="Student Number" name="stud-no" id="stud-no" value={requestItem.requestItem.student.studentNumber} readOnly />
-              </div>
-              <div className="stud-info-three">
-                <p>Course Year and Section</p>
-                <input placeholder="Course" name="stud-course" id="stud-course" value={`${cys1[0]} ${cys1[1]}-${cys1[2]}`} readOnly />
-              </div>
-              <p id="stud-info-label">Request Information</p>
-              <div className="stud-info-one">
-                <p>Subject Code</p>
-                <input name="stud-name" id="stud-name" value={requestItem.requestItem.subjectCode} readOnly />
-              </div>
-              <div className="stud-info-one">
-                <p>Subject Description</p>
-                <input name="stud-name" id="stud-name" value={requestItem.requestItem.subjectDescription} readOnly />
-              </div>
-              <div className="stud-info-one">
-                <p>Period Incomplete</p>
-                <input name="stud-name" id="stud-name" value={requestItem.requestItem.incompletePeriod} readOnly />
-              </div>
-              <div className="stud-info-one">
-                <p>Year Incomplete</p>
-                <input placeholder="Student Name" name="stud-name" id="stud-name" value={requestItem.requestItem.incompleteYear} readOnly />
-              </div>
-              <div className="stud-info-one">
-                <p>Reason</p>
-                <input type="textarea" name="stud-name" id="stud-name" value={requestItem.requestItem.reason} readOnly />
-              </div>
-              <div className="stud-info-sign">
-                <p>Signature</p>
-                <img src={`http://localhost:7700/${requestItem.requestItem.signature.studentSignature}`} alt="Student Signature" />
-              </div>
+          (requestItem.requestItem.status === "REQUESTED" ||
+            requestItem.requestItem.status === "SUBMITTED" ||
+            requestItem.requestItem.status === "DENIED") &&
+          auth.userType === "Faculty" && (
+            <div>
+              <div className="student-info">
+                <p id="stud-info-label">Student Information</p>
+                <div className="stud-info-one">
+                  <p>Student Name</p>
+                  <input
+                    placeholder="Student Name"
+                    name="stud-name"
+                    id="stud-name"
+                    value={requestItem.requestItem.student.studentFullname}
+                    readOnly
+                  />
+                </div>
+                <div className="stud-info-two">
+                  <p>Student Number</p>
+                  <input
+                    placeholder="Student Number"
+                    name="stud-no"
+                    id="stud-no"
+                    value={requestItem.requestItem.student.studentNumber}
+                    readOnly
+                  />
+                </div>
+                <div className="stud-info-three">
+                  <p>Course Year and Section</p>
+                  <input
+                    placeholder="Course"
+                    name="stud-course"
+                    id="stud-course"
+                    value={`${cys1[0]} ${cys1[1]}-${cys1[2]}`}
+                    readOnly
+                  />
+                </div>
+                <p id="stud-info-label">Request Information</p>
+                <div className="stud-info-one">
+                  <p>Subject Code</p>
+                  <input
+                    name="stud-name"
+                    id="stud-name"
+                    value={requestItem.requestItem.subjectCode}
+                    readOnly
+                  />
+                </div>
+                <div className="stud-info-one">
+                  <p>Subject Description</p>
+                  <input
+                    name="stud-name"
+                    id="stud-name"
+                    value={requestItem.requestItem.subjectDescription}
+                    readOnly
+                  />
+                </div>
+                <div className="stud-info-one">
+                  <p>Period Incomplete</p>
+                  <input
+                    name="stud-name"
+                    id="stud-name"
+                    value={requestItem.requestItem.incompletePeriod}
+                    readOnly
+                  />
+                </div>
+                <div className="stud-info-one">
+                  <p>Year Incomplete</p>
+                  <input
+                    placeholder="Student Name"
+                    name="stud-name"
+                    id="stud-name"
+                    value={requestItem.requestItem.incompleteYear}
+                    readOnly
+                  />
+                </div>
+                <div className="stud-info-one">
+                  <p>Reason</p>
+                  <input
+                    type="textarea"
+                    name="stud-name"
+                    id="stud-name"
+                    value={requestItem.requestItem.reason}
+                    readOnly
+                  />
+                </div>
+                <div className="stud-info-sign">
+                  <p>Signature</p>
+                  <img
+                    src={`http://localhost:7700/${requestItem.requestItem.signature.studentSignature}`}
+                    alt="Student Signature"
+                  />
+                </div>
 
-              <div>
-                <p>Faculty Response</p>
-                {requestItem.requestItem.grade &&
-                  <div>
+                <div>
+                  <p>Faculty Response</p>
+                  {requestItem.requestItem.grade && (
                     <div>
-                      <p>Grade Given</p>
-                      <input type="textarea" name="stud-name" id="stud-name" value={requestItem.requestItem.grade} readOnly />
+                      <div>
+                        <p>Grade Given</p>
+                        <input
+                          type="textarea"
+                          name="stud-name"
+                          id="stud-name"
+                          value={requestItem.requestItem.grade}
+                          readOnly
+                        />
+                      </div>
+                      <div>
+                        <p>Instructor Signature</p>
+                        <img
+                          src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`}
+                          alt="Student Signature"
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <p>Instructor Signature</p>
-                      <img src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`} alt="Student Signature" />
-                    </div>
-                  </div>
-                }
-                <button onClick={submitFacultyResponse}>Approve</button>
-                <button onClick={() => {
-                  Swal.fire({
-                    title: 'Are you sure?',
-                    text: "Denying this request will automatically give a grade of 5",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes'
-                  }).then((result) => {
-                    if (result.isConfirmed) {
-                      Swal.fire(
-                        'Success!',
-                        'Response has been recorded.',
-                        'success'
-                      )
-                      submitDenyRespose();
-                    }
-                  })
-                }}>Deny</button>
+                  )}
+                  <button onClick={submitFacultyResponse}>Approve</button>
+                  <button
+                    onClick={() => {
+                      Swal.fire({
+                        title: "Are you sure?",
+                        text: "Denying this request will automatically give a grade of 5",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes",
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                          Swal.fire(
+                            "Success!",
+                            "Response has been recorded.",
+                            "success"
+                          );
+                          submitDenyRespose();
+                        }
+                      });
+                    }}
+                  >
+                    Deny
+                  </button>
+                </div>
               </div>
+              {/* Faculty response Request */}
             </div>
-            {/* Faculty response Request */}
-
-          </div>
-        }
+          )}
         {console.log(requestItem.requestItem)}
-        {
-
-        }
-
+        {}
       </div>
     </>
   );
