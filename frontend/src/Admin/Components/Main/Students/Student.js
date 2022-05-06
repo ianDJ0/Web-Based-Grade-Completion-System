@@ -55,7 +55,6 @@ const Student = () => {
                   );
                 })
               }
-
             </tbody>
           </table>
         </div>
