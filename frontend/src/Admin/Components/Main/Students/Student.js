@@ -3,8 +3,28 @@ import TopNav from "../../UI/TopNav";
 import Body from "../../UI/Containers/Body";
 import "../../UI/Shared.css";
 import "./Student.css";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const Student = () => {
+  const {state} = useLocation();
+  const [searchStudent, setSearchStudent] = useState('');
+  const [students, setStudents] = useState([]);
+
+  useEffect(()=>{
+    axios.post('http://localhost:7700/api/users/type',{
+      uType:'Student',
+      findInName:searchStudent,
+    }).then((response)=>{
+      setStudents(response.data)
+    }).catch((error)=>{
+      alert(error);
+    })
+  },[searchStudent])
+  
+
+
   return (
     <>
       <Sidebar />
@@ -20,24 +40,21 @@ const Student = () => {
                 <th>Email</th>
                 <th>Contact Number</th>
               </tr>
-              <tr>
-                <th>2018-234567</th>
-                <th>Student 1</th>
-                <th>student1@gmail.com</th>
-                <th>+639989876543</th>
-              </tr>
-              <tr>
-                <th>2018-123456</th>
-                <th>Student 2</th>
-                <th>student2@gmail.com</th>
-                <th>+639994367094</th>
-              </tr>
-              <tr>
-                <th>2020-567908</th>
-                <th>Student 3</th>
-                <th>student3@gmail.com</th>
-                <th>+639784532097</th>
-              </tr>
+              {students.length>0 &&
+                students.map((student) => {
+                  return (
+                    <tr key={student._id} onClick={()=>{
+                      //nevigate to profile page
+                    }}>
+                      <th>{student.studentNumber}</th>
+                      <th>{student.fullName}</th>
+                      <th>{student.email}</th>
+                      <th>{student.contactNumber}</th>
+                      
+                    </tr>
+                  );
+                })
+              }
             </tbody>
           </table>
         </div>

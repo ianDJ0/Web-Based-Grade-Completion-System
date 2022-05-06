@@ -248,6 +248,19 @@ const getRequestForFaculty = async (req, res) => {
 }
 
 const adminGetRequests = async (req, res) => {
+    let searchFilter = {};
+    if (req.body.requestStatus) {
+        newStatus = { 'status': req.body.requestStatus }
+        searchFilter = Object.assign(newStatus, searchFilter)
+    }
+    if (req.body.requestToDate) {
+        newToDate = { 'dateLog.dateStudent': { '$gte': req.body.requestToDate } }
+        searchFilter = Object.assign(newToDate, searchFilter)
+    }
+    if (req.body.requestFromDate) {
+        newFromDate = { 'dateLog.dateStudent': { '$lte': req.body.requestFromDate } }
+        searchFilter = Object.assign(newFromDate, searchFilter)
+    }
     let getRequestFaculty
     try {
         if (req.body.filter) {
@@ -255,7 +268,7 @@ const adminGetRequests = async (req, res) => {
                 .find({ status: req.body.filter });
         } else {
             getRequestFaculty = await requestModel
-                .find();
+                .find(searchFilter);
         }
 
     } catch (err) {

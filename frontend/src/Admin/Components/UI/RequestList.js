@@ -1,7 +1,9 @@
 import "./Shared.css";
 import "./RequestList.css";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const RequestList = (props) => {
+  const navigate = useNavigate();
   const DATE_OPTIONS = {
     weekday: "short",
     year: "numeric",
@@ -30,7 +32,11 @@ const RequestList = (props) => {
               props.submittedData.map((request) => {
               // props.submittedData.slice(0, entry).map((request) => {
                 return (
-                  <tr key={request._id}>
+                  <tr key={request._id} onClick={()=>{
+                    navigate("/request/form", {
+                      state: { requestItem: request },
+                    });
+                  }}>
                     <th>{request.student.studentFullname}</th>
                     <th>{request.instructor.instructorName}</th>
                     <th>{request.subjectCode}</th>
@@ -45,30 +51,6 @@ const RequestList = (props) => {
                   </tr>
                 );
               })}
-            {/* <tr>
-              <th>Student 1</th>
-              <th>Mr. Aaron Paul M. Dela Rosa</th>
-              <th>IT 404</th>
-              <th>Internship</th>
-              <th>April 22, 2022</th>
-              <th>Requested</th>
-            </tr>
-            <tr>
-              <th>Student 2</th>
-              <th>John Doe</th>
-              <th>CAP 401</th>
-              <th>Capstone</th>
-              <th>March 27, 2022</th>
-              <th>Submitted</th>
-            </tr>
-            <tr>
-              <th>Student 3</th>
-              <th>Sample Prof</th>
-              <th>SAMP 301</th>
-              <th>Sample</th>
-              <th>October 14, 2021</th>
-              <th>On Process</th>
-            </tr> */}
           </tbody>
         </table>
       </div>

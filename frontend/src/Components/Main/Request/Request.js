@@ -10,7 +10,6 @@ import axios from "axios";
 
 const Request = (props) => {
   const navigate = useNavigate();
-  const [isOpen, setOpen] = useState(false);
   const auth = useContext(AuthenticationContext);
 
   const DATE_OPTIONS = {

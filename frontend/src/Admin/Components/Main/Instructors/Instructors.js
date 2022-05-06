@@ -4,11 +4,28 @@ import Body from "../../UI/Containers/Body";
 import "../../UI/Shared.css";
 import "./Instructors.css";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 const Instructors = () => {
-
-  axios.post()
+  const {state} = useLocation();
+  const [searchInstructor, setSearchInstructor] = useState('');
+  const [isVerified, setIsverified]= useState('');
+  const [instructors, setInstructors] = useState([]);
+  if(state){
+    setIsverified(false);
+  }
+  useEffect(()=>{
+    axios.post('http://localhost:7700/api/users/type',{
+      uType:'Faculty',
+      findInName:searchInstructor,
+      verified: isVerified, 
+    }).then((response)=>{
+      setInstructors(response.data)
+    }).catch((error)=>{
+      alert(error);
+    })
+  },[searchInstructor, isVerified])
+  
   return (
     <>
       <Sidebar />
@@ -24,24 +41,20 @@ const Instructors = () => {
                 <th>Contact Number</th>
                 <th>Status</th>
               </tr>
-              <tr>
-                <th>Mr. Aaron Paul M. Dela Rosa</th>
-                <th>delarosa@gmaul.com</th>
-                <th>+639764891064</th>
-                <th>Verified</th>
-              </tr>
-              <tr>
-                <th>John Doe</th>
-                <th>jd@gmail.com</th>
-                <th>+639785930154</th>
-                <th>Verified</th>
-              </tr>
-              <tr>
-                <th>Sample Prof</th>
-                <th>Sample@gmail.com</th>
-                <th>+6396878767841</th>
-                <th>Unverified</th>
-              </tr>
+              {instructors.length>0 &&
+                instructors.map((instructor) => {
+                  return (
+                    <tr key={instructor._id} onClick={()=>{
+                      //nevigate to profile page
+                    }}>
+                      <th>{instructor.fullName}</th>
+                      <th>{instructor.email}</th>
+                      <th>{instructor.contactNumber}</th>
+                      <th>{instructor.verified?"Verified":"Unverified"}</th>
+                    </tr>
+                  );
+                })
+              }
             </tbody>
           </table>
         </div>
