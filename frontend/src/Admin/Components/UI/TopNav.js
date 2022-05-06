@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import "./TopNav.css";
-
+import jwtDecode from "jwt-decode";
 const TopNav = () => {
   const navigate = useNavigate();
   document.body.style = "background: white";
+
+  const tokenContent = jwtDecode(localStorage.getItem('token'));
+
+
   return (
     <div className="admin-top-navigation">
       <input
@@ -29,7 +33,7 @@ const TopNav = () => {
         />
         <div className="admin-name-type">
           <span style={{ textDecoration: "none" }}>
-            <p id="admin-user-name">Ms. Admin</p>
+            <p id="admin-user-name">{tokenContent.user.fullName}</p>
             <p id="admin-user-type">Admin</p>
           </span>
         </div>
