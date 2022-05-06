@@ -8,10 +8,10 @@ const RequestList = (props) => {
     month: "short",
     day: "numeric",
   };
-  let entry;
-  if (props.entries === "5") entry = 5;
-  else if (props.entries === "10") entry = 10;
-  else entry = props.submittedData.length;
+  // const entry = props.entries;
+  // if (props.entries === "5") entry = 5;
+  // else if (props.entries === "10") entry = 10;
+  // else entry = props.submittedData.length;
   return (
     <>
       <h2 id="list-label">REQUESTS LIST</h2>
@@ -27,7 +27,8 @@ const RequestList = (props) => {
               <th>Status</th>
             </tr>
             {props.submittedData &&
-              props.submittedData.slice(0, entry).map((request) => {
+              props.submittedData.map((request) => {
+              // props.submittedData.slice(0, entry).map((request) => {
                 return (
                   <tr key={request._id}>
                     <th>{request.student.studentFullname}</th>

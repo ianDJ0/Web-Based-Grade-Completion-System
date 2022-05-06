@@ -14,7 +14,7 @@ const AdminRequests = () => {
   const [pendingRequest, setPendingRequest] = useState(0);
   const [verifiedFaculty, setVerfiedFaculty] = useState("0");
   const [status, setStatus] = useState("");
-  const [entries, setEntries] = useState("all"); //number of entries shown
+  // const [entries, setEntries] = useState("all"); //number of entries shown
   useEffect(() => {
     axios
       .all([
@@ -58,7 +58,14 @@ const AdminRequests = () => {
           }
         )
       );
-  }, [entries]);
+  }, []);
+  // }, [entries]);
+  // const entry =
+  //   entries === "all"
+  //     ? parseInt(pendingRequest.length)
+  //     : (entry) => parseInt(entry);
+  // const [entryEnd, setEntryEnd] = useState(entry);
+  // console.log(typeof entryEnd);
 
   return (
     <>
@@ -68,12 +75,15 @@ const AdminRequests = () => {
         <div className="admin-request-filter">
           <RequestFilter
             filterOn={true}
-            entries={(entry) => setEntries(entry)}
+            // entries={(entry) => setEntries(entry)}
             filterStatus={(newStatus) => setStatus(newStatus)}
           />
         </div>
         {pendingRequest.length > 0 ? (
-          <RequestList submittedData={pendingRequest} entries={entries} />
+          <RequestList
+            submittedData={pendingRequest}
+            // entries={entries}
+          />
         ) : (
           <div className="pending-request">
             <h1>NO {status} REQUEST</h1>
