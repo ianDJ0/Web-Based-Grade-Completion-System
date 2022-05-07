@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import TopNav from "./TopNav";
 import Sidebar from "./Sidebar";
 import Body from "./Containers/Body";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthenticationContext } from "../../../Components/Shared/context/auth-context";
 import { RequestContent } from "../../../Components/Shared/context/request-context";
 import Swal from "sweetalert2";
@@ -135,6 +135,7 @@ const AdminRequestForm = (props) => {
         alert(error);
       });
   };
+  const navigate = useNavigate();
 
   console.log(auth.userType);
   return (
@@ -158,9 +159,9 @@ const AdminRequestForm = (props) => {
           {state && (
             <div>
               <div className="student-info">
-                <p id="stud-info-label">Student Information</p>
+                <p className="stud-info-label">Student Information</p>
                 <div className="stud-info-one">
-                  <p>Student Name</p>
+                  <p className="admin-field-label">Student Name</p>
                   <input
                     placeholder="Student Name"
                     name="stud-name"
@@ -170,7 +171,7 @@ const AdminRequestForm = (props) => {
                   />
                 </div>
                 <div className="stud-info-two">
-                  <p>Student Number</p>
+                  <p className="admin-field-label">Student Number</p>
                   <input
                     placeholder="Student Number"
                     name="stud-no"
@@ -180,7 +181,7 @@ const AdminRequestForm = (props) => {
                   />
                 </div>
                 <div className="stud-info-three">
-                  <p>Course Year and Section</p>
+                  <p className="admin-field-label">Course Year and Section</p>
                   <input
                     placeholder="Course"
                     name="stud-course"
@@ -189,9 +190,9 @@ const AdminRequestForm = (props) => {
                     readOnly
                   />
                 </div>
-                <p id="stud-info-label">Request Information</p>
+                <p className="stud-info-label">Request Information</p>
                 <div className="stud-info-one">
-                  <p>Subject Code</p>
+                  <p className="admin-field-label">Subject Code</p>
                   <input
                     name="stud-name"
                     id="stud-name"
@@ -200,7 +201,7 @@ const AdminRequestForm = (props) => {
                   />
                 </div>
                 <div className="stud-info-one">
-                  <p>Subject Description</p>
+                  <p className="admin-field-label">Subject Description</p>
                   <input
                     name="stud-name"
                     id="stud-name"
@@ -209,7 +210,7 @@ const AdminRequestForm = (props) => {
                   />
                 </div>
                 <div className="stud-info-one">
-                  <p>Period Incomplete</p>
+                  <p className="admin-field-label">Period Incomplete</p>
                   <input
                     name="stud-name"
                     id="stud-name"
@@ -218,7 +219,7 @@ const AdminRequestForm = (props) => {
                   />
                 </div>
                 <div className="stud-info-one">
-                  <p>Year Incomplete</p>
+                  <p className="admin-field-label">Year Incomplete</p>
                   <input
                     placeholder="Student Name"
                     name="stud-name"
@@ -228,7 +229,7 @@ const AdminRequestForm = (props) => {
                   />
                 </div>
                 <div className="stud-info-one">
-                  <p>Reason</p>
+                  <p className="admin-field-label">Reason</p>
                   <input
                     type="textarea"
                     name="stud-name"
@@ -238,20 +239,22 @@ const AdminRequestForm = (props) => {
                   />
                 </div>
                 <div className="stud-info-sign">
-                  <p>Signature</p>
-                  <img
-                    className="admin-signature"
-                    src={`http://localhost:7700/${requestItem.requestItem.signature.studentSignature}`}
-                    alt="Student Signature"
-                  />
+                  <p className="admin-field-label">Student Signature</p>
+                  <div className="admin-signature-container">
+                    <img
+                      className="admin-signature"
+                      src={`http://localhost:7700/${requestItem.requestItem.signature.studentSignature}`}
+                      alt="Student Signature"
+                    />
+                  </div>
                 </div>
                 {requestItem.requestItem.status !== "REQUESTED" && (
                   <div className="faculty-info">
-                    <p>Faculty Response</p>
+                    <p className="stud-info-label">Faculty Response</p>
                     {requestItem.requestItem.grade && (
                       <div>
                         <div>
-                          <p>Grade Given</p>
+                          <p className="admin-field-label">Grade Given</p>
                           <input
                             type="textarea"
                             name="stud-name"
@@ -261,41 +264,52 @@ const AdminRequestForm = (props) => {
                           />
                         </div>
                         <div>
-                          <p>Instructor Signature</p>
-                          <img
-                            className="admin-signature"
-                            src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`}
-                            alt="Student Signature"
-                          />
+                          <p className="admin-field-label">
+                            Instructor Signature
+                          </p>
+                          <div className="admin-signature-container">
+                            <img
+                              className="admin-signature"
+                              src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`}
+                              alt="Student Signature"
+                            />
+                          </div>
                         </div>
                       </div>
                     )}
-
-                    <button onClick={submitFacultyResponse}>Approve</button>
-                    <button
-                      onClick={() => {
-                        Swal.fire({
-                          title: "Are you sure?",
-                          text: "Denying this request will automatically give a grade of 5",
-                          icon: "warning",
-                          showCancelButton: true,
-                          confirmButtonColor: "#3085d6",
-                          cancelButtonColor: "#d33",
-                          confirmButtonText: "Yes",
-                        }).then((result) => {
-                          if (result.isConfirmed) {
-                            Swal.fire(
-                              "Success!",
-                              "Response has been recorded.",
-                              "success"
-                            );
-                            submitDenyRespose();
-                          }
-                        });
-                      }}
-                    >
-                      Deny
-                    </button>
+                    <div className="admin-btn-container">
+                      <button
+                        id="admin-approve-button"
+                        onClick={submitFacultyResponse}
+                      >
+                        Approve
+                      </button>
+                      <button
+                        id="admin-cancel-button"
+                        onClick={() => {
+                          Swal.fire({
+                            title: "Are you sure?",
+                            text: "Denying this request will automatically give a grade of 5",
+                            icon: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#3085d6",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: "Yes",
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                              Swal.fire(
+                                "Success!",
+                                "Response has been recorded.",
+                                "success"
+                              );
+                              submitDenyRespose();
+                            }
+                          });
+                        }}
+                      >
+                        Deny
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>

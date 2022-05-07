@@ -6,31 +6,38 @@ import "./Student.css";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import AdminSearch from "../../UI/AdminSearch";
 
 const Student = () => {
   const { state } = useLocation();
-  const [searchStudent, setSearchStudent] = useState('');
+  const [searchStudent, setSearchStudent] = useState("");
   const [students, setStudents] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    
-    axios.post('http://localhost:7700/api/users/type', {
-      uType: 'Student',
-      findInName: searchStudent,
-    }).then((response) => {
-      setStudents(response.data)
-    }).catch((error) => {
-      alert(error);
-    })
-  }, [searchStudent])
-
-
+    axios
+      .post("http://localhost:7700/api/users/type", {
+        uType: "Student",
+        findInName: searchStudent,
+      })
+      .then((response) => {
+        setStudents(response.data);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }, [searchStudent]);
 
   return (
     <>
       <Sidebar />
       <TopNav />
       <Body>
+        <AdminSearch
+          entity={"student"}
+          change={(query) => {
+            console.log(query);
+          }}
+        />
         <h2 id="instructor-label">STUDENT LIST</h2>
         <div className="list-content">
           <table className="log">
@@ -44,20 +51,21 @@ const Student = () => {
               {students.length > 0 &&
                 students.map((student) => {
                   return (
-                    <tr key={student._id} onClick={() => {
-                      navigate("/admin/profile", {
-                        state: { user: student },
-                      })
-                    }}>
+                    <tr
+                      key={student._id}
+                      onClick={() => {
+                        navigate("/admin/profile", {
+                          state: { user: student },
+                        });
+                      }}
+                    >
                       <th>{student.studentNumber}</th>
                       <th>{student.fullName}</th>
                       <th>{student.email}</th>
                       <th>{student.contactNumber}</th>
-
                     </tr>
                   );
-                })
-              }
+                })}
             </tbody>
           </table>
         </div>

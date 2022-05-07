@@ -6,29 +6,39 @@ import "./Instructors.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AdminSearch from "../../UI/AdminSearch";
 const Instructors = () => {
   const navigate = useNavigate();
-  const [searchInstructor, setSearchInstructor] = useState('');
-  const [isVerified, setIsverified] = useState('');
+  const [searchInstructor, setSearchInstructor] = useState("");
+  const [isVerified, setIsverified] = useState("");
   const [instructors, setInstructors] = useState([]);
 
   useEffect(() => {
-    axios.post('http://localhost:7700/api/users/type', {
-      uType: 'Faculty',
-      findInName: searchInstructor,
-      verified: isVerified,
-    }).then((response) => {
-      setInstructors(response.data)
-    }).catch((error) => {
-      alert(error);
-    })
-  }, [searchInstructor, isVerified])
+    axios
+      .post("http://localhost:7700/api/users/type", {
+        uType: "Faculty",
+        findInName: searchInstructor,
+        verified: isVerified,
+      })
+      .then((response) => {
+        setInstructors(response.data);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }, [searchInstructor, isVerified]);
 
   return (
     <>
       <Sidebar />
       <TopNav />
       <Body>
+        <AdminSearch
+          entity={"instructor"}
+          change={(query) => {
+            console.log(query);
+          }}
+        />
         <h2 id="instructor-label">INSTRUCTORS LIST</h2>
         <div className="list-content">
           <table className="log">
@@ -42,20 +52,21 @@ const Instructors = () => {
               {instructors.length > 0 &&
                 instructors.map((instructor) => {
                   return (
-                    <tr key={instructor._id} onClick={() => {
-                      navigate("/admin/profile", {
-                        state: { user: instructor },
-                      })
-                    }
-                    }>
+                    <tr
+                      key={instructor._id}
+                      onClick={() => {
+                        navigate("/admin/profile", {
+                          state: { user: instructor },
+                        });
+                      }}
+                    >
                       <th>{instructor.fullName}</th>
                       <th>{instructor.email}</th>
                       <th>{instructor.contactNumber}</th>
                       <th>{instructor.verified ? "Verified" : "Unverified"}</th>
                     </tr>
                   );
-                })
-              }
+                })}
             </tbody>
           </table>
         </div>

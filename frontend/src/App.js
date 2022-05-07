@@ -23,6 +23,7 @@ import AccountProfile from "./Admin/Components/Main/Profile/AccountProfile";
 import "./App.css";
 import AdminRequests from "./Admin/Components/Main/Requests/AdminRequests";
 import AdminRequestForm from "./Admin/Components/UI/AdminRequestForm";
+import PDF from "./Admin/Components/Main/PDF/PDF";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -78,6 +79,7 @@ function App() {
           <Route path="/admin/profile" element={<AccountProfile />} />
           <Route path="/admin/request" element={<AdminRequests />} />
           <Route path="/admin/request/form" element={<AdminRequestForm />} />
+          <Route path="/admin/request/form/pdf" element={<PDF />} />
         </Routes>
       </>
     </AuthenticationContext.Provider>

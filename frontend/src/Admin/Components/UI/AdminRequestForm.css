@@ -5,10 +5,11 @@
   margin-bottom: 5%;
   transition: all 1s;
 }
+
 .student-info:hover {
   transform: translateY(-0.2em);
 }
-#stud-info-label {
+.stud-info-label {
   margin-bottom: 5%;
   font-size: 1.5vw;
   font-weight: bold;
@@ -22,8 +23,52 @@
   margin-left: 15vw;
 }
 .admin-signature {
-  height: 10vh;
+  width: 10em;
+  border-radius: 20px;
 }
 .student-info div {
   margin-bottom: 0.75em;
+}
+#admin-approve-button {
+  background-color: white;
+  color: #810000;
+}
+
+#admin-approve-button:hover {
+  background-color: #810000;
+  color: white;
+  transform: translateY(-0.3em);
+}
+
+#admin-cancel-button {
+  background-color: #810000;
+  color: white;
+}
+
+#admin-cancel-button:hover {
+  transform: translateY(-0.3em);
+}
+#admin-approve-button,
+#admin-cancel-button {
+  margin: 0.2em 0.5em;
+  width: 8em;
+  height: 3em;
+  font-size: 1.2em;
+  border: 1px solid #810000;
+  border-radius: 10px;
+  transition: all 0.5s;
+  padding: 0.5em;
+}
+.admin-btn-container {
+  text-align: center;
+}
+.admin-field-label {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.admin-signature-container {
+  /* outline: 1px red solid; */
+  width: 10em;
+  border-radius: 20px;
+  border: 1px solid black;
 }

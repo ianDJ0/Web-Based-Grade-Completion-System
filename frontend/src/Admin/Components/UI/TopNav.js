@@ -11,9 +11,9 @@ const TopNav = () => {
   const [dropDown, setDropDown] = useState(false);
   const [message, setMessages] = useState(false);
 
-  const tokenContent = jwtDecode(localStorage.getItem('token'));
-  if(tokenContent.user!== "Admin"){
-    navigate('/homepage');
+  const tokenContent = jwtDecode(localStorage.getItem("token"));
+  if (tokenContent.user.userType !== "Admin") {
+    navigate("/homepage");
   }
 
   return (

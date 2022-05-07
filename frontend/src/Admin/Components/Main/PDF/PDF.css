@@ -1,0 +1,91 @@
+#pdf-body {
+  background-color: white;
+  /* width: 719.08661417px; */
+  /* height: 1123px; */
+  width: 21cm;
+  height: 29.7cm;
+  padding: 0 94px;
+}
+#pdf-bulsu-logo {
+  height: 6em;
+  position: absolute;
+  left: 13em;
+}
+.pdf-heading {
+  padding-top: 2em;
+  text-align: center;
+}
+p,
+h3,
+pre {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.2em;
+}
+.pdf-control-no {
+  margin-top: 1.5em;
+  margin-bottom: 3.5em;
+}
+.pdf-date-field {
+  float: right;
+  position: relative;
+}
+.pdf-date {
+  text-align: center;
+}
+.pdf-recipient {
+  margin-bottom: 1.5em;
+}
+pre {
+  margin-bottom: 1em;
+}
+.pdf-registrar {
+  float: right;
+  text-align: center;
+  margin-top: 1em;
+}
+.pdf-action-taken {
+  margin-top: 5em;
+}
+.pdf-action-taken p {
+  margin-bottom: 0.2em;
+}
+.pdf-pass-fail {
+  margin-top: 1em;
+  margin-left: 3em;
+  margin-bottom: 1.5em;
+}
+.pdf-noted {
+  float: left;
+  margin-top: 1.5em;
+}
+.pdf-noted-date {
+  margin-top: 1em;
+  text-align: center;
+}
+.pdf-faculty-sign {
+  float: right;
+  text-align: center;
+}
+.pdf-copies {
+  position: relative;
+  margin-top: 8em;
+}
+.pdf-copies-list {
+  margin-left: 2em;
+  margin-top: 1em;
+}
+.pdf-stud-info {
+  float: right;
+  margin-top: -6em;
+}
+.pdf-etc {
+  margin-top: 01.5em;
+}
+.etc {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1em;
+}
+.etc-small {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
+}
