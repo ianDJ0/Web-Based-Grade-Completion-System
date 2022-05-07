@@ -1,7 +1,10 @@
 import React from "react";
 import { jsPDF } from "jspdf";
 import "./PDF.css";
+import { useLocation } from "react-router-dom";
 const PDF = () => {
+  const {state} = useLocation();
+  console.log(state.items)
   const createPDF = async () => {
     const pdf = new jsPDF({
       unit: "px",
@@ -19,23 +22,23 @@ const PDF = () => {
   };
 
   //DUMMY DATA
-  const controlNo = 12345;
-  const pdfDate = " October 14, 1892";
-  const profName = "John Watson";
-  const studName = "Jim Moriarty";
-  const subject = "Physical Education";
-  const semester = "1st Semester";
-  const schoolYrStart = "20";
-  const schoolYrEnd = "21";
-  const reason = "Sleeping";
-  const dueDate = "October 28, 1892";
-  const isPassed = true;
-  const studGrade = 1.5;
-  const actionDate = "October 20, 1892";
-  const dean = "Sherlock Holmes";
-  const signature = "Signature here";
-  const idNo = "2018-7877898";
-  const cys = "BSIT 1A";
+  const controlNo = " ";
+  const pdfDate = state.items.dateLog.dateStudent;
+  const profName = state.items.instructor.instructorName;
+  const studName = state.items.student.studentFullname;
+  const subject = state.items.subjectCode + " " + state.items.subjectDescription;
+  const semester = state.items.incompletePeriod;
+  const schoolYrStart = state.items.incompleteYear.slice(2,4);
+  const schoolYrEnd = state.items.incompleteYear.slice(9,11);
+  const reason = state.items.reason;
+  const dueDate = " ";
+  const isPassed = state.items.grade <=3 ? true:false;
+  const studGrade = state.items.grade;
+  const actionDate = state.items.dateLog.dateInstructor;
+  const dean = "Dr. Keno Piad";
+  const signature = state.items.signature.studentSignature;
+  const idNo = state.items.student.studentNumber;
+  const cys = state.items.student.studentYearAndSection;
 
   return (
     <>

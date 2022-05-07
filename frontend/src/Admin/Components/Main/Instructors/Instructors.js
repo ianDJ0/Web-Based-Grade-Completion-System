@@ -36,7 +36,7 @@ const Instructors = () => {
         <AdminSearch
           entity={"instructor"}
           change={(query) => {
-            console.log(query);
+            setSearchInstructor(query);
           }}
         />
         <h2 id="instructor-label">INSTRUCTORS LIST</h2>

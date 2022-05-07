@@ -27,7 +27,6 @@ const AdminRequests = () => {
     }).catch((error) => {
       alert(error)
     })
-    console.log("RERENDER")
   }, [entries, toDate, fromDate, status]);
 
   return (
