@@ -1,124 +1,177 @@
 import React from "react";
-import Pdf from "react-to-pdf";
+import { jsPDF } from "jspdf";
 import "./PDF.css";
 const PDF = () => {
+  const createPDF = async () => {
+    const pdf = new jsPDF({
+      unit: "px",
+      hotfixes: ["px_scaling"],
+      width: 850,
+      windowWidth: 850,
+      height: 1122,
+      windowHeight: 1122,
+    });
+    // const pdf = new jsPDF("portrait", "px", "a4");
+    const data = await document.querySelector("#pdf-body");
+    pdf.html(data).then(() => {
+      pdf.save("Completion Form.pdf");
+    });
+  };
 
-    const pdfMessage = String.raw`          Mr.      /Ms.      ________________________________________________,    has      an
-
-  incomplete  grade  in  ______________________________________________  which  he/she
-
-  took during the   ___________________________________  trimester/semester/summer  year
-
-  20____ - 20_____.`;
-
-  const pdfReason = String.raw`          The   reason/s  for   the  INCOMPLETE  as   reflected   in   the   grading   sheet   is / are
-
-______________________________________________________________________.
-
-          Please accomplish this form and return to this office not later ____________________.`;
-
-  const ref = React.createRef();
+  //DUMMY DATA
+  const controlNo = 12345;
+  const pdfDate = " October 14, 1892";
+  const profName = "John Watson";
+  const studName = "Jim Moriarty";
+  const subject = "Physical Education";
+  const semester = "1st Semester";
+  const schoolYrStart = "20";
+  const schoolYrEnd = "21";
+  const reason = "Sleeping";
+  const dueDate = "October 28, 1892";
+  const isPassed = true;
+  const studGrade = 1.5;
+  const actionDate = "October 20, 1892";
+  const dean = "Sherlock Holmes";
+  const signature = "Signature here";
+  const idNo = "2018-7877898";
+  const cys = "BSIT 1A";
 
   return (
     <>
-      <Pdf targetRef={ref} filename="Completion Form.pdf">
-        {({ toPdf }) => <button onClick={toPdf}>Generate Pdf</button>}
-      </Pdf>
-      <div ref={ref} id="pdf-body">
-        {/* header */}
-        <div className="pdf-heading">
-          <img
-            id="pdf-bulsu-logo"
-            src={require("./bulsu-logo-red.png")}
-            alt="bulsu-logo-red"
-          />
-          <div className="pdf-heading-text">
-            <p>Republic of the Philippines</p>
-            <h3>BULACAN STATE UNIVERSITY</h3>
-            <em>
-              <p>Office of the Registrar</p>
-            </em>
-            <p>City of Malolos, Bulacan</p>
-            <p>Tel. no. 919-7800 local 1001 or 1002</p>
+      <button onClick={createPDF}>Create PDF</button>
+
+      <div id="pdf-body">
+        <div className="pdf-container">
+          {/* header */}
+          <div className="pdf-heading">
+            <img
+              id="pdf-bulsu-logo"
+              src={require("./bulsu-logo-red.png")}
+              alt="bulsu-logo-red"
+            />
+
+            <div className="pdf-heading-text">
+              <p>Republic of the Philippines</p>
+              <h3>BULACAN STATE UNIVERSITY</h3>
+              <em>
+                <p>Office of the Registrar</p>
+              </em>
+              <p>City of Malolos, Bulacan</p>
+              <p>Tel. no. 919-7800 local 1001 or 1002</p>
+            </div>
           </div>
-        </div>
 
-        {/* body */}
-        {/* Control No and Date */}
-        <div className="pdf-control-no">
-          <strong>
-            <p>Control No. ________</p>
-          </strong>
-          <div className="pdf-date-field">
-            <p className="pdf-date-blank">______________________</p>
-            <p className="pdf-date">Date</p>
+          {/* body */}
+          {/* Control No and Date */}
+          <div className="pdf-control-no">
+            <p className="pdf-control-no-var ans">{controlNo}</p>
+            <strong>
+              <p>Control No. ________</p>
+            </strong>
+            <div className="pdf-date-field">
+              <p className="pdf-date-var ans">{pdfDate}</p>
+              <p className="pdf-date-blank">______________________</p>
+              <p className="pdf-date">Date</p>
+            </div>
           </div>
-        </div>
 
-        {/* Recipient and Message */}
-        <div className="pdf-main-container">
-          <div className="pdf-recipient">
-            <p>To: Prof. __________________________,</p>
+          {/* Recipient and Message */}
+          <div className="pdf-main-container">
+            <div className="pdf-recipient">
+              <p className="pdf-recipient-var ans">{profName}</p>
+              <p>To: Prof. __________________________,</p>
+            </div>
+            <p className="pdf-studname-var ans">{studName}</p>
+            <p className="pdf-subject-var ans">{subject}</p>
+            <p className="pdf-semester-var ans">{semester}</p>
+            <p className="pdf-schoolYr-start-var ans">{schoolYrStart}</p>
+            <p className="pdf-schoolYr-end-var ans">{schoolYrEnd}</p>
+            <p className="pdf-reason-var ans">{reason}</p>
+            <p className="pdf-duedate-var ans">{dueDate}</p>
+            <pre className="pdf-indent-pre">
+              {`            Mr.    /Ms.    __________________________________________________,    has    an`}
+            </pre>
+            <pre>
+              {`incomplete   grade  in  _____________________________________________  which  he/she `}
+            </pre>
+            <pre>
+              {`took  during  the ___________________________________ trimester/semester/summer  year `}
+            </pre>
+            <pre>{`20____ - 20_____.`}</pre>
+
+            <pre>{`            The   reason/s for   the   INCOMPLETE as   reflected   in   the grading sheet is / are`}</pre>
+            <pre>{`______________________________________________________________________.`}</pre>
+            <pre>{`            Please accomplish this form and return to this office not later ____________________.`}</pre>
           </div>
-          <pre>{pdfMessage}</pre>
-          <pre>{pdfReason}</pre>
-        </div>
 
-        {/*  Registrar */}
-        <div className="pdf-registrar">
-          <p>ALBERT B. VILLENA</p>
-          <p>Registrar IV</p>
-        </div>
-
-        {/* Action taken */}
-        <div className="pdf-action-taken">
-          <p>ACTION TAKEN</p>
-          <div className="pdf-pass-fail">
-            <p>PASSED: ________ Rating:__________</p>
-            <p>FAILED: ________ Rating:__________</p>
+          {/*  Registrar */}
+          <div className="pdf-registrar">
+            <p>ALBERT B. VILLENA</p>
+            <p>Registrar IV</p>
           </div>
-          <p>Date: _________________</p>
-        </div>
 
-        {/* Noted */}
-        <div className="pdf-noted">
-          <p>NOTED:</p>
-          <div className="pdf-noted-date">
+          {/* Action taken */}
+          <div className="pdf-action-taken">
+            {isPassed ? (
+              <p className="pdf-passed-var ans">{studGrade}</p>
+            ) : (
+              <p className="pdf-fail-var ans">{studGrade}</p>
+            )}
+            <p className="pdf-actiondate-var ans">{actionDate}</p>
+            <p>ACTION TAKEN</p>
+            <div className="pdf-pass-fail">
+              <p>PASSED: ________ Rating:__________</p>
+              <pre>{`FAILED: ________  Rating:__________`}</pre>
+            </div>
+            <p>Date: _________________</p>
+          </div>
+
+          {/* Noted */}
+          <div className="pdf-noted">
+            <p className="pdf-dean-var ans">{dean}</p>
+            <p>NOTED:</p>
+            <div className="pdf-noted-date">
+              <p>____________________________</p>
+              <p>Dean</p>
+            </div>
+          </div>
+
+          {/* Subj Instructor */}
+          <div className="pdf-faculty-sign">
+            <p className="pdf-prof-var ans">{profName}</p>
             <p>____________________________</p>
-            <p>Dean</p>
+            <p>Subject Instructor/Professor</p>
           </div>
-        </div>
 
-        {/* Subj Instructor */}
-        <div className="pdf-faculty-sign">
-          <p>____________________________</p>
-          <p>Subject Instructor/Professor</p>
-        </div>
-
-        {/* Distribution of Copies */}
-        <div className="pdf-copies">
-          <p>Distribution of copies:</p>
-          <div className="pdf-copies-list">
-            <p>1 &ndash; Registrar&apos;s Office</p>
-            <p>1 &ndash; Department Concern</p>
-            <p>1 &ndash; Student&apos;s Copy</p>
+          {/* Distribution of Copies */}
+          <div className="pdf-copies">
+            <p>Distribution of copies:</p>
+            <div className="pdf-copies-list">
+              <p>1 &ndash; Registrar&apos;s Office</p>
+              <p>1 &ndash; Department Concern</p>
+              <p>1 &ndash; Student&apos;s Copy</p>
+            </div>
           </div>
-        </div>
 
-        {/* Student Info */}
-        <div className="pdf-stud-info">
-          <p>____________________________</p>
-          <p>Student&apos;s Signature</p>
-          <p>I.D. No.______________________</p>
-          <p>Course/Year &amp; Section _________</p>
-        </div>
+          {/* Student Info */}
+          <div className="pdf-stud-info">
+            <p className="pdf-sign-var ans">{signature}</p>
+            <p className="pdf-id-var ans">{idNo}</p>
+            <p className="pdf-cys-var ans">{cys}</p>
+            <p>____________________________</p>
+            <p>Student&apos;s Signature</p>
+            <p>I.D. No.______________________</p>
+            <p>Course/Year &amp; Section _________</p>
+          </div>
 
-        {/* Etc */}
-        <div className="pdf-etc">
-          <strong>
-            <p className="etc">BulSU-OP-OUR-02F15</p>
-          </strong>
-          <p className="etc-small">Revision: 0</p>
+          {/* Etc */}
+          <div className="pdf-etc">
+            <strong>
+              <p className="etc">BulSU-OP-OUR-02F15</p>
+            </strong>
+            <p className="etc-small">Revision: 0</p>
+          </div>
         </div>
       </div>
     </>

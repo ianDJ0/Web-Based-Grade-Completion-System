@@ -3,23 +3,35 @@
   /* width: 719.08661417px; */
   /* height: 1123px; */
   width: 21cm;
-  height: 29.7cm;
-  padding: 0 94px;
+  height: 29cm;
+  /* padding: 0 2.5cm; */
+}
+.pdf-container {
+  height: 100%;
+  width: 16cm;
+  margin-left: 2.5cm;
+  margin-right: 2.5cm;
+  /* outline: 1px solid black; */
 }
 #pdf-bulsu-logo {
   height: 6em;
-  position: absolute;
-  left: 13em;
+  margin-right: 1em;
+  margin-left: 5em;
+  /* left: 6%; */
 }
 .pdf-heading {
-  padding-top: 2em;
+  padding-top: 2.5cm;
+  display: flex;
+  justify-content: start;
+}
+.pdf-heading-text {
   text-align: center;
 }
 p,
 h3,
 pre {
   font-family: "Times New Roman", Times, serif;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 .pdf-control-no {
   margin-top: 1.5em;
@@ -42,6 +54,7 @@ pre {
   float: right;
   text-align: center;
   margin-top: 1em;
+  margin-right: 4em;
 }
 .pdf-action-taken {
   margin-top: 5em;
@@ -56,7 +69,7 @@ pre {
 }
 .pdf-noted {
   float: left;
-  margin-top: 1.5em;
+  margin-top: 2em;
 }
 .pdf-noted-date {
   margin-top: 1em;
@@ -83,9 +96,96 @@ pre {
 }
 .etc {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 .etc-small {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 0.8em;
+  font-size: 0.7em;
+}
+.ans {
+  font-weight: bold;
+}
+.pdf-control-no-var {
+  position: absolute;
+  margin-left: 5.5em;
+}
+.pdf-date-var {
+  position: absolute;
+  margin-left: 3em;
+}
+.pdf-recipient-var {
+  position: absolute;
+  margin-left: 5em;
+}
+.pdf-studname-var {
+  position: absolute;
+  margin-left: 15em;
+}
+.pdf-subject-var {
+  position: absolute;
+  margin-left: 16em;
+  margin-top: 2.2em;
+}
+.pdf-semester-var {
+  position: absolute;
+  margin-top: 4.4em;
+  margin-left: 15em;
+}
+.pdf-schoolYr-start-var {
+  position: absolute;
+  margin-top: 6.4em;
+  margin-left: 1.5em;
+}
+.pdf-schoolYr-end-var {
+  position: absolute;
+  margin-top: 6.4em;
+  margin-left: 5em;
+}
+.pdf-reason-var {
+  position: absolute;
+  margin-top: 10.5em;
+  margin-left: 15em;
+}
+.pdf-duedate-var {
+  position: absolute;
+  margin-top: 12.8em;
+  margin-left: 28.5em;
+}
+.pdf-passed-var {
+  position: absolute;
+  margin-top: 2.1em;
+  margin-left: 16em;
+}
+.pdf-fail-var {
+  position: absolute;
+  margin-top: 3.5em;
+  margin-left: 16em;
+}
+.pdf-actiondate-var {
+  position: absolute;
+  margin-top: 6em;
+  margin-left: 3em;
+}
+.pdf-dean-var {
+  position: absolute;
+  margin-top: 2.1em;
+  margin-left: 3em;
+}
+.pdf-prof-var {
+  position: absolute;
+  margin-left: 4em;
+}
+.pdf-sign-var {
+  position: absolute;
+  margin-left: 3em;
+}
+.pdf-id-var {
+  position: absolute;
+  margin-top: 2.3em;
+  margin-left: 4em;
+}
+.pdf-cys-var {
+    position: absolute;
+    margin-top: 3.3em;
+    margin-left: 10em;
 }
