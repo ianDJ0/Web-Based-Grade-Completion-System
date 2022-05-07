@@ -61,26 +61,39 @@ const studentCreateRequest = async (req, res) => {
     }
     //generate notification
     let notification;
-    try{
+    try {
         notification = new notificationModel({
             requestCode: studentRequest._id,
-            contents:`${req.body.studentFullname} has requested grade completion`,
-            updater:{
+            contents: `${req.body.studentFullname} has requested grade completion`,
+            updater: {
                 updaterID: mongoose.Types.ObjectId(req.body.studentID),
                 updaterName: req.body.studentFullname,
             },
-            receiver:{
+            receiver: {
                 receiverID: mongoose.Types.ObjectId(req.body.instructorID),
                 receiverName: req.body.instructorName,
             },
         })
         await notification.save();
-    }catch(error){
+    } catch (error) {
         return console.log(error);
     }
-    return res.json({ new: result , notification: notification});
+    return res.json({ new: result, notification: notification });
 
 }
+
+const getOneRequest = async (req, res) => {
+    let request;
+    try{
+        request = await requestModel.findById(mongoose.Types.ObjectId(req.body.requestID));
+    }catch(error){
+        return res.json(error);
+    }
+    return res.json(request);
+}
+
+
+
 const instructorRespondRequest = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -109,25 +122,25 @@ const instructorRespondRequest = async (req, res) => {
     } catch (err) {
         return res
             .status(422)
-            , json(err)
+            .json(err)
     }
 
     let notification;
-    try{
+    try {
         notification = new notificationModel({
             requestCode: req.body.requestID,
-            contents:`${instructorUpdate.instructor.instructorName} has submitted your request to Office`,
-            updater:{
+            contents: `${instructorUpdate.instructor.instructorName} has submitted your request to Office`,
+            updater: {
                 updaterID: mongoose.Types.ObjectId(instructorUpdate.instructor.instructorID),
                 updaterName: instructorUpdate.instructor.instructorName,
             },
-            receiver:{
+            receiver: {
                 receiverID: mongoose.Types.ObjectId(instructorUpdate.student.studentID),
                 receiverName: instructorUpdate.student.studentFullname,
             },
         })
         await notification.save();
-    }catch(error){
+    } catch (error) {
         return console.log(error);
     }
 
@@ -167,31 +180,51 @@ const officeRespondRequest = async (req, res) => {
     }
 
     let notification;
-    try{
+    try {
         notification = new notificationModel({
             requestCode: req.body.requestID,
-            contents:`Your Grade Completion Form by the office has been processed!`,
-            receiver:{
+            contents: `Your Grade Completion Form by the office has been processed!`,
+            receiver: {
                 receiverID: mongoose.Types.ObjectId(officeUpdate.student.studentID),
                 receiverName: officeUpdate.student.studentFullname,
             },
         })
         await notification.save();
-    }catch(error){
+    } catch (error) {
         return console.log(error);
     }
-
-
-
-
     return res.status(201).json(officeUpdate);
-
-
-
-
-
-
 }
+//get notification
+const getUserNotifications = async (req, res) => {
+    let getNotifications;
+    try {
+        getNotifications = await notificationModel
+            .find({ 'receiver.receiverID': req.body.userID }).sort({ 'date': -1 });
+    } catch (err) {
+        return res
+            .status(422)
+            .json({ error: err, message: "Search Failed" })
+    }
+    return res.status(202).json(getNotifications);
+}
+
+//set notification to viewed
+const viewNotification = async (req, res) => {
+    try {
+        viewNotif = await notificationModel
+            .findByIdAndUpdate(req.body.notificationID, { seen: true });
+    } catch (err) {
+        return res
+            .status(422)
+            .json({ error: err, message: "Search Failed" })
+    }
+    console.log(viewNotif);
+    return res.status(202).json(viewNotif);
+}
+
+
+
 //Get Requests for List Display
 const getRequestForStudent = async (req, res) => {
     let searchFilter = { 'student.studentID': req.body.uID };
@@ -269,7 +302,7 @@ const adminGetRequests = async (req, res) => {
                 .find({ status: req.body.filter });
         } else {
             getRequestFaculty = await requestModel
-                .find(searchFilter).sort({'dateLog.dateStudent':-1});
+                .find(searchFilter).sort({ 'dateLog.dateStudent': -1 });
         }
 
     } catch (err) {
@@ -287,6 +320,9 @@ exports.getRequestForStudent = getRequestForStudent;
 exports.studentCreateRequest = studentCreateRequest;
 exports.instructorRespondRequest = instructorRespondRequest;
 exports.officeRespondRequest = officeRespondRequest;
+exports.getUserNotifications = getUserNotifications;
+exports.viewNotification = viewNotification;
+exports.getOneRequest = getOneRequest;
 
 exports.adminGetRequests = adminGetRequests;
 

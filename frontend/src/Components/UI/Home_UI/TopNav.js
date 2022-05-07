@@ -20,9 +20,18 @@ const TopNav = (props) => {
   const [dropDown, setDropDown] = useState(false);
   const [showNotif, setShowNotif] = useState(false);
   const [messages, setMessages] = useState(false);
+  const [notifications, setNotifications] = useState([]);
 
   const [suggestionView, setSuggestionView] = useState(false);
-
+  useEffect(()=>{
+    axios.post("http://localhost:7700/api/request/notifications",{
+      userID:auth.userId
+    }).then((response)=>{
+      setNotifications(response.data);
+    }).catch((error)=>{
+      alert('GET NOTIFICATIONS',error)
+    })
+  },[])
   // const notifRef = useRef();
   // const dropRef = useRef();
   // useEffect(() => {
@@ -127,7 +136,7 @@ const TopNav = (props) => {
               setMessages(false);
             }}
           />
-          {showNotif && <Notifications />}
+          {showNotif && <Notifications notificationProps={notifications}/>}
           <img
             alt="icon-dropdown"
             src={require("./Icons/dropdown.png")}

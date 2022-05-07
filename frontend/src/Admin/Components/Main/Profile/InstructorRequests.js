@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import "./Requests.css";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-const InstructorRequests = (props) => {
-  const [request, setRequest] = useState([]);
+import "./Requests.css";
 
+
+const InstructorRequests = (props) => {
+const [request, setRequest] = useState([]);
+const navigate = useNavigate();
  useEffect(()=>{
   axios
   .post("http://localhost:7700/api/request/facultyRequest", {
@@ -30,7 +33,11 @@ const InstructorRequests = (props) => {
           </tr>
           {request.length > 0 &&
             request.map(req => {
-              return <tr key={req._id}>
+              return <tr key={req._id} onClick={()=>{
+                navigate("/admin/request/form", {
+                  state: { requestItem: req },
+                });
+              }}>
                 <th>{req.subjectCode}</th>
                 <th>{req.subjectDescription}</th>
                 <th>{req.student.studentFullname}</th>

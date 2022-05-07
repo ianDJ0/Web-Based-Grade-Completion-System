@@ -12,7 +12,9 @@ router.post('/facultyRequest', requestController.getRequestForFaculty);
 
 //should add headertoken for admin access
 router.post('/admin/getRequests', requestController.adminGetRequests);
-
+router.post('/getOne', requestController.getOneRequest);
+router.post('/notifications', requestController.getUserNotifications);
+router.post('/viewNotification', requestController.viewNotification);
 
 router.use(checkAuth)
 router.post('/studentCreateRequest'
