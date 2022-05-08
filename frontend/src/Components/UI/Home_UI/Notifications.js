@@ -14,7 +14,7 @@ const Notifications = (props) => {
     >
       <h2>Notifications</h2>
       <hr />
-      {props.notifications ? (
+      {typeof props.notifications === 'undefined' ? (
         <h3>No notifications</h3>
       ) : (
         <div>

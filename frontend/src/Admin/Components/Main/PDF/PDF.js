@@ -3,8 +3,8 @@ import { jsPDF } from "jspdf";
 import "./PDF.css";
 import { useLocation } from "react-router-dom";
 const PDF = () => {
-  const {state} = useLocation();
-  console.log(state.items)
+  const { state } = useLocation();
+  console.log(state.items);
   const createPDF = async () => {
     const pdf = new jsPDF({
       unit: "px",
@@ -21,24 +21,46 @@ const PDF = () => {
     });
   };
 
+  document.body.style = "background: #8c0000";
+
+  const DATE_OPTIONS = {
+    // weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  };
+
   //DUMMY DATA
   const controlNo = " ";
-  const pdfDate = state.items.dateLog.dateStudent;
+  const pdfDate = new Date(state.items.dateLog.dateStudent).toLocaleDateString(
+    "en-US",
+    DATE_OPTIONS
+  );
   const profName = state.items.instructor.instructorName;
   const studName = state.items.student.studentFullname;
-  const subject = state.items.subjectCode + " " + state.items.subjectDescription;
-  const semester = state.items.incompletePeriod;
-  const schoolYrStart = state.items.incompleteYear.slice(2,4);
-  const schoolYrEnd = state.items.incompleteYear.slice(9,11);
+  const subject =
+    state.items.subjectCode + " " + state.items.subjectDescription;
+  const semester =
+    state.items.incompletePeriod === "1" ? "1st Semester" : "2nd Semester";
+  const schoolYrStart = state.items.incompleteYear.slice(2, 4);
+  const schoolYrEnd = state.items.incompleteYear.slice(9, 11);
   const reason = state.items.reason;
   const dueDate = " ";
-  const isPassed = state.items.grade <=3 ? true:false;
+  const isPassed = state.items.grade <= 3 ? true : false;
   const studGrade = state.items.grade;
-  const actionDate = state.items.dateLog.dateInstructor;
+  const actionDate = new Date(
+    state.items.dateLog.dateInstructor
+  ).toLocaleDateString("en-US", DATE_OPTIONS);
   const dean = "Dr. Keno Piad";
-  const signature = state.items.signature.studentSignature;
+  const signature =
+    "http://localhost:7700/" + state.items.signature.studentSignature;
   const idNo = state.items.student.studentNumber;
   const cys = state.items.student.studentYearAndSection;
+
+  const deanSign =
+    "http://localhost:7700/" + state.items.signature.studentSignature; //change the state value to whatever the signature is and append to the localhost ur;
+  const profSign =
+    "http://localhost:7700/" + state.items.signature.studentSignature; //change the state value to whatever the signature is and append to the localhost ur;
 
   return (
     <>
@@ -86,7 +108,7 @@ const PDF = () => {
               <p>To: Prof. __________________________,</p>
             </div>
             <p className="pdf-studname-var ans">{studName}</p>
-            <p className="pdf-subject-var ans">{subject}</p>
+            <p className="pdf-subject-var ans">{subject.toUpperCase()}</p>
             <p className="pdf-semester-var ans">{semester}</p>
             <p className="pdf-schoolYr-start-var ans">{schoolYrStart}</p>
             <p className="pdf-schoolYr-end-var ans">{schoolYrEnd}</p>
@@ -132,6 +154,11 @@ const PDF = () => {
 
           {/* Noted */}
           <div className="pdf-noted">
+            <img
+              className="pdf-dean-sign-var"
+              alt="dean-signature"
+              src={deanSign}
+            />
             <p className="pdf-dean-var ans">{dean}</p>
             <p>NOTED:</p>
             <div className="pdf-noted-date">
@@ -142,6 +169,11 @@ const PDF = () => {
 
           {/* Subj Instructor */}
           <div className="pdf-faculty-sign">
+            <img
+              className="pdf-prof-sign-var"
+              alt="instructor-signature"
+              src={profSign}
+            />
             <p className="pdf-prof-var ans">{profName}</p>
             <p>____________________________</p>
             <p>Subject Instructor/Professor</p>
@@ -159,7 +191,12 @@ const PDF = () => {
 
           {/* Student Info */}
           <div className="pdf-stud-info">
-            <p className="pdf-sign-var ans">{signature}</p>
+            {/* <p className="pdf-sign-var ans">{signature}</p> */}
+            <img
+              className="pdf-sign-var ans"
+              alt="student-signature"
+              src={signature}
+            />
             <p className="pdf-id-var ans">{idNo}</p>
             <p className="pdf-cys-var ans">{cys}</p>
             <p>____________________________</p>
@@ -171,9 +208,19 @@ const PDF = () => {
           {/* Etc */}
           <div className="pdf-etc">
             <strong>
-              <p className="etc">BulSU-OP-OUR-02F15</p>
+              <p
+                className="etc"
+                style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
+              >
+                BulSU-OP-OUR-02F15
+              </p>
             </strong>
-            <p className="etc-small">Revision: 0</p>
+            <p
+              className="etc-small"
+              style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
+            >
+              Revision: 0
+            </p>
           </div>
         </div>
       </div>
