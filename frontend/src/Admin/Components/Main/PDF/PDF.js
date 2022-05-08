@@ -58,9 +58,9 @@ const PDF = () => {
   const cys = state.items.student.studentYearAndSection;
 
   const deanSign =
-    "http://localhost:7700/" + state.items.signature.studentSignature; //change the state value to whatever the signature is and append to the localhost ur;
+    "http://localhost:7700/" + state.items.signature.officeSignature; //change the state value to whatever the signature is and append to the localhost ur;
   const profSign =
-    "http://localhost:7700/" + state.items.signature.studentSignature; //change the state value to whatever the signature is and append to the localhost ur;
+    "http://localhost:7700/" + state.items.signature.instructorSignature; //change the state value to whatever the signature is and append to the localhost ur;
 
   return (
     <>

@@ -23,6 +23,7 @@ const TopNav = (props) => {
   const [showNotif, setShowNotif] = useState(false);
   const [messages, setMessages] = useState(false);
   const [notifications, setNotifications] = useState([]);
+  const [viewNotification, setViewNotification] = useState(false);
 
   const [suggestionView, setSuggestionView] = useState(false);
   useEffect(() => {
@@ -149,7 +150,7 @@ const TopNav = (props) => {
               setMessages(false);
             }}
           />
-          {showNotif && <Notifications notificationProps={notifications} />}
+          {showNotif && <Notifications notificationProps={notifications} viewNotif={()=>{setViewNotification(!viewNotification)}}/>}
           <img
             alt="icon-dropdown"
             src={require("./Icons/dropdown.png")}

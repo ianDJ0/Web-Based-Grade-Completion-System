@@ -18,12 +18,13 @@ const Login = () => {
   const auth = useContext(AuthenticationContext);
   const navigate = useNavigate();
 
-  if (localStorage.getItem("token")) {
-    navigate("/homepage");
-  }
+  
+
   useEffect(() => {
-    //sets the cursor focus to the email field
     emailRef.current.focus();
+    if (localStorage.getItem("token")) {
+      navigate("/homepage");
+    }
   }, []);
 
   useEffect(() => {
