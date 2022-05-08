@@ -7,6 +7,8 @@ import { AuthenticationContext } from "../../Shared/context/auth-context";
 import TokenCheck from "../../Shared/Auth";
 import Notifications from "./Notifications";
 import Logout from "./Logout";
+import Messages from "./Messages";
+import MessageBox from "./MessageBox";
 const TopNav = (props) => {
   const [query, setQuery] = useState("");
   const [query2, setQuery2] = useState("");
@@ -23,21 +25,31 @@ const TopNav = (props) => {
   const [notifications, setNotifications] = useState([]);
 
   const [suggestionView, setSuggestionView] = useState(false);
-  useEffect(()=>{
-    axios.post("http://localhost:7700/api/request/notifications",{
-      userID:auth.userId
-    }).then((response)=>{
-      setNotifications(response.data);
-    }).catch((error)=>{
-      alert('GET NOTIFICATIONS',error)
-    })
-  },[])
+  useEffect(() => {
+    axios
+      .post("http://localhost:7700/api/request/notifications", {
+        userID: auth.userId,
+      })
+      .then((response) => {
+        setNotifications(response.data);
+      })
+      .catch((error) => {
+        alert("GET NOTIFICATIONS", error);
+      });
+  }, []);
   // const notifRef = useRef();
   // const dropRef = useRef();
   // useEffect(() => {
   //   if (showNotif) notifRef.current.focus();
   //   if (dropRef) dropRef.current.focus();
   // }, [showNotif, dropDown]);
+
+  const [chatBox, setBox] = useState(false);
+
+  const messageClickHandler = () => {
+    setMessages((prev) => !prev);
+    setBox(true);
+  };
 
   return (
     <>
@@ -126,6 +138,7 @@ const TopNav = (props) => {
               setShowNotif(false);
             }}
           />
+          {messages && <Messages onMessage={messageClickHandler} />}
           <img
             alt="icon-notification"
             src={require("./Icons/Bell.png")}
@@ -136,7 +149,7 @@ const TopNav = (props) => {
               setMessages(false);
             }}
           />
-          {showNotif && <Notifications notificationProps={notifications}/>}
+          {showNotif && <Notifications notificationProps={notifications} />}
           <img
             alt="icon-dropdown"
             src={require("./Icons/dropdown.png")}
@@ -175,6 +188,13 @@ const TopNav = (props) => {
             // </div>
           )}
         </div>
+        {chatBox && (
+          <MessageBox
+            closeChat={() => {
+              setBox(false);
+            }}
+          />
+        )}
       </AuthenticationContext.Provider>
     </>
   );
