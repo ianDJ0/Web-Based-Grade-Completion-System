@@ -4,23 +4,26 @@
   right: 2vw;
   min-height: 10vh;
   max-height: 50vh;
-  width: 20vw;
-  background-color: rgb(233, 230, 230);
+  width: 19vw;
+  background-color: white;
   border-radius: 1em;
-  margin-top: 2em;
+  margin-top: 0.7em;
   padding: 0.5em;
   box-shadow: 3px 0px 4px 0px rgba(0, 0, 0, 0.2);
 }
 .notifications h2 {
-  margin-left: 1em;
+  margin-left: 0.5em;
+  font-size: 1.3vw;
+  padding: 2%;
 }
 .notifications hr {
-  width: 19vw;
+  width: 18vw;
   margin-left: 1vh;
 }
 .notifications h3 {
   text-align: center;
   margin-top: 1em;
+  padding: 2%;
 }
 .notification {
   padding-left: 0.8vw;

@@ -4,12 +4,13 @@
   width: 20vw;
   min-height: 10vh;
   max-height: 50vh;
+  height: auto;
   border-radius: 1em;
   padding: 1vh;
-  background-color: rgb(233, 230, 230);
-  right: 5vw;
+  background-color: white;
+  right: 4vw;
   /* top: 11.5vh; */
-  margin-top: 3vh;
+  margin-top: 0.7em;
   box-shadow: 3px 0px 4px 0px rgba(0, 0, 0, 0.2);
 }
 #messages-container-header {
@@ -46,7 +47,7 @@
   /* outline: 1px solid black; */
 }
 .message:hover {
-  background-color: rgb(207, 205, 205);
+  background-color: rgb(236, 236, 236);
 }
 .message-content {
   overflow: hidden;

@@ -32,14 +32,15 @@ const MessageBox = (props) => {
               setMessage(e.target.value);
             }}
             type="text"
+            placeholder="Aa"
           />
           <button
             id="message-send"
+            className="fa fa-send"
             onClick={() => {
               alert("send " + message);
             }}
           >
-            Send
           </button>
         </div>
       </div>
