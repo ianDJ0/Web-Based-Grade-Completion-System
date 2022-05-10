@@ -55,3 +55,20 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
+@media only screen and (max-width: 600px){
+  #messages-container{
+    width: 30vw;
+    margin-top: 0;
+    right: 11vw;
+  }
+  #messages-container-header{
+    font-size: 1.75vw;
+    margin-bottom: 1%;
+  }
+  #messages-container hr{
+    width: 29vw;
+  }
+  .message{
+    font-size: 1.9vw;
+  }
+}

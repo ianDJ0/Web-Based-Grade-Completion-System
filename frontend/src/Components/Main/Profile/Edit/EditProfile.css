@@ -34,7 +34,6 @@
   border: 2px solid #ff0000;
   background-color: #ff0000;
   color: rgb(255, 255, 255);
-  border: 2px solid white;
   transition: all 0.4s;
 }
 #cancel-btn:hover {
@@ -99,7 +98,7 @@
   border-radius: 0.2em;
   padding: 0 2%;
 }
-.edit-first-name,
+/**.edit-first-name,
 .edit-mi,
 .edit-last-name {
   display: inline-block;
@@ -125,7 +124,7 @@
 #edit-lname-input {
   height: 6vh;
   width: 17vw;
-}
+}**/
 .leftover-label {
   margin-left: 14%;
 }
@@ -153,4 +152,53 @@
 }
 .hide {
   background-color: transparent;
+}
+@media only screen and (max-width: 600px){
+  #edit-profile-picture{
+    margin: 14% 0 0 35%;
+    height: 16vh;
+    width: 18vw;
+    border: 10px solid white;
+  }
+  .hover-change{
+    margin: 16% 0 0 37%;
+    height: 16vh;
+    width: 18vw;
+  }
+  .fa-plus-circle{
+    margin: 25%;
+  }
+  .edit-profile-details{
+    height: 25vh;
+    margin-top: 2%;
+  }
+  .leftover-label{
+    margin-top: 3%;
+    margin-left: 19%;
+    font-size: 2vw;
+  }
+  #edit-email-input{
+    margin-left: 19%;
+    margin-bottom: 0;
+    height: 5vh;
+    width: 44vw;
+  }
+  #edit-num-input{
+    margin-left: 19%;
+    margin-bottom: 3%;
+    height: 5vh;
+    width: 44vw;
+  }
+  #save-changes-btn{
+    margin: 60% 0 0 20%;
+    width: 24vw;
+    height: 5vh;
+    font-size: 2vw;
+  }
+  #cancel-btn{
+    margin: 60% 0 0 50%;
+    width: 24vw;
+    height: 5vh;
+    font-size: 2vw;
+  }
 }

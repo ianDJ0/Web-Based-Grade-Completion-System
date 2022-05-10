@@ -11,3 +11,14 @@
   flex-direction: row;
   align-items: center;
 }
+@media only screen and (max-width: 600px){
+  #logreg-design{
+    display: none;
+  }
+  .logo-name-icon{
+    margin: 3%;
+  }
+  #site-name{
+    display: none;
+  }
+}

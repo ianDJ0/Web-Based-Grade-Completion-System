@@ -9,3 +9,9 @@
   box-shadow: -4px 0px 10px rgba(0, 0, 0, 0.5);
   float: right;
 }
+@media only screen and (max-width: 600px){
+  .logreg-body{
+    width: 100vw;
+    border-radius: 0;
+  }
+}

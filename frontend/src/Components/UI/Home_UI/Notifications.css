@@ -35,3 +35,19 @@
 .notification:hover {
   background-color: rgb(201, 196, 196);
 }
+@media only screen and (max-width: 600px) {
+  .notifications{
+    width: 25vw;
+    right: 6vw;
+    margin-top: 0;
+  }
+  .notifications h2{
+    font-size: 2vw;
+  }
+  .notifications hr{
+    width: 22vw;
+  }
+  .notifications h3{
+    font-size: 2.3vw;
+  }
+}

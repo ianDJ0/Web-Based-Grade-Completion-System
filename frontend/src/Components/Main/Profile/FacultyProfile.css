@@ -129,3 +129,56 @@
   background-color: white;
   box-shadow: 0px 3px 5px 0px;
 }
+@media only screen and (max-width: 600px){
+  .search-faculty-profile{
+    width: 85vw;
+    height: 55vh;
+    margin: 30% 0 0 10%;
+  }
+  #search-faculty-img{
+    width: 27vw;
+    height: 24vh;
+    margin-top: 12%;
+  }
+  #search-faculty-name {
+    max-width: 23vw;
+    width: 100%;
+    text-align: center;
+    font-size: 4vw;
+    margin: 0 0 1% 13%;
+  }
+  #search-faculty-college {
+    width: 23vw;
+    margin-left: 13%;
+    font-size: 1.75vw;
+  }
+  .search-faculty-email {
+    margin-top: 33%;
+    width: 35vw;
+  }
+  .search-faculty-number{
+    margin-top: 46%;
+    width: 35vw;
+  }
+  .search-faculty-bday{
+    margin-top: 59%;
+    width: 35vw;
+  }
+  #search-email,
+  #search-number,
+  #search-bday{
+    font-size: 2.5vw;
+  }
+  #request-faculty{
+    width: 20vw;
+    height: 5vh;
+    font-size: 1.5vw;
+    margin-top: 21%;
+  }
+  #send-msg{
+    width: 18vw;
+    height: 5vh;
+    font-size: 1.5vw;
+    margin-top: 21%;
+  }
+}

@@ -57,3 +57,10 @@
   margin-bottom: 2%;
   margin-left: 4em;
 }
+@media only screen and (max-width: 600px){
+  .filter-logs{
+    margin-top: 4%;
+    left: 0;
+    margin-left: 10%;
+  }
+}

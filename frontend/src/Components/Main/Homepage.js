@@ -19,7 +19,7 @@ const Homepage = (props) => {
       <div className="home-punch">
         <h3 id="home-opening-line">Keep track of your form requests.</h3>
         <p id="home-opening-sub">
-          Find out the status of your request yada yada yada.
+          Find out the status of your request by navigating to the requests page.
         </p>
         <span
           onClick={() => {

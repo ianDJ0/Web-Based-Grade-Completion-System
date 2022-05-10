@@ -110,3 +110,54 @@
   width: 100%;
   background-color: #fafafa;
 }
+@media only screen and (max-width: 600px){
+  .home-punch{
+    z-index: -1;
+    margin-top: 16.5%;
+    margin-left: 0;
+    width: 83.95vw;
+    height: 20vh;
+  }
+  #home-opening-line{
+    font-size: 3.8vw;
+  }
+  #home-opening-sub{
+    font-size: 2.5vw;
+  }
+  .home-opening-btn{
+    padding: 2% 4%;
+  }
+  .home-aboutus{
+    z-index: -1;
+    width: 83.95vw;
+    height: 20vh;
+    margin-left: 0;
+    margin-top: 48.7%;
+  }
+  #home-aboutus-label{
+    font-size: 4vw;
+  }
+  #home-aboutus-info{
+    font-size: 2.5vw;
+    padding: 0;
+  }
+  #home-bulsu-logo{
+    width: 15vw;
+  }
+  .home-get-started{
+    z-index: -1;
+    margin-left: 0;
+    margin-top: 81%;
+    width: 83.95vw;
+  }
+  .to-tutorial{
+    margin-left: 5%;
+  }
+  #system-title-label{
+    font-size: 4vw;
+  }
+  #tutorial-sub-desc{
+    font-size: 2.5vw;
+    width: 60vw;
+  }
+}

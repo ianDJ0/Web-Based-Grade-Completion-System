@@ -39,3 +39,8 @@
 .option-register:hover {
   transform: translateY(-0.15em);
 }
+@media only screen and (max-width: 600px){
+  .btn-box{
+    margin-top: 15%;
+  }
+}

@@ -45,3 +45,12 @@
 .hr {
   width: 60vw;
 }
+@media only screen and (max-width: 600px){
+  .announcement-content{
+    margin: 20% 0 5% 8%;
+    border-radius: 1em;
+  }
+  .announcement{
+    font-size: 3vw;
+  }
+}

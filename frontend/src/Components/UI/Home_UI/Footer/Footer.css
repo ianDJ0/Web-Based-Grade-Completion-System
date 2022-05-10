@@ -112,3 +112,47 @@
 .contact-space {
   margin-left: 0.5em;
 }
+@media only screen and (max-width: 600px){
+  .footer{
+    margin-top: 41.79em;
+    margin-left: 0;
+    width: 100vw;
+    height: 25vh;
+    padding: 0;
+  }
+  #footer-uni{
+    font-size: 3vw;
+    width: 30vw;
+    margin: 5% 0 0 2%;
+  }
+  #copyright-bulsu{
+    font-size: 2vw;
+    width: 35vw;
+    margin-left: -3%;
+  }
+  #footer-label{
+    font-size: 2.5vw;
+    margin-right: 25%;
+  }
+  .contact{
+    width: 45vw;
+  }
+  .footer-contact{
+    margin-right: 0;
+  }
+  #footer-fb, #footer-phone, #footer-loc, #footer-email{
+    font-size: 1.6vw;
+  }
+  .fb-icon{
+    padding: 1.5% 3%;
+  }
+  .loc-icon{
+    padding: 1.5% 2.5%;
+  }
+  .email-icon{
+    padding: 1.5%;
+  }
+  .contact:first-child{
+    margin-top: 4%;
+  }
+}

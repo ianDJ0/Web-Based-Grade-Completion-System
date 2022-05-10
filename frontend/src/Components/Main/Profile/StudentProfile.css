@@ -127,3 +127,67 @@
 .user-profile-bday:hover {
   transform: translateY(-0.15em);
 }
+@media only screen and (max-width: 600px){
+  .user-profile{
+    width: 90vw;
+    margin: 0;
+    margin: 28% 0 0 6%;
+    height: 55vh;
+  }
+  #profile-picture{
+    margin: 9% 0 0 8%;
+    height: 25vh;
+    width: 30vw;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 10px solid white;
+  }
+  #name-of-user {
+    width: 25vw;
+    text-align: center;
+    font-size: 3vw;
+    margin: 0 0 1% 13%;
+  }
+  #user-account-type{
+    margin-left: 21%;
+    font-size: 2.5vw;
+  }
+  #user-number{
+    margin-left: 18%;
+    font-size: 2.5vw;
+  }
+  #vertical-line {
+    margin: 30% 0 0 53%;
+  }
+  .user-profile-email, 
+  .user-profile-number, 
+  .user-profile-bday{
+    width: 33vw;
+  }
+  .user-profile-email{
+    margin-top: 30%;
+  }
+  .user-profile-number{
+    margin-top: 42%;
+  }
+  .user-profile-bday{
+    margin-top: 54%;
+  }
+  #profile-email,
+  #profile-number,
+  #profile-bday {
+    font-size: 2vw;
+  }
+  #edit-profile{
+    width: 20vw;
+    height: 5vh;
+    font-size: 2vw;
+    margin-top: 20%;
+  }
+  #change-password{
+    width: 20vw;
+    height: 5vh;
+    font-size: 2vw;
+    margin-top: 20%;
+  }
+}
