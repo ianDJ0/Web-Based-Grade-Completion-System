@@ -85,3 +85,16 @@ tr:first-child{
 #fromdate-filter{
     margin-left: 3%;
 }
+
+/**FOR PROCESS**/
+#processing-request{
+    font-size: 2.5vw;
+    text-align: center;
+    color: rgb(22, 113, 22);
+}
+#processing-desc{
+    font-size: 1.5vw;
+    text-align: center;
+    font-style: italic;
+    color: rgb(49, 196, 49);
+}

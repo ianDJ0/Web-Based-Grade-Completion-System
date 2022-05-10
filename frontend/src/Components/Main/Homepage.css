@@ -132,7 +132,7 @@
     width: 83.95vw;
     height: 20vh;
     margin-left: 0;
-    margin-top: 48.7%;
+    margin-top: 55%;
   }
   #home-aboutus-label{
     font-size: 4vw;
@@ -147,7 +147,7 @@
   .home-get-started{
     z-index: -1;
     margin-left: 0;
-    margin-top: 81%;
+    margin-top: 95%;
     width: 83.95vw;
   }
   .to-tutorial{
