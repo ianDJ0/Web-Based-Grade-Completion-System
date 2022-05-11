@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./MessageBox.css";
+
+const AlwaysScrollToBottom = () => {
+  const elementRef = useRef();
+  useEffect(() => elementRef.current.scrollIntoView());
+  return <div ref={elementRef} />;
+};
 
 const MessageBox = (props) => {
   const [message, setMessage] = useState("");
-  console.log(message);
   return (
     <div id="chat-box-container">
       <div id="chat-box-header">
@@ -14,10 +19,6 @@ const MessageBox = (props) => {
         {/* <i className="fa-solid fa-xmark fa-2xs show"></i> */}
       </div>
       <div id="chat-box-messages">
-        {/* <div className="sender">
-        What is Lorem Ipsum?
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </div> */}
         <div className="received-message">
           <p>
             What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
@@ -48,6 +49,7 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
           </p>
           <div className="sent-time">some time.jpeg</div>
         </div>
+        <AlwaysScrollToBottom />
       </div>
       <div id="chat-box-controls">
         <div className="message-input-box">
