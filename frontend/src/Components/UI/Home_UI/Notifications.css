@@ -4,7 +4,7 @@
   right: 2vw;
   min-height: 10vh;
   max-height: 50vh;
-  width: 19vw;
+  width: 28vw;
   background-color: white;
   border-radius: 1em;
   margin-top: 0.7em;
@@ -26,6 +26,9 @@
   padding: 2%;
 }
 .notification {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   padding-left: 0.8vw;
   padding-top: 1vh;
   height: 3vh;
@@ -36,18 +39,18 @@
   background-color: rgb(201, 196, 196);
 }
 @media only screen and (max-width: 600px) {
-  .notifications{
+  .notifications {
     width: 25vw;
     right: 6vw;
     margin-top: 0;
   }
-  .notifications h2{
+  .notifications h2 {
     font-size: 2vw;
   }
-  .notifications hr{
+  .notifications hr {
     width: 22vw;
   }
-  .notifications h3{
+  .notifications h3 {
     font-size: 2.3vw;
   }
 }

@@ -36,16 +36,22 @@ const TopNav = () => {
         onClick={() => {
           setDropDown(false);
           setShowNotif(false);
-          setMessages((state) => !state);
+          setMessages((prevState) => !prevState);
         }}
         alt="message-icon"
         src={require("../../../Components/UI/Home_UI/Icons/Message.png")}
         id="admin-message-icon"
       />
+      {message && (
+        <div>
+          SHOULD I PUT MESSAGES IN ADMIN????? <br /> IS THERE EVEN A WAY TO
+          CONTACT ADMIN???????
+        </div>
+      )}
       <img
         onClick={() => {
           setDropDown(false);
-          setShowNotif((state) => !state);
+          setShowNotif((prevState) => !prevState);
           setMessages(false);
         }}
         alt="notif-icon"
@@ -53,7 +59,6 @@ const TopNav = () => {
         id="admin-notify-bell"
       />
       {showNotif && <Notifications />}
-      {/* <Notifications /> */}
       <img
         onClick={() => {
           setDropDown((state) => !state);
