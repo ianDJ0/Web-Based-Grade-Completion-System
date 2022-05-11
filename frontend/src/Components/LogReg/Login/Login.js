@@ -18,8 +18,6 @@ const Login = () => {
   const auth = useContext(AuthenticationContext);
   const navigate = useNavigate();
 
-  
-
   useEffect(() => {
     emailRef.current.focus();
     if (localStorage.getItem("token")) {
@@ -61,8 +59,12 @@ const Login = () => {
           auth.userStudentNumber = response.data.user.studentNumber;
           auth.userCourseYearAndSection = response.data.user.yearAndSection;
         }
-        localStorage.setItem("token", response.data.token);
-        setIsValid(true);
+        if (auth.userVerified) {
+          localStorage.setItem("token", response.data.token);
+          setIsValid(true);
+        } else {
+          alert("userUnverified");
+        }
       })
       .catch(function (error) {
         setErrMsg(error.response.data.message);
