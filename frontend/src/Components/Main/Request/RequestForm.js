@@ -383,6 +383,24 @@ const RequestForm = (props) => {
               {/* Faculty response Request */}
             </div>
           )}
+
+        {state && auth.userType === "Student" && (
+          <div className="processing-student-info">
+            <img
+              className="processing-gif"
+              alt="processing-gif"
+              src={require("../../UI/Home_UI/Icons/connect-with-customers.gif")}
+              // src="https://cdn.dribbble.com/users/1052957/screenshots/4140274/connect-with-customers.gif"
+            />
+            <h2 id="processing-request">
+              Your request has been{" "}
+              {requestItem.requestItem.status.toLowerCase()}.
+            </h2>
+            <h3 id="processing-desc">
+              Response depends on Faculty availability.
+            </h3>
+          </div>
+        )}
         {}
       </div>
     </>
