@@ -152,7 +152,8 @@ const RequestForm = (props) => {
   let first_step, second_step, third_step, fourth_step;
   let first_process, second_process, third_process;
 
-  if (STATUS.indexOf(requestItem.requestItem.status) === 0) {
+if(state){
+    if (STATUS.indexOf(requestItem.requestItem.status) === 0) {
     first_step = "active-step";
     second_step = third_step = fourth_step = "inactive-step";
     first_process = "dot-flashing active-process";
@@ -178,6 +179,7 @@ const RequestForm = (props) => {
       third_process =
         "dot-flashing finished-process";
   }
+}
   return (
     <>
       <TopNav />

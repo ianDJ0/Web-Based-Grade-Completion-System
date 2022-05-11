@@ -2,6 +2,7 @@ const express = require('express');
 const { check } = require('express-validator');
 const HttpError = require('../models/https-error');
 const userController = require('../controller/users-controller');
+const messageController = require('../controller/message-controller');
 const fileUpload = require('../middleware/file-upload');
 const router = express.Router();
 const checkAuth = require('../middleware/Authentication');
@@ -15,6 +16,11 @@ router.post('/login', userController.login);
 router.post('/profileChange',fileUpload.single('image'),userController.profilePicture);
 router.post('/type', userController.getAllUserByType);
 router.get('/findUser/:uID', userController.getSingle);
+
+//messages
+router.post('/sendMessage', messageController.sendMessage);
+router.post('/getLatestMessages', messageController.getLatestMessages);
+router.post('/getMessages', messageController.getMessages)
 
 
 //Create New User API

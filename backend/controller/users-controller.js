@@ -36,7 +36,7 @@ const login = async (req, res, next) => {
     token = jwt.sign(
       { user: user.toObject({ getters: true }) },
       'secret_pickHandle',
-      { expiresIn: '1h' }
+      { expiresIn: '5h' }
     );
   } catch (error) {
     return next(error);
@@ -59,10 +59,16 @@ const getAllUserByType = async (req, res, next) => {
   if (req.body.findInName === ["User is not Registered"]) {
     req.body.findInName = "";
   }
+  let vSearch={};
+  if(req.body.vSearch){
+    vSearch = Object.assign({"verified":true})
+  }
+  
   const allUserType = await userModel
     .find({
       userType: req.body.uType,
       fullName: { $regex: req.body.findInName, $options: "i" },
+      vSearch
     })
     .exec();
   if (allUserType.length == 0) {
@@ -70,7 +76,6 @@ const getAllUserByType = async (req, res, next) => {
   }
   res.json(allUserType);
 };
-
 
 //Find Single User by ID
 const getSingle = async (req, res, next) => {
@@ -152,7 +157,7 @@ const createUser = async (req, res, next) => {
     token = jwt.sign(
       { user: registerUser.toObject({ getters: true }) },
       'secret_pickHandle',
-      { expiresIn: '1h' }
+      { expiresIn: '5h' }
     );
   } catch (error) {
     return next(error);

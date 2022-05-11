@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
+import { AuthenticationContext } from "../../Shared/context/auth-context";
+import axios from "axios";
 import "./MessageBox.css";
 
 const AlwaysScrollToBottom = () => {
@@ -9,51 +11,65 @@ const AlwaysScrollToBottom = () => {
 
 const MessageBox = (props) => {
   const [message, setMessage] = useState("");
+  const inputRef = useRef(null)
+  const auth = useContext(AuthenticationContext);
+  const [conversation, setConversation] = useState([]);
+  const [partnerName, setPartnerName] = useState('')
+  useEffect(() => {
+    setInterval(() => {
+      axios.post("http://localhost:7700/api/users/getMessages", {
+        currentUserID: auth.userId,
+        partnerID: props.partner
+      }).then(response => {
+        if (conversation !== response.data && response.data.length > conversation.length) {
+          setConversation(response.data);
+        }
+      }).catch(err => {
+        alert(err);
+      })
+    }, 5000);
+    axios.get(`http://localhost:7700/api/users/findUser/${props.partner}`
+    ).then(response=>{
+      setPartnerName(response.data.fullName)
+    }).catch(err=>{
+      alert(err)
+    })
+  }, [])
   return (
     <div id="chat-box-container">
       <div id="chat-box-header">
-        <div className="chat-box-name">NAME</div>
+        <div className="chat-box-name">{partnerName}</div>
         <div className="close-chat" onClick={props.closeChat}>
           close
         </div>
         {/* <i className="fa-solid fa-xmark fa-2xs show"></i> */}
       </div>
       <div id="chat-box-messages">
-        <div className="received-message">
-          <p>
-            What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the
-            printing and typesetting industry. Lorem Ipsum has been the
-            industry's standard dummy text ever since the 1500s, when an unknown
-            printer took a galley of type and scrambled it to make a type
-            specimen book. It has survived not only five centuries, but also the
-            leap into electronic typesetting, remaining essentially unchanged.
-            It was popularised in the 1960s with the release of Letraset sheets
-            containing Lorem Ipsum passages, and more recently with desktop
-            publishing software like Aldus PageMaker including versions of Lorem
-            Ipsum.
-          </p>
-          <div className="receive-time">some time.jpeg</div>
-        </div>
-        <div className="sent-message">
-          <p>
-            Why do we use it? It is a long established fact that a reader will
-            be distracted by the readable content of a page when looking at its
-            layout. The point of using Lorem Ipsum is that it has a more-or-less
-            normal distribution of letters, as opposed to using 'Content here,
-            content here', making it look like readable English. Many desktop
-            publishing packages and web page editors now use Lorem Ipsum as
-            their default model text, and a search for 'lorem ipsum' will
-            uncover many web sites still in their infancy. Various versions have
-            evolved over the years, sometimes by accident, sometimes on purpose
-            (injected humour and the like).
-          </p>
-          <div className="sent-time">some time.jpeg</div>
-        </div>
+        {conversation.length > 0 &&
+          conversation.map(mes => {
+            if (mes.sender.senderID !== auth.userId) {
+              return <div className="received-message" key={mes._id}>
+                <p>
+                  {mes.contents}
+                </p>
+                <div className="receive-time">{mes.date}</div>
+              </div>
+            }
+            return <div className="sent-message" key={mes._id}>
+              <p>
+                {mes.contents}
+              </p>
+              <div className="sent-time">{mes.date}</div>
+            </div>
+          })
+        }
+
         <AlwaysScrollToBottom />
       </div>
       <div id="chat-box-controls">
         <div className="message-input-box">
           <input
+            ref={inputRef}
             id="message-input"
             value={message}
             onChange={(e) => {
@@ -66,7 +82,16 @@ const MessageBox = (props) => {
             id="message-send"
             className="fa fa-send"
             onClick={() => {
-              alert("send " + message);
+              axios.post("http://localhost:7700/api/users/sendMessage", {
+                receiverID: props.partner,
+                senderID: auth.userId,
+                senderName: auth.userFullName,
+                contents: inputRef.current.value
+              }).then(response => {
+              }).catch(err => {
+                alert(err);
+              })
+              inputRef.current.value = ''
             }}
           ></button>
         </div>

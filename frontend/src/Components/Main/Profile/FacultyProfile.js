@@ -2,6 +2,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import React, { useContext, useState } from "react";
 import { AuthenticationContext } from "../../Shared/context/auth-context";
 import { RequestContent } from "../../Shared/context/request-context";
+import { MessageContext } from "../../Shared/message-context";
+
 import TokenCheck from "../../Shared/Auth";
 import TopNav from "../../UI/Home_UI/TopNav";
 import Sidebar from "../../UI/Home_UI/Sidebar";
@@ -12,10 +14,12 @@ const FacultyProfile = (props) => {
   TokenCheck();
   const auth = useContext(AuthenticationContext);
   const requestInfo = useContext(RequestContent);
+  const mesContext = useContext(MessageContext);
+
   const params = useParams();
   const id = params.id;
   const navigate = useNavigate();
-  const [image, setImage]=useState(false);
+  const [image, setImage] = useState(false);
   const [facultyInfo, setFacultyInfo] = useState({
     profilePicture: "",
     _id: "",
@@ -30,9 +34,9 @@ const FacultyProfile = (props) => {
       .get(`http://localhost:7700/api/users/findUser/${id}`)
       .then((response) => {
         setFacultyInfo(response.data);
-        if(response.data.profilePicture){
+        if (response.data.profilePicture) {
           setImage(true)
-        }else{
+        } else {
           setImage(false)
         }
       })
@@ -47,23 +51,25 @@ const FacultyProfile = (props) => {
 
       <div className="search-faculty-profile">
         <div id="bulsu-header">
-          {auth.userType!=="Faculty"&&
-          <button
-            id="request-faculty"
-            onClick={() => {
-              requestInfo.request_InstructorId = "";
-              navigate("/request/form", {
-                state: { autoInstructor: facultyInfo },
-              });
-            }}
-          >
-            Request Completion Form
-          </button>
+          {auth.userType !== "Faculty" &&
+            <button
+              id="request-faculty"
+              onClick={() => {
+                requestInfo.request_InstructorId = "";
+                navigate("/request/form", {
+                  state: { autoInstructor: facultyInfo },
+                });
+              }}
+            >
+              Request Completion Form
+            </button>
           }
           <button
             id="send-msg"
             onClick={() => {
-              alert("message click");
+              mesContext.passFacultyID = facultyInfo._id;
+              mesContext.openBox();
+              
             }}
           >
             Message
@@ -72,10 +78,10 @@ const FacultyProfile = (props) => {
 
             {!image &&
               <img
-              alt={"default-img"}
-              src={require("../../UI/Home_UI/Icons/image-wallpaper-15.jpg")}
-              id="search-faculty-img"
-            />}
+                alt={"default-img"}
+                src={require("../../UI/Home_UI/Icons/image-wallpaper-15.jpg")}
+                id="search-faculty-img"
+              />}
             {image &&
               <img
                 alt={"wallpaper-img"}

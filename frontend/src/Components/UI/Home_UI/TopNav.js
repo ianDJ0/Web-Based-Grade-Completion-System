@@ -1,18 +1,21 @@
-import React, { useState, useContext, useEffect, useRef } from "react";
+import React, { useState, useContext, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../Shared/Shared.css";
 import "./TopNav.css";
 import { AuthenticationContext } from "../../Shared/context/auth-context";
+import { MessageContext } from "../../Shared/message-context";
 import TokenCheck from "../../Shared/Auth";
 import Notifications from "./Notifications";
 import Logout from "./Logout";
 import Messages from "./Messages";
 import MessageBox from "./MessageBox";
+
 const TopNav = (props) => {
   const [query, setQuery] = useState("");
   const [query2, setQuery2] = useState("");
   const auth = useContext(AuthenticationContext);
+  const messageContext = useContext(MessageContext);
   const [search, setSearch] = useState(["User is not Registered"]);
 
   const navigate = useNavigate();
@@ -24,8 +27,10 @@ const TopNav = (props) => {
   const [messages, setMessages] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [viewNotification, setViewNotification] = useState(false);
-
+  const [partnerID, setPartnerID] = useState("");
   const [suggestionView, setSuggestionView] = useState(false);
+
+
   useEffect(() => {
     axios
       .post("http://localhost:7700/api/request/notifications", {
@@ -47,10 +52,16 @@ const TopNav = (props) => {
 
   const [chatBox, setBox] = useState(false);
 
+
   const messageClickHandler = () => {
     setMessages((prev) => !prev);
     setBox(true);
   };
+
+  messageContext.openBox = ()=>{
+    setBox(true);
+    setPartnerID(messageContext.passFacultyID);
+  }
 
   return (
     <>
@@ -139,7 +150,7 @@ const TopNav = (props) => {
               setShowNotif(false);
             }}
           />
-          {messages && <Messages onMessage={messageClickHandler} />}
+          {messages && <Messages onMessage={() => { messageClickHandler() }} partnerSet={(id) => { setPartnerID(id) }} />}
           <img
             alt="icon-notification"
             src={require("./Icons/Bell.png")}
@@ -150,7 +161,7 @@ const TopNav = (props) => {
               setMessages(false);
             }}
           />
-          {showNotif && <Notifications notificationProps={notifications} viewNotif={()=>{setViewNotification(!viewNotification)}}/>}
+          {showNotif && <Notifications notificationProps={notifications} viewNotif={() => { setViewNotification(!viewNotification) }} />}
           <img
             alt="icon-dropdown"
             src={require("./Icons/dropdown.png")}
@@ -190,9 +201,10 @@ const TopNav = (props) => {
           )}
         </div>
         {chatBox && (
-          <MessageBox
+          <MessageBox partner={partnerID}
             closeChat={() => {
               setBox(false);
+              messageContext.passFacultyID="";
             }}
           />
         )}

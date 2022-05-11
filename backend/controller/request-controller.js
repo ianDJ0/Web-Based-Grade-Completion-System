@@ -18,13 +18,6 @@ mongoose
     });
 
 const studentCreateRequest = async (req, res) => {
-    // const errors = validationResult(req);
-    // if (!errors.isEmpty()) {
-    //     console.log(errors);
-    //     return res
-    //         .status(422)
-    //         .json({ message: "Invalid inputs please enter the proper fields" });
-    // }
     const userData = JSON.parse(JSON.stringify(res.locals.user.userData));
     if (userData.userType !== "Student") {
         return res.status(403).json({ message: "Requesting with invalid user type" })
@@ -93,7 +86,6 @@ const getOneRequest = async (req, res) => {
 }
 
 
-
 const instructorRespondRequest = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -160,10 +152,7 @@ const officeRespondRequest = async (req, res) => {
         return res.status(403).json({ message: "Requesting with invalid user type" })
     }
     let officeUpdate;
-    // let today = new Date();
-    // let dd = today.getDate();
-    // let mm = today.toLocaleString('default', { month: 'long' });
-    // var yyyy = today.getFullYear();
+
     try {
         const d = new Date();
         d.setDate(d.getDate() + 14);

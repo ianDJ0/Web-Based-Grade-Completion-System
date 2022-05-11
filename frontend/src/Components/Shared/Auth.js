@@ -41,7 +41,7 @@ const TokenCheck = () => {
       auth.userCourseYearAndSection = tokenContent.user.yearAndSection;
     }
     if (auth.userType === "Faculty" && tokenContent.user.verified) {
-      console.log("verified");
+      
     }
   } else {
     return <Navigate to="/" />;

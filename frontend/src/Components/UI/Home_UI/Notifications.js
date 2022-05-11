@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const Notifications = (props) => {
   const navigate = useNavigate();
-  console.log("Notification Props", props.notificationProps);
 
   return (
     <div className="notifications">
