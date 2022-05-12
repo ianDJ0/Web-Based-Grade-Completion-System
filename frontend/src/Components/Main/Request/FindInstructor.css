@@ -2,19 +2,17 @@
   z-index: 1;
   position: absolute;
   background-color: #eeeeee;
-  width: 20vw;
-  margin-top: -1.55em;
+  width: 32vw;
+  top: 0;
+  margin-top: 10em;
   margin-left: 0.1em;
   font-size: 1.2em;
+  border-radius: 0.25em;
   text-transform: uppercase;
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
-  border-right: 1px solid black;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.2);
 }
 .instructor-suggestions {
-  padding: 0.2em;
+  padding: 0.25em;
   width: 100%;
 }
 .instructor-suggestions:hover {
@@ -24,12 +22,21 @@
   /* margin-left: -0.1em; */
   /* width: 100%; */
 }
+.instructor-suggestions:first-child:hover{
+  border-top-left-radius: 0.25em;
+  border-top-right-radius: 0.25em;
+}
+.instructor-suggestions:last-child:hover{
+  border-bottom-left-radius: 0.25em;
+  border-bottom-right-radius: 0.25em;
+}
 .faculty-remove-btn {
   margin-top: 1%;
   margin-left: 1%;
   height: 5vh;
   border-radius: 1em;
   border: none;
+  line-height: 0;
   background-color: white;
   color: #a50c0c;
   border: 1px solid #a50c0c;
