@@ -133,7 +133,7 @@
   .search-faculty-profile{
     width: 85vw;
     height: 55vh;
-    margin: 30% 0 0 10%;
+    margin: 30% 0 0 8%;
   }
   #search-faculty-img{
     width: 27vw;
@@ -179,6 +179,6 @@
     width: 18vw;
     height: 5vh;
     font-size: 1.5vw;
-    margin-top: 21%;
+    margin: 21% 0 0 75%;
   }
 }

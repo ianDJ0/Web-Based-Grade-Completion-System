@@ -91,3 +91,18 @@
 .processing-gif {
   height: 50vh;
 }
+@media only screen and (max-width: 600px){
+  .student-info{
+    width: 70vw;
+  }
+  #stud-course{
+    width: 10vw;
+    padding-left: 3%;
+  }
+  #stud-name{
+    width: 35vw;
+  }
+  #stud-no{
+    width: 25vw;
+  }
+}

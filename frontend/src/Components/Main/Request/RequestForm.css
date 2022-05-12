@@ -205,3 +205,22 @@
   color: #8c0000;
   background-color: rgb(140, 0, 0, 0.3);
 }
+
+@media only screen and (max-width: 600px){
+  .request-modal{
+    margin-left: 12%;
+    z-index: -1;
+  }
+  #modal-label{
+    margin: 40% 0 7% 10%;
+    width: 70vw;
+  }
+  .process-track{
+    width: 70vw;
+    margin-left: 0;
+    margin-bottom: 4%;
+  }
+  #request-complete{
+    margin-left: 55%;
+  }
+}

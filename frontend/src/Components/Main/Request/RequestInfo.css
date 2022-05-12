@@ -2,7 +2,7 @@
   padding: 7%;
   background-color: white;
   box-shadow: 5px 5px 9px rgb(0, 0, 0, 0.3);
-  margin-bottom: 5%;
+  margin-bottom: 30%;
   transition: all 1s;
 }
 .request-info:hover{
@@ -71,4 +71,27 @@
 }
 .request-info-five {
   margin-left: 8%;
+}
+@media only screen and (max-width: 600px){
+  .request-info{
+    width: 70vw;
+  }
+  #request-fac{
+    width: 65vw;
+  }
+  #request-subj-code{
+    width: 20vw;
+  }
+  #request-subj-desc{
+    width: 40vw;
+  }
+  #request-subj-sem{
+    width: 30vw;
+  }
+  #request-subj-year{
+    width: 30vw;
+  }
+  #request-reason{
+    width: 65vw;
+  }
 }

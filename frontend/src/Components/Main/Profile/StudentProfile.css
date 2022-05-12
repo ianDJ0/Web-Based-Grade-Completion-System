@@ -130,8 +130,7 @@
 @media only screen and (max-width: 600px){
   .user-profile{
     width: 90vw;
-    margin: 0;
-    margin: 28% 0 0 6%;
+    margin: 30% 0 0 6%;
     height: 55vh;
   }
   #profile-picture{
