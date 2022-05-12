@@ -151,7 +151,8 @@ const TopNav = (props) => {
           {messages && (
             <Messages
               onMessage={() => {
-                messageClickHandler();
+                setBox(false);
+                setTimeout(messageClickHandler, 100);
               }}
               partnerSet={(id) => {
                 setPartnerID(id);
