@@ -52,19 +52,20 @@
 }
 .request-filter-center {
   margin-left: 17.5vw;
+  margin-top: 3em;
 }
-@media only screen and (max-width: 600px){
-  #request-label{
+@media only screen and (max-width: 600px) {
+  #request-label {
     text-align: center;
     margin-left: 0;
     margin-top: 35%;
   }
-  .request-content{
+  .request-content {
     margin: 13% 0 0 7%;
   }
-  #request-form-btn{
+  #request-form-btn {
     position: absolute;
-    margin: 22% 0 0 69%; 
+    margin: 22% 0 0 69%;
     padding: 1.25% 2%;
     font-weight: 400;
   }

@@ -53,15 +53,18 @@ const Login = () => {
         auth.userSignature = response.data.user.image;
         auth.userType = response.data.user.userType;
         auth.userBirthday = response.data.user.birthday;
-        auth.userVerified = response.data.user.verified
+        auth.userVerified = response.data.user.verified;
         if (auth.userType === "Student") {
           auth.userStudentNumber = response.data.user.studentNumber;
           auth.userCourseYearAndSection = response.data.user.yearAndSection;
         }
-        if (auth.userVerified && auth.userType === "Faculty" || auth.userType === "Student" || auth.userType === "Admin") {
+        if (
+          (auth.userVerified && auth.userType === "Faculty") ||
+          auth.userType === "Student" ||
+          auth.userType === "Admin"
+        ) {
           localStorage.setItem("token", response.data.token);
           setIsValid(true);
-          
         } else {
           alert("userUnverified");
         }

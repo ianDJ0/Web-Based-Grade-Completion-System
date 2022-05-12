@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, useRef, useCallback } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../../Shared/Shared.css";
@@ -30,7 +30,6 @@ const TopNav = (props) => {
   const [partnerID, setPartnerID] = useState("");
   const [suggestionView, setSuggestionView] = useState(false);
 
-
   useEffect(() => {
     axios
       .post("http://localhost:7700/api/request/notifications", {
@@ -42,7 +41,7 @@ const TopNav = (props) => {
       .catch((error) => {
         alert("GET NOTIFICATIONS", error);
       });
-  }, []);
+  }, [auth.userId]);
   // const notifRef = useRef();
   // const dropRef = useRef();
   // useEffect(() => {
@@ -52,16 +51,15 @@ const TopNav = (props) => {
 
   const [chatBox, setBox] = useState(false);
 
-
   const messageClickHandler = () => {
     setMessages((prev) => !prev);
     setBox(true);
   };
 
-  messageContext.openBox = ()=>{
+  messageContext.openBox = () => {
     setBox(true);
     setPartnerID(messageContext.passFacultyID);
-  }
+  };
 
   return (
     <>
@@ -150,7 +148,16 @@ const TopNav = (props) => {
               setShowNotif(false);
             }}
           />
-          {messages && <Messages onMessage={() => { messageClickHandler() }} partnerSet={(id) => { setPartnerID(id) }} />}
+          {messages && (
+            <Messages
+              onMessage={() => {
+                messageClickHandler();
+              }}
+              partnerSet={(id) => {
+                setPartnerID(id);
+              }}
+            />
+          )}
           <img
             alt="icon-notification"
             src={require("./Icons/Bell.png")}
@@ -161,7 +168,14 @@ const TopNav = (props) => {
               setMessages(false);
             }}
           />
-          {showNotif && <Notifications notificationProps={notifications} viewNotif={() => { setViewNotification(!viewNotification) }} />}
+          {showNotif && (
+            <Notifications
+              notificationProps={notifications}
+              viewNotif={() => {
+                setViewNotification(!viewNotification);
+              }}
+            />
+          )}
           <img
             alt="icon-dropdown"
             src={require("./Icons/dropdown.png")}
@@ -201,10 +215,11 @@ const TopNav = (props) => {
           )}
         </div>
         {chatBox && (
-          <MessageBox partner={partnerID}
+          <MessageBox
+            partner={partnerID}
             closeChat={() => {
               setBox(false);
-              messageContext.passFacultyID="";
+              messageContext.passFacultyID = "";
             }}
           />
         )}

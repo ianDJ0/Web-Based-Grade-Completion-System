@@ -152,34 +152,39 @@ const RequestForm = (props) => {
   let first_step, second_step, third_step, fourth_step;
   let first_process, second_process, third_process;
 
-if(state){
+  if (state) {
     if (STATUS.indexOf(requestItem.requestItem.status) === 0) {
+      first_step = "active-step";
+      second_step = third_step = fourth_step = "inactive-step";
+      first_process = "dot-flashing active-process";
+      second_process = third_process = "dot-flashing non-active-process";
+    }
+    if (STATUS.indexOf(requestItem.requestItem.status) === 1) {
+      first_step = second_step = "active-step";
+      third_step = fourth_step = "inactive-step";
+      first_process = "dot-flashing finished-process";
+      second_process = "dot-flashing active-process";
+      third_process = "dot-flashing non-active-process";
+    }
+    if (STATUS.indexOf(requestItem.requestItem.status) === 2) {
+      first_step = second_step = third_step = "active-step";
+      fourth_step = "inactive-step";
+      first_process = second_process = "dot-flashing finished-process";
+      third_process = "dot-flashing active-process";
+    }
+    if (STATUS.indexOf(requestItem.requestItem.status) === 3) {
+      first_step = second_step = third_step = fourth_step = "active-step";
+      first_process =
+        second_process =
+        third_process =
+          "dot-flashing finished-process";
+    }
+  } else {
     first_step = "active-step";
     second_step = third_step = fourth_step = "inactive-step";
     first_process = "dot-flashing active-process";
     second_process = third_process = "dot-flashing non-active-process";
   }
-  if (STATUS.indexOf(requestItem.requestItem.status) === 1) {
-    first_step = second_step = "active-step";
-    third_step = fourth_step = "inactive-step";
-    first_process = "dot-flashing finished-process";
-    second_process = "dot-flashing active-process";
-    third_process = "dot-flashing non-active-process";
-  }
-  if (STATUS.indexOf(requestItem.requestItem.status) === 2) {
-    first_step = second_step = third_step = "active-step";
-    fourth_step = "inactive-step";
-    first_process = second_process = "dot-flashing finished-process";
-    third_process = "dot-flashing active-process";
-  }
-  if (STATUS.indexOf(requestItem.requestItem.status) === 3) {
-    first_step = second_step = third_step = fourth_step = "active-step";
-    first_process =
-      second_process =
-      third_process =
-        "dot-flashing finished-process";
-  }
-}
   return (
     <>
       <TopNav />
