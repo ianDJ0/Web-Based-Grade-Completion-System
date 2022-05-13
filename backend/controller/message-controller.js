@@ -29,7 +29,7 @@ const sendMessage = async (req, res) => {
 
 const getLatestMessages = async (req, res) => {
     let getLatest;
-   
+
     try {
         getLatest = await messageModel.find({ '$or': [{ sender: req.body.currentUserID }, { receiver: req.body.currentUserID }] }).sort({ "date": -1 })
     } catch (err) {
@@ -53,18 +53,17 @@ const getMessages = async (req, res) => {
     let allMessages;
     try {
         allMessages = await messageModel.find(
-            { '$or': [{ 'senderID': req.body.currentUserID }, { receiver: req.body.currentUserID }],
-             '$or': [{ 'sender.senderID': req.body.partnerID }, { receiver: req.body.partnerID }] },
+            {
+                "$and": [{
+                    '$or': [{ 'sender.senderID': req.body.currentUserID }, { receiver: req.body.currentUserID }]
+                },
+                { '$or': [{ 'sender.senderID': req.body.partnerID }, { receiver: req.body.partnerID }] }]
+            },
         ).sort({ "date": 1 })
     } catch (err) {
         console.log(err)
     }
-    let filtered = allMessages.filter(message=>{
-        if(message.sender.senderID === req.body.partnerID || message.receiver === req.body.partnerID){
-            return true
-        }
-    })
-    res.json(filtered);
+    res.json(allMessages);
 }
 
 

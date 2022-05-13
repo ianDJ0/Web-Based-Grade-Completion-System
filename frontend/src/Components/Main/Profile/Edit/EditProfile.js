@@ -13,8 +13,8 @@ const EditProfile = () => {
   const [file, setFile] = useState();
   const [preview, setPreview] = useState();
   const [isValid, setValid] = useState(false);
-  const [email, setEmail] = useState("");
-  const [contactNumber, setContactNumber] = useState("");
+  const [email, setEmail] = useState(auth.userEmail);
+  const [contactNumber, setContactNumber] = useState(auth.userContactNumber);
   TokenCheck();
   const filePickerRef = useRef();
   useEffect(() => {
@@ -27,6 +27,7 @@ const EditProfile = () => {
     };
     fileReader.readAsDataURL(file);
   }, [file]);
+  
   const pickedHandler = (event) => {
     let pickedFile;
     if (event.target.files && event.target.files.length === 1) {
@@ -41,7 +42,10 @@ const EditProfile = () => {
     filePickerRef.current.click();
   };
   const submitChange = () => {
+
+    
     let formData = new FormData();
+
     formData.append("userId", auth.userId);
     if (file) {
       formData.append("image", file);
@@ -108,38 +112,25 @@ const EditProfile = () => {
           )}
         </div>
         <div className="edit-profile-details">
-          {/* <div class="edit-first-name">
-            <label>First Name</label>
-            <input placeholder="John" id="edit-fname-input" />
-          </div>
-          <div class="edit-mi">
-            <label>M.I.</label>
-            <input placeholder="D." id="edit-mi-input" />
-          </div>
-          <div class="edit-last-name">
-            <label>Last Name</label>
-            <input placeholder="Doe" id="edit-lname-input" />
-          </div> */}
+
           <label className="leftover-label">Email</label>
           <input
-            placeholder="Email"
+            placeholder={auth.userEmail}
             id="edit-email-input"
+            type="email"
             onChange={(event) => {
               setEmail(event.target.value);
             }}
-            value={auth.userEmail}
           />
           <label className="leftover-label">Contact Number</label>
           <input
-            placeholder="Contact Number"
+            placeholder={auth.userContactNumber}
             id="edit-num-input"
+            type="number"
             onChange={(event) => {
               setContactNumber(event.target.value);
             }}
-            value={auth.userContactNumber}
           />
-          {/* <label class="leftover-label">Birthday</label>
-          <input type="date" placeholder="Birthday" id="edit-bday-input" /> */}
         </div>
       </div>
     </>

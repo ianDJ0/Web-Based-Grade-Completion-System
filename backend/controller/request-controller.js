@@ -234,7 +234,7 @@ const getRequestForStudent = async (req, res) => {
     let getRequestStudent
     try {
         getRequestStudent = await requestModel
-            .find(searchFilter);
+            .find(searchFilter).sort({'dateLog.dateStudent':-1});
     } catch (err) {
         return res
             .status(422)
@@ -260,7 +260,7 @@ const getRequestForFaculty = async (req, res) => {
     let getRequestFaculty
     try {
         getRequestFaculty = await requestModel
-            .find(searchFilter);
+            .find(searchFilter).sort({'dateLog.dateStudent':-1});
     } catch (err) {
         return res
             .status(422)

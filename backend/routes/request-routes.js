@@ -18,7 +18,7 @@ router.post('/viewNotification', requestController.viewNotification);
 
 router.use(checkAuth)
 router.post('/studentCreateRequest'
-,
+    ,
     // [
     //     check('studentID').notEmpty(),
     //     check('instructorID').notEmpty(),
@@ -28,7 +28,10 @@ router.post('/studentCreateRequest'
     // ],
     requestController.studentCreateRequest);
 
-router.post('/instructorRespondRequest', requestController.instructorRespondRequest)
+router.post('/instructorRespondRequest',
+    [
+        check('grade').notEmpty(),
+    ], requestController.instructorRespondRequest)
 router.post('/officeRespondRequest', requestController.officeRespondRequest)
 
 
