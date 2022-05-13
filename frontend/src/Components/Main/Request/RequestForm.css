@@ -206,21 +206,43 @@
   background-color: rgb(140, 0, 0, 0.3);
 }
 
-@media only screen and (max-width: 600px){
+@media only screen, (max-width: 600px) and (min-width: 601px){
   .request-modal{
-    margin-left: 12%;
+    margin-left: 12vw;
     z-index: -1;
   }
+  .steps{
+    padding: 0.5vh 1.75vw;
+    border-radius: 50%;
+    font-size: 3vw;
+    line-height: 1.25;
+  }
+  #first-step{
+    margin-left: 7vw;
+    margin-right: 5vw;
+  }
+  #second-step{
+    margin-right: 5vw;
+  }
+  #third-step{
+    margin: 0 6vw;
+  }
   #modal-label{
-    margin: 40% 0 7% 10%;
+    margin: 15vh 0 6vh 8vw;
     width: 70vw;
   }
   .process-track{
     width: 70vw;
     margin-left: 0;
-    margin-bottom: 4%;
+    margin-bottom: 4vh;
   }
   #request-complete{
-    margin-left: 55%;
+    margin: 2.5vh 0;
+    position: absolute;
+    right: 0;
+  }
+  .wrap{
+    margin-left: 0;
+    width: 100vw;
   }
 }

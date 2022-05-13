@@ -8,14 +8,14 @@
   width: fit-content;
   background-color: white;
   border-radius: 1em;
-  margin-top: 0.7em;
-  padding: 0.5em;
+  margin-top: 0.7vh;
+  padding: 1vw;
   box-shadow: 3px 0px 4px 0px rgba(0, 0, 0, 0.2);
 }
 .notifications h2 {
-  margin-left: 0.5em;
+  margin-left: 0.5vw;
   font-size: 1.3vw;
-  padding: 2%;
+  padding: 0.5vw;
 }
 .notifications hr {
   width: 18vw;
@@ -23,8 +23,8 @@
 }
 .notifications h3 {
   text-align: center;
-  margin-top: 1em;
-  padding: 2%;
+  margin-top: 1vh;
+  padding: 2vw;
 }
 .notification {
   white-space: nowrap;
@@ -40,7 +40,7 @@
 .notification:hover {
   background-color: rgb(201, 196, 196);
 }
-@media only screen and (max-width: 600px) {
+@media only screen, (max-width: 600px) and (min-width: 601px){
   .notifications {
     width: 25vw;
     right: 6vw;

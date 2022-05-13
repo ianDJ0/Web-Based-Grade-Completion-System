@@ -54,18 +54,20 @@
   margin-left: 17.5vw;
   margin-top: 3em;
 }
-@media only screen and (max-width: 600px) {
+@media only screen, (max-width: 600px) and (min-width: 601px){
   #request-label {
     text-align: center;
     margin-left: 0;
-    margin-top: 35%;
+    margin-top: 30vh;
+    font-size: 4vw;
   }
   .request-content {
-    margin: 13% 0 0 7%;
+    margin: 13vh 0 0 7vw;
   }
   #request-form-btn {
     position: absolute;
-    margin: 22% 0 0 69%;
+    margin: 20vh 0;
+    right: 0;
     padding: 1.25% 2%;
     font-weight: 400;
   }

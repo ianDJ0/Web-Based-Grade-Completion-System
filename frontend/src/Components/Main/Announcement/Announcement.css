@@ -46,7 +46,7 @@
 .hr {
   width: 60vw;
 }
-@media only screen and (max-width: 600px){
+@media only screen, (max-width: 600px) and (min-width: 601px){
   .announcement{
     font-size: 3vw;
   }

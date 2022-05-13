@@ -10,24 +10,24 @@
   background-color: white;
   right: 4vw;
   /* top: 11.5vh; */
-  margin-top: 0.7em;
+  margin-top: 0.7vh;
   box-shadow: 3px 0px 4px 0px rgba(0, 0, 0, 0.2);
 }
-#messages-container-header {
+#messages-container-header{
   /* position: fixed; */
 }
 #messages-container-header {
   margin-left: 1vw;
 }
 #messages-container hr {
-  width: 95%;
+  width: 95vw;
   margin-left: 0vw;
 }
 #messages-container-body {
   /* outline: 1px solid black; */
   min-height: 5vh;
   max-height: 45vh;
-  width: 100%;
+  width: 100vw;
   overflow: auto;
   padding-top: 0.5em;
   padding-left: 0.1em;
@@ -40,7 +40,7 @@
 .message {
   cursor: pointer;
   height: 4vh;
-  width: 99%;
+  width: 99vw;
   padding-top: 0.25em;
   padding-bottom: 0.25em;
   margin-bottom: 0.5em;
@@ -55,7 +55,7 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
-@media only screen and (max-width: 600px){
+@media only screen, (max-width: 600px) and (min-width: 601px){
   #messages-container{
     width: 30vw;
     margin-top: 0;

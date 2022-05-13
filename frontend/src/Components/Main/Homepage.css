@@ -36,7 +36,7 @@
 }
 .home-get-started {
   position: absolute;
-  background-color: #d8b6a4;
+  background-image: linear-gradient(to bottom, #ffbebe, #fafafa);
   width: 69%;
   height: auto;
   margin: 55% 0 0 15%;
@@ -110,10 +110,10 @@
   width: 100%;
   background-color: #fafafa;
 }
-@media only screen and (max-width: 600px){
+@media only screen, (max-width: 600px) and (min-width: 601px){
   .home-punch{
     z-index: -1;
-    margin-top: 16.5%;
+    margin-top: 15vh;
     margin-left: 0;
     width: 83.95vw;
     height: 20vh;
@@ -132,7 +132,7 @@
     width: 83.95vw;
     height: 20vh;
     margin-left: 0;
-    margin-top: 55%;
+    margin-top: 45vh;
   }
   #home-aboutus-label{
     font-size: 4vw;
@@ -147,11 +147,11 @@
   .home-get-started{
     z-index: -1;
     margin-left: 0;
-    margin-top: 95%;
+    margin-top: 78vh;
     width: 83.95vw;
   }
   .to-tutorial{
-    margin-left: 5%;
+    margin-left: 5vw;
   }
   #system-title-label{
     font-size: 4vw;
@@ -161,6 +161,6 @@
     width: 60vw;
   }
   .announcement-content{
-    margin: 20% 0 5% 8%;
+    margin: 20vh 0 5vh 8vw;
   }
 }

@@ -150,27 +150,27 @@ li {
 .hide {
   display: none;
 }
-@media only screen and (max-width: 600px){
+@media only screen , (max-width: 600px) and (min-width: 601px){
   .top-navigation{
     height: 8vh;
     margin: 0;
-    width: 100%;
+    width: 100vw;
   }
   #search-bar{
-    margin-top: 2%;
-    width: 30%;
-    height: 60%;
+    margin-top: 1.5vh;
+    width: 30vw;
+    height: 5vh;
     font-size: 1.65vw;
-    margin-bottom: 2%;
+    margin-bottom: 2vh;
   }
   #profile-icon {
-    width: 7.5%;
-    margin-left: 18%;
+    width: 7vw;
+    margin-left: 18vw;
   }
   .name-type {
     width: 12vw;
-    margin-top: 2.5%;
-    margin-left: 63%;
+    margin-top: 2vh;
+    margin-left: 63.5vw;
   }
   #user-name {
     font-size: 1.35vw;
@@ -179,26 +179,26 @@ li {
     font-size: 1.15vw;
   }
   #message-icon {
-    width: 5%;
-    margin-top: 2%;
-    margin-left: 16%;
-    padding: 0.5%;
+    width: 5vw;
+    margin-top: 1.25vh;
+    margin-left: 16vw;
+    padding: 0.5vw;
   }
   #notify-bell {
-    width: 2.5%;
-    margin-top: 2.25%;
-    margin-left: 23.5%;
-    padding: 1.5% 1.6%;
+    width: 2.5vw;
+    margin-top: 1.25vh;
+    margin-left: 23.5vw;
+    padding: 1.5vh 1.6vw;
   }
   #dropdown-icon {
-    margin-top: 2.25%;
-    width: 2.5%;
-    padding: 2% 1.55%;
+    margin-top: 1.25vh;
+    width: 2.5vw;
+    padding: 2vw 1.55vw;
     right: 0;
-    margin-right: 1%;
+    margin-right: 1vw;
   }
   .dropdown-content {
-    margin-top: 0.2%;
+    margin-top: 0.1vh;
     width: 20vw;
     z-index: 2 ;
   }
@@ -212,7 +212,7 @@ li {
     z-index: 2;
     width: 32.5vw;
     top: 0;
-    margin-top: 8%;
+    margin-top: 7vh;
   }
   .suggestions{
     font-size: 1.75vw;
