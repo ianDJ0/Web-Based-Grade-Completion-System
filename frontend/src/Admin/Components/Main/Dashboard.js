@@ -48,11 +48,11 @@ const Dashboard = () => {
       <TopNav />
       <Body>
         <div className="cards">
-          <Card class={"fa fa-users"}>
+          <Card class={"fa fa-users user-icon-1"}>
             <div className="number">{registeredStudent}</div>
             <div className="card-name">Active Registered Students</div>
           </Card>
-          <Card class={"fa fa-users"}>
+          <Card class={"fa fa-users user-icon-2"}>
             <div className="number">{registeredFaculty}</div>
             <div className="card-name">Active Registered faculty</div>
           </Card>

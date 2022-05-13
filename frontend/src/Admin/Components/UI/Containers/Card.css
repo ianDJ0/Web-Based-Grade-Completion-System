@@ -1,12 +1,38 @@
 .card-component {
-  background-color: #8c0000;
-  padding: 20px;
+  background-color: white;
+  padding: 2vw 1vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.5s;
+}
+.card-component:hover{
+  box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.3);
+  transform: translateY(-0.15em);
 }
 .icon-box i {
-  font-size: 45px;
-  color: #ff8f42;
+  font-size: 1.75vw;
+  padding: 0.75vw;
+  border-radius: 50%;
+}
+.user-icon-1{
+  color: #E798AE;
+  background-color: #F6E5E9;
+}
+.user-icon-2{
+  color: #C7753D;
+  background-color: #F6D887;
+}
+.fa-envelope-open{
+  color: #A35D6A;
+  background-color: #D9C6A5;
+}
+.fa-spinner{
+  color: #00A1AB;
+  background-color: #DEF4F0;
+}
+.fa-user-circle{
+  color: #696464;
+  background-color: #EAE9E9;
 }

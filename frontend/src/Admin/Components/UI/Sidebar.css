@@ -1,16 +1,15 @@
 .admin-sidebar {
   position: fixed;
-  width: 12vw;
+  width: 14.75vw;
   height: 100vh;
-  background-color: #8c0000;
+  background-color: white;
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-
   z-index: 2;
 }
 .admin-name-logo {
   /* margin: 9% 0% 0% 10%; */
-  margin-top: 2em;
+  margin: 1em 0 0 1em;
   white-space: nowrap;
   position: absolute;
   display: flex;
@@ -22,35 +21,37 @@
   width: 28%;
 }
 #admin-site-name {
-  color: white;
-  font-size: 2vw;
+  color: #8C0000;
+  font-size: 2.25vw;
   margin-left: 5%;
 }
 
 .admin-sidebar span {
   display: block;
-  color: white;
+  width: 11.9vw;
+  padding: 2% 8% 2% 5%;
   text-decoration: none;
   font-size: 1.5vw;
-  padding: 5%;
-}
-.admin-sidebar span:hover {
-  background-color: #862323;
-}
-.admin-sidebar span {
-  width: 100%;
+  border-right: 3px solid transparent;
   text-decoration: none;
-  color: #ffff;
-  height: 60px;
+  color: #BD4B4B;
+  height: 10vh;
   display: flex;
   align-items: center;
-  margin: 1em 0;
+  margin: 1em 1em 0 0.5em;
+}
+.admin-sidebar span:hover {
+  cursor: pointer;
+  background-color: rgba(217, 198, 165, 0.3);
+  border-right: 3px solid #8C0000;
+  color: #8C0000;
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
 }
 .admin-sidebar span i {
   min-width: 1.2em;
   font-size: 24px;
-  text-align: center;
-  margin-right: 0.3em;
+  margin-right: 0.1em;
 }
 #nav-dashboard {
   margin-top: 15vh;
