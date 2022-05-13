@@ -153,7 +153,7 @@
 .hide {
   background-color: transparent;
 }
-@media only screen, (max-width: 600px) and (min-width: 601px){
+@media only screen and (max-width: 768px){
   #edit-profile-picture{
     margin: 14% 0 0 35%;
     height: 16vh;

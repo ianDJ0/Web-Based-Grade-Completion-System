@@ -31,7 +31,7 @@
   flex-direction: row;
   align-items: center;
 }
-@media only screen ,(max-width: 600px) and (min-width: 601px){
+@media only screen and (max-width: 768px){
   .sidebar{
     position: fixed;
     z-index: 0;

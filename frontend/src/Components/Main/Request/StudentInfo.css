@@ -91,7 +91,7 @@
 .processing-gif {
   height: 50vh;
 }
-@media only screen, (max-width: 600px) and (min-width: 601px){
+@media only screen and (max-width: 768px){
   .student-info{
     width: 70vw;
   }

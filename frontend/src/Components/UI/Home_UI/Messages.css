@@ -55,7 +55,7 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
-@media only screen, (max-width: 600px) and (min-width: 601px){
+@media only screen and (max-width: 768px){
   #messages-container{
     width: 30vw;
     margin-top: 0;
