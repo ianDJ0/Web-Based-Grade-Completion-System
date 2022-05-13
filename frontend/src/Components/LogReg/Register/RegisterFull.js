@@ -101,6 +101,11 @@ const RegisterFull = (props) => {
             auth.userType = response.data.new.userType;
             localStorage.setItem("token", response.data.token);
             setIsValid(true);
+            // if(auth.userType === "Student"){
+            //   setIsValid(true);
+            // }else{
+            //   navigate('/');
+            // }
           })
           .catch(function (error) {
             alert(error);

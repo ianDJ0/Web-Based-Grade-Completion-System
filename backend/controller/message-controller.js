@@ -29,13 +29,15 @@ const sendMessage = async (req, res) => {
 
 const getLatestMessages = async (req, res) => {
     let getLatest;
-
+   
     try {
         getLatest = await messageModel.find({ '$or': [{ sender: req.body.currentUserID }, { receiver: req.body.currentUserID }] }).sort({ "date": -1 })
     } catch (err) {
         console.log(err)
     }
     let filt = '';
+
+
     let latestFiltered = getLatest.filter(message => {
         if (filt.search(message.sender.senderID) === -1 || filt.search(message.receiver) === -1) {
             filt = filt.concat("++", message.sender.senderID)
@@ -57,8 +59,15 @@ const getMessages = async (req, res) => {
     } catch (err) {
         console.log(err)
     }
-    res.json(allMessages);
+    let filtered = allMessages.filter(message=>{
+        if(message.sender.senderID === req.body.partnerID || message.receiver === req.body.partnerID){
+            return true
+        }
+    })
+    res.json(filtered);
 }
+
+
 exports.sendMessage = sendMessage;
 exports.getLatestMessages = getLatestMessages;
 exports.getMessages = getMessages
