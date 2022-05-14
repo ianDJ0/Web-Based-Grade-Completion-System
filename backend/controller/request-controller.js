@@ -116,12 +116,17 @@ const instructorRespondRequest = async (req, res) => {
             .status(422)
             .json(err)
     }
-
+    let instructorContents;
+    if(req.body.grade > 3){
+        instructorContents = `${instructorUpdate.instructor.instructorName} has denied your request`
+    }else{
+        instructorContents = `${instructorUpdate.instructor.instructorName} has submitted your request to Office`
+    }
     let notification;
     try {
         notification = new notificationModel({
             requestCode: req.body.requestID,
-            contents: `${instructorUpdate.instructor.instructorName} has submitted your request to Office`,
+            contents: instructorContents,
             updater: {
                 updaterID: mongoose.Types.ObjectId(instructorUpdate.instructor.instructorID),
                 updaterName: instructorUpdate.instructor.instructorName,
