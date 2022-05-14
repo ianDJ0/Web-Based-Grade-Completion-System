@@ -59,22 +59,20 @@ const getAllUserByType = async (req, res, next) => {
   if (req.body.findInName === ["User is not Registered"]) {
     req.body.findInName = "";
   }
-  let vSearch={};
-  if(req.body.vSearch){
-    vSearch = Object.assign({"verified":true})
+  let vSearch = {
+    userType: req.body.uType,
+    fullName: { $regex: req.body.findInName, $options: "i" }
+  };
+  if (req.body.vSearch) {
+    vSearch = Object.assign({ "verified": true })
   }
-  
   const allUserType = await userModel
-    .find({
-      userType: req.body.uType,
-      fullName: { $regex: req.body.findInName, $options: "i" },
-      vSearch
-    })
+    .find(vSearch)
     .exec();
-  if (allUserType.length == 0) {
-    return res.status(201).json(['User is not Registered']);
-  }
-  res.json(allUserType);
+if (allUserType.length == 0) {
+  return res.status(201).json(['User is not Registered']);
+}
+res.json(allUserType);
 };
 
 //Find Single User by ID
@@ -208,12 +206,12 @@ const resetPassword = async (req, res) => {
   }
   if (isValidPassword === true) {
     hashedPassword = await bcrypt.hash(req.body.newPassword, 6);
-  }else{
-    return res.status(401).json({message:"Wrong Password Confirmation"})
+  } else {
+    return res.status(401).json({ message: "Wrong Password Confirmation" })
   }
-  try{
-    await userModel.findByIdAndUpdate(user._id,{password:hashedPassword})
-  }catch(error){
+  try {
+    await userModel.findByIdAndUpdate(user._id, { password: hashedPassword })
+  } catch (error) {
     return res.status(401).json(error);
   }
   res.status(201).json(user);
@@ -235,18 +233,18 @@ const deleteUser = async (req, res, next) => {
       res.status(404).json({ message: "Failed to delete user" });
     });
 };
-const profilePicture = async(req,res)=>{
+const profilePicture = async (req, res) => {
   let userToUpdate;
-  
-  try{
-    userToUpdate = await userModel.findByIdAndUpdate(req.body.userId,{ 
+
+  try {
+    userToUpdate = await userModel.findByIdAndUpdate(req.body.userId, {
       profilePicture: req.file.path,
       email: req.body.email,
       contactNumber: req.body.contactNumber,
-  },{returnOriginal: false})
-  .exec();
-  
-  }catch(err){
+    }, { returnOriginal: false })
+      .exec();
+
+  } catch (err) {
     return res.json(err)
   }
   try {
@@ -274,8 +272,8 @@ const adminGetVerified = async (req, res, next) => {
   res.json(allUserType);
 };
 
-const adminVerifyFaculty = async(req,res)=>{
-  const user = await userModel.findByIdAndUpdate(req.body.userID,{verified: true});
+const adminVerifyFaculty = async (req, res) => {
+  const user = await userModel.findByIdAndUpdate(req.body.userID, { verified: true });
   return res.json(user);
 }
 

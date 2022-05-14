@@ -5,20 +5,25 @@ import "./Requests.css";
 
 
 const InstructorRequests = (props) => {
-const [request, setRequest] = useState([]);
-const navigate = useNavigate();
- useEffect(()=>{
-  axios
-  .post("http://localhost:7700/api/request/facultyRequest", {
-    uID: props.intructor,
-  })
-  .then((response) => {
-    setRequest(response.data);
-  })
-  .catch((error) => {
-    alert(error);
-  });
- },[])
+  const [request, setRequest] = useState([]);
+  const navigate = useNavigate();
+  const DATE_OPTIONS = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }
+  useEffect(() => {
+    axios
+      .post("http://localhost:7700/api/request/facultyRequest", {
+        uID: props.intructor,
+      })
+      .then((response) => {
+        setRequest(response.data);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  }, [])
   return (
     <div className="admin-request-content">
       <p>Requests List</p>
@@ -33,7 +38,7 @@ const navigate = useNavigate();
           </tr>
           {request.length > 0 &&
             request.map(req => {
-              return <tr key={req._id} onClick={()=>{
+              return <tr key={req._id} onClick={() => {
                 navigate("/admin/request/form", {
                   state: { requestItem: req },
                 });
@@ -41,7 +46,11 @@ const navigate = useNavigate();
                 <th>{req.subjectCode}</th>
                 <th>{req.subjectDescription}</th>
                 <th>{req.student.studentFullname}</th>
-                <th>{req.dateLog.dateStudent}</th>
+                <th>{
+                new Date(req.dateLog.dateStudent).toLocaleDateString(
+                  "en-US",
+                  DATE_OPTIONS
+                )}</th>
                 <th>{req.status}</th>
               </tr>
             })

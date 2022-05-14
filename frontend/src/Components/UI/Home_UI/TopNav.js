@@ -18,15 +18,13 @@ const TopNav = (props) => {
   const messageContext = useContext(MessageContext);
   const [search, setSearch] = useState(["User is not Registered"]);
 
-  // console.log("Aaaaaaaaaaaaaaaaaaaaaaaaaaaa ", auth);
-
   const navigate = useNavigate();
-  if (auth.userType === "Admin") {
-    navigate("/admin");
-  }
   const profileHandler = () => {
     navigate("/profile");
   };
+  if (auth.userType === "Admin") {
+    navigate("/admin");
+  }; 
   const [dropDown, setDropDown] = useState(false);
   const [showNotif, setShowNotif] = useState(false);
   const [messages, setMessages] = useState(false);
@@ -94,6 +92,7 @@ const TopNav = (props) => {
                       event.target.value.length === null
                         ? "zyqqyx"
                         : event.target.value,
+                    vSearch: true
                   })
                   .then((response) => {
                     setSearch(response.data);

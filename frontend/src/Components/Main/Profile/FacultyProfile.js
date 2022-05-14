@@ -12,6 +12,12 @@ import axios from "axios";
 
 const FacultyProfile = (props) => {
   TokenCheck();
+  const DATE_OPTIONS = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }
+
   const auth = useContext(AuthenticationContext);
   const requestInfo = useContext(RequestContent);
   const mesContext = useContext(MessageContext);
@@ -104,7 +110,10 @@ const FacultyProfile = (props) => {
           </div>
           <div className="search-faculty-bday">
             <p>Birthday</p>
-            <p id="search-bday">{facultyInfo.birthday}</p>
+            <p id="search-bday">{new Date(facultyInfo.birthday).toLocaleDateString(
+                "en-US",
+                DATE_OPTIONS
+              )}</p>
           </div>
         </div>
       </div>
