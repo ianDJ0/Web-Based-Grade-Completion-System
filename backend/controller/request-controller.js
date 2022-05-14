@@ -77,9 +77,9 @@ const studentCreateRequest = async (req, res) => {
 
 const getOneRequest = async (req, res) => {
     let request;
-    try{
+    try {
         request = await requestModel.findById(mongoose.Types.ObjectId(req.body.requestID));
-    }catch(error){
+    } catch (error) {
         return res.json(error);
     }
     return res.json(request);
@@ -234,7 +234,7 @@ const getRequestForStudent = async (req, res) => {
     let getRequestStudent
     try {
         getRequestStudent = await requestModel
-            .find(searchFilter).sort({'dateLog.dateStudent':-1});
+            .find(searchFilter).sort({ 'dateLog.dateStudent': -1 });
     } catch (err) {
         return res
             .status(422)
@@ -260,7 +260,7 @@ const getRequestForFaculty = async (req, res) => {
     let getRequestFaculty
     try {
         getRequestFaculty = await requestModel
-            .find(searchFilter).sort({'dateLog.dateStudent':-1});
+            .find(searchFilter).sort({ 'dateLog.dateStudent': -1 });
     } catch (err) {
         return res
             .status(422)
@@ -283,17 +283,14 @@ const adminGetRequests = async (req, res) => {
         newFromDate = { 'dateLog.dateStudent': { '$gte': req.body.requestFromDate } }
         searchFilter = Object.assign(newFromDate, searchFilter)
     }
-    console.log(searchFilter);
+    if(req.body.filter){
+        filterSubmitted = { 'status': "SUBMITTED" }
+        searchFilter = Object.assign(filterSubmitted, searchFilter)
+    }
     let getRequestFaculty
     try {
-        if (req.body.filter) {
-            getRequestFaculty = await requestModel
-                .find({ status: req.body.filter });
-        } else {
-            getRequestFaculty = await requestModel
-                .find(searchFilter).sort({ 'dateLog.dateStudent': -1 });
-        }
-
+        getRequestFaculty = await requestModel
+            .find(searchFilter).sort({ 'dateLog.dateStudent': -1 });
     } catch (err) {
         return res
             .status(422)

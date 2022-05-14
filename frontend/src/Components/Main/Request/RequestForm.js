@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext } from "react";
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthenticationContext } from "../../Shared/context/auth-context";
 import { RequestContent } from "../../Shared/context/request-context";
 import Sidebar from "../../UI/Home_UI/Sidebar";
@@ -12,6 +12,7 @@ import StudentInfo from "./StudentInfo";
 import Swal from "sweetalert2";
 
 const RequestForm = (props) => {
+  const navigate = useNavigate();
   let { state } = useLocation();
   let requestItem = { status: "" };
   let autoCompleteInstructor = "";
@@ -59,7 +60,14 @@ const RequestForm = (props) => {
         }
       )
       .then((response) => {
-        props.onClose();
+        Swal.fire({
+          icon: 'success',
+          title: 'Request has been sent!',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(()=>{
+          navigate('/requests');
+        })
       })
       .catch((error) => {
         alert(error);
@@ -115,7 +123,14 @@ const RequestForm = (props) => {
           }
         )
         .then((response) => {
-          console.log("Success", response);
+          Swal.fire({
+            icon: 'success',
+            title: 'Request has been submitted to Office!',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(()=>{
+            navigate('/requests');
+          })
         })
         .catch((error) => {
           alert(error);
@@ -136,7 +151,14 @@ const RequestForm = (props) => {
         }
       )
       .then((response) => {
-        console.log("Success", response);
+        Swal.fire({
+          icon: 'success',
+          title: 'Response has been recorded!',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(()=>{
+          navigate('/requests');
+        })
       })
       .catch((error) => {
         alert(error);

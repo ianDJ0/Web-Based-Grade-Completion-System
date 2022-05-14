@@ -38,7 +38,6 @@ const Dashboard = () => {
       setActiveRequest(getRequestNo.data ? getRequestNo.data.length : "0");
       setPendingRequest(getSubmittedNo.data);
       setVerfiedFaculty(!getVerified.data.length ? "0" : getVerified.data.length);
-      console.log("getverified",getVerified.data.length)
     }))
   }, [])
 

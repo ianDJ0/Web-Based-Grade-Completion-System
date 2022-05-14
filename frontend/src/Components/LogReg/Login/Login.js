@@ -33,6 +33,9 @@ const Login = () => {
     if (isValid) {
       setEmail("");
       setPWD("");
+      if(auth.userType === "Admin"){
+        return navigate("/admin");
+      }
       navigate("/homepage");
     }
   }, [isValid, navigate, auth]);

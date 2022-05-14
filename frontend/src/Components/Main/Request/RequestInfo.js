@@ -143,12 +143,12 @@ const RequestInfo = (props) => {
             id="request-subj-year"
             onChange={(e) => {
               setStartYr(e.target.value);
-              requestContent.request_YearIncomplete = startYr + "-" + endYr;
+              requestContent.request_YearIncomplete = startYr + " - " + endYr;
             }}
             onBlur={() => {
               const cond = startYr > endYr ? true : false;
               setErr(cond);
-              requestContent.request_YearIncomplete = startYr + "-" + endYr;
+              requestContent.request_YearIncomplete = startYr + " - " + endYr;
             }}
             value={startYr}
           />
@@ -160,12 +160,12 @@ const RequestInfo = (props) => {
             id="request-end-year"
             onChange={(e) => {
               setEndYr(e.target.value);
-              requestContent.request_YearIncomplete = startYr + "-" + endYr;
+              requestContent.request_YearIncomplete = startYr + " - " + endYr;
             }}
             onBlur={() => {
               const cond = startYr > endYr ? true : false;
               setErr(cond);
-              requestContent.request_YearIncomplete = startYr + "-" + endYr;
+              requestContent.request_YearIncomplete = startYr + " - " + endYr;
             }}
             value={endYr}
           />
