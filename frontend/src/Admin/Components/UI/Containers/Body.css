@@ -1,7 +1,6 @@
-.body-container {
+.body-container{
   background-color: #F6F5F5;
-  position: fixed;
-  width: 88vw;
-  height: 90vh;
-  margin: 10vh 0 0 14.8vw;
+  margin: 10vh 0 0 15vw;
+  padding-bottom: 20vh;
+  padding-top: 7vh;
 }

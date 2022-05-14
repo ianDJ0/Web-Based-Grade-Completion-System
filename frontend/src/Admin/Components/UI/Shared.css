@@ -1,17 +1,13 @@
-.list-content {
-  background-color: white;
-  position: absolute;
-  width: 95%;
-  height: auto;
-  margin-top: 2%;
-  margin-left: 1.5%;
-}
 .log {
-  width: 100%;
+  width: 82.5vw;
 }
 #list-label {
   text-align: center;
   /* margin-left: 2.5%; */
+}
+.list-content table{
+  background-color: white;
+  margin: 3vh 0 0 1.25vw;
 }
 .list-content tr:first-child {
   background-color: #8c0000;
@@ -23,7 +19,7 @@
 .log th {
   border-collapse: collapse;
   border: 0.5px solid black;
-  padding: 2%;
+  padding: 1.75%;
 }
 .list-content table,
 .admin-request-content table {

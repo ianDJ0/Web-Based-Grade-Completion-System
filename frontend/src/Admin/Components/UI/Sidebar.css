@@ -1,11 +1,19 @@
 .admin-sidebar {
   position: fixed;
+  top: 0;
   width: 14.75vw;
   height: 100vh;
-  background-color: white;
+  background-color: #F6F5F5;
   overflow: hidden;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   z-index: 2;
+}
+.active{
+  background-color: rgba(217, 198, 165, 0.3);
+  border-right: 3px solid #8C0000;
+  color: #8C0000;
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
 }
 .admin-name-logo {
   /* margin: 9% 0% 0% 10%; */

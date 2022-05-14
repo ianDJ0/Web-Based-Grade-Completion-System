@@ -1,10 +1,10 @@
 #admin-search {
   position: absolute;
-  top: 2em;
-  left: 2em;
-  height: 3em;
-  width: 20em;
-  padding: 0.3em 0.5em;
-  padding-left: 01em;
-  border-radius: 20px;
+  height: 5vh;
+  width: 17vw;
+  padding: 0.5vh 0.5vw 0.5vh 1vw;
+  margin-left: 1.5vw;
+  border-radius: 1em;
+  border: none;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.2);
 }

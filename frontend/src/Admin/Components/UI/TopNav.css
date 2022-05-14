@@ -2,9 +2,8 @@
   top: 0;
   right: 0;
   position: absolute;
-  margin-left: 10%;
   background-color: #fcfcfc;
-  width: 88%;
+  width: 85.5vw;
   height: 10vh;
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
   z-index: 1;
@@ -49,12 +48,12 @@
   width: 3vw;
   padding: 0.15% 0.15%;
   margin-top: 1.6vh;
-  margin-left: 74vw;
+  margin-left: 73vw;
 }
 #admin-notify-bell {
   width: 1.6vw;
   padding: 0.75% 0.8%;
-  margin-left: 79vw;
+  margin-left: 78vw;
   margin-top: 0.8vw;
 }
 #admin-dropdown-icon {
@@ -62,7 +61,7 @@
   padding: 1.25% 1.05%;
   margin-top: 2vh;
   right: 0;
-  margin-right: 1.5vw;
+  margin-right: 0.5vw;
 }
 #admin-dropdown-icon:hover,
 #admin-notify-bell:hover,
