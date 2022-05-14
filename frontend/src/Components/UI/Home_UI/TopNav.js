@@ -18,7 +18,12 @@ const TopNav = (props) => {
   const messageContext = useContext(MessageContext);
   const [search, setSearch] = useState(["User is not Registered"]);
 
+  // console.log("Aaaaaaaaaaaaaaaaaaaaaaaaaaaa ", auth);
+
   const navigate = useNavigate();
+  if (auth.userType === "Admin") {
+    navigate("/admin");
+  }
   const profileHandler = () => {
     navigate("/profile");
   };

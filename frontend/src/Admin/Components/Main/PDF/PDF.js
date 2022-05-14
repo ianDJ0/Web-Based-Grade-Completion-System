@@ -4,7 +4,7 @@ import "./PDF.css";
 import { useLocation } from "react-router-dom";
 const PDF = () => {
   const { state } = useLocation();
-  console.log(state.items);
+  
   const createPDF = async () => {
     const pdf = new jsPDF({
       unit: "px",

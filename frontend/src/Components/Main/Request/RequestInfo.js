@@ -8,6 +8,11 @@ const RequestInfo = (props) => {
   const [search, setSearch] = useState(["User is not Registered"]);
   const [visible, setVisible] = useState(false);
   const [instructor, setInstructor] = useState("");
+
+  const [startYr, setStartYr] = useState(2015);
+  const [endYr, setEndYr] = useState(2015);
+  const [err, setErr] = useState(false);
+
   let auto;
   const requestContent = useContext(RequestContent);
   if (requestContent.request_InstructorId) {
@@ -16,7 +21,9 @@ const RequestInfo = (props) => {
   if (props && auto !== "a") {
     auto = props.autoInt;
   }
-  // console.log("AAAAAAAAAAAAAAAAAAAA", props.autoInt);
+
+  const errMsg = <div id="err">End year cannot be lower than start year.</div>;
+
   return (
     <div className="request-info">
       <p id="request-info-label">Request Information</p>
@@ -126,15 +133,44 @@ const RequestInfo = (props) => {
         />
       </div>
       <div className="request-info-five">
-        <p htmlFor="request-subj-year">Subject Year</p>
-        <input
-          placeholder="Subject Year"
-          name="request-subj-year"
-          id="request-subj-year"
-          onChange={(e) => {
-            requestContent.request_YearIncomplete = e.target.value;
-          }}
-        />
+        <p>Subject Year</p>
+        <div id="subject-year-container">
+          <input
+            type="number"
+            min="2015"
+            placeholder="Start Year"
+            name="request-subj-year"
+            id="request-subj-year"
+            onChange={(e) => {
+              setStartYr(e.target.value);
+              requestContent.request_YearIncomplete = startYr + "-" + endYr;
+            }}
+            onBlur={() => {
+              const cond = startYr > endYr ? true : false;
+              setErr(cond);
+              requestContent.request_YearIncomplete = startYr + "-" + endYr;
+            }}
+            value={startYr}
+          />
+          <input
+            type="number"
+            min={startYr}
+            placeholder="End Year"
+            name="request-subj-year"
+            id="request-end-year"
+            onChange={(e) => {
+              setEndYr(e.target.value);
+              requestContent.request_YearIncomplete = startYr + "-" + endYr;
+            }}
+            onBlur={() => {
+              const cond = startYr > endYr ? true : false;
+              setErr(cond);
+              requestContent.request_YearIncomplete = startYr + "-" + endYr;
+            }}
+            value={endYr}
+          />
+        </div>
+        {err && errMsg}
       </div>
       <div className="request-info-six">
         <p htmlFor="request-reason" id="request-reason-label">
