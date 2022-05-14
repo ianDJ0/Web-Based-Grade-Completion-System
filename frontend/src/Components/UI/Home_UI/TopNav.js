@@ -79,6 +79,7 @@ const TopNav = (props) => {
             }}
             placeholder="Search for Instructor..."
             id="search-bar"
+            autoComplete="off"
             value={query}
             onChange={(event) => {
               if (event.target.value.trim().length > 0) setSuggestionView(true);

@@ -36,6 +36,7 @@ const RequestInfo = (props) => {
               name="request-fac"
               id="request-fac"
               type="text"
+              autoComplete="off"
               value={instructor}
               readOnly
             />
@@ -61,6 +62,7 @@ const RequestInfo = (props) => {
               }}
               placeholder="Search for Faculty"
               name="request-fac"
+              autoComplete="off"
               id="request-fac"
               onChange={(e) => {
                 if (e.target.value)
@@ -81,11 +83,6 @@ const RequestInfo = (props) => {
                 } else {
                   setVisible(false);
                 }
-                // if (e.target.value === "") {
-                //   setVisible(true);
-                // } else {
-                //   setVisible(false);
-                // }
               }}
             />
             <FindInstructor
