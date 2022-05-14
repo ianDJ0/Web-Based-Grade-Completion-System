@@ -3,11 +3,12 @@
 }
 #list-label {
   text-align: center;
+  margin-left: 13vw;
   /* margin-left: 2.5%; */
 }
 .list-content table{
   background-color: white;
-  margin: 3vh 0 0 1.25vw;
+  margin: 3vh 0 0 16vw;
 }
 .list-content tr:first-child {
   background-color: #8c0000;

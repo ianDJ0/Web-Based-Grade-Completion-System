@@ -5,7 +5,7 @@
   height: 100vh;
   background-color: #f6f5f5;
   overflow: hidden;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
   z-index: 2;
 }
 .active {
@@ -26,12 +26,12 @@
 }
 
 #sidebar-bulsu-logo {
-  width: 28%;
+  width: 4vw;
 }
 #admin-site-name {
   color: #8c0000;
   font-size: 2.25vw;
-  margin-left: 5%;
+  margin-left: 1vw;
 }
 
 .admin-sidebar span {
@@ -46,7 +46,7 @@
   height: 10vh;
   display: flex;
   align-items: center;
-  margin: 1em 1em 0 0.5em;
+  margin: 3vh 0 0 0.75vw;
 }
 .admin-sidebar span:hover,
 .active {

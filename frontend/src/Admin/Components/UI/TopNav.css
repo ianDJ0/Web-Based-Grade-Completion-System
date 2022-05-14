@@ -1,7 +1,7 @@
 .admin-top-navigation {
   top: 0;
   right: 0;
-  position: absolute;
+  position: fixed;
   background-color: #fcfcfc;
   width: 85.5vw;
   height: 10vh;
@@ -9,7 +9,7 @@
   z-index: 1;
 }
 .title-message{
-  margin: 1.5% 0 0 6%;
+  margin: 2.5vh 0 0 4.5vw;
   font-size: 2vw;
 }
 #admin-profile-icon {
