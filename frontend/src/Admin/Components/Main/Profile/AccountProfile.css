@@ -1,5 +1,4 @@
 .instructor-profile {
-  position: absolute;
   width: 60vw;
   height: 60vh;
   margin-top: 3vh;
@@ -17,9 +16,9 @@
 #verify-instructor {
   position: absolute;
   width: 16vw;
-  margin: 15vh 0 0 41vw;
+  margin: 15vh 0 0 42.5vw;
   font-size: 1vw;
-  padding: 1.5% 0;
+  padding: 2vh 0;
   border: none;
   background-color: #000000;
   color: rgb(255, 255, 255);
@@ -33,15 +32,15 @@
   transform: translateY(-0.15em);
 }
 .instructor-email {
-  margin-top: 26vh;
+  margin-top: 46vh;
   margin-left: 29.5vw;
 }
 .instructor-number {
-  margin-top: 36vh;
+  margin-top: 56vh;
   margin-left: 29.5vw;
 }
 .instructor-bday {
-  margin-top: 46vh;
+  margin-top: 66vh;
   margin-left: 29.5vw;
 }
 

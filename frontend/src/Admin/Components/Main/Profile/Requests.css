@@ -1,8 +1,8 @@
 .admin-request-content {
-  position: absolute;
+  position: relative;
   width: 60vw;
   min-height: 60vh;
-  margin-top: 2em;
+  margin-top: 14vh;
 }
 .admin-request-content table {
   background-color: #fff;
@@ -34,4 +34,7 @@
 }
 .admin-pending-request h1 {
   margin-top: 3vh;
+}
+.body-container{
+  height: 150vh;
 }
