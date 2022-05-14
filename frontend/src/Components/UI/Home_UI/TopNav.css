@@ -28,9 +28,10 @@
 }
 .name-type {
   top: 0;
-  position: absolute;
+  position: fixed;
+  vertical-align: middle;
   margin-right: 5vw;
-  margin-top: 1.5vh;
+  margin-top: 2vh;
   margin-left: 62vw;
   width: 10vw;
 }
