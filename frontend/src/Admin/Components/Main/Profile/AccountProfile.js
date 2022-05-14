@@ -12,7 +12,11 @@ import { useEffect, useState } from "react";
 const AccountProfile = () => {
   const { state } = useLocation();
   const [update, setUpdate] = useState(true);
-
+  const DATE_OPTIONS = {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  }
   return (
     <>
       <Sidebar />
@@ -86,7 +90,11 @@ const AccountProfile = () => {
             </div>
             <div className="instructor-bday">
               <p>Birthday</p>
-              <p id="instructor-bday">{state.user.birthday}</p>
+              <p id="instructor-bday">{
+                new Date(state.user.birthday).toLocaleDateString(
+                  "en-US",
+                  DATE_OPTIONS
+                )}</p>
             </div>
 
             {/** */}
