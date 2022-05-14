@@ -332,6 +332,7 @@ const RequestForm = (props) => {
                 <div className="stud-info-sign">
                   <p>Signature</p>
                   <img
+                    className="student-signature"
                     src={`http://localhost:7700/${requestItem.requestItem.signature.studentSignature}`}
                     alt="Student Signature"
                   />
@@ -354,37 +355,46 @@ const RequestForm = (props) => {
                       <div>
                         <p>Instructor Signature</p>
                         <img
+                          className="student-signature"
                           src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`}
                           alt="Student Signature"
                         />
                       </div>
                     </div>
                   )}
-                  <button onClick={submitFacultyResponse}>Approve</button>
-                  <button
-                    onClick={() => {
-                      Swal.fire({
-                        title: "Are you sure?",
-                        text: "Denying this request will automatically give a grade of 5",
-                        icon: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#3085d6",
-                        cancelButtonColor: "#d33",
-                        confirmButtonText: "Yes",
-                      }).then((result) => {
-                        if (result.isConfirmed) {
-                          Swal.fire(
-                            "Success!",
-                            "Response has been recorded.",
-                            "success"
-                          );
-                          submitDenyRespose();
-                        }
-                      });
-                    }}
-                  >
-                    Deny
-                  </button>
+                  <div className="student-button-container">
+                    <button
+                      id="student-approve-button"
+                      onClick={submitFacultyResponse}
+                    >
+                      Approve
+                    </button>
+                    <button
+                      id="student-cancel-button"
+                      onClick={() => {
+                        Swal.fire({
+                          title: "Are you sure?",
+                          text: "Denying this request will automatically give a grade of 5",
+                          icon: "warning",
+                          showCancelButton: true,
+                          confirmButtonColor: "#3085d6",
+                          cancelButtonColor: "#d33",
+                          confirmButtonText: "Yes",
+                        }).then((result) => {
+                          if (result.isConfirmed) {
+                            Swal.fire(
+                              "Success!",
+                              "Response has been recorded.",
+                              "success"
+                            );
+                            submitDenyRespose();
+                          }
+                        });
+                      }}
+                    >
+                      Deny
+                    </button>
+                  </div>
                 </div>
               </div>
               {/* Faculty response Request */}

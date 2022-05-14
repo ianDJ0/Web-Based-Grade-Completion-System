@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   const navigate = useNavigate();
 
   return (
@@ -17,6 +17,7 @@ const Sidebar = () => {
       </div>
 
       <span
+        className={` ${props.active === "dashboard" ? "active" : ""}`}
         id="nav-dashboard"
         onClick={() => {
           navigate("/admin");
@@ -27,6 +28,7 @@ const Sidebar = () => {
       </span>
 
       <span
+        className={` ${props.active === "instructor" ? "active" : ""}`}
         onClick={() => {
           navigate("/admin/faculty");
         }}
@@ -36,6 +38,7 @@ const Sidebar = () => {
       </span>
 
       <span
+        className={` ${props.active === "student" ? "active" : ""}`}
         onClick={() => {
           navigate("/admin/student");
         }}
@@ -45,6 +48,7 @@ const Sidebar = () => {
       </span>
 
       <span
+        className={` ${props.active === "request" ? "active" : ""}`}
         onClick={() => {
           navigate("/admin/request");
         }}

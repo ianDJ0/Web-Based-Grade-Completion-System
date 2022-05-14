@@ -8,30 +8,35 @@ import "./AdminRequests.css";
 import { useEffect, useState } from "react";
 
 const AdminRequests = () => {
-
-
   const [pendingRequest, setPendingRequest] = useState(0);
   const [status, setStatus] = useState();
   const [toDate, setToDate] = useState();
   const [fromDate, setFromDate] = useState();
   const [entries, setEntries] = useState("all");
   useEffect(() => {
-    axios.post("http://localhost:7700/api/request/admin/getRequests", {
-      requestStatus: status,
-      requestToDate: fromDate,
-      requestFromDate: toDate
-    }, {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    }).then((response) => {
-      setPendingRequest(response.data)
-    }).catch((error) => {
-      alert(error)
-    })
+    axios
+      .post(
+        "http://localhost:7700/api/request/admin/getRequests",
+        {
+          requestStatus: status,
+          requestToDate: fromDate,
+          requestFromDate: toDate,
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      )
+      .then((response) => {
+        setPendingRequest(response.data);
+      })
+      .catch((error) => {
+        alert(error);
+      });
   }, [entries, toDate, fromDate, status]);
 
   return (
     <>
-      <Sidebar />
+      <Sidebar active={"request"} />
       <TopNav />
       <Body>
         <div className="admin-request-filter">
@@ -41,7 +46,6 @@ const AdminRequests = () => {
             filterStatus={(newStatus) => setStatus(newStatus)}
             filterFromDate={(newFromDate) => setFromDate(newFromDate)}
             filterToDate={(newToDate) => setToDate(newToDate)}
-
           />
         </div>
         {pendingRequest.length > 0 ? (

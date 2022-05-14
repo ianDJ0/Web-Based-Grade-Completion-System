@@ -30,7 +30,7 @@ const Instructors = () => {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar active={'instructor'} />
       <TopNav />
       <Body>
         <AdminSearch

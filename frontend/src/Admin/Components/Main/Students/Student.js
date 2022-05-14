@@ -29,7 +29,7 @@ const Student = () => {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar  active={'student'} />
       <TopNav />
       <Body>
         <AdminSearch

@@ -68,7 +68,7 @@ const TopNav = () => {
           navigate("/");
         }}
         alt="dropdown-icon"
-        src={require("../../../Components/UI/Home_UI/Icons/dropdown.png")}
+        src={require("../../../Components/UI/Home_UI/Icons/logout-icon.png")}
         id="admin-dropdown-icon"
       />
       {dropDown && <Logout admin={true} />}

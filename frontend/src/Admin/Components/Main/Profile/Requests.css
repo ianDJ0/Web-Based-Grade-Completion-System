@@ -15,6 +15,18 @@
 }
 #request-log {
   width: 100%;
-  overflow:scroll;
+  overflow: scroll;
 }
 
+.admin-pending-request {
+  background-color: white;
+  /* border: solid 1em #8c0000; */
+  width: 97.5%;
+  height: 10vh;
+  text-align: center;
+  vertical-align: center;
+  border-radius: 10px;
+}
+.admin-pending-request h1 {
+  margin-top: 3vh;
+}

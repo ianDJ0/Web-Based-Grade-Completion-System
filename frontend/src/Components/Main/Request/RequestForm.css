@@ -206,42 +206,83 @@
   background-color: rgb(140, 0, 0, 0.3);
 }
 
-@media only screen and (max-width: 768px){
-  .request-modal{
+.student-signature {
+  width: 10em;
+  outline: 1px solid black;
+  border-radius: 20px;
+}
+
+#student-approve-button {
+  background-color: white;
+  color: #810000;
+}
+
+#student-approve-button:hover {
+  background-color: #810000;
+  color: white;
+  transform: translateY(-0.3em);
+}
+
+#student-cancel-button {
+  background-color: #810000;
+  color: white;
+}
+
+#student-cancel-button:hover {
+  transform: translateY(-0.3em);
+}
+#student-approve-button,
+#student-cancel-button {
+  margin: 0.2em 0.5em;
+  width: 8em;
+  height: 3em;
+  font-size: 1.2em;
+  border: 1px solid #810000;
+  border-radius: 10px;
+  transition: all 0.5s;
+  padding: 0.5em;
+}
+
+.student-button-container {
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .request-modal {
     margin-left: 12vw;
     z-index: -1;
   }
-  .steps{
+  .steps {
     padding: 0.5vh 1.75vw;
     border-radius: 50%;
     font-size: 3vw;
     line-height: 1.25;
   }
-  #first-step{
+  #first-step {
     margin-left: 7vw;
     margin-right: 5vw;
   }
-  #second-step{
+  #second-step {
     margin-right: 5vw;
   }
-  #third-step{
+  #third-step {
     margin: 0 6vw;
   }
-  #modal-label{
+  #modal-label {
     margin: 15vh 0 6vh 8vw;
     width: 70vw;
   }
-  .process-track{
+  .process-track {
     width: 70vw;
     margin-left: 0;
     margin-bottom: 4vh;
   }
-  #request-complete{
+  #request-complete {
     margin: 2.5vh 0;
     position: absolute;
     right: 0;
   }
-  .wrap{
+  .wrap {
     margin-left: 0;
     width: 100vw;
   }

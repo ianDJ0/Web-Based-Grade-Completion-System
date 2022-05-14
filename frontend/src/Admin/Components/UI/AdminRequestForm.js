@@ -137,12 +137,11 @@ const AdminRequestForm = (props) => {
       });
   };
 
-
   console.log(auth.userType);
   return (
     <>
       <TopNav />
-      <Sidebar />
+      <Sidebar  active={'request'} />
       <Body>
         <div className="admin-request-modal">
           {!state && (
@@ -310,44 +309,58 @@ const AdminRequestForm = (props) => {
                       >
                         Deny
                       </button>
-                      {(requestItem.requestItem.status === "SUBMITTED" || requestItem.requestItem.status === "ON PROCESS")&&
-                        <button onClick={() => {
-                          Swal.fire({
-                            title: "Process this grade completion form?",
-                            text: "Confirming will automatically insert CICT dean's signature",
-                            icon: "info",
-                            showCancelButton: true,
-                            confirmButtonColor: "#3085d6",
-                            cancelButtonColor: "#d33",
-                            confirmButtonText: "Yes",
-                          }).then((result) => {
-                            if (result.isConfirmed) {
-                              Swal.fire(
-                                "Success!",
-                                "Response has been recorded.",
-                                "success"
-                              );
-                              axios.post("http://localhost:7700/api/request/officeRespondRequest", {
-                                requestID: requestItem.requestItem._id,
-                                //static sample signature of dean
-                                officeSignature: "uploads\\images\\keno.png"
-
-                              }, {
-                                headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-                              }).then((response) => {
-                                navigate("/admin/request/form/pdf", {
-                                  state: { items: response.data },
-                                })
-                              }).catch((error) => {
-                                alert(error)
-                              })
-                            }
-                          });
-
-                        }}>
+                      {(requestItem.requestItem.status === "SUBMITTED" ||
+                        requestItem.requestItem.status === "ON PROCESS") && (
+                        <button
+                          className="process-request-button"
+                          onClick={() => {
+                            Swal.fire({
+                              title: "Process this grade completion form?",
+                              text: "Confirming will automatically insert CICT dean's signature",
+                              icon: "info",
+                              showCancelButton: true,
+                              confirmButtonColor: "#3085d6",
+                              cancelButtonColor: "#d33",
+                              confirmButtonText: "Yes",
+                            }).then((result) => {
+                              if (result.isConfirmed) {
+                                Swal.fire(
+                                  "Success!",
+                                  "Response has been recorded.",
+                                  "success"
+                                );
+                                axios
+                                  .post(
+                                    "http://localhost:7700/api/request/officeRespondRequest",
+                                    {
+                                      requestID: requestItem.requestItem._id,
+                                      //static sample signature of dean
+                                      officeSignature:
+                                        "uploads\\images\\keno.png",
+                                    },
+                                    {
+                                      headers: {
+                                        Authorization: `Bearer ${localStorage.getItem(
+                                          "token"
+                                        )}`,
+                                      },
+                                    }
+                                  )
+                                  .then((response) => {
+                                    navigate("/admin/request/form/pdf", {
+                                      state: { items: response.data },
+                                    });
+                                  })
+                                  .catch((error) => {
+                                    alert(error);
+                                  });
+                              }
+                            });
+                          }}
+                        >
                           Process Request
                         </button>
-                      }
+                      )}
                     </div>
                   </div>
                 )}

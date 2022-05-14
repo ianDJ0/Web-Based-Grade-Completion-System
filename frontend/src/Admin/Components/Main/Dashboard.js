@@ -44,7 +44,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <Sidebar />
+      <Sidebar active={'dashboard'} />
       <TopNav />
       <Body>
         <div className="cards">

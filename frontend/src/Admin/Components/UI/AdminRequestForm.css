@@ -29,12 +29,14 @@
 .student-info div {
   margin-bottom: 0.75em;
 }
-#admin-approve-button {
+#admin-approve-button,
+.process-request-button {
   background-color: white;
   color: #810000;
 }
 
-#admin-approve-button:hover {
+#admin-approve-button:hover,
+.process-request-button:hover {
   background-color: #810000;
   color: white;
   transform: translateY(-0.3em);
@@ -49,7 +51,8 @@
   transform: translateY(-0.3em);
 }
 #admin-approve-button,
-#admin-cancel-button {
+#admin-cancel-button,
+.process-request-button {
   margin: 0.2em 0.5em;
   width: 8em;
   height: 3em;
@@ -58,6 +61,9 @@
   border-radius: 10px;
   transition: all 0.5s;
   padding: 0.5em;
+}
+.process-request-button {
+  width: 10em;
 }
 .admin-btn-container {
   text-align: center;
