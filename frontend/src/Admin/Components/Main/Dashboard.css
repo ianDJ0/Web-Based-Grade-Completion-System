@@ -1,10 +1,10 @@
 .cards {
-  margin: 1vw 1vw 1vw 2vw;
-  width: 90%;
+  margin: 1vw 1vw 1vw 20vw;
+  width: 70vw;
   padding: 35px 20px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 20px;
+  grid-template-columns: repeat(5, 2fr);
+  grid-gap: 2vw;
 }
 .number {
   font-size: 3vw;
