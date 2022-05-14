@@ -11,7 +11,12 @@
   text-align: center;
   font-size: 2em;
   font-weight: bold;
-  margin: 0.5em;
+  margin: 7vh auto 4vh auto;
+}
+.admin-request-content tr, .admin-request-content th{
+  border-collapse: collapse;
+  border: 0.5px solid black;
+  padding: 1.75%;
 }
 #request-log {
   width: 100%;

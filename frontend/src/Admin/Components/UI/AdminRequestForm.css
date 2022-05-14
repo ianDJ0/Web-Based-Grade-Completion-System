@@ -1,5 +1,5 @@
 .student-info {
-  padding: 7%;
+  padding: 2vw;
   background-color: white;
   box-shadow: 5px 5px 9px rgb(0, 0, 0, 0.3);
   margin-bottom: 5%;
@@ -15,12 +15,11 @@
   font-weight: bold;
 }
 .admin-request-modal {
-  position: absolute;
   /*background-color: #8c0000;*/
   width: 60vw;
   /* margin: 8% 0 0 27%; */
-  margin-top: 8vh;
-  margin-left: 15vw;
+  margin-top: 0.25vh;
+  margin-left: 25vw;
 }
 .admin-signature {
   width: 10em;
