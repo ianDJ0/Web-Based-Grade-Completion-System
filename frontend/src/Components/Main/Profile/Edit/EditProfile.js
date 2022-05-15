@@ -4,6 +4,7 @@ import { useContext, useState, useRef, useEffect } from "react";
 import { AuthenticationContext } from "../../../Shared/context/auth-context";
 import TokenCheck from "../../../Shared/Auth";
 import axios from "axios";
+import Swal from "sweetalert2";
 import "./EditProfile.css";
 import { useNavigate } from "react-router-dom";
 
@@ -65,7 +66,14 @@ const EditProfile = () => {
         auth.userEmail = response.data.new.email;
         auth.userContactNumber = response.data.new.contactNumber;
         localStorage.setItem("token", response.data.token);
-        navigate('/profile')
+        Swal.fire({
+          icon: 'success',
+          title: 'Edit Sucessful!',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          navigate('/profile');
+        })
       })
       .catch((error) => {});
   };

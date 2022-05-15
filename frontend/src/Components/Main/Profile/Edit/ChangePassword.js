@@ -6,6 +6,8 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import TokenCheck from "../../../Shared/Auth";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
 const ChangePassword = () => {
   const [oldPass, setOldPass] = useState("");
   const [newPass, setNewPass] = useState("");
@@ -30,8 +32,16 @@ const ChangePassword = () => {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
-      );
-      navigate("/profile");
+      ).then(() => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Password changed!',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() => {
+          navigate('/profile');
+        })
+      });
     } else {
       alert("Password does not match");
     }

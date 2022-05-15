@@ -221,7 +221,7 @@ const resetPassword = async (req, res) => {
 const deleteUser = async (req, res, next) => {
   const dataObject = JSON.parse(JSON.stringify(res.locals.user.userData));
   if (dataObject.userType !== "Admin") {
-    console.log(dataObject);
+    
     return res.status(403).json({ message: "No Access!" });
   }
   await userModel

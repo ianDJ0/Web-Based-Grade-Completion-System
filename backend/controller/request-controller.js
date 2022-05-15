@@ -213,7 +213,6 @@ const viewNotification = async (req, res) => {
             .status(422)
             .json({ error: err, message: "Search Failed" })
     }
-    console.log(viewNotif);
     return res.status(202).json(viewNotif);
 }
 
