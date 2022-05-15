@@ -30,7 +30,6 @@ const RequestList = (props) => {
             </tr>
             {props.submittedData &&
               props.submittedData.map((request) => {
-                // props.submittedData.slice(0, entry).map((request) => {
                 return (
                   <tr
                     key={request._id}

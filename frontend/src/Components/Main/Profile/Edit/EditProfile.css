@@ -1,5 +1,5 @@
 #edit-profile-picture {
-  margin: 10% 0 0 39%;
+  margin: 5% 0 0 39%;
   height: 22vh;
   width: 11vw;
   object-fit: cover;
@@ -48,7 +48,7 @@
   height: 22.15vh;
   width: 11.03vw;
   border-radius: 50%;
-  margin: 11% 0 0 40%;
+  margin: 5.8% 0 0 40%;
 }
 .fa-plus-circle {
   color: rgb(140, 140, 140);
@@ -58,6 +58,27 @@
 }
 .fa-plus-circle:hover {
   cursor: pointer;
+}
+
+.profile-header {
+  width: 100%;
+  height: 25%;
+  background: transparent no-repeat;
+  background-size: cover;
+  background: url("../../../UI/Home_UI/Icons/bulsu.jpg");
+  /* background: url("Icons/bulsu.jpg"); */
+}
+.user-profile {
+  z-index: -1;
+  position: absolute;
+  bottom: 0;
+  height: 80vh;
+  width: 70vw;
+  background-color: white;
+  box-shadow: 0px 3px 5px 0px;
+  top: 0;
+  margin-top: 7%;
+  margin-left: 22.5%;
 }
 
 /*Scrollbar Width*/
@@ -80,12 +101,13 @@
 }
 
 .edit-profile-details {
+  /* outline: 1px solid black; */
   position: absolute;
   width: 94%;
-  height: 30%;
+  height: 40%;
   padding: 3%;
   margin-top: 4%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 .edit-profile-details label {
   display: block;
@@ -97,6 +119,10 @@
   background-color: #dddddd;
   border-radius: 0.2em;
   padding: 0 2%;
+}
+.notStudent {
+  margin-top: 7%;
+  height: 20%;
 }
 /**.edit-first-name,
 .edit-mi,
@@ -134,6 +160,28 @@
   height: 6vh;
   width: 46.5vw;
 }
+#edit-course-input {
+  margin-bottom: 3%;
+  height: 6vh;
+  margin-left: 14%;
+  width: 12.7vw;
+  /* margin-left: 14%;
+  margin-bottom: 3%;
+  height: 6vh;
+  width: 46.5vw; */
+}
+#edit-year-input {
+  margin-bottom: 3%;
+  height: 6vh;
+  width: 12.7vw;
+  margin-left: 1.4vw;
+}
+#edit-section-input {
+  margin-bottom: 3%;
+  height: 6vh;
+  width: 12.7vw;
+  margin-left: 1.4vw;
+}
 #edit-num-input {
   margin-left: 14%;
   margin-bottom: 3%;
@@ -153,49 +201,49 @@
 .hide {
   background-color: transparent;
 }
-@media only screen and (max-width: 768px){
-  #edit-profile-picture{
+@media only screen and (max-width: 768px) {
+  #edit-profile-picture {
     margin: 14% 0 0 35%;
     height: 16vh;
     width: 18vw;
     border: 10px solid white;
   }
-  .hover-change{
+  .hover-change {
     margin: 16% 0 0 37%;
     height: 16vh;
     width: 18vw;
   }
-  .fa-plus-circle{
+  .fa-plus-circle {
     margin: 25%;
   }
-  .edit-profile-details{
+  .edit-profile-details {
     height: 25vh;
     margin-top: 2%;
   }
-  .leftover-label{
+  .leftover-label {
     margin-top: 3%;
     margin-left: 19%;
     font-size: 2vw;
   }
-  #edit-email-input{
+  #edit-email-input {
     margin-left: 19%;
     margin-bottom: 0;
     height: 5vh;
     width: 44vw;
   }
-  #edit-num-input{
+  #edit-num-input {
     margin-left: 19%;
     margin-bottom: 3%;
     height: 5vh;
     width: 44vw;
   }
-  #save-changes-btn{
+  #save-changes-btn {
     margin: 60% 0 0 20%;
     width: 24vw;
     height: 5vh;
     font-size: 2vw;
   }
-  #cancel-btn{
+  #cancel-btn {
     margin: 60% 0 0 50%;
     width: 24vw;
     height: 5vh;

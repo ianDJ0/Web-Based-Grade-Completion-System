@@ -64,7 +64,6 @@ const TopNav = (props) => {
     setPartnerID(messageContext.passFacultyID);
   };
 
-  console.log(auth.userProfilePic);
   return (
     <>
       <AuthenticationContext.Provider value={auth}>

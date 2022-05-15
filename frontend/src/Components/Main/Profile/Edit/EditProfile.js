@@ -47,8 +47,6 @@ const EditProfile = () => {
     filePickerRef.current.click();
   };
   const submitChange = () => {
-
-
     let formData = new FormData();
 
     formData.append("userId", auth.userId);
@@ -63,8 +61,11 @@ const EditProfile = () => {
     if (contactNumber) {
       formData.append("contactNumber", contactNumber);
     }
-    if(cys.length > 2){
-      formData.append("courseYearAndSection", cys[0]+"-"+cys[1]+"-"+cys[2]);
+    if (cys.length > 2) {
+      formData.append(
+        "courseYearAndSection",
+        cys[0] + "-" + cys[1] + "-" + cys[2]
+      );
     }
     axios
       .post("http://localhost:7700/api/users/profileChange", formData)
@@ -75,15 +76,15 @@ const EditProfile = () => {
         auth.userCourseYearAndSection = response.data.new.yearAndSection;
         localStorage.setItem("token", response.data.token);
         Swal.fire({
-          icon: 'success',
-          title: 'Edit Sucessful!',
+          icon: "success",
+          title: "Edit Sucessful!",
           showConfirmButton: false,
-          timer: 1500
+          timer: 1500,
         }).then(() => {
-          navigate('/profile');
-        })
+          navigate("/profile");
+        });
       })
-      .catch((error) => { });
+      .catch((error) => {});
   };
   return (
     <>
@@ -128,8 +129,11 @@ const EditProfile = () => {
             />
           )}
         </div>
-        <div className="edit-profile-details">
-
+        <div
+          className={`edit-profile-details ${
+            auth.userType !== "Student" ? "notStudent" : ""
+          }`}
+        >
           <label className="leftover-label">Email</label>
           <input
             placeholder={auth.userEmail}
@@ -139,31 +143,37 @@ const EditProfile = () => {
               setEmail(event.target.value);
             }}
           />
-          {auth.userType === "Student" &&
+          {auth.userType === "Student" && (
             <div>
-              <label className="leftover-label">Course Year {"&"} Section</label>
+              <label className="leftover-label">
+                Course Year {"&"} Section
+              </label>
               <input
+                id="edit-course-input"
                 placeholder={cys[0]}
                 type="text"
                 onChange={(event) => {
-                  cys[0]=event.target.value;
+                  cys[0] = event.target.value;
                 }}
               />
               <input
+                id="edit-year-input"
                 placeholder={cys[1]}
                 type="text"
                 onChange={(event) => {
-                  cys[1]=event.target.value;
+                  cys[1] = event.target.value;
                 }}
               />
               <input
+                id="edit-section-input"
                 placeholder={cys[2]}
                 type="text"
                 onChange={(event) => {
-                  cys[2]=event.target.value;
+                  cys[2] = event.target.value;
                 }}
               />
-            </div>}
+            </div>
+          )}
           <label className="leftover-label">Contact Number</label>
           <input
             placeholder={auth.userContactNumber}

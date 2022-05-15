@@ -38,7 +38,7 @@ const StudentProfile = () => {
           >
             Change Password
           </button>
-          {console.log(auth.userProfilePic)}
+          {/* {console.log(auth.userProfilePic)} */}
           {auth.userProfilePic === "" && (
             <img
               src={require("../../UI/Home_UI/Icons/image-wallpaper-15.jpg")}
