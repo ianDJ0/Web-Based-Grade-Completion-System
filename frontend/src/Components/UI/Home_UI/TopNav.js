@@ -110,8 +110,11 @@ const TopNav = (props) => {
           {/* <button id="search-btn"></button> */}
           <img
             alt="icon-profile"
-            src={`http://localhost:7700/${auth.userProfilePic}`}
-            // src={require("./Icons/profile.png")}
+            src={`${
+              auth.userProfilePic !== ""
+                ? `http://localhost:7700/${auth.userProfilePic}`
+                : require("./Icons/profile.png")
+            }`}
             id="profile-icon"
             onClick={profileHandler}
           />
