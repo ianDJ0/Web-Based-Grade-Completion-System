@@ -5,6 +5,8 @@ import { AuthenticationContext } from "../../Shared/context/auth-context";
 import "./Tutorial.css";
 import StudentTutorial from "./StudentTutorial";
 import FacultyRequest from "./FacultyRequest";
+import TutorialEditProfile from "./TutorialEditProfile";
+import TutorialChangePassword from "./TutorialChangePassword";
 
 const Tutorial = () => {
   const auth = useContext(AuthenticationContext);
@@ -63,7 +65,8 @@ const Tutorial = () => {
           </div>
           {pick3r}
         </div>
-        {console.log(choice)}
+        {choice === "pass" && <TutorialChangePassword/>}
+        {choice === "profile" && <TutorialEditProfile />}
         {choice === "studRequest" && <StudentTutorial />}
         {choice === "facRequest" && <FacultyRequest />}
       </div>

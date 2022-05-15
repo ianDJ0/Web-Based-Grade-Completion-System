@@ -20,7 +20,7 @@ const FacultyRequest = () => {
             image={require("../../UI/Home_UI/TutorialImages/fac-req-tutorial2.png")}
             alt={"step-2"}
             step={"STEP 2"}
-            content='Once a List was Clicked, Request Details will show, you can scroll down the details and decide to Approve or Deny the Request.'
+            content="Once a List was Clicked, Request Details will show, you can scroll down the details and decide to Approve or Deny the Request."
           />
         )}
         {page === 3 && (
@@ -28,7 +28,7 @@ const FacultyRequest = () => {
             image={require("../../UI/Home_UI/TutorialImages/Approve 1.png")}
             alt={"step-3"}
             step={"STEP 3"}
-            content='If you Approve the Request you can select a grade to give for the Student.'
+            content="If you Approve the Request you can select a grade to give for the Student."
           />
         )}
         {page === 4 && (
@@ -36,7 +36,7 @@ const FacultyRequest = () => {
             image={require("../../UI/Home_UI/TutorialImages/Approve 2.png")}
             alt={"step-4"}
             step={"STEP 4"}
-            content='You can Choose to give a grade of Excellent, Good or Satisfactory from the Dropdown Icon.'
+            content="You can Choose to give a grade of Excellent, Good or Satisfactory from the Dropdown Icon."
           />
         )}
         {page === 5 && (
@@ -66,8 +66,8 @@ const FacultyRequest = () => {
       </div>
 
       <Pagination
+        source={"request"}
         getPage={(newPage) => {
-          console.log(newPage);
           setPage(newPage);
         }}
       />

@@ -156,3 +156,7 @@
   background-color: #810000;
   transform: translateX(5px);
 }
+
+.hide-pick {
+  display: none;
+}

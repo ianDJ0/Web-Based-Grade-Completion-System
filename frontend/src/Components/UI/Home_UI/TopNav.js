@@ -24,7 +24,7 @@ const TopNav = (props) => {
   };
   if (auth.userType === "Admin") {
     navigate("/admin");
-  }; 
+  }
   const [dropDown, setDropDown] = useState(false);
   const [showNotif, setShowNotif] = useState(false);
   const [messages, setMessages] = useState(false);
@@ -64,6 +64,7 @@ const TopNav = (props) => {
     setPartnerID(messageContext.passFacultyID);
   };
 
+  console.log(auth.userProfilePic);
   return (
     <>
       <AuthenticationContext.Provider value={auth}>
@@ -93,7 +94,7 @@ const TopNav = (props) => {
                       event.target.value.length === null
                         ? "zyqqyx"
                         : event.target.value,
-                    vSearch: true
+                    vSearch: true,
                   })
                   .then((response) => {
                     setSearch(response.data);
@@ -109,7 +110,8 @@ const TopNav = (props) => {
           {/* <button id="search-btn"></button> */}
           <img
             alt="icon-profile"
-            src={require("./Icons/profile.png")}
+            src={`http://localhost:7700/${auth.userProfilePic}`}
+            // src={require("./Icons/profile.png")}
             id="profile-icon"
             onClick={profileHandler}
           />

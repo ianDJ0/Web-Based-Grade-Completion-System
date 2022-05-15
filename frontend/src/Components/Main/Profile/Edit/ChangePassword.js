@@ -31,6 +31,7 @@ const ChangePassword = () => {
           },
         }
       );
+      navigate("/profile");
     } else {
       alert("Password does not match");
     }
@@ -50,6 +51,7 @@ const ChangePassword = () => {
         <h2 id="change-pass-label">Change Password</h2>
         <label>Enter Old Password</label>
         <input
+          type="password"
           placeholder="Old Password"
           id="input-old-pass"
           onChange={(e) => {
@@ -58,6 +60,7 @@ const ChangePassword = () => {
         />
         <label>Enter New Password</label>
         <input
+          type="password"
           placeholder="New Password"
           id="input-new-pass"
           onChange={(e) => {
@@ -66,6 +69,7 @@ const ChangePassword = () => {
         />
         <label>Confirm New Password</label>
         <input
+          type="password"
           placeholder="Confirm New Password"
           id="confirm-new-pass"
           onChange={(e) => {

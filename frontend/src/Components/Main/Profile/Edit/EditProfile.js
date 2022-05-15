@@ -65,6 +65,7 @@ const EditProfile = () => {
         auth.userEmail = response.data.new.email;
         auth.userContactNumber = response.data.new.contactNumber;
         localStorage.setItem("token", response.data.token);
+        navigate('/profile')
       })
       .catch((error) => {});
   };

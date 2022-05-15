@@ -21,6 +21,7 @@
   padding: 0% 2%;
 }
 #profile-icon {
+  border-radius: 50%;
   width: 4vw;
   vertical-align: middle;
   margin-left: 32.5vw;
@@ -152,13 +153,13 @@ li {
 .hide {
   display: none;
 }
-@media only screen and (max-width: 768px){
-  .top-navigation{
+@media only screen and (max-width: 768px) {
+  .top-navigation {
     height: 8vh;
     margin: 0;
     width: 100vw;
   }
-  #search-bar{
+  #search-bar {
     margin-top: 1.5vh;
     width: 30vw;
     height: 5vh;
@@ -202,24 +203,26 @@ li {
   .dropdown-content {
     margin-top: 0.1vh;
     width: 20vw;
-    z-index: 2 ;
+    z-index: 2;
   }
-  hr{
+  hr {
     width: 17vw;
   }
-  #edit-profile-nav, #logout-profile{
+  #edit-profile-nav,
+  #logout-profile {
     font-size: 2vw;
   }
-  .suggestion-list{
+  .suggestion-list {
     z-index: 2;
     width: 32.5vw;
     top: 0;
     margin-top: 7vh;
   }
-  .suggestions{
+  .suggestions {
     font-size: 1.75vw;
   }
-  #bulsu-logo, #site-name{
+  #bulsu-logo,
+  #site-name {
     display: none;
   }
 }
