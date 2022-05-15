@@ -67,7 +67,7 @@ const getAllUserByType = async (req, res, next) => {
     vSearch = Object.assign({ "verified": true })
   }
   const allUserType = await userModel
-    .find(vSearch)
+    .find(vSearch).sort({"verified":1})
     .exec();
 if (allUserType.length == 0) {
   return res.status(201).json(['User is not Registered']);
