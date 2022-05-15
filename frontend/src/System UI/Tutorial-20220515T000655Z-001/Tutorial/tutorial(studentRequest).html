@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="tutorial(studentRequest).css" />
+    <link rel=”stylesheet”
+    href=”https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css”
+    rel=”nofollow”
+    integrity=”sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm”
+    crossorigin=”anonymous”>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="name-logo">
+        <img src="https://bit.ly/3rmsS90" id="bulsu-logo" />
+        <h3 id="site-name">BULSU</h3>
+      </div>
+      <a href="#" id="home-nav">Home</a>
+      <a href="#" id="speak-nav">Announcement</a>
+      <a href="#" id="req-nav">Requests</a>
+      <a href="#" id="tutorial-nav">Tutorial</a>
+    </div>
+    <div class="top-navigation"></div>
+    <div class="container">
+      <div class="card-content" style="display: none">
+        <div class="card">
+          <div class="card-image"><img src="Icons/stud-step1.png" /></div>
+          <div class="card-info">
+            <h3>STEP 1</h3>
+            <p>
+              Go to Requests Tab in the Side Bar and Click the Request
+              Completion Form Button Located on the Upper Right Corner.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="Icons/stud-req-tutorial2.png" />
+          </div>
+          <div class="card-info">
+            <h3>STEP 2</h3>
+            <p>
+              Scroll down and Fill up the Request Information Form. Make sure to
+              fill up all the Required Field and Click the Request Grade
+              Completion Button.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"><img src="Icons/stud-step3.png" /></div>
+          <div class="card-info">
+            <h3>STEP 3</h3>
+            <p>Wait for the pop up saying "Request has been sent".</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"><img src="Icons/stud-step4.png" /></div>
+          <div class="card-info">
+            <h3>STEP 4</h3>
+            <p>
+              After sending the request, it will appear on your Request List
+              with "Rquested" status, you can message your Instructor directly
+              or wait for your Instructor to Approve your Request.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"><img src="Icons/stud-step5.png" /></div>
+          <div class="card-info">
+            <h3>STEP 5</h3>
+            <p>
+              Once your Instructor Approved your Request and Forwarded the
+              Request to The Office, your Request Status will change in to
+              "Submitted".
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"><img src="Icons/stud-step6.png" /></div>
+          <div class="card-info">
+            <h3>STEP 6</h3>
+            <p>
+              The Office will Processed your Request and your Request Status
+              will change in to " On Process".
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image"><img src="Icons/stud-step7.png" /></div>
+          <div class="card-info">
+            <h3>STEP 7</h3>
+            <p>
+              After 14 days of processing, your Request status will change in to
+              "Processed".
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="pagination">
+        <!-- <li class="page-item previous disable"><a class="page-link" href="#">Prev</a></li>
+        <li class="page-item current active"><a class="page-link" href="#">1</a></li>
+        <li class="page-item current"><a class="page-link" href="#">2</a></li>
+        <li class="page-item current"><a class="page-link" href="#">3</a></li>
+        <li class="page-item current"><a class="page-link" href="#">4</a></li>
+        <li class="page-item current"><a class="page-link" href="#">5</a></li>
+        <li class="page-item next"><a class="page-link" href="#">Next</a></li> -->
+      </div>
+    </div>
+    <script type="text/javascript">
+      function getpageList(totalPages, page, maxLength) {
+        function range(start, end) {
+          return Array.from(Array(end - start + 1), (_, i) => i + start);
+        }
+        var sideWidth = maxLength < 9 ? 1 : 2;
+        var leftWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+        var rightWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+
+        if (totalPages <= maxLength) {
+          return range(1, totalPages);
+        }
+        if (page <= maxLength - sideWidth - 1 - rightWidth) {
+          return range(1, maxLength - sideWidth - 1).concat(
+            0,
+            range(totalPages - sideWidth + 1, totalPages)
+          );
+        }
+        if (page >= totalPages - sideWidth - 1 - rightWidth) {
+          return range(1, sideWidth).concat(
+            0,
+            range(
+              totalPages - sideWidth - 1 - rightWidth - leftWidth,
+              totalPages
+            )
+          );
+        }
+        return range(1, sideWidth).concat(
+          0,
+          range(page - leftWidth, page + rightWidth),
+          0,
+          range(totalPages - sideWidth + 1 + totalPages)
+        );
+      }
+      $(function () {
+        var numberOfItems = $(".card-content .card").length;
+        var limitPerPage = 1;
+        var totalPages = Math.ceil(numberOfItems / limitPerPage);
+        var paginationSize = 7;
+        var currentPage;
+
+        function showPage(whichPage) {
+          if (whichPage < 1 || whichPage > totalPages) return false;
+
+          currentPage = whichPage;
+
+          $(".card-content .card")
+            .hide()
+            .slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage)
+            .show();
+
+          $(".pagination li").slice(1, -1).remove();
+
+          getpageList(totalPages, currentPage, paginationSize).forEach(
+            (item) => {
+              $("<li>")
+                .addClass("page-item")
+                .addClass(item ? "current" : "dots")
+                .toggleClass("active", item === currentPage)
+                .append(
+                  $("<a>")
+                    .addClass("page-link")
+                    .attr({ href: "javascript:void(0)" })
+                    .text(item || "...")
+                )
+                .insertBefore(".next");
+            }
+          );
+
+          $(".previous").toggleClass("disable", currentPage === 1);
+          $(".next").toggleClass("disable", currentPage === totalPages);
+          return true;
+        }
+        $(".pagination").append(
+          $("<li>")
+            .addClass("page-item")
+            .addClass("previous")
+            .append(
+              $("<a>")
+                .addClass("page-link")
+                .attr({ href: "javascript:void(0)" })
+                .text("Prev")
+            ),
+          $("<li>")
+            .addClass("page-item")
+            .addClass("next")
+            .append(
+              $("<a>")
+                .addClass("page-link")
+                .attr({ href: "javascript:void(0)" })
+                .text("Next")
+            )
+        );
+
+        $(".card-content").show();
+        showPage(1);
+
+        $(document).on(
+          "click",
+          ".pagination li.current:not(.active)",
+          function () {
+            return showPage(+$(this).text());
+          }
+        );
+        $(".next").on("click", function () {
+          return showPage(currentPage + 1);
+        });
+        $(".previous").on("click", function () {
+          return showPage(currentPage - 1);
+        });
+      });
+    </script>
+  </body>
+</html>

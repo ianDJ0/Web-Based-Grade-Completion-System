@@ -1,0 +1,158 @@
+.tutorial-home {
+  outline: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 9%;
+  left: 15%;
+  height: 91%;
+  width: 85%;
+}
+
+.picker {
+  position: absolute;
+  top: 1.2em;
+  height: 5em;
+  width: 60em;
+  border-radius: 2em;
+  box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
+  background-color: white;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+.picker-choice {
+  width: 33%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1em;
+  font-size: 2em;
+}
+.active-pick,
+.picker-choice:hover {
+  background-color: #810000;
+  color: white;
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10%;
+}
+.card {
+  position: relative;
+  background: #fff;
+  width: 75em;
+  height: 40em;
+  box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
+  border-radius: 10px;
+  margin-top: -10em;
+  overflow: hidden;
+}
+.image-container {
+  outline: 1px solid black;
+  height: 30em;
+  width: 75em;
+  background-color: rgb(210, 216, 216);
+  text-align: center;
+}
+.card-image {
+  width: 75em;
+  height: 30em;
+  /* object-fit: contain; */
+}
+.card-info {
+  position: relative;
+  color: #222;
+  padding: 10px 20px 20px;
+}
+.card-info h3 {
+  color: #810000;
+  font-size: 1.8em;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+.card-info p {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+}
+
+.pagination {
+  /* outline: 1px solid black; */
+  height: 7%;
+  width: 35%;
+  position: absolute;
+  bottom: 5%;
+  text-align: center;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pagination li {
+  display: inline-block;
+  margin: 5px;
+  box-shadow: 0 5px 25px rgb(1 1 1 / 10%);
+}
+.pagination li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2em;
+  line-height: 45px;
+}
+.page-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  background: #ccc;
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.active-page {
+  color: white;
+  background-color: #810000;
+}
+.next,
+.prev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ccc;
+  width: 5em;
+  height: 3em;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 0 0.5em;
+  transition: all 0.5s;
+}
+
+.disable-btn {
+  pointer-events: none;
+}
+.pagination span {
+  font: 1.2em;
+  font-weight: bold;
+}
+.page-item:hover {
+  color: white;
+  background-color: #810000;
+  transform: translateY(-0.15em);
+}
+.prev:hover {
+  color: white;
+  background-color: #810000;
+  transform: translateX(-5px);
+}
+.next:hover {
+  color: white;
+  background-color: #810000;
+  transform: translateX(5px);
+}
