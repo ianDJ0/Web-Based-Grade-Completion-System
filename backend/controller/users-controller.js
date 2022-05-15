@@ -241,6 +241,7 @@ const profilePicture = async (req, res) => {
       profilePicture: req.file.path,
       email: req.body.email,
       contactNumber: req.body.contactNumber,
+      yearAndSection:req.body.courseYearAndSection
     }, { returnOriginal: false })
       .exec();
 

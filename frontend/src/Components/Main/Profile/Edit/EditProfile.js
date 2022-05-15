@@ -16,6 +16,10 @@ const EditProfile = () => {
   const [isValid, setValid] = useState(false);
   const [email, setEmail] = useState(auth.userEmail);
   const [contactNumber, setContactNumber] = useState(auth.userContactNumber);
+  let cys = [];
+  if (auth.userCourseYearAndSection) {
+    cys = auth.userCourseYearAndSection.split("-");
+  }
   TokenCheck();
   const filePickerRef = useRef();
   useEffect(() => {
@@ -28,7 +32,7 @@ const EditProfile = () => {
     };
     fileReader.readAsDataURL(file);
   }, [file]);
-  
+
   const pickedHandler = (event) => {
     let pickedFile;
     if (event.target.files && event.target.files.length === 1) {
@@ -44,7 +48,7 @@ const EditProfile = () => {
   };
   const submitChange = () => {
 
-    
+
     let formData = new FormData();
 
     formData.append("userId", auth.userId);
@@ -59,12 +63,16 @@ const EditProfile = () => {
     if (contactNumber) {
       formData.append("contactNumber", contactNumber);
     }
+    if(cys.length > 2){
+      formData.append("courseYearAndSection", cys[0]+"-"+cys[1]+"-"+cys[2]);
+    }
     axios
       .post("http://localhost:7700/api/users/profileChange", formData)
       .then(function (response) {
         auth.userProfilePic = response.data.new.profilePicture;
         auth.userEmail = response.data.new.email;
         auth.userContactNumber = response.data.new.contactNumber;
+        auth.userCourseYearAndSection = response.data.new.yearAndSection;
         localStorage.setItem("token", response.data.token);
         Swal.fire({
           icon: 'success',
@@ -75,7 +83,7 @@ const EditProfile = () => {
           navigate('/profile');
         })
       })
-      .catch((error) => {});
+      .catch((error) => { });
   };
   return (
     <>
@@ -131,6 +139,31 @@ const EditProfile = () => {
               setEmail(event.target.value);
             }}
           />
+          {auth.userType === "Student" &&
+            <div>
+              <label className="leftover-label">Course Year {"&"} Section</label>
+              <input
+                placeholder={cys[0]}
+                type="text"
+                onChange={(event) => {
+                  cys[0]=event.target.value;
+                }}
+              />
+              <input
+                placeholder={cys[1]}
+                type="text"
+                onChange={(event) => {
+                  cys[1]=event.target.value;
+                }}
+              />
+              <input
+                placeholder={cys[2]}
+                type="text"
+                onChange={(event) => {
+                  cys[2]=event.target.value;
+                }}
+              />
+            </div>}
           <label className="leftover-label">Contact Number</label>
           <input
             placeholder={auth.userContactNumber}
