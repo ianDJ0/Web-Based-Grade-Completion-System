@@ -60,19 +60,23 @@ const getAllUserByType = async (req, res, next) => {
     req.body.findInName = "";
   }
   let vSearch = {
-    userType: req.body.uType,
-    fullName: { $regex: req.body.findInName, $options: "i" }
+    '$and': [
+      { userType: req.body.uType },
+      { '$or': [{ fullName: { $regex: req.body.findInName, $options: "i" } }, { email: { $regex: req.body.findInName, $options: "i" } }] }
+    ]
+    // userType: req.body.uType,
+    // fullName: { $regex: req.body.findInName, $options: "i" }
   };
   if (req.body.vSearch) {
     vSearch = Object.assign({ "verified": true })
   }
   const allUserType = await userModel
-    .find(vSearch).sort({"verified":1})
+    .find(vSearch).sort({ "verified": 1 })
     .exec();
-if (allUserType.length == 0) {
-  return res.status(201).json(['User is not Registered']);
-}
-res.json(allUserType);
+  if (allUserType.length == 0) {
+    return res.status(201).json(['User is not Registered']);
+  }
+  res.json(allUserType);
 };
 
 //Find Single User by ID
@@ -221,7 +225,7 @@ const resetPassword = async (req, res) => {
 const deleteUser = async (req, res, next) => {
   const dataObject = JSON.parse(JSON.stringify(res.locals.user.userData));
   if (dataObject.userType !== "Admin") {
-    
+
     return res.status(403).json({ message: "No Access!" });
   }
   await userModel
@@ -241,7 +245,7 @@ const profilePicture = async (req, res) => {
       profilePicture: req.file.path,
       email: req.body.email,
       contactNumber: req.body.contactNumber,
-      yearAndSection:req.body.courseYearAndSection
+      yearAndSection: req.body.courseYearAndSection
     }, { returnOriginal: false })
       .exec();
 

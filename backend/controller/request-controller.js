@@ -294,7 +294,7 @@ const adminGetRequests = async (req, res) => {
     let getRequestFaculty
     try {
         getRequestFaculty = await requestModel
-            .find(searchFilter).sort({ 'dateLog.dateStudent': -1 });
+            .find(searchFilter).sort({ 'dateLog.dateStudent': -1 }).limit(req.body.requestEntries ==="all"?"":parseInt(req.body.requestEntries));
     } catch (err) {
         return res
             .status(422)
@@ -313,6 +313,5 @@ exports.officeRespondRequest = officeRespondRequest;
 exports.getUserNotifications = getUserNotifications;
 exports.viewNotification = viewNotification;
 exports.getOneRequest = getOneRequest;
-
 exports.adminGetRequests = adminGetRequests;
 

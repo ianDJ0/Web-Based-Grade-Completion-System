@@ -21,6 +21,7 @@ const AdminRequests = () => {
           requestStatus: status,
           requestToDate: fromDate,
           requestFromDate: toDate,
+          requestEntries: entries,
         },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -42,7 +43,7 @@ const AdminRequests = () => {
         <div className="admin-request-filter">
           <RequestFilter
             filterOn={true}
-            // entries={(entry) => setEntries(entry)}
+            entries={(entry) => setEntries(entry)}
             filterStatus={(newStatus) => setStatus(newStatus)}
             filterFromDate={(newFromDate) => setFromDate(newFromDate)}
             filterToDate={(newToDate) => setToDate(newToDate)}
