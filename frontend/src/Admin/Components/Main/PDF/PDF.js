@@ -116,7 +116,8 @@ const PDF = () => {
             <p className="pdf-schoolYr-start-var ans">{schoolYrStart}</p>
             <p className="pdf-schoolYr-end-var ans">{schoolYrEnd}</p>
             <p className="pdf-reason-var ans">{reason}</p>
-            <p className="pdf-duedate-var ans">{dueDate}</p>
+            <p className="pdf-duedate-var ans">2114</p>
+            {/* <p className="pdf-duedate-var ans">{dueDate}</p> */}
             <pre className="pdf-indent-pre">
               {`            Mr.    /Ms.    __________________________________________________,    has    an`}
             </pre>
