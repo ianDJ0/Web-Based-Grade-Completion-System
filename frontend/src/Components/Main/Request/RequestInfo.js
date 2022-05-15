@@ -71,6 +71,7 @@ const RequestInfo = (props) => {
                       uType: "Faculty",
                       findInName:
                         e.target.value === null ? "zyqqyx" : e.target.value,
+                      vSearch:true
                     })
                     .then((response) => {
                       setSearch(response.data);
