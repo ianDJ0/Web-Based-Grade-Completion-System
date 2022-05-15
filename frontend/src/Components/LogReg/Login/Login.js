@@ -8,6 +8,7 @@ import { AuthenticationContext } from "../../Shared/context/auth-context";
 import "../../Shared/Shared.css";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -33,7 +34,7 @@ const Login = () => {
     if (isValid) {
       setEmail("");
       setPWD("");
-      if(auth.userType === "Admin"){
+      if (auth.userType === "Admin") {
         return navigate("/admin");
       }
       navigate("/homepage");
@@ -69,7 +70,11 @@ const Login = () => {
           localStorage.setItem("token", response.data.token);
           setIsValid(true);
         } else {
-          alert("userUnverified");
+          Swal.fire(
+            "Account Unverified",
+            "Contact your admin to verify your account.",
+            "error"
+          );
         }
       })
       .catch(function (error) {
