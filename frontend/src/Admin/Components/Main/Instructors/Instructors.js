@@ -7,11 +7,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AdminSearch from "../../UI/AdminSearch";
+import Pagination from "../../UI/Pagination";
+
 const Instructors = () => {
   const navigate = useNavigate();
   const [searchInstructor, setSearchInstructor] = useState("");
   const [isVerified, setIsverified] = useState("");
   const [instructors, setInstructors] = useState([]);
+  const [current, setCurrent] = useState(1);
+  const [entry, setEntry] = useState(3)
 
   useEffect(() => {
     axios
@@ -28,6 +32,10 @@ const Instructors = () => {
       });
   }, [searchInstructor, isVerified]);
 
+  const indexOfLastEntry = current * entry;
+  const indexOfFirstEntry = indexOfLastEntry - entry;
+  const currentEntry = instructors.slice(indexOfFirstEntry, indexOfLastEntry)
+  const paginate = pageNumber => setCurrent(pageNumber);
   return (
     <>
       <Sidebar active={"instructor"} />
@@ -57,8 +65,8 @@ const Instructors = () => {
                 <th>Contact Number</th>
                 <th>Status</th>
               </tr>
-              {instructors.length > 0 &&
-                instructors.map((instructor) => {
+              {currentEntry.length > 0 &&
+                currentEntry.map((instructor) => {
                   return (
                     <tr
                       key={instructor._id}
@@ -77,7 +85,13 @@ const Instructors = () => {
                 })}
             </tbody>
           </table>
+          
         </div>
+        <Pagination
+            postsPerPage={entry}
+            totalPosts={instructors.length}
+            paginate={paginate}
+          />
       </Body>
     </>
   );

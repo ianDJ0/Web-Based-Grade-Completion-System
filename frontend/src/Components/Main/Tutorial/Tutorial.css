@@ -94,6 +94,21 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.pagination-admin {
+  /* outline: 1px solid black; */
+  height: 7%;
+  width: 35%;
+  position: absolute;
+  bottom: 5%;
+  text-align: center;
+  user-select: none;
+  margin-left: 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .pagination li {
   display: inline-block;
   margin: 5px;
@@ -110,6 +125,17 @@
   align-items: center;
   justify-content: center;
   font-size: 1em;
+  background: #ccc;
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.page-item-admin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
   background: #ccc;
   width: 3em;
   height: 3em;

@@ -7,11 +7,14 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import AdminSearch from "../../UI/AdminSearch";
+import Pagination from "../../UI/Pagination";
 
 const Student = () => {
   const { state } = useLocation();
   const [searchStudent, setSearchStudent] = useState("");
   const [students, setStudents] = useState([]);
+  const [current, setCurrent] = useState(1);
+  const [entry, setEntry] = useState(7)
   const navigate = useNavigate();
   useEffect(() => {
     axios
@@ -27,6 +30,10 @@ const Student = () => {
       });
   }, [searchStudent]);
 
+  const indexOfLastEntry = current * entry;
+  const indexOfFirstEntry = indexOfLastEntry - entry;
+  const currentEntry = students.slice(indexOfFirstEntry, indexOfLastEntry)
+  const paginate = pageNumber => setCurrent(pageNumber);
   return (
     <>
       <Sidebar active={"student"} />
@@ -56,8 +63,8 @@ const Student = () => {
                 <th>Email</th>
                 <th>Contact Number</th>
               </tr>
-              {students.length > 0 &&
-                students.map((student) => {
+              {currentEntry.length > 0 &&
+                currentEntry.map((student) => {
                   return (
                     <tr
                       key={student._id}
@@ -77,6 +84,11 @@ const Student = () => {
             </tbody>
           </table>
         </div>
+        <Pagination
+          postsPerPage={entry}
+          totalPosts={students.length}
+          paginate={paginate}
+        />
       </Body>
     </>
   );
