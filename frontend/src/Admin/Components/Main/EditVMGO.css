@@ -1,10 +1,35 @@
 .edit-vmgo-body {
   background-color: white;
-  box-shadow: 0 5px 10px 3px rgb(0, 0, 0, 0.5);
-  position: absolute;
-  right: 10%;
-  width: 63%;
+  box-shadow: 0 5px 10px 3px rgb(0, 0, 0, 0.2);
+  margin-left: 26vw;
+  height: auto;
+  width: 60vw;
   display: flex;
   padding: 2em;
   border-radius: 1em;
+}
+.edit-vmgo-textarea{
+  height: 7vh;
+  width: 58vw;
+  margin-bottom: 3vh;
+  margin-top: 1vh;
+  border: none;
+  background-color: rgb(240, 240, 240);
+  padding: 2vh;
+  border-radius: 1em;
+  box-shadow: 0 4px 9px rgb(0, 0, 0, 0.1);
+}
+#input-edit-vmgo{
+  width: 17vw;
+  height: 6vh;
+  margin: 1vh 22vw;
+  border: none;
+  border-radius: 5em;
+  background-color: #3D56B2;
+  color: white;
+  font-size: 1.5vw;
+  transition: all 0.3s;
+}
+#input-edit-vmgo:hover{
+  background-color: #091353;
 }

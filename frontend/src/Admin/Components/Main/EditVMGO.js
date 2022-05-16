@@ -71,15 +71,17 @@ const EditVMGO = () => {
               <textarea
                 id="vision"
                 name="vision"
+                className="edit-vmgo-textarea"
                 onChange={formik.handleChange}
                 defaultValue={getVision}
               />
             </div>
             <div>
-              <label htmlFor="mision">MISION</label>
+              <label htmlFor="mision">MISSION</label>
               <textarea
                 id="mision"
                 name="mision"
+                className="edit-vmgo-textarea"
                 onChange={formik.handleChange}
                 defaultValue={getMission}
               />
@@ -89,6 +91,7 @@ const EditVMGO = () => {
               <textarea
                 id="goals"
                 name="goals"
+                className="edit-vmgo-textarea"
                 onChange={formik.handleChange}
                 defaultValue={getGoals}
               />
@@ -98,11 +101,12 @@ const EditVMGO = () => {
               <textarea
                 id="objectives"
                 name="objectives"
+                className="edit-vmgo-textarea"
                 onChange={formik.handleChange}
                 defaultValue={getObjectives}
               />
             </div>
-            <input type="submit" />
+            <input type="submit" id="input-edit-vmgo"/>
           </form>
         </div>
       </Body>
