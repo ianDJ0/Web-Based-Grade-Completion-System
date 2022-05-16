@@ -9,7 +9,7 @@ const AdminLogin = () => {
           alt="Logo"
           id="admin-logo"
         />
-        <h2 id="admin-site-name">BULACAN STATE UNIVERSITY</h2>
+        <h2 id="admin-login-site-name">BULACAN STATE UNIVERSITY</h2>
       </div>
       <div className="admin-input">
         <h2 id="admin-login-label">Log In</h2>

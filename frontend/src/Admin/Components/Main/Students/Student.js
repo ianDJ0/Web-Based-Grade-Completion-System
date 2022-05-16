@@ -29,7 +29,7 @@ const Student = () => {
 
   return (
     <>
-      <Sidebar  active={'student'} />
+      <Sidebar active={"student"} />
       <TopNav />
       <Body>
         <AdminSearch
@@ -38,6 +38,14 @@ const Student = () => {
             setSearchStudent(query);
           }}
         />
+        <button
+          id="admin-create-account"
+          onClick={() => {
+            navigate("/admin/create");
+          }}
+        >
+          Create account
+        </button>
         <h2 id="instructor-label">STUDENT LIST</h2>
         <div className="list-content">
           <table className="log">

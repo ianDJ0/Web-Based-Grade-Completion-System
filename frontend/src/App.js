@@ -26,6 +26,7 @@ import AdminRequestForm from "./Admin/Components/UI/AdminRequestForm";
 import PDF from "./Admin/Components/Main/PDF/PDF";
 import Report from "./Admin/Components/Main/PDF/Report";
 import AdminLogin from "./Admin/Components/Main/Login/AdminLogin";
+import CreateAccount from "./Admin/Components/Main/Profile/CreateAccount";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -78,6 +79,7 @@ function App() {
 
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/" element={<Dashboard />} />
+          <Route path="/admin/create" element={<CreateAccount />} />
           <Route path="/admin/faculty" element={<Instructors />} />
           <Route path="/admin/student" element={<Student />} />
           <Route path="/admin/profile" element={<AccountProfile />} />

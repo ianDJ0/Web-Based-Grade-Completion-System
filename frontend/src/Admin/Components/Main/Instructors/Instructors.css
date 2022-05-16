@@ -3,3 +3,22 @@
   margin-left: 2.5%;
   text-align: center;
 }
+#admin-create-account {
+  position: absolute;
+  width: 12vw;
+  height: 6vh;
+  background-color: #8c0000;
+  color: white;
+  font-size: 2vh;
+  right: 5%;
+  top: 17%;
+  border: 1px solid #8c0000;
+  border-radius: 10px;
+  transition: all 0.5s;
+}
+#admin-create-account:hover {
+  border: 1px solid black;
+  background-color: black;
+  columns: white;
+  transform: translateY(-0.15em);
+}

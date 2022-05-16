@@ -30,7 +30,7 @@ const Instructors = () => {
 
   return (
     <>
-      <Sidebar active={'instructor'} />
+      <Sidebar active={"instructor"} />
       <TopNav />
       <Body>
         <AdminSearch
@@ -39,6 +39,14 @@ const Instructors = () => {
             setSearchInstructor(query);
           }}
         />
+        <button
+          id="admin-create-account"
+          onClick={() => {
+            navigate("/admin/create");
+          }}
+        >
+          Create account
+        </button>
         <h2 id="instructor-label">INSTRUCTORS LIST</h2>
         <div className="list-content">
           <table className="log">
