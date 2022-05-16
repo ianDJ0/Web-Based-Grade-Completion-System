@@ -43,7 +43,7 @@ const Homepage = (props) => {
         <div className="to-tutorial">
           <h3 id="system-title-label">Document Tracking System</h3>
           <p id="tutorial-sub-desc">
-            Know more about how to use the Bulacan Stated University document
+            Know more about how to use the Bulacan State University document
             tracking system
           </p>
           <button
