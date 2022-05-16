@@ -99,7 +99,7 @@
   /* outline: 1px solid black; */
   height: 7%;
   width: 35%;
-  position: absolute;
+  position: block;
   bottom: 5%;
   text-align: center;
   user-select: none;
@@ -135,7 +135,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2em;
+  font-size: 1em;
   background: #ccc;
   width: 3em;
   height: 3em;

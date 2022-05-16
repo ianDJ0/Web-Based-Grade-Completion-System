@@ -299,7 +299,6 @@ const adminGetRequests = async (req, res) => {
         searchFilter = Object.assign(andDate, searchFilter)
     }
     let getRequestFaculty
-    console.log(searchFilter)
     try {
         getRequestFaculty = await requestModel
             .find(searchFilter).sort({ 'dateLog.dateStudent': -1 }).limit(req.body.requestEntries === "all" ? "" : parseInt(req.body.requestEntries));

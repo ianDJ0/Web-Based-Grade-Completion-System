@@ -107,6 +107,7 @@ const Dashboard = () => {
         </button>
         {console.log("pending", pendingRequest)}
         <RequestList submittedData={pendingRequest} />
+        <RequestList submittedData={pendingRequest} entryNumber={"all"} />
       </Body>
     </>
   );

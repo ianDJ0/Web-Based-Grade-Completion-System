@@ -21,7 +21,6 @@ const AdminRequests = () => {
           requestStatus: status,
           requestToDate: fromDate,
           requestFromDate: toDate,
-          requestEntries: entries,
         },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -33,8 +32,7 @@ const AdminRequests = () => {
       .catch((error) => {
         alert(error);
       });
-  }, [entries, toDate, fromDate, status]);
-
+  }, [toDate, fromDate, status]);
   return (
     <>
       <Sidebar active={"request"} />
@@ -52,6 +50,7 @@ const AdminRequests = () => {
         {pendingRequest.length > 0 ? (
           <RequestList
             submittedData={pendingRequest}
+            entryNumber={entries}
             // entries={entries}
           />
         ) : (
