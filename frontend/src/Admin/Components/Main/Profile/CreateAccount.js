@@ -14,6 +14,10 @@ const CreateAccount = () => {
       lastname: "",
       firstname: "",
       middleinit: "",
+      course: "",
+      year: "",
+      section: "",
+      studno: "",
       contact: "",
       birthday: "",
       signature: "",
@@ -34,9 +38,11 @@ const CreateAccount = () => {
             <div>
               <label>Account Type</label>
               <select
-                name="account-type"
-                id="account-type"
+                name="accounttype"
+                id="accounttype"
                 placeholder="Account type"
+                onChange={formik.handleChange}
+                value={formik.values.accounttype}
               >
                 <option value="Faculty">Faculty</option>
                 <option value="Student">Student</option>
@@ -69,8 +75,8 @@ const CreateAccount = () => {
             <div>
               <label htmlFor="conpassword">Confirm Password</label>
               <input
-                name="con-password"
-                id="con-password"
+                name="conpassword"
+                id="conpassword"
                 type="password"
                 placeholder="Confirm password"
                 onChange={formik.handleChange}
@@ -90,6 +96,59 @@ const CreateAccount = () => {
                 required
               />
             </div>
+            {formik.values.accounttype === "Student" && (
+              <>
+                <div>
+                  <label htmlFor="course">Course</label>
+                  <input
+                    type="text"
+                    name="course"
+                    id="course"
+                    placeholder="Course"
+                    onChange={formik.handleChange}
+                    value={formik.values.course}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="year">year</label>
+                  <input
+                    type="text"
+                    name="year"
+                    id="year"
+                    placeholder="year"
+                    onChange={formik.handleChange}
+                    value={formik.values.year}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="section">section</label>
+                  <input
+                    type="text"
+                    name="section"
+                    id="section"
+                    placeholder="section"
+                    onChange={formik.handleChange}
+                    value={formik.values.section}
+                    required
+                  />
+                </div>
+                <div>
+                  <label htmlFor="studno">studno</label>
+                  <input
+                    type="text"
+                    name="studno"
+                    id="studno"
+                    placeholder="studno"
+                    onChange={formik.handleChange}
+                    value={formik.values.studno}
+                    required
+                  />
+                </div>
+              </>
+            )}
+
             <div>
               <label htmlFor="firstname">First Name</label>
               <input
