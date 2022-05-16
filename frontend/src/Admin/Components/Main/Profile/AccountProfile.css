@@ -15,8 +15,8 @@
 }
 #verify-instructor {
   position: absolute;
-  width: 16vw;
-  margin: 15vh 0 0 42.5vw;
+  width: 12vw;
+  margin: 15vh 0 0 45vw;
   font-size: 1vw;
   padding: 2vh 0;
   border: none;
@@ -25,12 +25,26 @@
   border: 2px solid white;
   transition: all 0.5s;
 }
+#admin-delete-account {
+  position: absolute;
+  width: 12vw;
+  margin: 15vh 0 0 32vw;
+  font-size: 1vw;
+  padding: 2vh 0;
+  border: none;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  border: 2px solid white;
+  transition: all 0.5s;
+}
+#admin-delete-account:hover,
 #verify-instructor:hover {
   cursor: pointer;
   background-color: rgb(148, 7, 7);
   color: white;
   transform: translateY(-0.15em);
 }
+
 .instructor-email {
   margin-top: 46vh;
   margin-left: 29.5vw;

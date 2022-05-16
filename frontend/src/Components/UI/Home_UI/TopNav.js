@@ -22,7 +22,7 @@ const TopNav = (props) => {
   const profileHandler = () => {
     navigate("/profile");
   };
-  if (auth.userType === "Admin") {
+  if (auth.userType === "Admin") { //will remove later
     navigate("/admin");
   }
   const [dropDown, setDropDown] = useState(false);

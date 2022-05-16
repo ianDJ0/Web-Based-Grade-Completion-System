@@ -5,6 +5,7 @@ import Sidebar from "../../UI/Home_UI/Sidebar";
 import { useNavigate } from "react-router-dom";
 import { AuthenticationContext } from "../../Shared/context/auth-context";
 import "./StudentProfile.css";
+import Swal from "sweetalert2";
 
 const StudentProfile = () => {
   const navigate = useNavigate();
@@ -14,6 +15,27 @@ const StudentProfile = () => {
     month: "short",
     day: "numeric",
   };
+
+  const deleteAccount = () => {
+    Swal.fire({
+      title: "Are you sure you want to delete your account?",
+      html: "This action is irreversible.",
+      showDenyButton: true,
+      confirmButtonText: "Yes",
+      denyButtonText: "No",
+      customClass: {
+        actions: "my-actions",
+        confirmButton: "order-2",
+        denyButton: "order-3",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Swal.fire("Saved!", "", "success");
+      } else if (result.isDenied) {
+        // Swal.fire("Changes are not saved", "", "info");
+      }
+    });
+  };
   TokenCheck();
   return (
     <>
@@ -22,6 +44,9 @@ const StudentProfile = () => {
       <Sidebar active={""} />
       <div className="user-profile">
         <div className="profile-header">
+          <button id="delete-account" onClick={deleteAccount}>
+            Delete Account
+          </button>
           <button
             id="edit-profile"
             onClick={() => {

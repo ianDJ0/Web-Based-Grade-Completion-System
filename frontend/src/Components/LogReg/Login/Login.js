@@ -19,6 +19,8 @@ const Login = () => {
   const auth = useContext(AuthenticationContext);
   const navigate = useNavigate();
 
+  const [attempts, setAttempts] = useState(0);
+
   useEffect(() => {
     emailRef.current.focus();
     if (localStorage.getItem("token")) {
@@ -80,6 +82,7 @@ const Login = () => {
       .catch(function (error) {
         setErrMsg(error.response.data.message);
         setIsValid(false);
+        setAttempts((prevAttempt) => prevAttempt + 1);
       });
   };
 
@@ -98,9 +101,43 @@ const Login = () => {
     ) : (
       ""
     );
+
+  // const cover = <div id="cover-me"></div>;
+
+  useEffect(() => {
+    if (attempts > 2) {
+      let timerInterval;
+      Swal.fire({
+        title: "Too many wrong attempts.",
+        html: "You have tried to login with wrong credentials for too many time.",
+        timer: 10000,
+        timerProgressBar: true,
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+          const b = Swal.getHtmlContainer().querySelector("b");
+          timerInterval = setInterval(() => {
+            b.textContent = Swal.getTimerLeft();
+          }, 100);
+          // document.getElementById("cover-me").style.display = "block";
+        },
+        willClose: () => {
+          // document.getElementById("cover-me").style.display = "none";
+          clearInterval(timerInterval);
+        },
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          console.log("I was closed by the timer");
+        }
+      });
+    }
+  }, [attempts]);
+
   document.body.style = "background: #810000";
   return (
     <>
+      {/* {cover} */}
       <Logo />
       <LogRegBody>
         <LogRegButton choice={"login"} />
@@ -135,9 +172,9 @@ const Login = () => {
               className="input-field"
               required
             />
-            <span alt="forgot-password" id="forgot-pass">
+            {/* <span alt="forgot-password" id="forgot-pass">
               Forgot Password?
-            </span>
+            </span> */}
 
             {error}
             {pwdError}
@@ -160,6 +197,22 @@ const Login = () => {
             </div>
           </form>
         </LogRegForm>
+        <div className="admin-login-container">
+          <p className="admin-login-text">
+            Are you an admin? Login your account
+            <em>
+              <span
+                className="admin-login"
+                onClick={() => {
+                  navigate("./admin/login");
+                }}
+              >
+                {" "}
+                here.
+              </span>
+            </em>
+          </p>
+        </div>
       </LogRegBody>
     </>
   );

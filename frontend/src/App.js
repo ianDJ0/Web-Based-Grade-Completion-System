@@ -24,6 +24,8 @@ import "./App.css";
 import AdminRequests from "./Admin/Components/Main/Requests/AdminRequests";
 import AdminRequestForm from "./Admin/Components/UI/AdminRequestForm";
 import PDF from "./Admin/Components/Main/PDF/PDF";
+import Report from "./Admin/Components/Main/PDF/Report";
+import AdminLogin from "./Admin/Components/Main/Login/AdminLogin";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -73,6 +75,8 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
 
           {/**Admin Routes */}
+
+          <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/" element={<Dashboard />} />
           <Route path="/admin/faculty" element={<Instructors />} />
           <Route path="/admin/student" element={<Student />} />
@@ -80,6 +84,7 @@ function App() {
           <Route path="/admin/request" element={<AdminRequests />} />
           <Route path="/admin/request/form" element={<AdminRequestForm />} />
           <Route path="/admin/request/form/pdf" element={<PDF />} />
+          <Route path="/admin/report" element={<Report />} />
         </Routes>
       </>
     </AuthenticationContext.Provider>

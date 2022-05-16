@@ -6,3 +6,22 @@
 #pass-input {
   margin-bottom: 0.75vh;
 }
+.admin-login-container {
+  text-align: center;
+  font-size: 2vh;
+}
+.admin-login-text {
+  color: #810000;
+  cursor: default;
+}
+.admin-login {
+  cursor: pointer;
+}
+#cover-me {
+  z-index: 999;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  outline: 1px solid black;
+  display: none;
+}

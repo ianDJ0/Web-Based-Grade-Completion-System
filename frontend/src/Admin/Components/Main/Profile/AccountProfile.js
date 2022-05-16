@@ -16,7 +16,28 @@ const AccountProfile = () => {
     year: "numeric",
     month: "short",
     day: "numeric",
-  }
+  };
+
+  const adminDelAccount = () => {
+    Swal.fire({
+      title: "Are you sure you want to delete this account?",
+      html: "This action is irreversible.",
+      showDenyButton: true,
+      confirmButtonText: "Yes",
+      denyButtonText: "No",
+      customClass: {
+        actions: "my-actions",
+        confirmButton: "order-2",
+        denyButton: "order-3",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Swal.fire('Saved!', '', 'success')
+      } else if (result.isDenied) {
+        // Swal.fire('Changes are not saved', '', 'info')
+      }
+    });
+  };
   return (
     <>
       <Sidebar />
@@ -69,6 +90,9 @@ const AccountProfile = () => {
                 Verify Instructor
               </button>
             ) : null}
+            <button id="admin-delete-account" onClick={adminDelAccount}>
+              Delete Account
+            </button>
 
             <Profile
               name={state.user.fullName}
@@ -90,11 +114,12 @@ const AccountProfile = () => {
             </div>
             <div className="instructor-bday">
               <p>Birthday</p>
-              <p id="instructor-bday">{
-                new Date(state.user.birthday).toLocaleDateString(
+              <p id="instructor-bday">
+                {new Date(state.user.birthday).toLocaleDateString(
                   "en-US",
                   DATE_OPTIONS
-                )}</p>
+                )}
+              </p>
             </div>
 
             {/** */}
