@@ -4,14 +4,16 @@ import Sidebar from "../../UI/Sidebar";
 import TopNav from "../../UI/TopNav";
 import "./CreateAccount.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const CreateAccount = () => {
+  const { state } = useLocation();
+  console.log(state.source);
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
-      registerUserType: "",
+      registerUserType: state.source,
       registerEmail: "",
       registerPassword: "",
       conpassword: "",
@@ -27,53 +29,68 @@ const CreateAccount = () => {
       signature: "",
     },
     onSubmit: (values) => {
-
-      let names = { 'registerName': values.firstname + " " + values.middleinit + " " + values.lastname }
-      values = Object.assign(names, values)
-      if(!values.registerUserType||!values.registerEmail||!values.registerPassword||!values.registerName||!values.registerContactNumber||!values.image){
-        return alert("fill all please")
+      let names = {
+        registerName:
+          values.firstname + " " + values.middleinit + " " + values.lastname,
+      };
+      values = Object.assign(names, values);
+      if (
+        !values.registerUserType ||
+        !values.registerEmail ||
+        !values.registerPassword ||
+        !values.registerName ||
+        !values.registerContactNumber ||
+        !values.image
+      ) {
+        return alert("fill all please");
       }
       let form = new FormData();
-      form.append('registerUserType', values.registerUserType)
-      form.append('registerEmail', values.registerEmail)
-      form.append('registerPassword', values.registerPassword)
-      form.append('registerName', values.registerName)
-      form.append('registerContactNumber', values.registerContactNumber)
-      form.append('registerBirthday', values.registerBirthday)
-      form.append('image', values.image)
-      form.append('regVerify', true)
+      form.append("registerUserType", values.registerUserType);
+      form.append("registerEmail", values.registerEmail);
+      form.append("registerPassword", values.registerPassword);
+      form.append("registerName", values.registerName);
+      form.append("registerContactNumber", values.registerContactNumber);
+      form.append("registerBirthday", values.registerBirthday);
+      form.append("image", values.image);
+      form.append("regVerify", true);
       if (values.registerUserType === "Faculty") {
         axios
           .post("http://localhost:7700/api/users/signup", form)
           .then(function (response) {
             Swal.fire({
-              icon: 'success',
-              title: 'Instructor is created!',
+              icon: "success",
+              title: "Instructor is created!",
               showConfirmButton: false,
-              timer: 1500
+              timer: 1500,
             }).then(() => {
-              navigate('/admin/faculty');
-            })
+              navigate("/admin/faculty");
+            });
           })
           .catch(function (error) {
             alert(values.image);
           });
       } else {
-        let names = { 'registerCourseYearAndSection': values.course + "-" + values.year + "-" + values.section }
-        values = Object.assign(names, values)
-        form.append('registerCourseYearAndSection', values.registerCourseYearAndSection)
-        form.append('registerStudentNumber', values.registerStudentNumber)
+        let names = {
+          registerCourseYearAndSection:
+            values.course + "-" + values.year + "-" + values.section,
+        };
+        values = Object.assign(names, values);
+        form.append(
+          "registerCourseYearAndSection",
+          values.registerCourseYearAndSection
+        );
+        form.append("registerStudentNumber", values.registerStudentNumber);
         axios
           .post("http://localhost:7700/api/users/signup", form)
           .then(function (response) {
             Swal.fire({
-              icon: 'success',
-              title: 'Instructor is created!',
+              icon: "success",
+              title: "Instructor is created!",
               showConfirmButton: false,
-              timer: 1500
+              timer: 1500,
             }).then(() => {
-              navigate('/admin/student');
-            })
+              navigate("/admin/student");
+            });
           })
           .catch(function (error) {
             console.log(error);
@@ -97,7 +114,7 @@ const CreateAccount = () => {
                 id="accounttype"
                 placeholder="Account type"
                 onChange={formik.handleChange}
-                value={formik.values.accounttype}
+                value={formik.values.registerUserType}
               >
                 <option value="Faculty">Faculty</option>
                 <option value="Student">Student</option>
@@ -112,7 +129,7 @@ const CreateAccount = () => {
                 placeholder="Email"
                 onChange={formik.handleChange}
                 value={formik.values.email}
-              required
+                required
               />
             </div>
             <div>
@@ -124,7 +141,7 @@ const CreateAccount = () => {
                 placeholder="Password"
                 onChange={formik.handleChange}
                 value={formik.values.password}
-              required
+                required
               />
             </div>
             <div>
@@ -136,7 +153,7 @@ const CreateAccount = () => {
                 placeholder="Confirm password"
                 onChange={formik.handleChange}
                 value={formik.values.conpassword}
-              required
+                required
               />
             </div>
             <div>
@@ -148,7 +165,7 @@ const CreateAccount = () => {
                 placeholder="Last Name"
                 onChange={formik.handleChange}
                 value={formik.values.lastname}
-              required
+                required
               />
             </div>
             {formik.values.registerUserType === "Student" && (
@@ -162,7 +179,7 @@ const CreateAccount = () => {
                     placeholder="Course"
                     onChange={formik.handleChange}
                     value={formik.values.course}
-                  required
+                    required
                   />
                 </div>
                 <div>
@@ -174,7 +191,7 @@ const CreateAccount = () => {
                     placeholder="year"
                     onChange={formik.handleChange}
                     value={formik.values.year}
-                  required
+                    required
                   />
                 </div>
                 <div>
@@ -186,7 +203,7 @@ const CreateAccount = () => {
                     placeholder="section"
                     onChange={formik.handleChange}
                     value={formik.values.section}
-                  required
+                    required
                   />
                 </div>
                 <div>
@@ -198,7 +215,7 @@ const CreateAccount = () => {
                     placeholder="studno"
                     onChange={formik.handleChange}
                     value={formik.values.studno}
-                  required
+                    required
                   />
                 </div>
               </>
@@ -213,7 +230,7 @@ const CreateAccount = () => {
                 placeholder="First Name"
                 onChange={formik.handleChange}
                 value={formik.values.firstname}
-              required
+                required
               />
             </div>
             <div>
@@ -225,7 +242,7 @@ const CreateAccount = () => {
                 placeholder="Middle Initial"
                 onChange={formik.handleChange}
                 value={formik.values.middleinit}
-              required
+                required
               />
             </div>
             <div>
@@ -237,7 +254,7 @@ const CreateAccount = () => {
                 placeholder="Contact Number"
                 onChange={formik.handleChange}
                 value={formik.values.contact}
-              required
+                required
               />
             </div>
             <div>
@@ -249,7 +266,7 @@ const CreateAccount = () => {
                 placeholder="Birthdate"
                 onChange={formik.handleChange}
                 value={formik.values.birthday}
-              required
+                required
               />
             </div>
             <div>
@@ -260,10 +277,10 @@ const CreateAccount = () => {
                 accept=".jpg,.png,.jpeg"
                 type="file"
                 onChange={(event) => {
-                  let file = event.target.files[0]
-                  formik.setFieldValue("image", file)
+                  let file = event.target.files[0];
+                  formik.setFieldValue("image", file);
                 }}
-              required
+                required
               />
             </div>
             <button type="submit">Create account</button>

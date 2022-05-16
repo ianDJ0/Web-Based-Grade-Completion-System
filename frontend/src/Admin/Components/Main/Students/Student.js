@@ -14,7 +14,7 @@ const Student = () => {
   const [searchStudent, setSearchStudent] = useState("");
   const [students, setStudents] = useState([]);
   const [current, setCurrent] = useState(1);
-  const [entry, setEntry] = useState(7)
+  const [entry, setEntry] = useState(7);
   const navigate = useNavigate();
   useEffect(() => {
     axios
@@ -32,8 +32,8 @@ const Student = () => {
 
   const indexOfLastEntry = current * entry;
   const indexOfFirstEntry = indexOfLastEntry - entry;
-  const currentEntry = students.slice(indexOfFirstEntry, indexOfLastEntry)
-  const paginate = pageNumber => setCurrent(pageNumber);
+  const currentEntry = students.slice(indexOfFirstEntry, indexOfLastEntry);
+  const paginate = (pageNumber) => setCurrent(pageNumber);
   return (
     <>
       <Sidebar active={"student"} />
@@ -48,7 +48,7 @@ const Student = () => {
         <button
           id="admin-create-account"
           onClick={() => {
-            navigate("/admin/create");
+            navigate("/admin/create", { state: { source: "Student" } });
           }}
         >
           Create account

@@ -15,7 +15,7 @@ const Instructors = () => {
   const [isVerified, setIsverified] = useState("");
   const [instructors, setInstructors] = useState([]);
   const [current, setCurrent] = useState(1);
-  const [entry, setEntry] = useState(7)
+  const [entry, setEntry] = useState(7);
 
   useEffect(() => {
     axios
@@ -34,8 +34,8 @@ const Instructors = () => {
 
   const indexOfLastEntry = current * entry;
   const indexOfFirstEntry = indexOfLastEntry - entry;
-  const currentEntry = instructors.slice(indexOfFirstEntry, indexOfLastEntry)
-  const paginate = pageNumber => setCurrent(pageNumber);
+  const currentEntry = instructors.slice(indexOfFirstEntry, indexOfLastEntry);
+  const paginate = (pageNumber) => setCurrent(pageNumber);
   return (
     <>
       <Sidebar active={"instructor"} />
@@ -50,7 +50,7 @@ const Instructors = () => {
         <button
           id="admin-create-account"
           onClick={() => {
-            navigate("/admin/create");
+            navigate("/admin/create", { state: { source: "Faculty" } });
           }}
         >
           Create account
@@ -85,13 +85,12 @@ const Instructors = () => {
                 })}
             </tbody>
           </table>
-          
         </div>
         <Pagination
-            postsPerPage={entry}
-            totalPosts={instructors.length}
-            paginate={paginate}
-          />
+          postsPerPage={entry}
+          totalPosts={instructors.length}
+          paginate={paginate}
+        />
       </Body>
     </>
   );
