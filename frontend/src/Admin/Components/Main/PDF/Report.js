@@ -1,6 +1,7 @@
 import { jsPDF } from "jspdf";
 import Sidebar from "../../UI/Sidebar";
 import TopNav from "../../UI/TopNav";
+import PieChartRequest from "./PieChartRequest";
 import "./Report.css";
 
 const Report = (props) => {
@@ -31,12 +32,48 @@ const Report = (props) => {
       windowWidth: 850,
       height: 1122,
       windowHeight: 1122,
+      // format: "PNG",
     });
     // const pdf = new jsPDF("portrait", "px", "a4");
     const data = await document.querySelector("#report-body");
+
     pdf.html(data).then(() => {
       pdf.save("Data Report.pdf");
     });
+  };
+
+  const requeststate = {
+    labels: ["Requested", "Submitted", "On Process", "Processed", "Denied"],
+    datasets: [
+      {
+        label: "Requests",
+        backgroundColor: ["green", "red", "yellow", "blue", "purple", "pink"],
+        borderColor: "rgba(0,0,0,1)",
+        borderWidth: 2,
+        data: [1, 2, 3, 4, 5, 6],
+      },
+    ],
+  };
+  const userstate = {
+    labels: ["Students", "Verified Faculty", "Unverified Faculty"],
+    datasets: [
+      {
+        label: "Requests",
+        backgroundColor: ["red", "yellow", "blue"],
+        borderColor: "rgba(0,0,0,1)",
+        borderWidth: 2,
+        data: [1, 2, 3],
+      },
+    ],
+  };
+
+  const requestoptions = {
+    plugins: {
+      legend: {
+        display: true,
+        position: "left",
+      },
+    },
   };
 
   return (
@@ -78,7 +115,8 @@ const Report = (props) => {
             </p>
 
             <div id="report-request-diagram">
-              <div id="request-diagram"></div>
+              {/* <div id="request-diagram"></div> */}
+              <PieChartRequest state={requeststate} options={requestoptions} />
             </div>
 
             <div id="report-request-table">
@@ -112,7 +150,8 @@ const Report = (props) => {
             </p>
 
             <div id="report-users-diagram">
-              <div id="users-diagram"></div>
+              {/* <div id="users-diagram"></div> */}
+              <PieChartRequest state={userstate} options={requestoptions} />
             </div>
 
             <div id="report-user-table">
