@@ -1,26 +1,18 @@
-.home-content {
-  background-color: antiquewhite;
-  position: absolute;
-  width: 80%;
-  margin-left: 18%;
-  margin-top: 10vh;
-  /* height: 50%; */
-  /* margin-top: 15%; */
-  /* margin-left: 17.5%; */
+.home-punch {
+  margin-top: 9.75vh;
+  margin-left: 15vw;
+  padding: 5% 8%;
+  width: 69vw;
+  height: 17vh;
+  z-index: 0;
 }
 #home-opening-line {
   font-size: 2.25vw;
-  margin-bottom: 2%;
+  margin-bottom: 3vh;
+  color: #CE1212;
 }
-.home-punch {
-  position: absolute;
-  margin-top: 4.8%;
-  margin-left: 15%;
-  padding: 5% 8%;
-  width: 69%;
-  height: 15vh;
-  background-image: linear-gradient(to bottom, #ffbebe, #fafafa);
-  z-index: 0;
+#home-opening-sub{
+  color: #534E52;
 }
 .home-opening-btn {
   border: 2px solid #8c0000;
@@ -34,65 +26,83 @@
   background-color: #8c0000;
   color: white;
 }
-.home-get-started {
-  position: absolute;
-  background-image: linear-gradient(to bottom, #ffbebe, #fafafa);
-  width: 69%;
-  height: auto;
-  margin: 55% 0 0 15%;
-  padding: 5% 8%;
-  color: rgb(0, 0, 0);
-}
-#home-bulsu-logo {
-  width: 12vw;
-  margin: 1% 0 0 4%;
-}
-#home-bulsu-logo,
-.to-tutorial {
-  display: inline-block;
-  vertical-align: middle;
-}
-.to-tutorial {
-  margin-left: 15%;
-}
-#system-title-label {
-  font-size: 2em;
-  margin-bottom: 2.5%;
-}
-#tutorial-sub-desc {
-  font-size: 1.05em;
-  margin-bottom: 2.5%;
-}
-#navigate-tutorial {
-  border: 2px solid #000000;
-  background-color: transparent;
-  margin-top: 2%;
-  padding: 2% 4%;
-  font-weight: 550;
-  color: #000000;
-  transition: all 0.4s;
-}
-#navigate-tutorial:hover {
-  background-color: #000000;
-  color: white;
-}
 .home-aboutus {
-  position: absolute;
-  width: 69%;
-  height: 15vh;
-  margin: 29% 0 0 15%;
+  width: 69vw;
+  height: 24vh;
+  margin: 2vh 0 0 15vw;
   padding: 5% 8%;
+  background-image: linear-gradient(to bottom, #F78812, #F6EEC7);
+  box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.2);
 }
 #home-aboutus-label {
   text-align: center;
-  font-size: 2.5em;
-  color: #8c0000;
-  margin-bottom: 2%;
+  font-size: 4vw;
+  color: transparent;
+  margin-bottom: 2vh;
+  -webkit-text-stroke: 2px white;
 }
 #home-aboutus-info {
   text-align: justify;
   font-size: 1.2em;
   padding: 0 5%;
+}
+.bulsu-vmgo{
+  margin-top: 14vh;
+}
+#vmgo-label{
+  text-align: center;
+  color: #AB6D23;
+  margin: 6vh 0;
+  font-size: 2.5vw;
+}
+.vmgo-vision,
+.vmgo-mission{
+  width: 32vw;
+  font-size: 1.35vw;
+  display: inline-block;
+  background-color: #F4F6F6;
+  padding: 4vh 1vw;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.7s;
+}
+.vmgo-mission{
+  margin-left: 1vw;
+}
+.vmgo-mission:hover, 
+.vmgo-vision:hover{
+  transform: translateY(-0.2em);
+}
+.vmgo-goals{
+  margin-top: 5vh;
+  background-color: #D4D7DD;
+  width: 82.9vw;
+  margin-left: -8vw;
+  padding: 5vh 0 1vh 2vw;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
+  background-image: linear-gradient(to bottom, #F78812, #F6EEC7);
+
+}
+.vmgo-goals pre{
+  font-size: 1.3vw;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.vmgo-objective{
+  background-color: #F6EEC7;
+  width: 82.9vw;
+  padding: 5vh 0 3vh 2vw;
+  margin-left: -8vw;
+}
+.vmgo-objective pre{
+  font-size: 1.3vw;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+#vmgo-goals-label,
+#vmgo-objective-label{
+  text-align: center;
+  margin-bottom: 4vh;
+  font-size: 2vw;
 }
 .announcement-content{
   width: 80%;
@@ -109,6 +119,47 @@
   height: auto;
   width: 100%;
   background-color: #fafafa;
+}
+.home-get-started {
+  margin: 2vh 0 7vh -5vw;
+  width: 69vw;
+  height: 25vh;   
+  padding: 5vh 1vw;
+  color: rgb(0, 0, 0);
+}
+#home-bulsu-logo {
+  width: 11vw;
+  margin: 1% 0 0 4%;
+}
+#home-bulsu-logo,
+.to-tutorial {
+  display: inline-block;
+  vertical-align: middle;
+}
+.to-tutorial {
+  margin-left: 7vw;
+}
+#system-title-label {
+  font-size: 2em;
+  margin-bottom: 2.5%;
+}
+#tutorial-sub-desc {
+  font-size: 1.05em;
+  margin-bottom: 2.5%;
+  width: 45vw;
+}
+#navigate-tutorial {
+  border: 2px solid #000000;
+  background-color: transparent;
+  margin-top: 2%;
+  padding: 2% 4%;
+  font-weight: 550;
+  color: #000000;
+  transition: all 0.4s;
+}
+#navigate-tutorial:hover {
+  background-color: #000000;
+  color: white;
 }
 @media only screen and (max-width: 768px){
   .home-punch{
@@ -132,7 +183,7 @@
     width: 83.95vw;
     height: 20vh;
     margin-left: 0;
-    margin-top: 45vh;
+    margin-top: 8vh;
   }
   #home-aboutus-label{
     font-size: 4vw;
@@ -144,17 +195,42 @@
   #home-bulsu-logo{
     width: 15vw;
   }
+  .bulsu-vmgo{
+    margin-top: 6vh;
+  }
+  #vmgo-label{
+    font-size: 3vw;
+  }
+  .vmgo-vision,
+  .vmgo-mission{
+    width: 39vw;
+    font-size: 1.65vw;
+    text-align: justify;
+  }
+  .vmgo-goals{
+    width: 97.75vw;
+  }
+  .vmgo-goals pre,
+  .vmgo-objective pre{
+    font-size: 1.75vw;
+  }
+  #vmgo-goals-label,
+  #vmgo-objective-label{
+    font-size: 3vw;
+  }
+  .vmgo-objective{
+    width: 97.75vw;
+  }
   .home-get-started{
     z-index: -1;
-    margin-left: 0;
-    margin-top: 78vh;
     width: 83.95vw;
+    padding: 2vh;
   }
   .to-tutorial{
     margin-left: 5vw;
   }
   #system-title-label{
-    font-size: 4vw;
+    font-size: 3.5vw;
   }
   #tutorial-sub-desc{
     font-size: 2.5vw;

@@ -1,19 +1,24 @@
 import "./Shared.css";
 import "./RequestList.css";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import Pagination from "./Pagination";
 const RequestList = (props) => {
   const navigate = useNavigate();
+  const [current, setCurrent] = useState(1);
+  const [entry, setEntry] = useState(2)
   const DATE_OPTIONS = {
     weekday: "short",
     year: "numeric",
     month: "short",
     day: "numeric",
   };
-  // const entry = props.entries;
-  // if (props.entries === "5") entry = 5;
-  // else if (props.entries === "10") entry = 10;
-  // else entry = props.submittedData.length;
+  
+  const indexOfLastEntry = current * entry;
+  const indexOfFirstEntry = indexOfLastEntry - entry;
+  const currentEntry = props.submittedData.slice(indexOfFirstEntry, indexOfLastEntry)
+  const paginate = pageNumber => setCurrent(pageNumber);
+
   return (
     <>
       <h2 id="list-label">REQUEST LIST</h2>
@@ -28,8 +33,8 @@ const RequestList = (props) => {
               <th>Date Requested</th>
               <th>Status</th>
             </tr>
-            {props.submittedData &&
-              props.submittedData.map((request) => {
+            {currentEntry &&
+              currentEntry.map((request) => {
                 return (
                   <tr
                     key={request._id}
@@ -56,6 +61,11 @@ const RequestList = (props) => {
           </tbody>
         </table>
       </div>
+      <Pagination
+        postsPerPage={entry}
+        totalPosts={props.submittedData.length}
+        paginate={paginate}
+      />
     </>
   );
 };

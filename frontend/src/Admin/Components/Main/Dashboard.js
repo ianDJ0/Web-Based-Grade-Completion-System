@@ -12,7 +12,7 @@ const Dashboard = () => {
   const [registeredStudent, setRegisteredStudent] = useState(0);
   const [registeredFaculty, setRegisteredFaculty] = useState(0);
   const [activeRequest, setActiveRequest] = useState(0);
-  const [pendingRequest, setPendingRequest] = useState(0);
+  const [pendingRequest, setPendingRequest] = useState([]);
   const [verifiedFaculty, setVerfiedFaculty] = useState("0");
 
   useEffect(() => {
@@ -61,13 +61,14 @@ const Dashboard = () => {
           </Card>
           <Card class={"fa fa-spinner"}>
             <div className="number">{pendingRequest.length}</div>
-            <div className="card-name">Submitted Request</div>
+            <div className="card-name">Pending Request</div>
           </Card>
           <Card class={"fa fa-user-circle"}>
             <div className="number">{verifiedFaculty}</div>
             <div className="card-name">Instructors to be Verified</div>
           </Card>
         </div>
+        {console.log("pending", pendingRequest)}
         <RequestList submittedData={pendingRequest} />
       </Body>
     </>
