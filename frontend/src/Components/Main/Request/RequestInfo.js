@@ -12,7 +12,8 @@ const RequestInfo = (props) => {
   const [startYr, setStartYr] = useState(2015);
   const [endYr, setEndYr] = useState(2015);
   const [err, setErr] = useState(false);
-
+  
+  requestContent.request_YearIncomplete = startYr+" - "+endYr;
   let auto;
   const requestContent = useContext(RequestContent);
   if (requestContent.request_InstructorId) {

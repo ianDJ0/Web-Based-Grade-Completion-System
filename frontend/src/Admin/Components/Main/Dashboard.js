@@ -61,7 +61,7 @@ const Dashboard = () => {
           </Card>
           <Card class={"fa fa-spinner"}>
             <div className="number">{pendingRequest.length}</div>
-            <div className="card-name">Pending Request</div>
+            <div className="card-name">Submitted Request</div>
           </Card>
           <Card class={"fa fa-user-circle"}>
             <div className="number">{verifiedFaculty}</div>

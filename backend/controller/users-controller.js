@@ -97,7 +97,7 @@ const getVerifiedForUser = async (req, res, next) => {
       fullName: { $regex: req.body.findInName, $options: "i" },
       userType: req.body.uType,
       verified:true
-    }).sort({ "verified": 1 })
+    }).limit(3)
     .exec();
   if (allUserType.length == 0) {
     return res.status(201).json(['User is not Registered']);
