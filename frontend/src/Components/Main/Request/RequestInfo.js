@@ -67,7 +67,7 @@ const RequestInfo = (props) => {
               onChange={(e) => {
                 if (e.target.value)
                   axios
-                    .post(`http://localhost:7700/api/users/type`, {
+                    .post(`http://localhost:7700/api/users/getType`, {
                       uType: "Faculty",
                       findInName:
                         e.target.value === null ? "zyqqyx" : e.target.value,

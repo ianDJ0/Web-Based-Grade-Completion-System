@@ -87,7 +87,7 @@ const TopNav = (props) => {
               setQuery2(event.target.value);
               if (event.target.value.length !== 0)
                 axios
-                  .post(`http://localhost:7700/api/users/type`, {
+                  .post(`http://localhost:7700/api/users/getType`, {
                     uType: "Faculty",
                     findInName:
                       event.target.value.length === null

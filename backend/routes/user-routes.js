@@ -9,6 +9,7 @@ const checkAuth = require('../middleware/Authentication');
 
 
 router.post('/admin/verified', userController.adminGetVerified);
+router.post('/getType', userController.getVerifiedForUser);
 
 //Get Single User API
 router.post('/softValidate',userController.checkEmailIfExist);
@@ -16,6 +17,7 @@ router.post('/login', userController.login);
 router.post('/profileChange',fileUpload.single('image'),userController.profilePicture);
 router.post('/type', userController.getAllUserByType);
 router.get('/findUser/:uID', userController.getSingle);
+
 
 //messages
 router.post('/sendMessage', messageController.sendMessage);

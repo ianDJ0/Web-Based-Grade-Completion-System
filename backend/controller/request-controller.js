@@ -22,32 +22,29 @@ const studentCreateRequest = async (req, res) => {
     if (userData.userType !== "Student") {
         return res.status(403).json({ message: "Requesting with invalid user type" })
     }
-    let studentRequest;
-    studentRequest = new requestModel({
-        subjectCode: req.body.subject,
-        subjectDescription: req.body.subjectDescription,
-        incompletePeriod: req.body.incompletePeriod,
-        incompleteYear: req.body.incompleteYear,
-        reason: req.body.reason,
-        signature: {
-            studentSignature: req.body.studentSignature
-        },
-        instructor: {
-            instructorID: mongoose.Types.ObjectId(req.body.instructorID),
-            instructorName: req.body.instructorName
-        },
-        student: {
-            studentID: mongoose.Types.ObjectId(req.body.studentID),
-            studentFullname: req.body.studentFullname,
-            studentNumber: req.body.studentNumber,
-            studentYearAndSection: req.body.studentYearAndSection
-        },
-        status: "REQUESTED"
-    });
-
-
     let result
     try {
+        studentRequest = new requestModel({
+            subjectCode: req.body.subject,
+            subjectDescription: req.body.subjectDescription,
+            incompletePeriod: req.body.incompletePeriod,
+            incompleteYear: req.body.incompleteYear,
+            reason: req.body.reason,
+            signature: {
+                studentSignature: req.body.studentSignature
+            },
+            instructor: {
+                instructorID: mongoose.Types.ObjectId(req.body.instructorID),
+                instructorName: req.body.instructorName
+            },
+            student: {
+                studentID: mongoose.Types.ObjectId(req.body.studentID),
+                studentFullname: req.body.studentFullname,
+                studentNumber: req.body.studentNumber,
+                studentYearAndSection: req.body.studentYearAndSection
+            },
+            status: "REQUESTED"
+        });
         result = await studentRequest.save();
     } catch (error) {
         return res.json(error);

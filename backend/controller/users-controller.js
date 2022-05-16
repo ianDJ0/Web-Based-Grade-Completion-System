@@ -79,6 +79,32 @@ const getAllUserByType = async (req, res, next) => {
   res.json(allUserType);
 };
 
+//for users
+const getVerifiedForUser = async (req, res, next) => {
+  if (req.body.findInName === ["User is not Registered"]) {
+    req.body.findInName = "";
+  }
+  let vSearch = {
+    '$and': [
+      { userType: req.body.uType },
+    ]
+  };
+  if (req.body.vSearch) {
+    vSearch = Object.assign({ "verified": true })
+  }
+  const allUserType = await userModel
+    .find({
+      fullName: { $regex: req.body.findInName, $options: "i" },
+      userType: req.body.uType,
+      verified:true
+    }).sort({ "verified": 1 })
+    .exec();
+  if (allUserType.length == 0) {
+    return res.status(201).json(['User is not Registered']);
+  }
+  res.json(allUserType);
+};
+
 //Find Single User by ID
 const getSingle = async (req, res, next) => {
   let user
@@ -291,6 +317,7 @@ exports.deleteUser = deleteUser;
 exports.updateUser = updateUser;
 exports.resetPassword = resetPassword;
 exports.checkEmailIfExist = checkEmailIfExist;
+exports.getVerifiedForUser = getVerifiedForUser
 exports.getSingle = getSingle
 
 
