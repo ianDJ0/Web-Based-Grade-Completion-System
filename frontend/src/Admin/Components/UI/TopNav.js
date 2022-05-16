@@ -4,6 +4,8 @@ import Logout from "../../../Components/UI/Home_UI/Logout";
 import Notifications from "../../../Components/UI/Home_UI/Notifications";
 import "./TopNav.css";
 import jwtDecode from "jwt-decode";
+import Swal from "sweetalert2";
+
 const TopNav = () => {
   const navigate = useNavigate();
   document.body.style = "background: white";
@@ -61,11 +63,24 @@ const TopNav = () => {
       {showNotif && <Notifications />}
       <img
         onClick={() => {
-          setDropDown((state) => !state);
-          setShowNotif(false);
-          setMessages(false);
-          localStorage.removeItem("token");
-          navigate("/");
+          Swal.fire({
+            title: 'Logout',
+            text: "Are you sure you want to Logout?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              setDropDown((state) => !state);
+              setShowNotif(false);
+              setMessages(false);
+              localStorage.removeItem("token");
+              navigate("/");
+            }
+          })
+
         }}
         alt="dropdown-icon"
         src={require("../../../Components/UI/Home_UI/Icons/logout-icon.png")}

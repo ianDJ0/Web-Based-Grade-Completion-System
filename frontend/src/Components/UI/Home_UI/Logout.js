@@ -1,12 +1,26 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Logout = (props) => {
   const navigate = useNavigate();
 
   const logoutHandler = () => {
-    localStorage.removeItem("token");
-    navigate("/");
+    Swal.fire({
+      title: 'Logout',
+      text: "Are you sure you want to Logout?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("token");
+        navigate("/");
+      }
+    })
+
   };
 
   return (
