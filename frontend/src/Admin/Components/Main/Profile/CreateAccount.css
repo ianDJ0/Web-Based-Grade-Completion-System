@@ -1,8 +1,11 @@
 .create-account-body {
-  outline: 1px solid black;
+  box-shadow: 0 5px 10px 3px rgb(0, 0, 0, 0.5);
+  padding: 2em;
+  border-radius: 1.2em;
   position: absolute;
   background-color: white;
   width: 70%;
   height: fit-content;
   right: 10%;
+  text-align: center;
 }

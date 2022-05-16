@@ -1,22 +1,36 @@
+import { useFormik } from "formik";
 import Body from "../../UI/Containers/Body";
 import Sidebar from "../../UI/Sidebar";
 import TopNav from "../../UI/TopNav";
 import "./CreateAccount.css";
 
 const CreateAccount = () => {
+  const formik = useFormik({
+    initialValues: {
+      accounttype: "",
+      email: "",
+      password: "",
+      conpassword: "",
+      lastname: "",
+      firstname: "",
+      middleinit: "",
+      contact: "",
+      birthday: "",
+      signature: "",
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
-
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
   return (
     <>
       <TopNav />
       <Sidebar />
       <Body>
         <div className="create-account-body">
-          <form onSubmit={onSubmit}>
+          <h2>Create account</h2>
+          <form onSubmit={formik.handleSubmit}>
             <div>
               <label>Account Type</label>
               <select
@@ -30,7 +44,14 @@ const CreateAccount = () => {
             </div>
             <div>
               <label htmlFor="email">Email</label>
-              <input type="email" name="email" id="email" placeholder="Email" />
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                onChange={formik.handleChange}
+                value={formik.values.email}
+              />
             </div>
             <div>
               <label htmlFor="password">Password</label>
@@ -39,6 +60,8 @@ const CreateAccount = () => {
                 name="password"
                 id="password"
                 placeholder="Password"
+                onChange={formik.handleChange}
+                value={formik.values.password}
               />
             </div>
             <div>
@@ -48,6 +71,8 @@ const CreateAccount = () => {
                 id="con-password"
                 type="password"
                 placeholder="Confirm password"
+                onChange={formik.handleChange}
+                value={formik.values.conpassword}
               />
             </div>
             <div>
@@ -57,6 +82,8 @@ const CreateAccount = () => {
                 name="lastname"
                 id="lastname"
                 placeholder="Last Name"
+                onChange={formik.handleChange}
+                value={formik.values.lastname}
               />
             </div>
             <div>
@@ -66,6 +93,8 @@ const CreateAccount = () => {
                 name="firstname"
                 id="firstname"
                 placeholder="First Name"
+                onChange={formik.handleChange}
+                value={formik.values.firstname}
               />
             </div>
             <div>
@@ -75,6 +104,8 @@ const CreateAccount = () => {
                 name="middleinit"
                 id="middleinit"
                 placeholder="Middle Initial"
+                onChange={formik.handleChange}
+                value={formik.values.middleinit}
               />
             </div>
             <div>
@@ -84,6 +115,8 @@ const CreateAccount = () => {
                 name="contact"
                 id="contact"
                 placeholder="Contact Number"
+                onChange={formik.handleChange}
+                value={formik.values.contact}
               />
             </div>
             <div>
@@ -93,11 +126,19 @@ const CreateAccount = () => {
                 name="birthday"
                 id="birthday"
                 placeholder="Birthdate"
+                onChange={formik.handleChange}
+                value={formik.values.birthday}
               />
             </div>
             <div>
               <label htmlFor="signature">Signature</label>
-              <input name="signature" id="signature" type="file" />
+              <input
+                name="signature"
+                id="signature"
+                type="file"
+                onChange={formik.handleChange}
+                value={formik.values.signature}
+              />
             </div>
             <button type="submit">Create account</button>
           </form>
