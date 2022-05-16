@@ -3,19 +3,71 @@ import Sidebar from "../../UI/Sidebar";
 import TopNav from "../../UI/TopNav";
 import PieChartRequest from "./PieChartRequest";
 import "./Report.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Report = (props) => {
-  const requested = "";
-  const submitted = "";
-  const onprocess = "";
-  const processed = "";
-  const denied = "";
-  const requestTotal = "";
+  const [requested, setRequested] = useState(0);
+  const [submitted, setSubmitted] = useState(0);
+  const [onprocess, setOnprocess] = useState(0);
+  const [processed, setProcessed] = useState(0);
+  const [denied, setDenied] = useState(0);
+  const [requestTotal, setRequestTotal] = useState(0);
 
-  const students = "";
-  const verifiedFac = "";
-  const unverifiedFac = "";
-  const userTotal = "";
+  const [students, setStudent] = useState(0);
+  const [verifiedFac, setVerified] = useState(0);
+  const [unverifiedFac, setUnverified] = useState(0);
+  const [userTotal, setUserTotal] = useState(0);
+
+  useEffect(() => {
+    axios.all([
+      axios.post('http://localhost:7700/api/users/type', {
+        uType: "Student",
+        findInName: ""
+      }),
+      axios.post('http://localhost:7700/api/users/type', {
+        uType: "Faculty",
+        findInName: ""
+      }),
+      axios.post('http://localhost:7700/api/request/admin/getRequests', {
+      }),
+      axios.post('http://localhost:7700/api/users/admin/verified', {
+      })
+    ]).then(axios.spread((getStudentNo, getFacultyNo, getRequestNo, getVerified) => {
+      setStudent(getStudentNo.data ? getStudentNo.data.length : 0);
+      setVerified(getFacultyNo.data ? getFacultyNo.data.length : 0);
+      setUnverified(getVerified.data ? getVerified.data.length : 0);
+      setUserTotal(getStudentNo.data.length + getFacultyNo.data.length + getVerified.data.length)
+      // console.log("aaaaaaaaaaaaaa",getVerified.data.length)
+      if (getRequestNo.data) {
+        let requested = getRequestNo.data.filter(request => {
+          return request.status === "REQUESTED"
+        })
+        let sub = getRequestNo.data.filter(request => {
+          return request.status === "SUBMITTED"
+        })
+        let onp = getRequestNo.data.filter(request => {
+          return request.status === "ON PROCESS"
+        })
+        let pro = getRequestNo.data.filter(request => {
+          return request.status === "PROCESSED"
+        })
+        let den = getRequestNo.data.filter(request => {
+          return request.status === "DENIED"
+        })
+        setRequested(requested.length)
+        setSubmitted(sub.length)
+        setOnprocess(onp.length)
+        setProcessed(pro.length)
+        setDenied(den.length)
+        setRequestTotal(requested.length + sub.length + onp.length + pro.length + den.length)
+      }
+      
+
+    }))
+  }, [])
+
+
 
   var today = new Date();
   var dd = String(today.getDate()).padStart(2, "0");
@@ -49,8 +101,8 @@ const Report = (props) => {
         label: "Requests",
         backgroundColor: ["green", "red", "yellow", "blue", "purple", "pink"],
         borderColor: "rgba(0,0,0,1)",
-        borderWidth: 2,
-        data: [1, 2, 3, 4, 5, 6],
+        borderWidth: 1.5,
+        data: [requested, submitted, onprocess, processed, denied],
       },
     ],
   };
@@ -61,8 +113,8 @@ const Report = (props) => {
         label: "Requests",
         backgroundColor: ["red", "yellow", "blue"],
         borderColor: "rgba(0,0,0,1)",
-        borderWidth: 2,
-        data: [1, 2, 3],
+        borderWidth: 1.5,
+        data: [students, verifiedFac, unverifiedFac],
       },
     ],
   };
