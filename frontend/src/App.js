@@ -27,6 +27,7 @@ import PDF from "./Admin/Components/Main/PDF/PDF";
 import Report from "./Admin/Components/Main/PDF/Report";
 import AdminLogin from "./Admin/Components/Main/Login/AdminLogin";
 import CreateAccount from "./Admin/Components/Main/Profile/CreateAccount";
+import EditVMGO from "./Admin/Components/Main/EditVMGO";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -87,6 +88,7 @@ function App() {
           <Route path="/admin/request/form" element={<AdminRequestForm />} />
           <Route path="/admin/request/form/pdf" element={<PDF />} />
           <Route path="/admin/report" element={<Report />} />
+          <Route path="/admin/edit" element={<EditVMGO />} />
         </Routes>
       </>
     </AuthenticationContext.Provider>

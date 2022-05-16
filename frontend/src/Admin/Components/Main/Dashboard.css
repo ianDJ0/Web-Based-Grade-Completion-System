@@ -11,6 +11,40 @@
   font-weight: bold;
 }
 .card-name {
-  color: #8C0000;
+  color: #8c0000;
   font-weight: 600;
+}
+.vmgo-edit {
+  position: absolute;
+  right: 4%;
+  position: absolute;
+  top: 45%;
+  width: 10vw;
+  font-size: 1vw;
+  padding: 1% 0;
+  border: none;
+  background-color: #ff0000;
+  color: rgb(255, 255, 255);
+  border: 2px solid white;
+  transition: all 0.5s;
+}
+.report-gen-btn {
+  position: absolute;
+  right: 15%;
+  top: 45%;
+  width: 10vw;
+  font-size: 1vw;
+  padding: 1% 0;
+  border: none;
+  background-color: #ff0000;
+  color: rgb(255, 255, 255);
+  border: 2px solid white;
+  transition: all 0.5s;
+}
+
+.report-gen-btn:hover,
+.vmgo-edit:hover {
+  background-color: #8c0000;
+  color: white;
+  transform: translateY(-0.15em);
 }

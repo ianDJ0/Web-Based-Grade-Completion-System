@@ -1,0 +1,10 @@
+.edit-vmgo-body {
+  background-color: white;
+  box-shadow: 0 5px 10px 3px rgb(0, 0, 0, 0.5);
+  position: absolute;
+  right: 10%;
+  width: 63%;
+  display: flex;
+  padding: 2em;
+  border-radius: 1em;
+}
