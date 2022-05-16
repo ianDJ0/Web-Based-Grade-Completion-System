@@ -12,8 +12,8 @@ const RequestInfo = (props) => {
   const [startYr, setStartYr] = useState(2015);
   const [endYr, setEndYr] = useState(2015);
   const [err, setErr] = useState(false);
+
   
-  requestContent.request_YearIncomplete = startYr+" - "+endYr;
   let auto;
   const requestContent = useContext(RequestContent);
   if (requestContent.request_InstructorId) {
@@ -22,7 +22,7 @@ const RequestInfo = (props) => {
   if (props && auto !== "a") {
     auto = props.autoInt;
   }
-
+  requestContent.request_YearIncomplete = startYr+" - "+endYr;
   const errMsg = <div id="err">End year cannot be lower than start year.</div>;
 
   return (

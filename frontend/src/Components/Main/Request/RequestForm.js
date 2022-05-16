@@ -433,7 +433,7 @@ const RequestForm = (props) => {
             />
             <h2 id="processing-request">
               Your request has been{" "}
-              {requestItem.requestItem.status.toLowerCase()}.
+              {requestItem.requestItem.status!=="REQUESTED"?requestItem.requestItem.status.toLowerCase():"sent"}.
             </h2>
             <h3 id="processing-desc">
               Response depends on Faculty availability.
