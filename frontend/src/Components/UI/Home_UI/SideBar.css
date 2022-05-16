@@ -5,12 +5,13 @@
   background-color: #862323;
 }
 .sidebar {
+  top: 0;
   margin: 0;
   padding: 0;
   width: 15vw;
   background-color: #810000;
   position: fixed;
-  height: 100vh;
+  height: 100%;
   overflow: auto;
 }
 .sidebar span {
