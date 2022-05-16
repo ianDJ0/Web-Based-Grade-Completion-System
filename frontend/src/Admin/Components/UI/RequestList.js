@@ -16,7 +16,7 @@ const RequestList = (props) => {
   // else entry = props.submittedData.length;
   return (
     <>
-      <h2 id="list-label">SUBMITTED REQUESTS</h2>
+      <h2 id="list-label">REQUEST LIST</h2>
       <div className="list-content">
         <table className="log">
           <tbody>
