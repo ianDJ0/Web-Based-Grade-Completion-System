@@ -8,8 +8,10 @@ import StudentRequests from "./StudentRequests";
 import { useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 const AccountProfile = () => {
+  const navigate = useNavigate()
   const { state } = useLocation();
   const [update, setUpdate] = useState(true);
   const DATE_OPTIONS = {
@@ -17,7 +19,7 @@ const AccountProfile = () => {
     month: "short",
     day: "numeric",
   };
-
+  console.log(state.user)
   const adminDelAccount = () => {
     Swal.fire({
       title: "Are you sure you want to delete this account?",
@@ -32,7 +34,19 @@ const AccountProfile = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        // Swal.fire('Saved!', '', 'success')
+        axios.delete(`http://localhost:7700/api/users/${state.user._id}`)
+        .then(response => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Account has been deleted!',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(()=>{
+            state.user.userType ==="Faculty"?navigate('/admin/faculty'):navigate('/admin/student')
+          })
+        }).catch(error => {
+          alert(error)
+        })
       } else if (result.isDenied) {
         // Swal.fire('Changes are not saved', '', 'info')
       }
