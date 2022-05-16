@@ -11,17 +11,22 @@ import axios from "axios";
 
 const Homepage = (props) => {
   TokenCheck();
-  const [vmgo, setVmgo] = useState({vision:"",mission:"",goals:"",objective:""})
+  const [vmgo, setVmgo] = useState({
+    vision: "",
+    mission: "",
+    goals: "",
+    objective: ""
+  })
   // const auth = useContext(AuthenticationContext);
   const navigate = useNavigate();
-  useEffect(()=>{
+  useEffect(() => {
     axios.post("http://localhost:7700/api/announcements/getVMGO")
-    .then(response=>{
-      setVmgo(response.data)
-    }).catch(error=>{
-      alert(error)
-    })
-  },[])
+      .then(response => {
+        setVmgo(response.data)
+      }).catch(error => {
+        alert(error)
+      })
+  }, [])
   return (
     <>
       <TokenCheck />
@@ -71,21 +76,16 @@ const Homepage = (props) => {
       <div className="home-aboutus">
         <h3 id="home-aboutus-label">About Us</h3>
         <h2>Vision</h2>
-        <p>
-          {vmgo.vision}
-        </p>
+        <p>{vmgo.vision}</p>
+
         <h2>Mission</h2>
-        <p>
-          {vmgo.mission}
-        </p>
+        <p>{vmgo.mission}</p>
+
         <h2>Goals</h2>
-        <pre>
-          {vmgo.goals}
-        </pre>
+        <pre>{vmgo.goals}</pre>
+
         <h2>Objective</h2>
-        <pre>
-          {vmgo.objective}
-        </pre>
+        <pre>{vmgo.objective}</pre>
       </div>
       {/* end vmgo */}
       <div className="home-aboutus">
