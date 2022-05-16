@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthenticationContext } from "../../Shared/context/auth-context";
 import "./StudentProfile.css";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const StudentProfile = () => {
   const navigate = useNavigate();
@@ -30,7 +31,20 @@ const StudentProfile = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        // Swal.fire("Saved!", "", "success");
+        axios.delete(`http://localhost:7700/api/users/${auth.userId}`)
+          .then(response => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Account has been deleted!',
+              showConfirmButton: false,
+              timer: 1500
+            }).then(() => {
+              localStorage.removeItem("token");
+              navigate("/");
+            })
+          }).catch(error => {
+            alert(error)
+          })
       } else if (result.isDenied) {
         // Swal.fire("Changes are not saved", "", "info");
       }

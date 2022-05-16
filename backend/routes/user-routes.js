@@ -17,7 +17,7 @@ router.post('/login', userController.login);
 router.post('/profileChange',fileUpload.single('image'),userController.profilePicture);
 router.post('/type', userController.getAllUserByType);
 router.get('/findUser/:uID', userController.getSingle);
-
+router.delete('/:uID', userController.deleteUser);
 
 //messages
 router.post('/sendMessage', messageController.sendMessage);
@@ -42,6 +42,6 @@ router.use(checkAuth)
 router.post('/verifyUser', userController.adminVerifyFaculty);
 router.post('/resetEmail', userController.updateUser);
 router.post('/changePassword', userController.resetPassword);
-router.delete('/:uID', userController.deleteUser);
+
 
 module.exports = router;
