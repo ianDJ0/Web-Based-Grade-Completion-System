@@ -109,7 +109,7 @@ const Login = () => {
       let timerInterval;
       Swal.fire({
         title: "Too many wrong attempts.",
-        html: "You have tried to login with wrong credentials for too many time.",
+        html: "You have tried to login with wrong credentials for too many times.",
         timer: 10000,
         timerProgressBar: true,
         allowOutsideClick: false,

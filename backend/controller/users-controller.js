@@ -20,6 +20,7 @@ mongoose
 
 const login = async (req, res, next) => {
   const { loginEmail, loginPassword } = req.body;
+  console.log("aaaaaaaaaaaaa",loginPassword);
   let user, isValidPassword = false;
   try {
     user = await userModel.findOne({ email: loginEmail });
@@ -133,6 +134,7 @@ const checkEmailIfExist = async (req, res) => {
 
 ///
 const createUser = async (req, res, next) => {
+  console.log(req.body)
   const errors = validationResult(req);
   const findUser = await userModel
     .findOne({ email: req.body.registerEmail })
@@ -153,32 +155,31 @@ const createUser = async (req, res, next) => {
   } catch (error) {
     return next(error);
   }
-
+  let complete = {
+    fullName: req.body.registerName,
+    email: req.body.registerEmail,
+    password: hashedPassword,
+    contactNumber: req.body.registerContactNumber,
+    userType: req.body.registerUserType,
+    birthday: req.body.registerBirthday,
+    image: req.file.path,
+  }
   if (
     req.body.registerUserType === "Faculty" ||
     req.body.registerUserType === "faculty"
   ) {
-    registerUser = new userModel({
-      fullName: req.body.registerName,
-      email: req.body.registerEmail,
-      password: hashedPassword,
-      contactNumber: req.body.registerContactNumber,
-      userType: req.body.registerUserType,
-      birthday: req.body.registerBirthday,
-      image: req.file.path,
-    });
+    if(req.body.regVerify){
+      let verifiedFaculty = {verified:true}
+      complete = Object.assign(verifiedFaculty,complete);
+    }
+    registerUser = new userModel(complete);
   } else {
-    registerUser = new userModel({
-      fullName: req.body.registerName,
-      email: req.body.registerEmail,
-      password: hashedPassword,
-      contactNumber: req.body.registerContactNumber,
-      userType: req.body.registerUserType,
-      birthday: req.body.registerBirthday,
+    let isStudent = {
       studentNumber: req.body.registerStudentNumber,
-      yearAndSection: req.body.registerCourseYearAndSection,
-      image: req.file.path,
-    });
+      yearAndSection: req.body.registerCourseYearAndSection
+    }
+    complete = Object.assign(isStudent,complete);
+    registerUser = new userModel(complete);
   }
   let token;
   try {
@@ -258,6 +259,7 @@ const deleteUser = async (req, res, next) => {
     .catch(() => {
       res.status(404).json({ message: "Failed to delete user" });
     });
+
 };
 
 

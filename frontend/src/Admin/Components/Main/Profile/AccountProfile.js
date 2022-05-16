@@ -19,7 +19,6 @@ const AccountProfile = () => {
     month: "short",
     day: "numeric",
   };
-  console.log(state.user)
   const adminDelAccount = () => {
     Swal.fire({
       title: "Are you sure you want to delete this account?",
@@ -52,6 +51,7 @@ const AccountProfile = () => {
       }
     });
   };
+  
   return (
     <>
       <Sidebar />

@@ -26,7 +26,7 @@ router.post('/getMessages', messageController.getMessages)
 
 
 //Create New User API
-router.post('/signup',check('registerName').isEmpty(),
+router.post('/signup',
     fileUpload.single('image'),
     [
         check('registerName').notEmpty(),
