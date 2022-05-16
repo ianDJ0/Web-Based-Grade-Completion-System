@@ -96,7 +96,7 @@ const getVerifiedForUser = async (req, res, next) => {
     .find({
       fullName: { $regex: req.body.findInName, $options: "i" },
       userType: req.body.uType,
-      verified:true
+      verified: true
     }).limit(3)
     .exec();
   if (allUserType.length == 0) {
@@ -249,11 +249,7 @@ const resetPassword = async (req, res) => {
 };
 
 const deleteUser = async (req, res, next) => {
-  const dataObject = JSON.parse(JSON.stringify(res.locals.user.userData));
-  if (dataObject.userType !== "Admin") {
 
-    return res.status(403).json({ message: "No Access!" });
-  }
   await userModel
     .findByIdAndDelete(req.params.uID)
     .then(() => {
@@ -263,6 +259,8 @@ const deleteUser = async (req, res, next) => {
       res.status(404).json({ message: "Failed to delete user" });
     });
 };
+
+
 const profilePicture = async (req, res) => {
   let userToUpdate;
 
