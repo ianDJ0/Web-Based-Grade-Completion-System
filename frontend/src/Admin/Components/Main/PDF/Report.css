@@ -1,3 +1,28 @@
+#pad {
+  background-color: aqua;
+  height: 10%;
+  width: 100%;
+  margin-bottom: 7%;
+}
+.create-pdf {
+  position: absolute;
+  left: 16%;
+  top: 20%;
+  width: 12vw;
+  /* margin: 15vh 0 0 32vw; */
+  font-size: 1vw;
+  padding: 2vh 0;
+  border: none;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  border: 2px solid white;
+  transition: all 0.5s;
+}
+.create-pdf:hover {
+  background-color: rgb(148, 7, 7);
+  color: rgb(255, 255, 255);
+  transform: translateY(-0.15em);
+}
 #report-body {
   background-color: white;
   width: 21cm;
@@ -6,6 +31,12 @@
   right: 0;
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid black;
+  /* margin-top: 8%; */
+}
+#report-body p,
+#report-body h3 {
+  font-family: "Times New Roman", Times, serif;
 }
 
 #report-container {
@@ -13,5 +44,99 @@
   width: 16cm;
   margin-left: 2.5cm;
   margin-right: 2.5cm;
-  outline: 1px solid green;
+  /* outline: 1px solid green; */
+}
+#report-header-container {
+  /* outline: 1px solid black; */
+  padding-top: 2.5cm;
+  display: flex;
+  justify-content: start;
+}
+#report-bulsu-logo {
+  height: 6em;
+  margin-right: 1em;
+  margin-left: 5em;
+}
+.report-heading-text {
+  text-align: center;
+}
+#report-date-container {
+  /* outline: 1px solid red; */
+  height: 1.2em;
+}
+.report-date {
+  float: right;
+  margin-right: 0.5em;
+}
+#report-date-var {
+  float: right;
+  margin-right: 01em;
+}
+#report-request-container {
+  margin-top: 2em;
+}
+#report-request-container p {
+  margin-bottom: 0.5em;
+}
+#report-request-diagram {
+  margin-top: 2em;
+  height: 10em;
+  /* outline: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#request-diagram {
+  height: 9em;
+  width: 9em;
+  border-radius: 50%;
+  background-color: aqua;
+}
+#report-request-table {
+  display: flex;
+  align-items: flex-start;
+  height: 3em;
+  /* outline: 1px solid yellow; */
+}
+#request-table,
+#user-table {
+  width: 100%;
+}
+#request-table,
+#request-table tr,
+#request-table th,
+#request-table td,
+#user-table,
+#user-table tr,
+#user-table th,
+#user-table td {
+  /* border-collapse: separate;
+  border-spacing: 1em; */
+  height: 1.5em;
+  text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+#report-users-container {
+  margin-bottom: 0.5;
+  margin-top: 1.5em;
+  /* outline: 1px solid brown; */
+}
+#report-users-container p {
+  margin-bottom: 0.5em;
+}
+
+#report-users-diagram {
+  margin-top: 2em;
+  height: 10em;
+  /* outline: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#users-diagram {
+  height: 9em;
+  width: 9em;
+  border-radius: 50%;
+  background-color: aqua;
 }

@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const PDF = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
+  
   const createPDF = async () => {
     const pdf = new jsPDF({
       unit: "px",
@@ -20,6 +21,7 @@ const PDF = () => {
       pdf.save("Completion Form.pdf");
     });
   };
+  
   const back = () =>{
     navigate('/admin/request');
   }
