@@ -51,6 +51,7 @@ const CreateAccount = () => {
                 placeholder="Email"
                 onChange={formik.handleChange}
                 value={formik.values.email}
+                required
               />
             </div>
             <div>
@@ -62,6 +63,7 @@ const CreateAccount = () => {
                 placeholder="Password"
                 onChange={formik.handleChange}
                 value={formik.values.password}
+                required
               />
             </div>
             <div>
@@ -73,6 +75,7 @@ const CreateAccount = () => {
                 placeholder="Confirm password"
                 onChange={formik.handleChange}
                 value={formik.values.conpassword}
+                required
               />
             </div>
             <div>
@@ -84,6 +87,7 @@ const CreateAccount = () => {
                 placeholder="Last Name"
                 onChange={formik.handleChange}
                 value={formik.values.lastname}
+                required
               />
             </div>
             <div>
@@ -95,6 +99,7 @@ const CreateAccount = () => {
                 placeholder="First Name"
                 onChange={formik.handleChange}
                 value={formik.values.firstname}
+                required
               />
             </div>
             <div>
@@ -106,6 +111,7 @@ const CreateAccount = () => {
                 placeholder="Middle Initial"
                 onChange={formik.handleChange}
                 value={formik.values.middleinit}
+                required
               />
             </div>
             <div>
@@ -117,6 +123,7 @@ const CreateAccount = () => {
                 placeholder="Contact Number"
                 onChange={formik.handleChange}
                 value={formik.values.contact}
+                required
               />
             </div>
             <div>
@@ -128,6 +135,7 @@ const CreateAccount = () => {
                 placeholder="Birthdate"
                 onChange={formik.handleChange}
                 value={formik.values.birthday}
+                required
               />
             </div>
             <div>
@@ -138,6 +146,7 @@ const CreateAccount = () => {
                 type="file"
                 onChange={formik.handleChange}
                 value={formik.values.signature}
+                required
               />
             </div>
             <button type="submit">Create account</button>

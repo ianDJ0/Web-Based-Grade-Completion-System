@@ -98,15 +98,23 @@
 .pagination-admin {
   /* outline: 1px solid black; */
   height: 7%;
-  width: 35%;
+  width: 20%;
   position: block;
   bottom: 5%;
   text-align: center;
   user-select: none;
   margin-left: 15%;
+  margin-top: 0.5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: bold;
+}
+.page-item-admin:hover {
+  background-color: #810000;
+  color: white;
+  transition: all 0.5s;
+  transform: translateY(-0.15em);
 }
 
 .pagination li {
