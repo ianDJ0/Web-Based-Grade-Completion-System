@@ -20,8 +20,8 @@
   margin-left: 1vw;
 }
 #messages-container hr {
-  width: 95vw;
-  margin-left: 0vw;
+  width: 20vw;
+  margin-left: 0;
 }
 #messages-container-body {
   /* outline: 1px solid black; */
