@@ -6,11 +6,22 @@ import TokenCheck from "../Shared/Auth";
 import Footer from "../UI/Home_UI/Footer/Footer";
 import { useNavigate } from "react-router-dom";
 import "./Homepage.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Homepage = (props) => {
   TokenCheck();
+  const [vmgo, setVmgo] = useState({vision:"",mission:"",goals:"",objective:""})
   // const auth = useContext(AuthenticationContext);
   const navigate = useNavigate();
+  useEffect(()=>{
+    axios.post("http://localhost:7700/api/announcements/getVMGO")
+    .then(response=>{
+      setVmgo(response.data)
+    }).catch(error=>{
+      alert(error)
+    })
+  },[])
   return (
     <>
       <TokenCheck />
@@ -41,7 +52,7 @@ const Homepage = (props) => {
           id="home-bulsu-logo"
         />
         <div className="to-tutorial">
-          <h3 id="system-title-label">Document Tracking System</h3>
+          <h3 id="system-title-label">Grade Completion System</h3>
           <p id="tutorial-sub-desc">
             Know more about how to use the Bulacan State University document
             tracking system
@@ -56,7 +67,27 @@ const Homepage = (props) => {
           </button>
         </div>
       </div>
-
+      {/* VMGO */}
+      <div className="home-aboutus">
+        <h3 id="home-aboutus-label">About Us</h3>
+        <h2>Vision</h2>
+        <p>
+          {vmgo.vision}
+        </p>
+        <h2>Mission</h2>
+        <p>
+          {vmgo.mission}
+        </p>
+        <h2>Goals</h2>
+        <pre>
+          {vmgo.goals}
+        </pre>
+        <h2>Objective</h2>
+        <pre>
+          {vmgo.objective}
+        </pre>
+      </div>
+      {/* end vmgo */}
       <div className="home-aboutus">
         <h3 id="home-aboutus-label">About Us</h3>
         <p id="home-aboutus-info">
