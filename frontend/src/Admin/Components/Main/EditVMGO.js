@@ -1,22 +1,64 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import Body from "../UI/Containers/Body";
 import Sidebar from "../UI/Sidebar";
 import TopNav from "../UI/TopNav";
 import "./EditVMGO.css";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const EditVMGO = () => {
+  const navigate = useNavigate();
+  const [getVision, setVision] = useState('');
+  const [getMission, setMission] = useState('');
+  const [getGoals, setGoals] = useState('');
+  const [getObjectives, setObjectives] = useState('');
+
+
+  useEffect(() => {
+    axios.post("http://localhost:7700/api/announcements/getVMGO")
+      .then(response => {
+        setVision(response.data.vision);
+        setMission(response.data.mission);
+        setGoals(response.data.goals);
+        setObjectives(response.data.objective);
+
+      }).catch(error => {
+        alert(error)
+      })
+  }, [])
+
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      vision: "",
-      mision: "",
-      goals: "",
-      objectives: "",
+      vision: getVision,
+      mission: getMission,
+      goals: getGoals,
+      objectives: getObjectives,
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      axios.post("http://localhost:7700/api/announcements/editVMGO", values)
+        .then(response => {
+          Swal.fire({
+            title: 'Edit VMGO',
+            text: "Confirm Save",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate("/admin");
+            }
+          })
+        }).catch(error => {
+          alert(error)
+        })
     },
   });
+
   return (
     <>
       <TopNav />
@@ -30,7 +72,7 @@ const EditVMGO = () => {
                 id="vision"
                 name="vision"
                 onChange={formik.handleChange}
-                value={formik.values.vision}
+                defaultValue={getVision}
               />
             </div>
             <div>
@@ -39,7 +81,7 @@ const EditVMGO = () => {
                 id="mision"
                 name="mision"
                 onChange={formik.handleChange}
-                value={formik.values.mision}
+                defaultValue={getMission}
               />
             </div>
             <div>
@@ -48,16 +90,16 @@ const EditVMGO = () => {
                 id="goals"
                 name="goals"
                 onChange={formik.handleChange}
-                value={formik.values.goals}
+                defaultValue={getGoals}
               />
             </div>
             <div>
-              <label htmlFor="objectives">GOALS</label>
+              <label htmlFor="objectives">OBJECTIVES</label>
               <textarea
                 id="objectives"
                 name="objectives"
                 onChange={formik.handleChange}
-                value={formik.values.objectives}
+                defaultValue={getObjectives}
               />
             </div>
             <input type="submit" />
