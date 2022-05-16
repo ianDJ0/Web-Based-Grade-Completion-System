@@ -114,9 +114,9 @@ const instructorRespondRequest = async (req, res) => {
             .json(err)
     }
     let instructorContents;
-    if(req.body.grade > 3){
+    if (req.body.grade > 3) {
         instructorContents = `${instructorUpdate.instructor.instructorName} has denied your request`
-    }else{
+    } else {
         instructorContents = `${instructorUpdate.instructor.instructorName} has submitted your request to Office`
     }
     let notification;
@@ -284,14 +284,25 @@ const adminGetRequests = async (req, res) => {
         newFromDate = { 'dateLog.dateStudent': { '$gte': req.body.requestFromDate } }
         searchFilter = Object.assign(newFromDate, searchFilter)
     }
-    if(req.body.filter){
+    if (req.body.filter) {
         filterSubmitted = { 'status': "SUBMITTED" }
         searchFilter = Object.assign(filterSubmitted, searchFilter)
     }
+    if (req.body.requestFromDate && req.body.requestToDate) {
+        delete searchFilter['dateLog.dateStudent']
+        andDate = {
+            '$and': [
+                {'dateLog.dateStudent': { '$lte': req.body.requestToDate }},
+                { 'dateLog.dateStudent': { '$gte': req.body.requestFromDate }},
+            ]
+        }
+        searchFilter = Object.assign(andDate, searchFilter)
+    }
     let getRequestFaculty
+    console.log(searchFilter)
     try {
         getRequestFaculty = await requestModel
-            .find(searchFilter).sort({ 'dateLog.dateStudent': -1 }).limit(req.body.requestEntries ==="all"?"":parseInt(req.body.requestEntries));
+            .find(searchFilter).sort({ 'dateLog.dateStudent': -1 }).limit(req.body.requestEntries === "all" ? "" : parseInt(req.body.requestEntries));
     } catch (err) {
         return res
             .status(422)
