@@ -15,7 +15,7 @@ const Instructors = () => {
   const [isVerified, setIsverified] = useState("");
   const [instructors, setInstructors] = useState([]);
   const [current, setCurrent] = useState(1);
-  const [entry, setEntry] = useState(3)
+  const [entry, setEntry] = useState(7)
 
   useEffect(() => {
     axios

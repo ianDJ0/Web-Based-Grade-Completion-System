@@ -68,8 +68,7 @@ const Dashboard = () => {
             <div className="card-name">Instructors to be Verified</div>
           </Card>
         </div>
-        {console.log("pending", pendingRequest)}
-        <RequestList submittedData={pendingRequest} />
+        <RequestList submittedData={pendingRequest} entryNumber={"all"}/>
       </Body>
     </>
   );

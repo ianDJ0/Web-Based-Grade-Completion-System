@@ -6,13 +6,21 @@ import Pagination from "./Pagination";
 const RequestList = (props) => {
   const navigate = useNavigate();
   const [current, setCurrent] = useState(1);
-  const [entry, setEntry] = useState(2)
+  const [entry, setEntry] = useState(7)
   const DATE_OPTIONS = {
     weekday: "short",
     year: "numeric",
     month: "short",
     day: "numeric",
   };
+  useEffect(()=>{
+    if(props.entryNumber === "all" || props.entryNumber === "All"){
+      setEntry(10000)
+    }else{
+      setEntry(props.entryNumber)
+    }
+  },[props.entryNumber])
+
   
   const indexOfLastEntry = current * entry;
   const indexOfFirstEntry = indexOfLastEntry - entry;
