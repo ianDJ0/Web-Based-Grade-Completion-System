@@ -83,6 +83,10 @@
 .request-info-five {
   margin-left: 8%;
 }
+.stud-request-labels {
+  font-size: 1.2em;
+  font-weight: 700;
+}
 @media only screen and (max-width: 768px) {
   .request-info {
     width: 70vw;

@@ -76,6 +76,11 @@
   margin-left: 7%;
 }
 
+.stud-field-labels{
+  font-size: 1.2em;
+  font-weight: 700;
+}
+
 /**FOR PROCESS**/
 #processing-request,
 #denied-request {
@@ -98,6 +103,10 @@
 }
 .processing-gif {
   height: 50vh;
+}
+.field-labels {
+  font-size: 1.2em;
+  font-weight: 700;
 }
 @media only screen and (max-width: 768px) {
   .student-info {

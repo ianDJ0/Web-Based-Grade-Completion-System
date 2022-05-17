@@ -12,7 +12,7 @@ const StudentInfo = (props) => {
     <div className="student-info">
       <p id="stud-info-label">Student Information</p>
       <div className="stud-info-one">
-        <p>Student Name</p>
+        <p className="stud-field-labels">Student Name</p>
         <input
           placeholder="Student Name"
           name="stud-name"
@@ -22,7 +22,7 @@ const StudentInfo = (props) => {
         />
       </div>
       <div className="stud-info-two">
-        <p>Student Number</p>
+        <p className="stud-field-labels">Student Number</p>
         <input
           placeholder="Student Number"
           name="stud-no"
@@ -32,7 +32,7 @@ const StudentInfo = (props) => {
         />
       </div>
       <div className="stud-info-three">
-        <p>Course</p>
+        <p className="stud-field-labels">Course</p>
         <input
           placeholder="Course"
           name="stud-course"
@@ -42,7 +42,7 @@ const StudentInfo = (props) => {
         />
       </div>
       <div className="stud-info-four">
-        <p>Year</p>
+        <p className="stud-field-labels">Year</p>
         <input
           placeholder="Year"
           name="stud-year"
@@ -52,7 +52,7 @@ const StudentInfo = (props) => {
         />
       </div>
       <div className="stud-info-five">
-        <p>Section</p>
+        <p className="stud-field-labels">Section</p>
         <input
           placeholder="Section"
           name="stud-section"
@@ -62,7 +62,7 @@ const StudentInfo = (props) => {
         />
       </div>
       <div className="stud-info-sign">
-        <p>Signature</p>
+        <p className="stud-field-labels">Signature</p>
         <img
           className="student-signature"
           src={`http://localhost:7700/${props.studentInformation.userSignature}`}

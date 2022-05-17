@@ -29,7 +29,7 @@ const RequestInfo = (props) => {
     <div className="request-info">
       <p id="request-info-label">Request Information</p>
       <div className="request-info-one">
-        <p htmlFor="request-fac">Faculty Name</p>
+        <p htmlFor="request-fac" className="stud-request-labels">Faculty Name</p>
         {instructor && (
           <div className="added-Instructor">
             {/* <p htmlFor="request-fac">{instructor}</p> */}
@@ -99,7 +99,7 @@ const RequestInfo = (props) => {
         )}
       </div>
       <div className="request-info-two">
-        <p htmlFor="request-subj-code">Subject Code</p>
+        <p htmlFor="request-subj-code" className="stud-request-labels">Subject Code</p>
         <input
           placeholder="Subject Code"
           name="request-subj-code"
@@ -110,7 +110,7 @@ const RequestInfo = (props) => {
         />
       </div>
       <div className="request-info-three">
-        <p htmlFor="request-subj-desc">Subject Description</p>
+        <p htmlFor="request-subj-desc" className="stud-request-labels">Subject Description</p>
         <input
           placeholder="Subject Description"
           name="request-subj-desc"
@@ -121,7 +121,7 @@ const RequestInfo = (props) => {
         />
       </div>
       <div className="request-info-four">
-        <p htmlFor="request-subj-sem">Subject Semester</p>
+        <p htmlFor="request-subj-sem" className="stud-request-labels">Subject Semester</p>
         <input
           placeholder="Subject Semester"
           name="request-subj-sem"
@@ -132,7 +132,7 @@ const RequestInfo = (props) => {
         />
       </div>
       <div className="request-info-five">
-        <p>Subject Year</p>
+        <p className="stud-request-labels">Subject Year</p>
         <div id="subject-year-container">
           <input
             type="number"
@@ -172,7 +172,7 @@ const RequestInfo = (props) => {
         {err && errMsg}
       </div>
       <div className="request-info-six">
-        <p htmlFor="request-reason" id="request-reason-label">
+        <p htmlFor="request-reason" id="request-reason-label" className="stud-request-labels">
           Reason
         </p>
         <input
