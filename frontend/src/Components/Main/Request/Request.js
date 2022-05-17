@@ -77,7 +77,7 @@ const Request = (props) => {
         </div>
         <div className="request-content">
           {list.length > 0 ? (
-            <table id="request-log">
+            <table id="request-log" cellSpacing={0}>
               <tbody>
                 <tr>
                   <th>Subject Code</th>
