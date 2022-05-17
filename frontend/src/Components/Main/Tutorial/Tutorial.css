@@ -95,18 +95,16 @@
   align-items: center;
 }
 
-.pagination-admin {
+.pagination-admin{
   /* outline: 1px solid black; */
-  height: 7%;
-  width: 20%;
-  position: block;
-  bottom: 5%;
-  text-align: center;
+  height: 7vh;
+  width: 30vw;
   user-select: none;
-  margin-left: 15%;
-  margin-top: 0.5%;
+  margin-left: 15vw;
+  margin-top: 0.5vh;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 2vw;
   align-items: center;
   font-weight: bold;
 }
@@ -116,7 +114,6 @@
   transition: all 0.5s;
   transform: translateY(-0.15em);
 }
-
 .pagination li {
   display: inline-block;
   margin: 5px;
@@ -149,6 +146,7 @@
   height: 3em;
   border-radius: 50%;
   cursor: pointer;
+  margin-right: 1vw;
 }
 .active-page {
   color: white;
