@@ -54,7 +54,7 @@
   transform: scale(1.04);
 }
 #request-log tr:first-child {
-  background-color: #00092C;
+  background-color: #630606;
   color: white;
 }
 #request-log tr:nth-child(even) {
