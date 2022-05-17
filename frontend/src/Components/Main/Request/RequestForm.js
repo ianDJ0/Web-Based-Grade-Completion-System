@@ -228,7 +228,6 @@ const RequestForm = (props) => {
             <div className="snippet">
               <div className="stage">
                 <div className={first_process} />
-                {/* <div className="dot-flashing finished-process"></div> */}
               </div>
             </div>
           </div>
@@ -239,7 +238,6 @@ const RequestForm = (props) => {
             <div className="snippet">
               <div className="stage">
                 <div className={second_process} />
-                {/* <div className="dot-flashing active-process"/> */}
               </div>
             </div>
           </div>
@@ -250,7 +248,6 @@ const RequestForm = (props) => {
             <div className="snippet">
               <div className="stage">
                 <div className={third_process} />
-                {/* <div className="dot-flashing non-active-process" /> */}
               </div>
             </div>
           </div>
@@ -367,36 +364,38 @@ const RequestForm = (props) => {
                   />
                 </div>
 
-                {requestItem.requestItem.status === "SUBMITTED" &&
-                  auth.userType === "Faculty" && (
-                    <div>
-                      <p>Faculty Response</p>
-                      {requestItem.requestItem.grade && (
-                        <div>
+                {requestItem.requestItem.status === "SUBMITTED" ||
+                  (requestItem.requestItem.status === "ON PROCESS" &&
+                    auth.userType === "Faculty" && (
+                      <div>
+                        <p>Faculty Response</p>
+                        {requestItem.requestItem.grade && (
                           <div>
-                            <p>Grade Given</p>
-                            <input
-                              type="textarea"
-                              name="stud-name"
-                              id="stud-name"
-                              value={requestItem.requestItem.grade}
-                              readOnly
-                            />
+                            <div>
+                              <p>Grade Given</p>
+                              <input
+                                type="textarea"
+                                name="stud-name"
+                                id="stud-name"
+                                value={requestItem.requestItem.grade}
+                                readOnly
+                              />
+                            </div>
+                            <div>
+                              <p>Instructor Signature</p>
+                              <img
+                                className="student-signature"
+                                src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`}
+                                alt="Student Signature"
+                              />
+                            </div>
                           </div>
-                          <div>
-                            <p>Instructor Signature</p>
-                            <img
-                              className="student-signature"
-                              src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`}
-                              alt="Student Signature"
-                            />
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
+                        )}
+                      </div>
+                    ))}
                 {(requestItem.requestItem.status === "SUBMITTED" ||
-                  requestItem.requestItem.status === "REQUESTED") &&
+                  requestItem.requestItem.status === "REQUESTED" ||
+                  requestItem.requestItem.status === "DENIED") &&
                   auth.userType === "Faculty" && (
                     <div className="student-button-container">
                       <button
