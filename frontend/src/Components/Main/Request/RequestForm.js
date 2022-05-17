@@ -356,7 +356,7 @@ const RequestForm = (props) => {
                   />
                 </div>
                 <div className="stud-info-sign">
-                  <p>Signature</p>
+                  <p className="field-labels ">Signature</p>
                   <img
                     className="student-signature"
                     src={`http://localhost:7700/${requestItem.requestItem.signature.studentSignature}`}
@@ -370,11 +370,11 @@ const RequestForm = (props) => {
                   requestItem.requestItem.status === "ON PROCESS") &&
                   auth.userType === "Faculty" && (
                     <div>
-                      <p>Faculty Response</p>
+                      <p id="stud-info-label">Faculty Response</p>
                       {requestItem.requestItem.grade && (
                         <div>
                           <div>
-                            <p>Grade Given</p>
+                            <p className="field-labels ">Grade Given</p>
                             <input
                               type="textarea"
                               name="stud-name"
@@ -384,7 +384,9 @@ const RequestForm = (props) => {
                             />
                           </div>
                           <div>
-                            <p>Instructor Signature</p>
+                            <p className="field-labels ">
+                              Instructor Signature
+                            </p>
                             <img
                               className="student-signature"
                               src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`}
