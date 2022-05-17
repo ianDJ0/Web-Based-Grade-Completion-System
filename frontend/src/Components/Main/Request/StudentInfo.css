@@ -1,6 +1,7 @@
 #stud-course {
   width: 15.75vw;
   height: 5vh;
+  margin: 1vw;
   padding: 0 2%;
   border: 1px solid rgb(168, 167, 167);
   background-color: #eeeeee;
@@ -11,7 +12,8 @@
   font-weight: bold;
 }
 #stud-name {
-  width: 26vw;
+  width: 24vw;
+  margin: 1vw;
   height: 5vh;
   padding: 0 2%;
   border: 1px solid rgb(168, 167, 167);
@@ -76,7 +78,7 @@
   margin-left: 7%;
 }
 
-.stud-field-labels{
+.stud-field-labels {
   font-size: 1.2em;
   font-weight: 700;
 }
