@@ -29,14 +29,13 @@
   height: 29cm;
   left: 0;
   right: 0;
-  margin-left: auto;
+  margin-left: 35%;
   margin-right: auto;
-  border: 1px solid black;
-  /* margin-top: 8%; */
 }
 #report-body p,
 #report-body h3 {
   font-family: "Times New Roman", Times, serif;
+  font-size: 1em;
 }
 
 #report-container {
@@ -44,10 +43,8 @@
   width: 16cm;
   margin-left: 2.5cm;
   margin-right: 2.5cm;
-  /* outline: 1px solid green; */
 }
 #report-header-container {
-  /* outline: 1px solid black; */
   padding-top: 2.5cm;
   display: flex;
   justify-content: start;
@@ -61,7 +58,6 @@
   text-align: center;
 }
 #report-date-container {
-  /* outline: 1px solid red; */
   height: 1.2em;
 }
 .report-date {
@@ -80,7 +76,6 @@
 }
 #report-request-diagram {
   height: 18em;
-  /* outline: 1px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,7 +90,6 @@
   display: flex;
   align-items: flex-start;
   height: 3em;
-  /* outline: 1px solid yellow; */
 }
 #request-table,
 #user-table {
@@ -119,7 +113,6 @@
 #report-users-container {
   margin-bottom: 0.5;
   margin-top: 1.5em;
-  /* outline: 1px solid brown; */
 }
 #report-users-container p {
   margin-bottom: 0.5em;
@@ -127,7 +120,6 @@
 
 #report-users-diagram {
   height: 18em;
-  /* outline: 1px solid black; */
   display: flex;
   justify-content: center;
   align-items: center;
