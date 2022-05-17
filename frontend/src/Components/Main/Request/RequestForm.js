@@ -273,9 +273,9 @@ const RequestForm = (props) => {
         {/* CONTENTS IF REQUEST IS VIEW FROM LIST */}
 
         {state &&
-          (requestItem.requestItem.status === "REQUESTED" ||
-            requestItem.requestItem.status === "SUBMITTED" ||
-            requestItem.requestItem.status === "DENIED") &&
+          // (requestItem.requestItem.status === "REQUESTED" ||
+          //   requestItem.requestItem.status === "SUBMITTED" ||
+          //   requestItem.requestItem.status === "DENIED") &&
           auth.userType === "Faculty" && (
             <div>
               <div className="student-info">
@@ -391,39 +391,42 @@ const RequestForm = (props) => {
                       </div>
                     </div>
                   )}
-                  <div className="student-button-container">
-                    <button
-                      id="student-approve-button"
-                      onClick={submitFacultyResponse}
-                    >
-                      Approve
-                    </button>
-                    <button
-                      id="student-cancel-button"
-                      onClick={() => {
-                        Swal.fire({
-                          title: "Are you sure?",
-                          text: "Denying this request will automatically give a grade of 5",
-                          icon: "warning",
-                          showCancelButton: true,
-                          confirmButtonColor: "#3085d6",
-                          cancelButtonColor: "#d33",
-                          confirmButtonText: "Yes",
-                        }).then((result) => {
-                          if (result.isConfirmed) {
-                            Swal.fire(
-                              "Success!",
-                              "Response has been recorded.",
-                              "success"
-                            );
-                            submitDenyRespose();
-                          }
-                        });
-                      }}
-                    >
-                      Deny
-                    </button>
-                  </div>
+                  {requestItem.requestItem.status === "ON PROCESS" &&
+                    requestItem.requestItem.status === "PROCESSED" && (
+                      <div className="student-button-container">
+                        <button
+                          id="student-approve-button"
+                          onClick={submitFacultyResponse}
+                        >
+                          Approve
+                        </button>
+                        <button
+                          id="student-cancel-button"
+                          onClick={() => {
+                            Swal.fire({
+                              title: "Are you sure?",
+                              text: "Denying this request will automatically give a grade of 5",
+                              icon: "warning",
+                              showCancelButton: true,
+                              confirmButtonColor: "#3085d6",
+                              cancelButtonColor: "#d33",
+                              confirmButtonText: "Yes",
+                            }).then((result) => {
+                              if (result.isConfirmed) {
+                                Swal.fire(
+                                  "Success!",
+                                  "Response has been recorded.",
+                                  "success"
+                                );
+                                submitDenyRespose();
+                              }
+                            });
+                          }}
+                        >
+                          Deny
+                        </button>
+                      </div>
+                    )}
                 </div>
               </div>
               {/* Faculty response Request */}
