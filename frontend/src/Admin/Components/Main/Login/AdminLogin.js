@@ -5,9 +5,9 @@ import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 const AdminLogin = () => {
-  const auth = useContext(AuthenticationContext)
-  const [email, setEmail] = useState('');
-  const [pwd, setPWD] = useState('');
+  const auth = useContext(AuthenticationContext);
+  const [email, setEmail] = useState("");
+  const [pwd, setPWD] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [attempts, setAttempts] = useState(0);
@@ -16,8 +16,6 @@ const AdminLogin = () => {
   useEffect(() => {
     setErrMsg("");
   }, [email, pwd]);
-
-
 
   const clickHandle = () => {
     axios
@@ -39,7 +37,7 @@ const AdminLogin = () => {
           localStorage.setItem("token", response.data.token);
           setIsValid(true);
         } else {
-          setErrMsg("Wrong Email or Passord")
+          setErrMsg("Wrong Email or Passord");
           setAttempts((prevAttempt) => prevAttempt + 1);
         }
       })
@@ -48,7 +46,7 @@ const AdminLogin = () => {
         setIsValid(false);
         setAttempts((prevAttempt) => prevAttempt + 1);
       });
-  }
+  };
   useEffect(() => {
     if (isValid) {
       setEmail("");
@@ -59,7 +57,6 @@ const AdminLogin = () => {
       navigate("/homepage");
     }
   }, [isValid, navigate, auth]);
-
 
   useEffect(() => {
     if (attempts > 2) {
@@ -100,8 +97,8 @@ const AdminLogin = () => {
 
   const pwdError =
     errMsg.trim().length < 2 &&
-      pwd.trim().length < 6 &&
-      pwd.trim().length > 0 ? (
+    pwd.trim().length < 6 &&
+    pwd.trim().length > 0 ? (
       <div className="error">Password must be at least 6 characters long</div>
     ) : (
       ""
@@ -121,21 +118,21 @@ const AdminLogin = () => {
         <h2 id="admin-login-label">Log In</h2>
         <h4>Sign in to your account.</h4>
         <div className="admin-input-email">
-          <p className="admin-login-labels" >Email</p>
+          <p className="admin-login-labels">Email</p>
           <input
             type="email"
-            placeholder="Email"
+            placeholder="Enter email"
             className="admin-input-fields"
             onChange={(event) => {
-              setEmail(event.target.value)
+              setEmail(event.target.value);
             }}
           />
         </div>
         <div className="admin-input-pass">
-          <p className="admin-login-labels" >Password</p>
+          <p className="admin-login-labels">Password</p>
           <input
             type="password"
-            placeholder="Password"
+            placeholder="Enter password"
             className="admin-input-fields"
             onChange={(event) => {
               setPWD(event.target.value);
@@ -144,7 +141,9 @@ const AdminLogin = () => {
         </div>
         {error}
         {pwdError}
-        <button id="admin-login-btn" onClick={clickHandle}>SIGN IN</button>
+        <button id="admin-login-btn" onClick={clickHandle}>
+          SIGN IN
+        </button>
       </div>
     </div>
   );

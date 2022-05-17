@@ -56,8 +56,12 @@
   margin-bottom: 2%;
   margin-left: 4em;
 }
-@media only screen and (max-width: 768px){
-  .filter-logs{
+.filter-request select,
+.filter-request input {
+  border-radius: 1em;
+}
+@media only screen and (max-width: 768px) {
+  .filter-logs {
     margin-top: 4vh;
     left: 0;
     margin-left: 10vw;

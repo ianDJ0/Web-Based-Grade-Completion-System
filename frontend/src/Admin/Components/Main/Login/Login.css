@@ -27,13 +27,14 @@
 .admin-input {
   margin: 2vh auto 3vh auto;
   background-color: #eae9e9;
-  box-shadow: 0 5px 10px 3px rgb(0, 0, 0, 0.5);
+  box-shadow: 0 3px 5px 1px rgb(0, 0, 0, 0.5);
   border-radius: 1em;
   width: 30vw;
   padding: 3vh 2vw;
+  font-size: 1.5em;
 }
 .admin-input h4 {
-  margin-bottom: 2vh; 
+  margin-bottom: 2vh;
 }
 .admin-login-labels {
   margin-bottom: 1.5vh;
@@ -43,11 +44,11 @@
 .admin-input-fields {
   background-color: white;
   border: none;
-  border-radius: 0.25em;
+  border-radius: 1em;
   height: 5vh;
   width: 28vw;
   margin-bottom: 1vh;
-  margin-left: 1vw;
+  margin-left: 0.5vw;
   padding-left: 1vw;
   font-size: 1vw;
   box-shadow: 0 2.5px 8px 1px rgb(0, 0, 0, 0.2);
