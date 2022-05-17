@@ -33,7 +33,7 @@ const RequestList = (props) => {
     <>
       <h2 id="list-label">REQUEST LIST</h2>
       <div className="list-content">
-        <table className="log">
+        <table className="log" cellSpacing={0}>
           <tbody>
             <tr id="list-label">
               <th>Requested By</th>

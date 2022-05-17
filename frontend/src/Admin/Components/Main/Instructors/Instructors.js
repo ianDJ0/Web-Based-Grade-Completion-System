@@ -57,7 +57,7 @@ const Instructors = () => {
         </button>
         <h2 id="instructor-label">INSTRUCTORS LIST</h2>
         <div className="list-content">
-          <table className="log">
+          <table className="log" cellSpacing={0}>
             <tbody>
               <tr id="list-label">
                 <th>Name</th>

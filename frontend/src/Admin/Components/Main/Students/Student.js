@@ -55,7 +55,7 @@ const Student = () => {
         </button>
         <h2 id="instructor-label">STUDENT LIST</h2>
         <div className="list-content">
-          <table className="log">
+          <table className="log" cellSpacing={0}>
             <tbody>
               <tr id="instructor-label">
                 <th>Student Number</th>

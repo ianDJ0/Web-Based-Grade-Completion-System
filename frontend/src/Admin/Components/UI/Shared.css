@@ -11,18 +11,26 @@
   margin: 3vh 0 0 16vw;
 }
 .list-content tr:first-child {
-  background-color: #8c0000;
+  background-color: #890F0D;
   color: white;
+  font-size: 1vw;
 }
-
-.list-content table,
+.list-content tr{
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+}
 .list-content tr,
 .log th {
-  border-collapse: collapse;
-  border: 0.5px solid black;
   padding: 1.75%;
+  font-size: 1vw;
+  transition: all 1s;
 }
 .list-content table,
 .admin-request-content table {
   box-shadow: 3px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+.list-content tr:not(:first-child){
+  background-color: white;
+}
+.list-content tr:not(:first-child):hover{
+  transform: scale(1.03);
 }

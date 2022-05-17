@@ -30,7 +30,7 @@ const StudentRequests = (props) => {
       {request.length > 0 ? (
         <>
           <p>Requests List</p>
-          <table id="request-log">
+          <table id="request-log" cellSpacing={0}>
             <tbody>
               <tr id="admin-request-label">
                 <th>Subject Code</th>

@@ -15,15 +15,19 @@
 }
 .admin-request-content tr,
 .admin-request-content th {
-  border-collapse: collapse;
-  border: 0.5px solid black;
   padding: 1.75%;
+  transition: all 1s;
 }
 #request-log {
   width: 100%;
   overflow: scroll;
 }
-
+.admin-request-content tr:not(:first-child):hover{
+  transform: scale(1.04);
+}
+.admin-request-content tr:not(:first-child){
+  background-color: white;
+}
 .admin-pending-request {
   background-color: white;
   /* border: solid 1em #8c0000; */
