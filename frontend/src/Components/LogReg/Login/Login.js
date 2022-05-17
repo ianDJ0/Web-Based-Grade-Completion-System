@@ -66,11 +66,14 @@ const Login = () => {
         }
         if (
           (auth.userVerified && auth.userType === "Faculty") ||
-          auth.userType === "Student" ||
-          auth.userType === "Admin"
+          auth.userType === "Student"
         ) {
           localStorage.setItem("token", response.data.token);
           setIsValid(true);
+        }else if(auth.userType === "Admin"){
+          setErrMsg("Incorrect Email/Password");
+          setIsValid(false);
+          setAttempts((prevAttempt) => prevAttempt + 1);
         } else {
           Swal.fire(
             "Account Unverified",
