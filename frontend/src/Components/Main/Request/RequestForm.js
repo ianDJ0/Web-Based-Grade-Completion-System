@@ -364,35 +364,37 @@ const RequestForm = (props) => {
                   />
                 </div>
 
-                {requestItem.requestItem.status === "SUBMITTED" ||
-                  (requestItem.requestItem.status === "ON PROCESS" &&
-                    auth.userType === "Faculty" && (
-                      <div>
-                        <p>Faculty Response</p>
-                        {requestItem.requestItem.grade && (
+                {(requestItem.requestItem.status === "SUBMITTED" ||
+                  requestItem.requestItem.status === "DENIED" ||
+                  requestItem.requestItem.status === "PROCESSED" ||
+                  requestItem.requestItem.status === "ON PROCESS") &&
+                  auth.userType === "Faculty" && (
+                    <div>
+                      <p>Faculty Response</p>
+                      {requestItem.requestItem.grade && (
+                        <div>
                           <div>
-                            <div>
-                              <p>Grade Given</p>
-                              <input
-                                type="textarea"
-                                name="stud-name"
-                                id="stud-name"
-                                value={requestItem.requestItem.grade}
-                                readOnly
-                              />
-                            </div>
-                            <div>
-                              <p>Instructor Signature</p>
-                              <img
-                                className="student-signature"
-                                src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`}
-                                alt="Student Signature"
-                              />
-                            </div>
+                            <p>Grade Given</p>
+                            <input
+                              type="textarea"
+                              name="stud-name"
+                              id="stud-name"
+                              value={requestItem.requestItem.grade}
+                              readOnly
+                            />
                           </div>
-                        )}
-                      </div>
-                    ))}
+                          <div>
+                            <p>Instructor Signature</p>
+                            <img
+                              className="student-signature"
+                              src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`}
+                              alt="Student Signature"
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 {(requestItem.requestItem.status === "SUBMITTED" ||
                   requestItem.requestItem.status === "REQUESTED" ||
                   requestItem.requestItem.status === "DENIED") &&
