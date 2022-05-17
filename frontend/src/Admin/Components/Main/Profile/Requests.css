@@ -13,7 +13,8 @@
   font-weight: bold;
   margin: 7vh auto 4vh auto;
 }
-.admin-request-content tr, .admin-request-content th{
+.admin-request-content tr,
+.admin-request-content th {
   border-collapse: collapse;
   border: 0.5px solid black;
   padding: 1.75%;
@@ -35,6 +36,17 @@
 .admin-pending-request h1 {
   margin-top: 3vh;
 }
-.body-container{
+.body-container {
   height: 150vh;
+}
+.no-requests {
+  outline: 1px solid red;
+  height: 6em;
+  width: 40em;
+  margin-left: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2em #8c0000 solid;
+  border-radius: 20px;
 }

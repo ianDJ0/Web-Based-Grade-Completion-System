@@ -34,7 +34,7 @@ const TopNav = () => {
           </span>
         </div>
       </span>
-      <img
+      {/* <img
         onClick={() => {
           setDropDown(false);
           setShowNotif(false);
@@ -60,17 +60,17 @@ const TopNav = () => {
         src={require("../../../Components/UI/Home_UI/Icons/Bell.png")}
         id="admin-notify-bell"
       />
-      {showNotif && <Notifications />}
+      {showNotif && <Notifications />} */}
       <img
         onClick={() => {
           Swal.fire({
-            title: 'Logout',
+            title: "Logout",
             text: "Are you sure you want to Logout?",
-            icon: 'warning',
+            icon: "warning",
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes!'
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes!",
           }).then((result) => {
             if (result.isConfirmed) {
               setDropDown((state) => !state);
@@ -79,8 +79,7 @@ const TopNav = () => {
               localStorage.removeItem("token");
               navigate("/");
             }
-          })
-
+          });
         }}
         alt="dropdown-icon"
         src={require("../../../Components/UI/Home_UI/Icons/logout-icon.png")}

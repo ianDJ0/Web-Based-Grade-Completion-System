@@ -1,3 +1,9 @@
-
-
-
+.no-submitted-request-tr {
+  height: 5em;
+  text-align: center;
+}
+.no-submitted-request-td {
+  text-align: center;
+  font-weight: bold;
+  font-size: 3.5vh;
+}

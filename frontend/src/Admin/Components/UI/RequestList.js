@@ -6,26 +6,28 @@ import Pagination from "./Pagination";
 const RequestList = (props) => {
   const navigate = useNavigate();
   const [current, setCurrent] = useState(1);
-  const [entry, setEntry] = useState(7)
+  const [entry, setEntry] = useState(7);
   const DATE_OPTIONS = {
     weekday: "short",
     year: "numeric",
     month: "short",
     day: "numeric",
   };
-  useEffect(()=>{
-    if(props.entryNumber === "all" || props.entryNumber === "All"){
-      setEntry(10000)
-    }else{
-      setEntry(props.entryNumber)
+  useEffect(() => {
+    if (props.entryNumber === "all" || props.entryNumber === "All") {
+      setEntry(10000);
+    } else {
+      setEntry(props.entryNumber);
     }
-  },[props.entryNumber])
+  }, [props.entryNumber]);
 
-  
   const indexOfLastEntry = current * entry;
   const indexOfFirstEntry = indexOfLastEntry - entry;
-  const currentEntry = props.submittedData.slice(indexOfFirstEntry, indexOfLastEntry)
-  const paginate = pageNumber => setCurrent(pageNumber);
+  const currentEntry = props.submittedData.slice(
+    indexOfFirstEntry,
+    indexOfLastEntry
+  );
+  const paginate = (pageNumber) => setCurrent(pageNumber);
 
   return (
     <>
@@ -41,7 +43,7 @@ const RequestList = (props) => {
               <th>Date Requested</th>
               <th>Status</th>
             </tr>
-            {currentEntry &&
+            {currentEntry.length > 0 ? (
               currentEntry.map((request) => {
                 return (
                   <tr
@@ -65,7 +67,14 @@ const RequestList = (props) => {
                     <th>{request.status}</th>
                   </tr>
                 );
-              })}
+              })
+            ) : (
+              <tr className="no-submitted-request-tr">
+                <td className="no-submitted-request-td" colSpan={6}>
+                  No submitted requests
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

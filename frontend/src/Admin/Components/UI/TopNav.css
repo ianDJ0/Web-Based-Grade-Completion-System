@@ -8,20 +8,20 @@
   box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
-.title-message{
+.title-message {
   margin: 2.5vh 0 0 4.5vw;
   font-size: 2vw;
 }
 #admin-profile-icon {
   position: absolute;
   width: 3.5vw;
-  margin-left: 57vw;
+  margin-left: 69vw;
   top: 0.75em;
 }
 .admin-name-type {
   position: absolute;
   top: 0;
-  margin-left: 61vw;
+  margin-left: 73vw;
   margin-top: 3vh;
 }
 #admin-user-name {
@@ -68,4 +68,3 @@
 #admin-message-icon:hover {
   background-color: #e2e2e2;
 }
-

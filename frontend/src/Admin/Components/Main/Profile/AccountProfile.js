@@ -11,7 +11,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 const AccountProfile = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { state } = useLocation();
   const [update, setUpdate] = useState(true);
   const DATE_OPTIONS = {
@@ -33,25 +33,29 @@ const AccountProfile = () => {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:7700/api/users/${state.user._id}`)
-        .then(response => {
-          Swal.fire({
-            icon: 'success',
-            title: 'Account has been deleted!',
-            showConfirmButton: false,
-            timer: 1500
-          }).then(()=>{
-            state.user.userType ==="Faculty"?navigate('/admin/faculty'):navigate('/admin/student')
+        axios
+          .delete(`http://localhost:7700/api/users/${state.user._id}`)
+          .then((response) => {
+            Swal.fire({
+              icon: "success",
+              title: "Account has been deleted!",
+              showConfirmButton: false,
+              timer: 1500,
+            }).then(() => {
+              state.user.userType === "Faculty"
+                ? navigate("/admin/faculty")
+                : navigate("/admin/student");
+            });
           })
-        }).catch(error => {
-          alert(error)
-        })
+          .catch((error) => {
+            alert(error);
+          });
       } else if (result.isDenied) {
         // Swal.fire('Changes are not saved', '', 'info')
       }
     });
   };
-  
+
   return (
     <>
       <Sidebar />
@@ -137,11 +141,13 @@ const AccountProfile = () => {
             </div>
 
             {/** */}
-            {state.user.userType === "Faculty" ? (
-              <InstructorRequests intructor={state.user._id} />
-            ) : (
-              <StudentRequests student={state.user._id} />
-            )}
+            <div className="profile-requests">
+              {state.user.userType === "Faculty" ? (
+                <InstructorRequests intructor={state.user._id} />
+              ) : (
+                <StudentRequests student={state.user._id} />
+              )}
+            </div>
           </div>
         </div>
       </Body>
