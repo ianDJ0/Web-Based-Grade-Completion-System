@@ -21,7 +21,6 @@ mongoose
 
 const login = async (req, res, next) => {
   const { loginEmail, loginPassword } = req.body;
-  console.log("aaaaaaaaaaaaa",loginPassword);
   let user, isValidPassword = false;
   try {
     user = await userModel.findOne({ email: loginEmail });
