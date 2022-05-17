@@ -77,34 +77,44 @@
 }
 
 /**FOR PROCESS**/
-#processing-request {
+#processing-request,
+#denied-request {
   font-size: 2.5vw;
   text-align: center;
   color: rgb(22, 113, 22);
 }
-#processing-desc {
+#denied-request {
+  color: red;
+}
+#processing-desc,
+#denied-desc {
   font-size: 1.5vw;
   text-align: center;
   font-style: italic;
   color: rgb(49, 196, 49);
 }
+#denied-desc {
+  color: red;
+}
 .processing-gif {
   height: 50vh;
 }
-@media only screen and (max-width: 768px){
-  .student-info{
+@media only screen and (max-width: 768px) {
+  .student-info {
     width: 74.5vw;
   }
-  #stud-course{
+  #stud-course {
     width: 10vw;
   }
-  #stud-course, #stud-year, #stud-section{
+  #stud-course,
+  #stud-year,
+  #stud-section {
     padding-left: 1.5vw;
   }
-  #stud-name{
+  #stud-name {
     width: 35vw;
   }
-  #stud-no{
+  #stud-no {
     width: 25vw;
   }
 }

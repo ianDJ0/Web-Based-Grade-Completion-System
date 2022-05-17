@@ -61,13 +61,13 @@ const RequestForm = (props) => {
       )
       .then((response) => {
         Swal.fire({
-          icon: 'success',
-          title: 'Request has been sent!',
+          icon: "success",
+          title: "Request has been sent!",
           showConfirmButton: false,
-          timer: 1500
-        }).then(()=>{
-          navigate('/requests');
-        })
+          timer: 1500,
+        }).then(() => {
+          navigate("/requests");
+        });
       })
       .catch((error) => {
         alert(error);
@@ -124,13 +124,13 @@ const RequestForm = (props) => {
         )
         .then((response) => {
           Swal.fire({
-            icon: 'success',
-            title: 'Request has been submitted to Office!',
+            icon: "success",
+            title: "Request has been submitted to Office!",
             showConfirmButton: false,
-            timer: 1500
-          }).then(()=>{
-            navigate('/requests');
-          })
+            timer: 1500,
+          }).then(() => {
+            navigate("/requests");
+          });
         })
         .catch((error) => {
           alert(error);
@@ -152,13 +152,13 @@ const RequestForm = (props) => {
       )
       .then((response) => {
         Swal.fire({
-          icon: 'success',
-          title: 'Response has been recorded!',
+          icon: "success",
+          title: "Response has been recorded!",
           showConfirmButton: false,
-          timer: 1500
-        }).then(()=>{
-          navigate('/requests');
-        })
+          timer: 1500,
+        }).then(() => {
+          navigate("/requests");
+        });
       })
       .catch((error) => {
         alert(error);
@@ -431,11 +431,26 @@ const RequestForm = (props) => {
               src={require("../../UI/Home_UI/Icons/connect-with-customers.gif")}
               // src="https://cdn.dribbble.com/users/1052957/screenshots/4140274/connect-with-customers.gif"
             />
-            <h2 id={requestItem.requestItem.status!=="DENIED"?"processing-request":"denied-request"}>
+            <h2
+              id={
+                requestItem.requestItem.status !== "DENIED"
+                  ? "processing-request"
+                  : "denied-request"
+              }
+            >
               Your request has been{" "}
-              {requestItem.requestItem.status!=="REQUESTED"?requestItem.requestItem.status.toLowerCase():"sent"}.
+              {requestItem.requestItem.status !== "REQUESTED"
+                ? requestItem.requestItem.status.toLowerCase()
+                : "sent"}
+              .
             </h2>
-            <h3 id={requestItem.requestItem.status!=="DENIED"?"processing-desc":"denied-desc"}>
+            <h3
+              id={
+                requestItem.requestItem.status !== "DENIED"
+                  ? "processing-desc"
+                  : "denied-desc"
+              }
+            >
               Response depends on Faculty availability.
             </h3>
           </div>
