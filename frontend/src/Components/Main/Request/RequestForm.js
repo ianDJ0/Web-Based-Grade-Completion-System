@@ -367,67 +367,71 @@ const RequestForm = (props) => {
                   />
                 </div>
 
-                <div>
-                  <p>Faculty Response</p>
-                  {requestItem.requestItem.grade && (
+                {requestItem.requestItem.status === "SUBMITTED" &&
+                  auth.userType === "Faculty" && (
                     <div>
-                      <div>
-                        <p>Grade Given</p>
-                        <input
-                          type="textarea"
-                          name="stud-name"
-                          id="stud-name"
-                          value={requestItem.requestItem.grade}
-                          readOnly
-                        />
-                      </div>
-                      <div>
-                        <p>Instructor Signature</p>
-                        <img
-                          className="student-signature"
-                          src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`}
-                          alt="Student Signature"
-                        />
-                      </div>
+                      <p>Faculty Response</p>
+                      {requestItem.requestItem.grade && (
+                        <div>
+                          <div>
+                            <p>Grade Given</p>
+                            <input
+                              type="textarea"
+                              name="stud-name"
+                              id="stud-name"
+                              value={requestItem.requestItem.grade}
+                              readOnly
+                            />
+                          </div>
+                          <div>
+                            <p>Instructor Signature</p>
+                            <img
+                              className="student-signature"
+                              src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`}
+                              alt="Student Signature"
+                            />
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
-                  {requestItem.requestItem.status === "ON PROCESS" &&
-                    requestItem.requestItem.status === "PROCESSED" && (
-                      <div className="student-button-container">
-                        <button
-                          id="student-approve-button"
-                          onClick={submitFacultyResponse}
-                        >
-                          Approve
-                        </button>
-                        <button
-                          id="student-cancel-button"
-                          onClick={() => {
-                            Swal.fire({
-                              title: "Are you sure?",
-                              text: "Denying this request will automatically give a grade of 5",
-                              icon: "warning",
-                              showCancelButton: true,
-                              confirmButtonColor: "#3085d6",
-                              cancelButtonColor: "#d33",
-                              confirmButtonText: "Yes",
-                            }).then((result) => {
-                              if (result.isConfirmed) {
-                                Swal.fire(
-                                  "Success!",
-                                  "Response has been recorded.",
-                                  "success"
-                                );
-                                submitDenyRespose();
-                              }
-                            });
-                          }}
-                        >
-                          Deny
-                        </button>
-                      </div>
-                    )}
-                </div>
+                {(requestItem.requestItem.status === "SUBMITTED" ||
+                  requestItem.requestItem.status === "REQUESTED") &&
+                  auth.userType === "Faculty" && (
+                    <div className="student-button-container">
+                      <button
+                        id="student-approve-button"
+                        onClick={submitFacultyResponse}
+                      >
+                        Approve
+                      </button>
+                      <button
+                        id="student-cancel-button"
+                        onClick={() => {
+                          Swal.fire({
+                            title: "Are you sure?",
+                            text: "Denying this request will automatically give a grade of 5",
+                            icon: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#3085d6",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: "Yes",
+                          }).then((result) => {
+                            if (result.isConfirmed) {
+                              Swal.fire(
+                                "Success!",
+                                "Response has been recorded.",
+                                "success"
+                              );
+                              submitDenyRespose();
+                            }
+                          });
+                        }}
+                      >
+                        Deny
+                      </button>
+                    </div>
+                  )}
               </div>
               {/* Faculty response Request */}
             </div>
