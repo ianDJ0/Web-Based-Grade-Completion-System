@@ -111,7 +111,7 @@ const Report = (props) => {
       const imgData = canvas.toDataURL("image/png");
       const pdf = new jsPDF();
       pdf.addImage(imgData, "PNG", 0, 0);
-      pdf.save("download.pdf");
+      pdf.save("General_Report.pdf");
     });
   };
   const requeststate = {
