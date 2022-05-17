@@ -10,7 +10,7 @@ const message = new mongoose.Schema({
         receiverName:{type: String} 
     },
     contents: { type: String, required: true },
-    date:{type:Date, default:Date.now()},
+    date:{type:Date, default:Date.now},
 }, {
     collection: 'Message',
     versionKey: false
