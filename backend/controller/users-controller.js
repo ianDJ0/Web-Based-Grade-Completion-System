@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require("nodemailer");
 const mongoose = require("mongoose");
 const userModel = require("../models/user-model");
+const messageModel = require("../models/message-model")
 const { check, validationResult } = require("express-validator");
 const { find } = require("../models/user-model");
 
@@ -115,7 +116,7 @@ const getSingle = async (req, res, next) => {
   } catch (error) {
     return res.status(404).json({ message: 'User is not Registered' });
   }
-  if (user.length == 0) {
+  if (!user) {
     return res.status(404).json(['User is not Registered']);
   }
   res.json(user);
@@ -259,7 +260,7 @@ const deleteUser = async (req, res, next) => {
     .catch(() => {
       res.status(404).json({ message: "Failed to delete user" });
     });
-
+    await messageModel.deleteMany({ '$or': [{ "sender.senderID": req.params.uID }, { "receiver.receiverID": req.params.uID }] })
 };
 
 

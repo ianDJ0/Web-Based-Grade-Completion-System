@@ -116,6 +116,7 @@ const MessageBox = (props) => {
                   receiverID: props.partner,
                   senderID: auth.userId,
                   senderName: auth.userFullName,
+                  receiverName: partnerName,
                   contents: inputRef.current.value,
                 })
                 .then((response) => {})

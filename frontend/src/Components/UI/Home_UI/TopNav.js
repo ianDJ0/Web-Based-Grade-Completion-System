@@ -31,6 +31,7 @@ const TopNav = (props) => {
   const [notifications, setNotifications] = useState([]);
   const [viewNotification, setViewNotification] = useState(false);
   const [partnerID, setPartnerID] = useState("");
+  const [partnerName, setPartnerName] = useState("");
   const [suggestionView, setSuggestionView] = useState(false);
 
   useEffect(() => {
@@ -62,6 +63,7 @@ const TopNav = (props) => {
   messageContext.openBox = () => {
     setBox(true);
     setPartnerID(messageContext.passFacultyID);
+    setPartnerName(messageContext.passFacultyName);
   };
 
   return (
@@ -227,6 +229,7 @@ const TopNav = (props) => {
         {chatBox && (
           <MessageBox
             partner={partnerID}
+            partnerName={partnerName}
             closeChat={() => {
               setBox(false);
               messageContext.passFacultyID = "";

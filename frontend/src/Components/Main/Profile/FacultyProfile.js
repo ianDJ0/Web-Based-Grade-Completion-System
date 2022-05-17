@@ -74,8 +74,8 @@ const FacultyProfile = (props) => {
             id="send-msg"
             onClick={() => {
               mesContext.passFacultyID = facultyInfo._id;
+              mesContext.passFacultyName = facultyInfo.fullName;
               mesContext.openBox();
-              
             }}
           >
             Message

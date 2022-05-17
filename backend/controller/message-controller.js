@@ -17,7 +17,10 @@ const sendMessage = async (req, res) => {
                 senderID: req.body.senderID,
                 senderName: req.body.senderName
             },
-            receiver: req.body.receiverID,
+            receiver: {
+                receiverID: req.body.receiverID,
+                receiverName: req.body.receiverName
+            },
             contents: req.body.contents
         })
         newMessage = await message.save();
@@ -31,7 +34,7 @@ const getLatestMessages = async (req, res) => {
     let getLatest;
 
     try {
-        getLatest = await messageModel.find({ '$or': [{ sender: req.body.currentUserID }, { receiver: req.body.currentUserID }] }).sort({ "date": -1 })
+        getLatest = await messageModel.find({ '$or': [{ "sender.senderID": req.body.currentUserID }, { "receiver.receiverID": req.body.currentUserID }] }).sort({ "date": -1 })
     } catch (err) {
         console.log(err)
     }
@@ -39,7 +42,7 @@ const getLatestMessages = async (req, res) => {
 
 
     let latestFiltered = getLatest.filter(message => {
-        if (filt.search(message.sender.senderID) === -1 || filt.search(message.receiver) === -1) {
+        if (filt.search(message.sender.senderID) === -1 || filt.search(message.receiver.receiverID) === -1) {
             filt = filt.concat("++", message.sender.senderID)
             filt = filt.concat("++", message.receiver)
             return true
@@ -55,9 +58,9 @@ const getMessages = async (req, res) => {
         allMessages = await messageModel.find(
             {
                 "$and": [{
-                    '$or': [{ 'sender.senderID': req.body.currentUserID }, { receiver: req.body.currentUserID }]
+                    '$or': [{ 'sender.senderID': req.body.currentUserID }, { "receiver.receiverID": req.body.currentUserID }]
                 },
-                { '$or': [{ 'sender.senderID': req.body.partnerID }, { receiver: req.body.partnerID }] }]
+                { '$or': [{ 'sender.senderID': req.body.partnerID }, { "receiver.receiverID": req.body.partnerID }] }]
             },
         ).sort({ "date": 1 })
     } catch (err) {

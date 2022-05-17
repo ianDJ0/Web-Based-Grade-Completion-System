@@ -10,7 +10,6 @@ const requestRoutes = require('./routes/request-routes')
 const announcementRoutes = require('./routes/announcement-routes');
 const HttpError = require('./models/https-error');
 
-
 const app = express();
 
 app.use(bodyParser.json());

@@ -1,12 +1,13 @@
 import "./Messages.css";
 import { useContext, useEffect, useState } from "react";
 import { AuthenticationContext } from "../../Shared/context/auth-context";
+import { MessageContext } from "../../Shared/message-context";
 import axios from "axios";
 
 const Messages = (props) => {
   const auth = useContext(AuthenticationContext);
+  const messageContext = useContext(MessageContext);
   const [latest, setLatestMessages] = useState([]);
-
   useEffect(() => {
     axios
       .post("http://localhost:7700/api/users/getLatestMessages", {
@@ -36,13 +37,17 @@ const Messages = (props) => {
           <h3 id="no-messages-default">No messages</h3>
         ) : (
           <>
+            
             {latest.length > 0 &&
               latest.map((message) => {
                 let partnerID = "";
-                if (message.receiver === auth.userId) {
+                let partnerName = "";
+                if (message.receiver.receiverID === auth.userId) {
                   partnerID = message.sender.senderID;
+                  partnerName = message.sender.senderName;
                 } else {
-                  partnerID = message.receiver;
+                  partnerID = message.receiver.receiverID;
+                  partnerName = message.sender.receiverName;
                 }
 
                 return (
@@ -51,10 +56,12 @@ const Messages = (props) => {
                     key={message._id}
                     onClick={() => {
                       props.partnerSet(partnerID);
+                      messageContext.passFacultyID = partnerID;
+                      messageContext.passFacultyName = partnerName;
                       props.onMessage();
                     }}
                   >
-                    <h4>{message.sender.senderName}</h4>
+                    <h4>{auth.userFullName !== message.sender.senderName ? message.sender.senderName : message.receiver.receiverName}</h4>
                     <p className="message-content">{message.contents}</p>
                     <p className="message-date">
                       {new Date(message.date).toLocaleTimeString([], {
@@ -68,6 +75,7 @@ const Messages = (props) => {
                     </p>
                   </div>
                 );
+
               })}
           </>
         )}

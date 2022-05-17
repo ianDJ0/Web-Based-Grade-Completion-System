@@ -2,5 +2,6 @@ import { createContext } from "react";
 
 export const MessageContext = createContext({
     openBox: ()=>{},
-    passFacultyID: ''
+    passFacultyID: '',
+    passFacultyName: ''
 });
