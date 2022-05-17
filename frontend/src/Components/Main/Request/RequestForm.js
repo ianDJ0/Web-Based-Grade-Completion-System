@@ -201,6 +201,13 @@ const RequestForm = (props) => {
         third_process =
           "dot-flashing finished-process";
     }
+    if (requestItem.requestItem.status === "DENIED") {
+      first_step = second_step = third_step = fourth_step = "inactive-step";
+      first_process =
+        second_process =
+        third_process =
+          "dot-flashing non-active-process";
+    }
   } else {
     first_step = "active-step";
     second_step = third_step = fourth_step = "inactive-step";
