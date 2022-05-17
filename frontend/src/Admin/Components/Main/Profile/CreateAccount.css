@@ -21,7 +21,7 @@
 #accounttype{
   padding: 1vh 2vw;
   width: 22vw;
-  margin-left: 2vw;
+  margin-left: 0.5vw;
   border-radius: 1em;
 }
 #email,
@@ -31,14 +31,18 @@
 #contact,
 #birthday{
   padding: 1vh 2vw;
-  width: 32vw;
+  width: 35vw;
   height: 4vh;
-  margin: 1vh 0 3vh 2vw;
+  margin: 1vh 0 3vh 0.5vw;
 }
 .admin-create-lastn,
 .admin-create-firstn,
-.admin-create-middlei{
+.admin-create-middlei,
+.admin-create-course,
+.admin-create-year,
+.admin-create-section{
   display: inline-block;
+  margin-right: 1.75vw;
 }
 #lastname,
 #firstname,
@@ -48,13 +52,8 @@
 #section{
   height: 4vh;
   padding: 1vh 0 1vh 1.5vw;
-  margin: 1vh 0 3vh 2vw;
-  width: 9vw;
-}
-.admin-create-course,
-.admin-create-year,
-.admin-create-section{
-  display: inline-block;
+  margin: 1vh 0 3vh 0;
+  width: 10vw;
 }
 .admin-create-type{
   margin: 3vh 0;
