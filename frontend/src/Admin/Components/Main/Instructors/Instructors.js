@@ -65,7 +65,7 @@ const Instructors = () => {
                 <th>Contact Number</th>
                 <th>Status</th>
               </tr>
-              {currentEntry.length > 0 &&
+              {(currentEntry.length > 0 && currentEntry[0]!=="User is not Registered")&&
                 currentEntry.map((instructor) => {
                   return (
                     <tr

@@ -63,7 +63,7 @@ const getAllUserByType = async (req, res, next) => {
   let vSearch = {
     '$and': [
       { userType: req.body.uType },
-      { '$or': [{ fullName: { $regex: req.body.findInName, $options: "i" } }, { email: { $regex: req.body.findInName, $options: "i" } }] }
+      { '$or': [{ fullName: { $regex: req.body.findInName, $options: "i" } }, { studentNumber: { $regex: req.body.findInName, $options: "i" } }] }
     ]
     // userType: req.body.uType,
     // fullName: { $regex: req.body.findInName, $options: "i" }
