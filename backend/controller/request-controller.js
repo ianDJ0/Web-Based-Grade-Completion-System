@@ -133,7 +133,6 @@ const instructorRespondRequest = async (req, res) => {
                 receiverName: instructorUpdate.student.studentFullname,
             },
         })
-        await notificationModel.findOneAndDelete({requestCode: req.body.requestID});
         await notification.save();
     } catch (error) {
         return console.log(error);
@@ -170,19 +169,11 @@ const officeRespondRequest = async (req, res) => {
             .status(422)
             .json(err)
     }
-
-    let notification;
     try {
-        notification = new notificationModel({
-            requestCode: req.body.requestID,
-            contents: `Your Grade Completion Form by the office has been processed!`,
-            receiver: {
-                receiverID: mongoose.Types.ObjectId(officeUpdate.student.studentID),
-                receiverName: officeUpdate.student.studentFullname,
-            },
+        await notificationModel.findOneAndUpdate({requestCode: req.body.requestID},{
+            seen:false,
+            contents:"Your Grade Completion Form by the office has been processed!",
         })
-        await notificationModel.findOneAndDelete({requestCode: req.body.requestID});
-        await notification.save();
     } catch (error) {
         return console.log(error);
     }
