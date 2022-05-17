@@ -14,6 +14,31 @@
   margin-right: 2.5cm;
   /* outline: 1px solid black; */
 }
+.btn-pdf-return,
+.btn-pdf-generate {
+  position: absolute;
+  left: 16%;
+  top: 2%;
+  width: 12vw;
+  /* margin: 15vh 0 0 32vw; */
+  font-size: 1vw;
+  padding: 2vh 0;
+  border: none;
+  background-color: #fff;
+  color: #000;
+  border: 2px solid white;
+  transition: all 0.5s;
+}
+.btn-pdf-generate {
+  top: 10%;
+}
+.btn-pdf-return:hover,
+.btn-pdf-generate:hover {
+  background-color: rgb(148, 7, 7);
+  color: rgb(255, 255, 255);
+  transform: translateY(-0.35em);
+}
+
 #pdf-bulsu-logo {
   height: 6em;
   margin-right: 1em;
@@ -240,4 +265,3 @@ pre {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 0.7em;
 }
-

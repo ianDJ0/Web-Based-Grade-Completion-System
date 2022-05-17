@@ -153,7 +153,6 @@ const Report = (props) => {
       <TopNav />
       <Sidebar />
       <div id="pad"></div>
-      {/* <div className="report-generation-container"> */}
       <Body>
         <button className="create-pdf" onClick={createPDF}>
           Create PDF

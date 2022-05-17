@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const PDF = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  
+
   const createPDF = async () => {
     const pdf = new jsPDF({
       unit: "px",
@@ -21,10 +21,10 @@ const PDF = () => {
       pdf.save("Completion Form.pdf");
     });
   };
-  
-  const back = () =>{
-    navigate('/admin/request');
-  }
+
+  const back = () => {
+    navigate("/admin/request");
+  };
   document.body.style = "background: #8c0000";
 
   const DATE_OPTIONS = {
@@ -68,9 +68,9 @@ const PDF = () => {
 
   return (
     <>
-    <button onClick={back}>Return</button>
-      <button onClick={createPDF}>Create PDF</button>
-      
+      <button className="btn-pdf-return" onClick={back}>Return</button>
+      <button className="btn-pdf-generate" onClick={createPDF}>Create PDF</button>
+
       <div id="pdf-body">
         <div className="pdf-container">
           {/* header */}
