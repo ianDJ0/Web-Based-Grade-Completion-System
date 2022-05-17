@@ -22,17 +22,18 @@
   width: 100%;
   overflow: scroll;
 }
-.admin-request-content tr:not(:first-child):hover{
+.admin-request-content tr:not(:first-child):hover {
   transform: scale(1.04);
 }
-.admin-request-content tr:not(:first-child){
+.admin-request-content tr:not(:first-child) {
   background-color: white;
 }
 .admin-pending-request {
   background-color: white;
-  /* border: solid 1em #8c0000; */
-  width: 97.5%;
+  border: solid 1em #8c0000;
+  width: 50vw;
   height: 10vh;
+  margin-left: 30%;
   text-align: center;
   vertical-align: center;
   border-radius: 10px;

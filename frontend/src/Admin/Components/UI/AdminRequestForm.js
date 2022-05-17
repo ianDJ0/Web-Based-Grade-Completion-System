@@ -141,7 +141,7 @@ const AdminRequestForm = (props) => {
   return (
     <>
       <TopNav />
-      <Sidebar  active={'request'} />
+      <Sidebar active={"request"} />
       <Body>
         <div className="admin-request-modal">
           {!state && (
@@ -278,7 +278,7 @@ const AdminRequestForm = (props) => {
                       </div>
                     )}
                     <div className="admin-btn-container">
-                      <button
+                      {/* <button
                         id="admin-approve-button"
                         onClick={submitFacultyResponse}
                       >
@@ -308,7 +308,7 @@ const AdminRequestForm = (props) => {
                         }}
                       >
                         Deny
-                      </button>
+                      </button> */}
                       {(requestItem.requestItem.status === "SUBMITTED" ||
                         requestItem.requestItem.status === "ON PROCESS") && (
                         <button

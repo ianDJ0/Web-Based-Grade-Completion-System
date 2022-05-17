@@ -54,7 +54,7 @@ const AdminRequests = () => {
             // entries={entries}
           />
         ) : (
-          <div className="pending-request">
+          <div className="admin-pending-request">
             <h1>NO {status} REQUEST</h1>
           </div>
         )}
