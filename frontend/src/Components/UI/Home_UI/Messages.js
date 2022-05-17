@@ -19,6 +19,13 @@ const Messages = (props) => {
         alert(err);
       });
   }, []);
+  const DATE_OPTIONS = {
+    // weekday: "short",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  };
+  console.log()
   return (
     <div id="messages-container">
       <div id="messages-container-header">
@@ -50,6 +57,16 @@ const Messages = (props) => {
                   >
                     <h4>{message.sender.senderName}</h4>
                     <p className="message-content">{message.contents}</p>
+                    <p className="message-date">
+                      {new Date(message.date).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}{" "}
+                      {new Date(message.date).toLocaleDateString(
+                        "en-US",
+                        DATE_OPTIONS
+                      )}
+                    </p>
                   </div>
                 );
               })}
