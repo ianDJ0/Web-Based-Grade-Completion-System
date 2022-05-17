@@ -48,6 +48,7 @@
   width: 28vw;
   margin-bottom: 1vh;
   margin-left: 1vw;
+  padding-left: 1vw;
   font-size: 1vw;
   box-shadow: 0 2.5px 8px 1px rgb(0, 0, 0, 0.2);
 }
