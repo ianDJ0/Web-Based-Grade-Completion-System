@@ -419,11 +419,6 @@ const RequestForm = (props) => {
                             confirmButtonText: "Yes",
                           }).then((result) => {
                             if (result.isConfirmed) {
-                              Swal.fire(
-                                "Success!",
-                                "Response has been recorded.",
-                                "success"
-                              );
                               submitDenyRespose();
                             }
                           });
