@@ -25,7 +25,6 @@ const Messages = (props) => {
     month: "numeric",
     day: "numeric",
   };
-  console.log()
   return (
     <div id="messages-container">
       <div id="messages-container-header">

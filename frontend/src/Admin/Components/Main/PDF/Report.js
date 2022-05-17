@@ -109,8 +109,8 @@ const Report = (props) => {
     const input = document.getElementById("report-body");
     html2canvas(input).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF();
-      pdf.addImage(imgData, "PNG", 0, 0);
+      const pdf = new jsPDF("p", "mm", [297, 210]);
+      pdf.addImage(imgData, "PNG", 0, 0, 210, 297);
       pdf.save("General_Report.pdf");
     });
   };
