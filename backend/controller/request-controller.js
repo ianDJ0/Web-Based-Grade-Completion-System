@@ -133,6 +133,7 @@ const instructorRespondRequest = async (req, res) => {
                 receiverName: instructorUpdate.student.studentFullname,
             },
         })
+        await notificationModel.findOneAndDelete({requestCode: req.body.requestID});
         await notification.save();
     } catch (error) {
         return console.log(error);
@@ -180,6 +181,7 @@ const officeRespondRequest = async (req, res) => {
                 receiverName: officeUpdate.student.studentFullname,
             },
         })
+        await notificationModel.findOneAndDelete({requestCode: req.body.requestID});
         await notification.save();
     } catch (error) {
         return console.log(error);
@@ -191,7 +193,7 @@ const getUserNotifications = async (req, res) => {
     let getNotifications;
     try {
         getNotifications = await notificationModel
-            .find({ 'receiver.receiverID': req.body.userID }).sort({ 'date': -1 });
+            .find({ 'receiver.receiverID': req.body.userID }).sort({ 'date': -1 }).limit(5);
     } catch (err) {
         return res
             .status(422)

@@ -431,11 +431,11 @@ const RequestForm = (props) => {
               src={require("../../UI/Home_UI/Icons/connect-with-customers.gif")}
               // src="https://cdn.dribbble.com/users/1052957/screenshots/4140274/connect-with-customers.gif"
             />
-            <h2 id="processing-request">
+            <h2 id={requestItem.requestItem.status!=="DENIED"?"processing-request":"denied-request"}>
               Your request has been{" "}
               {requestItem.requestItem.status!=="REQUESTED"?requestItem.requestItem.status.toLowerCase():"sent"}.
             </h2>
-            <h3 id="processing-desc">
+            <h3 id={requestItem.requestItem.status!=="DENIED"?"processing-desc":"denied-desc"}>
               Response depends on Faculty availability.
             </h3>
           </div>
