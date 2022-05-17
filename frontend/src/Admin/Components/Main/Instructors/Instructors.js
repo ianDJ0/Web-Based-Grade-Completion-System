@@ -69,6 +69,7 @@ const Instructors = () => {
                 currentEntry.map((instructor) => {
                   return (
                     <tr
+                    className="instructors-table-tr"
                       key={instructor._id}
                       onClick={() => {
                         navigate("/admin/profile", {

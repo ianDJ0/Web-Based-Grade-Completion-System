@@ -22,3 +22,6 @@
   columns: white;
   transform: translateY(-0.15em);
 }
+.instructors-table-tr:nth-child(even) {
+  background-color: #f2f2f2;
+}

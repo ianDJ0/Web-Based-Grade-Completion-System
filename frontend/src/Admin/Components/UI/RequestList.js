@@ -47,6 +47,7 @@ const RequestList = (props) => {
               currentEntry.map((request) => {
                 return (
                   <tr
+                  className="request-list-tr"
                     key={request._id}
                     onClick={() => {
                       navigate("/admin/request/form", {

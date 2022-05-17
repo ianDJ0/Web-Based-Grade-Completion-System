@@ -67,6 +67,7 @@ const Student = () => {
                 currentEntry.map((student) => {
                   return (
                     <tr
+                      className="student-tabler-tr"
                       key={student._id}
                       onClick={() => {
                         navigate("/admin/profile", {
