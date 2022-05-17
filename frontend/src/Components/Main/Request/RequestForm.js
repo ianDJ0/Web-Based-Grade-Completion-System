@@ -21,7 +21,7 @@ const RequestForm = (props) => {
     requestItem = state;
     cys1 = requestItem.requestItem.student.studentYearAndSection.split("-");
   }
-  console.log("request item", requestItem);
+  // console.log("request item", requestItem);
   if (state && state.autoInstructor) {
     autoCompleteInstructor = state.autoInstructor;
     state = "";

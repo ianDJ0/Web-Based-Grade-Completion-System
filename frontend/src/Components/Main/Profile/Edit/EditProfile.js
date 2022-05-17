@@ -53,7 +53,7 @@ const EditProfile = () => {
     if (file) {
       formData.append("image", file);
     } else {
-      console.log(isValid);
+      // console.log(isValid);
     }
     if (email) {
       formData.append("email", email);

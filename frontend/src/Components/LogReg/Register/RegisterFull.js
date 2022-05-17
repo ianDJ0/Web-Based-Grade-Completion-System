@@ -414,7 +414,7 @@ const RegisterFull = (props) => {
                     }
                     let data = signaturePad.toDataURL("image/png");
                     let blob = dataURItoBlob(data);
-                    console.log(signaturePad.toDataURL("image/png"));
+                    // console.log(signaturePad.toDataURL("image/png"));
                     formData.append("image", blob);
                   }}
                 />
@@ -445,7 +445,7 @@ const RegisterFull = (props) => {
               onChange={(event) => {
                 formData.delete("image");
                 formData.append("image", event.target.files[0]);
-                console.log('Insert signature', formData.get("image"));
+                // console.log('Insert signature', formData.get("image"));
               }}
             />
             <br />

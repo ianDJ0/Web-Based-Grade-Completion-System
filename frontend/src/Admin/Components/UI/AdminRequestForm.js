@@ -137,7 +137,7 @@ const AdminRequestForm = (props) => {
       });
   };
 
-  console.log(auth.userType);
+  // console.log(auth.userType);
   return (
     <>
       <TopNav />

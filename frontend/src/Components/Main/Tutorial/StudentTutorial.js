@@ -78,7 +78,7 @@ const StudentTutorial = () => {
       <Pagination
         source={"request"}
         getPage={(newPage) => {
-          console.log(newPage);
+          // console.log(newPage);
           setPage(newPage);
         }}
       />

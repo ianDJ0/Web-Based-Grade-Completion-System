@@ -23,7 +23,7 @@ const InstructorRequests = (props) => {
         alert(error);
       });
   }, []);
-  console.log(request.length > 0);
+  // console.log(request.length > 0);
   return (
     <div className="admin-request-content">
       {request.length > 0 ? (

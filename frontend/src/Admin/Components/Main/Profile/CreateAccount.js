@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 
 const CreateAccount = () => {
   const { state } = useLocation();
-  console.log(state.source);
+  // console.log(state.source);
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
