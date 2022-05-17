@@ -4,8 +4,78 @@
   border-radius: 1.2em;
   position: absolute;
   background-color: white;
-  width: 70%;
-  height: fit-content;
-  right: 10%;
-  text-align: center;
+  width: 40vw;
+  height: auto;
+  margin-left: 34vw;
+}
+.create-account-body input{
+  border-radius: 1em;
+  background-color: #EAE9E9;
+  color: rgb(83, 82, 82);
+  border: none;
+}
+.create-select-type{
+  margin-top: 1vh;
+  background-color: #F6F6F6;
+}
+#accounttype{
+  padding: 1vh 2vw;
+  width: 22vw;
+  margin-left: 2vw;
+  border-radius: 1em;
+}
+#email,
+#password,
+#conpassword,
+#studno,
+#contact,
+#birthday{
+  padding: 1vh 2vw;
+  width: 32vw;
+  height: 4vh;
+  margin: 1vh 0 3vh 2vw;
+}
+.admin-create-lastn,
+.admin-create-firstn,
+.admin-create-middlei{
+  display: inline-block;
+}
+#lastname,
+#firstname,
+#middleinit,
+#course,
+#year,
+#section{
+  height: 4vh;
+  padding: 1vh 0 1vh 1.5vw;
+  margin: 1vh 0 3vh 2vw;
+  width: 9vw;
+}
+.admin-create-course,
+.admin-create-year,
+.admin-create-section{
+  display: inline-block;
+}
+.admin-create-type{
+  margin: 3vh 0;
+}
+.admin-create-sign{
+  margin-bottom: 2vh;
+}
+#signature{
+  margin-top: 1vh;
+}
+#admin-create-btn{
+  background-color: #572121;
+  border: none;
+  color: white;
+  padding: 2vh 5vw;
+  border-radius: 1em;
+  margin: 3vh 0 1vh 11vw;
+  font-size: 1.25vw;
+  transition: all 0.5s;
+}
+#admin-create-btn:hover{
+  background-color: #DF4D19;
+  cursor: pointer;
 }
