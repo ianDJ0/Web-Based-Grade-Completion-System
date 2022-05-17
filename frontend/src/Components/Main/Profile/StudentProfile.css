@@ -12,8 +12,7 @@
   transition: all 0.5s;
 }
 #change-password:hover,
-#edit-profile:hover,
-#delete-account:hover {
+#edit-profile:hover{
   cursor: pointer;
   background-color: #850606;
   color: white;
@@ -131,20 +130,19 @@
 #delete-account {
   position: absolute;
   width: 16vw;
-  margin: 11% 0 0 76%;
-  font-size: 1.2vw;
+  margin: 73vh 0 0 82%;
+  font-size: 1vw;
   padding: 1.5% 0;
   border: none;
-  background-color: #ff0000;
-  color: rgb(255, 255, 255);
-  border: 2px solid white;
+  background-color: transparent;
+  color: #ff0000;
   transition: all 0.5s;
 }
 @media only screen and (max-width: 768px) {
   .user-profile {
     width: 90vw;
     margin: 25vh 0 0 6vw;
-    height: 60vh;
+    height: 50vh;
   }
   #profile-picture {
     margin: 9vh 0 0 12vw;

@@ -167,13 +167,13 @@ li {
     margin-bottom: 2vh;
   }
   #profile-icon {
-    width: 7vw;
+    width: 6vw;
     margin-left: 18vw;
   }
   .name-type {
     width: 12vw;
     margin-top: 2vh;
-    margin-left: 63.5vw;
+    margin-left: 62vw;
   }
   #user-name {
     font-size: 1.35vw;
@@ -183,14 +183,14 @@ li {
   }
   #message-icon {
     width: 5vw;
-    margin-top: 1.25vh;
-    margin-left: 16vw;
+    margin-top: 1vh;
+    margin-left: 17vw;
     padding: 0.5vw;
   }
   #notify-bell {
     width: 2.5vw;
     margin-top: 1.25vh;
-    margin-left: 23.5vw;
+    margin-left: 25vw;
     padding: 1.5vh 1.6vw;
   }
   #dropdown-icon {
