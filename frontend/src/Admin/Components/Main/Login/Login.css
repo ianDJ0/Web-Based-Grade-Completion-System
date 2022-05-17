@@ -47,7 +47,7 @@
   border-radius: 1em;
   height: 5vh;
   width: 28vw;
-  margin-bottom: 1vh;
+  margin-bottom: 3vh;
   margin-left: 0.5vw;
   padding-left: 1vw;
   font-size: 1vw;
@@ -56,7 +56,7 @@
 #admin-login-btn {
   height: 5vh;
   width: 20vw;
-  margin: 4vh 0 4vh 5vw;
+  margin: 2vh 0 4vh 5vw;
   border: none;
   background-color: #de834d;
   color: white;
