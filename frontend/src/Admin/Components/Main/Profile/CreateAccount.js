@@ -107,11 +107,12 @@ const CreateAccount = () => {
         <div className="create-account-body">
           <h2>Create account</h2>
           <form encType="multipart/form-data" onSubmit={formik.handleSubmit}>
-            <div>
-              <label>Account Type</label>
+            <div className="admin-create-type">
+              <p>Account Type</p>
               <select
                 name="registerUserType"
                 id="accounttype"
+                className="create-select-type"
                 placeholder="Account type"
                 onChange={formik.handleChange}
                 value={formik.values.registerUserType}
@@ -120,8 +121,8 @@ const CreateAccount = () => {
                 <option value="Student">Student</option>
               </select>
             </div>
-            <div>
-              <label htmlFor="email">Email</label>
+            <div className="admin-create-email">
+              <p>Email</p>
               <input
                 type="email"
                 name="registerEmail"
@@ -132,8 +133,8 @@ const CreateAccount = () => {
                 required
               />
             </div>
-            <div>
-              <label htmlFor="password">Password</label>
+            <div className="admin-create-pass">
+              <p>Password</p>
               <input
                 type="password"
                 name="registerPassword"
@@ -144,8 +145,8 @@ const CreateAccount = () => {
                 required
               />
             </div>
-            <div>
-              <label htmlFor="conpassword">Confirm Password</label>
+            <div className="admin-create-confirm-pass">
+              <p>Confirm Password</p>
               <input
                 name="conpassword"
                 id="conpassword"
@@ -156,8 +157,8 @@ const CreateAccount = () => {
                 required
               />
             </div>
-            <div>
-              <label htmlFor="lastname">Last Name</label>
+            <div className="admin-create-lastn">
+              <p>Last Name</p>
               <input
                 type="text"
                 name="lastname"
@@ -168,10 +169,34 @@ const CreateAccount = () => {
                 required
               />
             </div>
+            <div className="admin-create-firstn">
+              <p>First Name</p>
+              <input
+                type="text"
+                name="firstname"
+                id="firstname"
+                placeholder="First Name"
+                onChange={formik.handleChange}
+                value={formik.values.firstname}
+                required
+              />
+            </div>
+            <div className="admin-create-middlei">
+              <p>Middle Initial</p>
+              <input
+                type="text"
+                name="middleinit"
+                id="middleinit"
+                placeholder="Middle Initial"
+                onChange={formik.handleChange}
+                value={formik.values.middleinit}
+                required
+              />
+            </div>
             {formik.values.registerUserType === "Student" && (
               <>
-                <div>
-                  <label htmlFor="course">Course</label>
+                <div  className="admin-create-course">
+                  <p>Course</p>
                   <input
                     type="text"
                     name="course"
@@ -182,8 +207,8 @@ const CreateAccount = () => {
                     required
                   />
                 </div>
-                <div>
-                  <label htmlFor="year">year</label>
+                <div  className="admin-create-year">
+                  <p>Year</p>
                   <input
                     type="text"
                     name="year"
@@ -194,8 +219,8 @@ const CreateAccount = () => {
                     required
                   />
                 </div>
-                <div>
-                  <label htmlFor="section">section</label>
+                <div  className="admin-create-section">
+                  <p>Section</p>
                   <input
                     type="text"
                     name="section"
@@ -206,8 +231,8 @@ const CreateAccount = () => {
                     required
                   />
                 </div>
-                <div>
-                  <label htmlFor="studno">studno</label>
+                <div className="admin-create-studno">
+                  <p>Student No.</p>
                   <input
                     type="text"
                     name="registerStudentNumber"
@@ -220,33 +245,8 @@ const CreateAccount = () => {
                 </div>
               </>
             )}
-
-            <div>
-              <label htmlFor="firstname">First Name</label>
-              <input
-                type="text"
-                name="firstname"
-                id="firstname"
-                placeholder="First Name"
-                onChange={formik.handleChange}
-                value={formik.values.firstname}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="middleinit">Middle Init</label>
-              <input
-                type="text"
-                name="middleinit"
-                id="middleinit"
-                placeholder="Middle Initial"
-                onChange={formik.handleChange}
-                value={formik.values.middleinit}
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="contact">Contact Number</label>
+            <div className="admin-create-contact">
+              <p>Contact Number</p>
               <input
                 type="number"
                 name="registerContactNumber"
@@ -257,8 +257,8 @@ const CreateAccount = () => {
                 required
               />
             </div>
-            <div>
-              <label htmlFor="birthday">Birthdate</label>
+            <div className="admin-create-birthdate">
+              <p>Birthdate</p>
               <input
                 type="date"
                 name="registerBirthday"
@@ -269,8 +269,8 @@ const CreateAccount = () => {
                 required
               />
             </div>
-            <div>
-              <label htmlFor="signature">Signature</label>
+            <div className="admin-create-sign">
+              <p>Signature</p>
               <input
                 name="image"
                 id="signature"
@@ -283,7 +283,7 @@ const CreateAccount = () => {
                 required
               />
             </div>
-            <button type="submit">Create account</button>
+            <button type="submit" id="admin-create-btn">Create Account</button>
           </form>
         </div>
       </Body>
