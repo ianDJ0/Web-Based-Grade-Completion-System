@@ -126,7 +126,7 @@ const CreateAccount = () => {
               <input
                 type="email"
                 name="registerEmail"
-                id="email"
+                id="admin-email-input"
                 placeholder="Email"
                 onChange={formik.handleChange}
                 value={formik.values.email}
