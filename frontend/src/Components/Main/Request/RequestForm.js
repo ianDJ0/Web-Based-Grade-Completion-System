@@ -278,7 +278,7 @@ const RequestForm = (props) => {
               <div className="student-info">
                 <p id="stud-info-label">Student Information</p>
                 <div className="stud-info-one">
-                  <p>Student Name</p>
+                  <p className="field-labels">Student Name</p>
                   <input
                     placeholder="Student Name"
                     name="stud-name"
@@ -288,7 +288,7 @@ const RequestForm = (props) => {
                   />
                 </div>
                 <div className="stud-info-two">
-                  <p>Student Number</p>
+                  <p className="field-labels">Student Number</p>
                   <input
                     placeholder="Student Number"
                     name="stud-no"
@@ -298,7 +298,7 @@ const RequestForm = (props) => {
                   />
                 </div>
                 <div className="stud-info-three">
-                  <p>Course Year and Section</p>
+                  <p className="field-labels">Course Year and Section</p>
                   <input
                     placeholder="Course"
                     name="stud-course"
@@ -309,7 +309,7 @@ const RequestForm = (props) => {
                 </div>
                 <p id="stud-info-label">Request Information</p>
                 <div className="stud-info-one">
-                  <p>Subject Code</p>
+                  <p className="field-labels">Subject Code</p>
                   <input
                     name="stud-name"
                     id="stud-name"
@@ -318,7 +318,7 @@ const RequestForm = (props) => {
                   />
                 </div>
                 <div className="stud-info-one">
-                  <p>Subject Description</p>
+                  <p className="field-labels">Subject Description</p>
                   <input
                     name="stud-name"
                     id="stud-name"
@@ -327,7 +327,7 @@ const RequestForm = (props) => {
                   />
                 </div>
                 <div className="stud-info-one">
-                  <p>Period Incomplete</p>
+                  <p className="field-labels">Period Incomplete</p>
                   <input
                     name="stud-name"
                     id="stud-name"
@@ -336,7 +336,7 @@ const RequestForm = (props) => {
                   />
                 </div>
                 <div className="stud-info-one">
-                  <p>Year Incomplete</p>
+                  <p className="field-labels">Year Incomplete</p>
                   <input
                     placeholder="Student Name"
                     name="stud-name"
@@ -346,7 +346,7 @@ const RequestForm = (props) => {
                   />
                 </div>
                 <div className="stud-info-one">
-                  <p>Reason</p>
+                  <p className="field-labels">Reason</p>
                   <input
                     type="textarea"
                     name="stud-name"
