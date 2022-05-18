@@ -63,8 +63,8 @@ function App() {
       <>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/register/complete" element={<RegisterFull />} />
+          <Route path="/register" element={<RegisterFull />} />
+          {/* <Route path="/register/complete" element={<RegisterFull />} /> */}
           <Route path="/homepage" element={<Homepage />} />
           <Route path="/requests" element={<Request />} />
           <Route path="/announcements" element={<Anouncement />} />

@@ -1,9 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-  useContext,
-  useRef,
-} from "react";
+import React, { useEffect, useState, useContext, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import SignaturePad from "signature_pad";
@@ -15,6 +10,7 @@ import { AuthenticationContext } from "../../Shared/context/auth-context";
 import "../../Shared/Shared.css";
 import "./RegisterFull.css";
 import Terms from "./Terms and Conditions/Terms";
+import LogRegButton from "../../UI/LogReg_UI/LogRegButton";
 
 const RegisterFull = (props) => {
   const navigate = useNavigate();
@@ -22,13 +18,14 @@ const RegisterFull = (props) => {
   const pad = useRef();
   const refSignature = useRef();
   //email from register
-  const { state } = useLocation();
-  const { email } = state;
+  // const { state } = useLocation();
+  // const { email } = state;
 
   //field states
   const [acctType, setAcctType] = useState("Faculty");
   const [pwd, setPWD] = useState("");
   const [conPWD, setConPWD] = useState("");
+  const [email, setEmail] = useState("");
 
   //names
   const [fname, setFname] = useState("");
@@ -99,7 +96,7 @@ const RegisterFull = (props) => {
             auth.userSignature = response.data.new.image;
             auth.userBirthday = response.data.new.birthday;
             auth.userType = response.data.new.userType;
-            navigate('/');
+            navigate("/");
           })
           .catch(function (error) {
             alert(error);
@@ -137,13 +134,13 @@ const RegisterFull = (props) => {
       signature = "";
     }
   };
-  let signaturePad
+  let signaturePad;
   useEffect(() => {
     const canvas = document.getElementById("signature-pad");
     signaturePad = new SignaturePad(canvas, {
       backgroundColor: "rgb(255, 255, 255)",
     });
-  })
+  });
   //https://stackoverflow.com/questions/4998908/convert-data-uri-to-file-then-append-to-formdata
   function dataURItoBlob(dataURI) {
     var byteString;
@@ -242,6 +239,7 @@ const RegisterFull = (props) => {
       {terms && <Terms cancel={cancelHandler} accept={acceptHandler} />}
       <Logo />
       <LogRegBody>
+      <LogRegButton choice={"register"} />
         <LogRegForm>
           <form
             id="login-form"
@@ -275,7 +273,9 @@ const RegisterFull = (props) => {
               placeholder="Email"
               className="reg-input-field"
               value={email}
-              readOnly
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
               required
             />
             <label htmlFor="pwd">Password</label>
