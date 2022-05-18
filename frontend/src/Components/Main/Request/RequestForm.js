@@ -73,6 +73,7 @@ const RequestForm = (props) => {
         alert(error);
       });
   };
+
   const submitFacultyResponse = async () => {
     const { value: grade } = await Swal.fire({
       title: "Select grade to give",
@@ -383,7 +384,7 @@ const RequestForm = (props) => {
                               readOnly
                             />
                           </div>
-                          <div>
+                          {/* <div>
                             <p className="field-labels ">
                               Instructor Signature
                             </p>
@@ -392,7 +393,7 @@ const RequestForm = (props) => {
                               src={`http://localhost:7700/${requestItem.requestItem.signature.instructorSignature}`}
                               alt="Student Signature"
                             />
-                          </div>
+                          </div> */}
                         </div>
                       )}
                     </div>

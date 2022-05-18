@@ -51,7 +51,7 @@ const PDF = () => {
   const reason = state.items.reason;
   const dueDate = " ";
   const isPassed = state.items.grade <= 3 ? true : false;
-  const studGrade = state.items.grade;
+  const studGrade = parseFloat(state.items.grade);
   const actionDate = new Date(
     state.items.dateLog.dateInstructor
   ).toLocaleDateString("en-US", DATE_OPTIONS);
@@ -68,8 +68,12 @@ const PDF = () => {
 
   return (
     <>
-      <button className="btn-pdf-return" onClick={back}>Return</button>
-      <button className="btn-pdf-generate" onClick={createPDF}>Create PDF</button>
+      <button className="btn-pdf-return" onClick={back}>
+        Return
+      </button>
+      <button className="btn-pdf-generate" onClick={createPDF}>
+        Create PDF
+      </button>
 
       <div id="pdf-body">
         <div className="pdf-container">
@@ -144,10 +148,25 @@ const PDF = () => {
 
           {/* Action taken */}
           <div className="pdf-action-taken">
-            {isPassed ? (
-              <p className="pdf-passed-var ans">{studGrade}</p>
+            {!isPassed ? (
+              <>
+                <img
+                  alt="check-mark"
+                  className="pass-mark"
+                  src={require("./check.png")}
+                />
+
+                <p className="pdf-passed-var ans">{studGrade.toFixed(2)}</p>
+              </>
             ) : (
-              <p className="pdf-fail-var ans">{studGrade}</p>
+              <>
+                <img
+                  alt="check-mark"
+                  className="fail-mark"
+                  src={require("./check.png")}
+                />
+                <p className="pdf-fail-var ans">{studGrade.toFixed(2)}</p>
+              </>
             )}
             <p className="pdf-actiondate-var ans">{actionDate}</p>
             <p>ACTION TAKEN</p>
