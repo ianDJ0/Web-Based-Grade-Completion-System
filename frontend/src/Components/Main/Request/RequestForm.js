@@ -140,43 +140,44 @@ const RequestForm = (props) => {
   };
   const submitDenyRespose = async () => {
     const { value: text } = await Swal.fire({
-      input: 'textarea',
-      inputLabel: 'Message',
-      inputPlaceholder: 'Type your message here...',
+      input: "textarea",
+      inputLabel: "Message",
+      inputPlaceholder: "Type your message here...",
       inputAttributes: {
-        'aria-label': 'Type your message here'
+        "aria-label": "Type your message here",
       },
-      showCancelButton: true
-    })
+      showCancelButton: true,
+    });
     if (text) {
       axios
-      .post(
-        "http://localhost:7700/api/request/instructorRespondRequest",
-        {
-          requestID: requestItem.requestItem._id,
-          feedback: text,
-          grade: "5.00",
-          instructorSignature: auth.userSignature,
-        },
-        {
-          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-        }
-      )
-      .then((response) => {
-        Swal.fire({
-          icon: "success",
-          title: "Response has been recorded!",
-          showConfirmButton: false,
-          timer: 1500,
-        }).then(() => {
-          navigate("/requests");
+        .post(
+          "http://localhost:7700/api/request/instructorRespondRequest",
+          {
+            requestID: requestItem.requestItem._id,
+            feedback: text,
+            grade: "5.00",
+            instructorSignature: auth.userSignature,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        )
+        .then((response) => {
+          Swal.fire({
+            icon: "success",
+            title: "Response has been recorded!",
+            showConfirmButton: false,
+            timer: 1500,
+          }).then(() => {
+            navigate("/requests");
+          });
+        })
+        .catch((error) => {
+          alert(error);
         });
-      })
-      .catch((error) => {
-        alert(error);
-      });
-    } 
-
+    }
   };
 
   const STATUS = ["REQUESTED", "SUBMITTED", "ON PROCESS", "PROCESSED"];
@@ -443,8 +444,7 @@ const RequestForm = (props) => {
                             confirmButtonText: "Yes",
                           }).then((result) => {
                             if (result.isConfirmed) {
-   
-                              submitDenyRespose();                   
+                              submitDenyRespose();
                             }
                           });
                         }}
@@ -490,13 +490,37 @@ const RequestForm = (props) => {
             </h3>
 
             {/* faculty response */}
-
-            <h3>Your Final Grade: {requestItem.requestItem.grade}</h3>
-            {requestItem.requestItem.status === "DENIED" && (
-              <h3>
-                Professor {requestItem.requestItem.instructor.instructorName}
-                's Remark: "{requestItem.requestItem.feedback}"
-              </h3>
+            {requestItem.requestItem.status !== "REQUESTED" && (
+              <>
+                <h3 className="fac-response">
+                  Your Final Grade:{" "}
+                  <span
+                    className={
+                      requestItem.requestItem.status === "DENIED"
+                        ? "denied"
+                        : "passed"
+                    }
+                  >
+                    {requestItem.requestItem.grade}
+                  </span>
+                </h3>
+                {requestItem.requestItem.status === "DENIED" && (
+                  <h3 className="fac-response">
+                    Professor
+                    {requestItem.requestItem.instructor.instructorName}
+                    's Remark:{" "}
+                    <span
+                      className={
+                        requestItem.requestItem.status === "DENIED"
+                          ? "denied"
+                          : "passed"
+                      }
+                    >
+                      "{requestItem.requestItem.feedback}"
+                    </span>
+                  </h3>
+                )}
+              </>
             )}
           </div>
         )}
