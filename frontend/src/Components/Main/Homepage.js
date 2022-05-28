@@ -17,12 +17,15 @@ const Homepage = (props) => {
     goals: "",
     objective: ""
   })
+  const [logo, setLogo] = useState('uploads\\images\\bulsu-logo.png');
+
   // const auth = useContext(AuthenticationContext);
   const navigate = useNavigate();
   useEffect(() => {
     axios.post("http://localhost:7700/api/announcements/getVMGO")
       .then(response => {
         setVmgo(response.data)
+        setLogo(response.data.logo);
       }).catch(error => {
         alert(error)
       })
@@ -88,7 +91,7 @@ const Homepage = (props) => {
         <div className="home-get-started">
         <img
           alt="bulsu-logo"
-          src={require("../UI/Home_UI/Icons/bulsu-logo.png")}
+          src={`http://localhost:7700/${logo}`}
           id="home-bulsu-logo"
         />
         <div className="to-tutorial">

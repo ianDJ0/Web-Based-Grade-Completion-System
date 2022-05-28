@@ -1,12 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 import "../../Shared/Shared.css";
 import "./SideBar.css";
 
 const Sidebar = (props) => {
   const active = props.active;
+  const [logo, setLogo] = useState('uploads\\images\\bulsu-logo.png');
+  const [title, setTitle] = useState();
 
+  axios.post("http://localhost:7700/api/announcements/getVMGO")
+  .then(response => {
+    setLogo(response.data.logo);
+    setTitle(response.data.name);
+
+  }).catch(error => {
+    alert(error)
+  })
   const navigate = useNavigate();
   document.body.style = "background: white";
 
@@ -16,10 +26,10 @@ const Sidebar = (props) => {
         <div className="name-logo">
           <img
             alt="bulsu-logo"
-            src={"https://bit.ly/3rmsS90"}
+            src={`http://localhost:7700/${logo}`}
             id="bulsu-logo"
           />
-          <h3 id="site-name">BULSU</h3>
+          <h3 id="site-name">{title}</h3>
         </div>
         <span
           id="home-nav"
