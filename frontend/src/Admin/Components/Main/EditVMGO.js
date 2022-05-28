@@ -114,19 +114,22 @@ const EditVMGO = () => {
     },
     onSubmit: (values) => {
       Swal.fire({
-        title: 'Edit App Title',
+        title: "Edit App Title",
         text: "Confirm Save",
-        icon: 'question',
+        icon: "question",
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes!'
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes!",
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.post("http://localhost:7700/api/announcements/editTitle", values)
+          axios.post(
+            "http://localhost:7700/api/announcements/editTitle",
+            values
+          );
           navigate("/admin");
         }
-      })
+      });
     },
   });
   return (
@@ -162,31 +165,36 @@ const EditVMGO = () => {
               <img
                 alt="wallpaper-img"
                 src={preview}
-                id="edit-profile-picture"
+                id="logo-preview"
               />
             ) : (
               !preview && (
                 <img
                   alt="wallpaper-img"
                   src={`http://localhost:7700/${getLogo}`}
-                  id="edit-profile-picture"
+                  id="logo-preview"
                 />
               )
             )}
           </div>
           <form>
             <div className="logo-edit-container">
-              <input
-                type={"file"}
-                className="logo-submit"
-                accept=".jpg,.png,.jpeg"
-                onChange={pickedHandler}
-              />
-              <input
-                type="submit"
-                // id="input-edit-vmgo"
-                onClick={submitChange}
-              />
+              <fieldset className="logo-fieldset">
+                <legend>Upload Logo Image</legend>
+                <input
+                  type={"file"}
+                  className="logo-submit"
+                  accept=".jpg,.png,.jpeg"
+                  onChange={pickedHandler}
+                />
+                <input
+                  type="submit"
+                  className="logo-save-button"
+                  value="Save"
+                  // id="input-edit-vmgo"
+                  onClick={submitChange}
+                />
+              </fieldset>
             </div>
           </form>
         </div>

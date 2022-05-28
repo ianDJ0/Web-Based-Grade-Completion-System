@@ -70,7 +70,7 @@ const Login = () => {
         ) {
           localStorage.setItem("token", response.data.token);
           setIsValid(true);
-        }else if(auth.userType === "Admin"){
+        } else if (auth.userType === "Admin") {
           setErrMsg("Incorrect Email/Password");
           setIsValid(false);
           setAttempts((prevAttempt) => prevAttempt + 1);
@@ -98,9 +98,9 @@ const Login = () => {
 
   const pwdError =
     errMsg.trim().length < 2 &&
-    pwd.trim().length < 6 &&
+    pwd.trim().length < 8 &&
     pwd.trim().length > 0 ? (
-      <div className="error">Password must be at least 6 characters long</div>
+      <div className="error">Password must be at least 8 characters long</div>
     ) : (
       ""
     );
