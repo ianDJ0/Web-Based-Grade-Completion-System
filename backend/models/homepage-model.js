@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
 const homepage = new mongoose.Schema({
+    logo: { type: String },
+    name: { type: String },
     vision: { type: String },
     mission: { type: String },
     goals: { type: String },

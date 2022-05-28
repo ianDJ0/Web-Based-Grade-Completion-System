@@ -14,6 +14,52 @@ const EditVMGO = () => {
   const [getMission, setMission] = useState('');
   const [getGoals, setGoals] = useState('');
   const [getObjectives, setObjectives] = useState('');
+  const [getLogo, setLogo] = useState('');
+  const [getTitle, setTitle] = useState('');
+  const [file, setFile] = useState();
+  const [preview, setPreview] = useState();
+
+
+  useEffect(() => {
+    if (!file) {
+      return;
+    }
+    const fileReader = new FileReader();
+    fileReader.onload = () => {
+      setPreview(fileReader.result);
+    };
+    fileReader.readAsDataURL(file);
+  }, [file]);
+  const pickedHandler = (event) => {
+    let pickedFile;
+    if (event.target.files && event.target.files.length === 1) {
+      pickedFile = event.target.files[0];
+      setFile(pickedFile);
+    };
+  }
+  //change logo
+  const submitChange = () => {
+    let formData = new FormData();
+
+    if (file) {
+      formData.append("image", file);
+    }
+    axios
+      .post("http://localhost:7700/api/announcements/editLogo", formData)
+      .then(function (response) {
+
+        Swal.fire({
+          icon: "success",
+          title: "Edit Sucessful!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          // navigate("/profile");
+        });
+      })
+      .catch((error) => { });
+  }
+
 
 
   useEffect(() => {
@@ -23,7 +69,8 @@ const EditVMGO = () => {
         setMission(response.data.mission);
         setGoals(response.data.goals);
         setObjectives(response.data.objective);
-
+        setLogo(response.data.logo);
+        setTitle(response.data.name);
       }).catch(error => {
         alert(error)
       })
@@ -58,13 +105,70 @@ const EditVMGO = () => {
         })
     },
   });
-
+  const formikTitle = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      name: getTitle,
+    },
+    onSubmit: (values) => {
+      axios.post("http://localhost:7700/api/announcements/editTitle", values)
+        .then(response => {
+          Swal.fire({
+            title: 'Edit App Title',
+            text: "Confirm Save",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              navigate("/admin");
+            }
+          })
+        }).catch(error => {
+          alert(error)
+        })
+    },
+  });
   return (
     <>
       <TopNav />
       <Sidebar />
       <Body>
         <div className="edit-vmgo-body">
+          <form onSubmit={formikTitle.handleSubmit}>
+            <input type={'text'}
+              id="name"
+              name="name"
+              onChange={formikTitle.handleChange}
+              defaultValue={getTitle}
+            />
+            <input type="submit" id="input-edit-vmgo" />
+          </form>
+        </div>
+        <div className="edit-vmgo-body">
+          {preview && (
+            <img
+              alt="wallpaper-img"
+              src={preview}
+              id="edit-profile-picture"
+            />
+          )}
+          {!preview && (
+            <img
+              alt="wallpaper-img"
+              src={`http://localhost:7700/${getLogo}`}
+              id="edit-profile-picture"
+            />
+          )}
+          <form>
+            <input type={'file'}></input>
+            <input type="submit" id="input-edit-vmgo" />
+          </form>
+        </div>
+        <div className="edit-vmgo-body">
+
           <form onSubmit={formik.handleSubmit}>
             <div>
               <label htmlFor="vision">VISION</label>
@@ -106,7 +210,7 @@ const EditVMGO = () => {
                 defaultValue={getObjectives}
               />
             </div>
-            <input type="submit" id="input-edit-vmgo"/>
+            <input type="submit" id="input-edit-vmgo" />
           </form>
         </div>
       </Body>

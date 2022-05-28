@@ -9,6 +9,7 @@ const request = new mongoose.Schema({
     grade: { type: String},
     status:{type:String},
     deanName: { type: String },
+    feedback: { type: String },
     student: {
         studentID: { type: mongoose.Types.ObjectId, ref: "User" },
         studentFullname: { type: String, required: true },
