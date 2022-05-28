@@ -113,26 +113,20 @@ const EditVMGO = () => {
       name: getTitle,
     },
     onSubmit: (values) => {
-      axios
-        .post("http://localhost:7700/api/announcements/editTitle", values)
-        .then((response) => {
-          Swal.fire({
-            title: "Edit App Title",
-            text: "Confirm Save",
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes!",
-          }).then((result) => {
-            if (result.isConfirmed) {
-              navigate("/admin");
-            }
-          });
-        })
-        .catch((error) => {
-          alert(error);
-        });
+      Swal.fire({
+        title: 'Edit App Title',
+        text: "Confirm Save",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.post("http://localhost:7700/api/announcements/editTitle", values)
+          navigate("/admin");
+        }
+      })
     },
   });
   return (

@@ -104,7 +104,7 @@ const instructorRespondRequest = async (req, res) => {
         instructorUpdate = await requestModel
             .findByIdAndUpdate(req.body.requestID, {
                 grade: req.body.grade,
-                // feedback:req.body.feedback,
+                feedback:req.body.feedback,
                 status: insructorStatus,
                 "$set": { "dateLog.dateInstructor": Date.now(), "signature.instructorSignature": req.body.instructorSignature },
             }, { returnOriginal: false })
