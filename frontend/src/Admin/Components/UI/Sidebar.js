@@ -1,18 +1,38 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import "./Sidebar.css";
+import axios from "axios";
 
 const Sidebar = (props) => {
   const navigate = useNavigate();
+  const [logo, setLogo] = useState('uploads\\images\\bulsu-logo.png');
+  const [title, setTitle] = useState();
 
+  axios.post('http://localhost:7700/api/announcements/getVMGO')
+    .then(response => {
+      setLogo(response.data.logo);
+      setTitle(response.data.name);
+
+    }).catch(error => {
+      alert(error)
+    })
   return (
     <div className="admin-sidebar">
       <div className="admin-name-logo">
-        <img
-          alt="bulsu-logo"
-          src={require("../../../Components/UI/Home_UI/Icons/bulsu-logo.png")}
-          id="sidebar-bulsu-logo"
-        />
-        <h3 id="admin-site-name">BULSU</h3>
+        {logo ?
+          <img
+            alt="bulsu-logo"
+            src={`http://localhost:7700/${logo}`}
+            id="sidebar-bulsu-logo"
+          />
+          :
+          <image
+            alt="bulsu-logo"
+            src={require("../../../Components/UI/Home_UI/Icons/profile.png")}
+            id="sidebar-bulsu-logo"
+          />
+        }
+        <h3 id="admin-site-name">{title}</h3>
         <br />
       </div>
 

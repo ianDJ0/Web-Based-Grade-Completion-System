@@ -29,7 +29,9 @@ const EditVMGO = () => {
       setPreview(fileReader.result);
     };
     fileReader.readAsDataURL(file);
+    console.log(file)
   }, [file]);
+
   const pickedHandler = (event) => {
     let pickedFile;
     if (event.target.files && event.target.files.length === 1) {
@@ -59,7 +61,6 @@ const EditVMGO = () => {
       })
       .catch((error) => { });
   }
-
 
 
   useEffect(() => {
@@ -138,6 +139,7 @@ const EditVMGO = () => {
       <Body>
         <div className="edit-vmgo-body">
           <form onSubmit={formikTitle.handleSubmit}>
+            <h1>Title</h1>
             <input type={'text'}
               id="name"
               name="name"
@@ -148,23 +150,30 @@ const EditVMGO = () => {
           </form>
         </div>
         <div className="edit-vmgo-body">
-          {preview && (
+        <h1>Logo</h1>
+          <div>
+          {preview ? (
             <img
               alt="wallpaper-img"
               src={preview}
               id="edit-profile-picture"
             />
-          )}
-          {!preview && (
+          ):
+          !preview && (
             <img
               alt="wallpaper-img"
               src={`http://localhost:7700/${getLogo}`}
               id="edit-profile-picture"
             />
           )}
+          </div>
           <form>
-            <input type={'file'}></input>
-            <input type="submit" id="input-edit-vmgo" />
+            <input
+              type={'file'}
+              accept=".jpg,.png,.jpeg"
+              onChange={pickedHandler}
+            />
+            <input type="submit" id="input-edit-vmgo" onClick={submitChange}/>
           </form>
         </div>
         <div className="edit-vmgo-body">
