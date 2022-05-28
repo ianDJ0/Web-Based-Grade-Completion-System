@@ -138,12 +138,23 @@ const RequestForm = (props) => {
         });
     }
   };
-  const submitDenyRespose = () => {
-    axios
+  const submitDenyRespose = async () => {
+    const { value: text } = await Swal.fire({
+      input: 'textarea',
+      inputLabel: 'Message',
+      inputPlaceholder: 'Type your message here...',
+      inputAttributes: {
+        'aria-label': 'Type your message here'
+      },
+      showCancelButton: true
+    })
+    if (text) {
+      axios
       .post(
         "http://localhost:7700/api/request/instructorRespondRequest",
         {
           requestID: requestItem.requestItem._id,
+          feedback: text,
           grade: "5.00",
           instructorSignature: auth.userSignature,
         },
@@ -164,6 +175,8 @@ const RequestForm = (props) => {
       .catch((error) => {
         alert(error);
       });
+    } 
+
   };
 
   const STATUS = ["REQUESTED", "SUBMITTED", "ON PROCESS", "PROCESSED"];
@@ -422,7 +435,8 @@ const RequestForm = (props) => {
                             confirmButtonText: "Yes",
                           }).then((result) => {
                             if (result.isConfirmed) {
-                              submitDenyRespose();
+   
+                              submitDenyRespose();                   
                             }
                           });
                         }}
