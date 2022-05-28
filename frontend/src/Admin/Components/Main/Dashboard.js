@@ -95,7 +95,7 @@ const Dashboard = () => {
             navigate("/admin/edit");
           }}
         >
-          Edit VMGO
+          Settings
         </button>
         <button
           className="report-gen-btn"

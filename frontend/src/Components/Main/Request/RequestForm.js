@@ -215,6 +215,7 @@ const RequestForm = (props) => {
     first_process = "dot-flashing active-process";
     second_process = third_process = "dot-flashing non-active-process";
   }
+
   return (
     <>
       <TopNav />
@@ -383,6 +384,13 @@ const RequestForm = (props) => {
                               value={requestItem.requestItem.grade}
                               readOnly
                             />
+                            {requestItem.requestItem.feedback && (
+                              <input
+                                type="text"
+                                value={requestItem.requestItem.feedback}
+                                readOnly
+                              />
+                            )}
                           </div>
                           {/* <div>
                             <p className="field-labels ">
@@ -466,6 +474,16 @@ const RequestForm = (props) => {
             >
               Response depends on Faculty availability.
             </h3>
+
+            {/* faculty response */}
+
+            <h3>Your Final Grade: {requestItem.requestItem.grade}</h3>
+            {requestItem.requestItem.status === "DENIED" && (
+              <h3>
+                Professor {requestItem.requestItem.instructor.instructorName}
+                's Remark: "{requestItem.requestItem.feedback}"
+              </h3>
+            )}
           </div>
         )}
         {}

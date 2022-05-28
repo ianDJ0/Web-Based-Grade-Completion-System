@@ -7,8 +7,9 @@
   display: flex;
   padding: 2em;
   border-radius: 1em;
+  margin-bottom: 1em;
 }
-.edit-vmgo-textarea{
+.edit-vmgo-textarea {
   height: 7vh;
   width: 58vw;
   margin-bottom: 3vh;
@@ -19,17 +20,51 @@
   border-radius: 1em;
   box-shadow: 0 4px 9px rgb(0, 0, 0, 0.1);
 }
-#input-edit-vmgo{
+#input-edit-vmgo {
   width: 17vw;
   height: 6vh;
   margin: 1vh 22vw;
   border: none;
   border-radius: 5em;
-  background-color: #3D56B2;
+  background-color: #3d56b2;
   color: white;
   font-size: 1.5vw;
   transition: all 0.3s;
 }
-#input-edit-vmgo:hover{
+#input-edit-vmgo:hover,
+.save-title-button:hover {
   background-color: #091353;
+}
+.application-title-field {
+  height: 2.5em;
+  padding: 0% 2%;
+  width: 75%;
+  margin: 2% 0;
+  border: 1px solid #999;
+  background: transparent;
+  font-size: 15px;
+}
+
+.title-edit-container {
+  /* outline: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60vw;
+}
+.save-title-button {
+  width: 10vw;
+  height: 5vh;
+  border: none;
+  border-radius: 5em;
+  background-color: #3d56b2;
+  color: white;
+  font-size: 1.2vw;
+  transition: all 0.3s;
+}
+
+.logo-submit {
+}
+
+.logo-edit-container {
 }
