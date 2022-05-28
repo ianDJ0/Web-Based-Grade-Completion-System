@@ -58,9 +58,9 @@ const RegisterFull = (props) => {
     );
 
   useEffect(() => {
-    if (pwd.trim().length < 6 && pwd.trim().length > 0)
+    if (pwd.trim().length < 8 && pwd.trim().length > 0)
       setErrMsg(
-        <div className="error">Password must be at least 6 characters long</div>
+        <div className="error">Password must be at least 8 characters long</div>
       );
     else setErrMsg("");
   }, [pwd]);
@@ -234,12 +234,15 @@ const RegisterFull = (props) => {
     setIfRead((prevState) => !prevState);
   };
 
+  const pwField = useRef();
+  const conpwField = useRef();
+
   return (
     <>
       {terms && <Terms cancel={cancelHandler} accept={acceptHandler} />}
       <Logo />
       <LogRegBody>
-      <LogRegButton choice={"register"} />
+        <LogRegButton choice={"register"} />
         <LogRegForm>
           <form
             id="login-form"
@@ -279,29 +282,60 @@ const RegisterFull = (props) => {
               required
             />
             <label htmlFor="pwd">Password</label>
-            <input
-              id="pwd"
-              type="password"
-              placeholder="Password"
-              className="reg-input-field same-row"
-              value={pwd}
-              onChange={(event) => {
-                setPWD(event.target.value);
-              }}
-              required
-            />
+            <div className="password-container">
+              <input
+                ref={pwField}
+                id="pwd"
+                type="password"
+                placeholder="Password"
+                className="reg-input-field same-row"
+                value={pwd}
+                onChange={(event) => {
+                  setPWD(event.target.value);
+                }}
+                required
+              />
+              <img
+                onClick={() => {
+                  pwField.current.type =
+                    pwField.current.type === "password" ? "text" : "password";
+                }}
+                className="show-hide-pw"
+                src={require("./view.png")}
+                alt=""
+              />
+              {/* <img
+                className="show-hide-pw"
+                src={require("./hidden.png")}
+                alt=""
+              /> */}
+            </div>
             <label htmlFor="conpwd">Confirm Password</label>
-            <input
-              id="conpwd"
-              type="password"
-              placeholder="Confirm Password"
-              className="reg-input-field same-row"
-              value={conPWD}
-              onChange={(event) => {
-                setConPWD(event.target.value);
-              }}
-              required
-            />
+            <div className="conpw-container">
+              <input
+                ref={conpwField}
+                id="conpwd"
+                type="password"
+                placeholder="Confirm Password"
+                className="reg-input-field same-row"
+                value={conPWD}
+                onChange={(event) => {
+                  setConPWD(event.target.value);
+                }}
+                required
+              />
+              <img
+                onClick={() => {
+                  conpwField.current.type =
+                    conpwField.current.type === "password"
+                      ? "text"
+                      : "password";
+                }}
+                className="show-hide-pw"
+                src={require("./view.png")}
+                alt=""
+              />
+            </div>
             {/* error messages */}
             {unequalErr}
             {errMsg}
