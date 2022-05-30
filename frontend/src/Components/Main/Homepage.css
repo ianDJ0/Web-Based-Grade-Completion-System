@@ -1,89 +1,89 @@
 .home-punch {
-  margin-top: 9.75vh;
-  margin-left: 15vw;
+  margin-top: 11vh;
+  margin-left: 12vw;
   padding: 5% 8%;
   width: 69vw;
-  height: 17vh;
+  height: 23vh;
   z-index: 0;
 }
 #home-opening-line {
-  font-size: 2.25vw;
+  font-size: 2.5vw;
   margin-bottom: 3vh;
-  color: #CE1212;
+  color: #251D3A;
 }
 #home-opening-sub{
   color: #534E52;
-  font-size: 1vw;
+  font-size: 1.2vw;
 }
 .home-opening-btn {
-  border: 2px solid #8c0000;
+  border: 2px solid #001E6C;
   background-color: transparent;
-  font-size: 0.85vw;
+  font-size: 1vw;
   margin-top: 5%;
-  padding: 1% 3%;
-  color: #8c0000;
+  padding: 1.75% 4%;
+  color: #001E6C;
   transition: all 0.4s;
 }
 .home-opening-btn:hover {
-  background-color: #8c0000;
+  background-color: #001E6C;
   color: white;
 }
 .home-aboutus {
-  width: 69vw;
-  height: 24vh;
-  margin: 2vh 0 0 15vw;
-  padding: 5% 8%;
-  background-image: linear-gradient(to bottom, #F78812, #F6EEC7);
+  width: 74vw;
+  height: 25vh;
+  margin: 2vh 0 0 16vw;
+  padding: 5%;
+  background-color: #F0A500;
+  border-top-left-radius: 2em;
+  border-bottom-left-radius: 2em;
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.2);
 }
 #home-aboutus-label {
   text-align: center;
   font-size: 4vw;
-  color: transparent;
+  color: #15133C;
   margin-bottom: 2vh;
-  -webkit-text-stroke: 2px white;
 }
 #home-aboutus-info {
   text-align: justify;
-  font-size: 1.25vw;
+  font-family: 'GlacialIndifferenceRegular';
+  font-size: 1.5vw;
   padding: 0 5%;
   margin-bottom: 20vh;
 }
 .bulsu-vmgo{
-  margin-top: 14vh;
+  margin-top: 19vh;
 }
 #vmgo-label{
   text-align: center;
-  color: #AB6D23;
+  color: #15133C;
   margin: 6vh 0;
-  font-size: 2.5vw;
+  font-size: 3vw;
 }
 .vmgo-vision,
 .vmgo-mission{
-  width: 32vw;
+  width: 34vw;
   font-size: 1.35vw;
   display: inline-block;
   background-color: #F4F6F6;
   padding: 4vh 1vw;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 1em;
   transition: all 0.7s;
 }
 .vmgo-mission{
-  margin-left: 1vw;
+  margin-left: 2vw;
 }
 .vmgo-mission:hover, 
 .vmgo-vision:hover{
   transform: translateY(-0.2em);
 }
 .vmgo-goals{
-  margin-top: 5vh;
-  background-color: #D4D7DD;
+  margin-top: 10vh;
   width: 82.9vw;
-  margin-left: -8vw;
+  margin-left: -5.9vw;
   padding: 5vh 0 1vh 2vw;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.4);
-  background-image: linear-gradient(to bottom, #F78812, #F6EEC7);
-
+  background-color: #f3f3f3;
 }
 .vmgo-goals pre{
   font-size: 1.3vw;
@@ -91,10 +91,10 @@
   word-wrap: break-word;
 }
 .vmgo-objective{
-  background-color: #F6EEC7;
   width: 82.9vw;
   padding: 5vh 0 3vh 2vw;
-  margin-left: -8vw;
+  margin-left: -6vw;
+  background-color: #f3f3f3;
 }
 .vmgo-objective pre{
   font-size: 1.3vw;
@@ -124,11 +124,12 @@
   background-color: #fafafa;
 }
 .home-get-started {
-  margin: 2vh 0 7vh -5vw;
-  width: 69vw;
+  margin: 2vh 0 7vh -8vw;
+  width: 100vw;
   height: 25vh;   
   padding: 5vh 1vw;
   color: rgb(0, 0, 0);
+  background-color: #F0A500;
 }
 #home-bulsu-logo {
   width: 11vw;
@@ -140,34 +141,37 @@
   vertical-align: middle;
 }
 .to-tutorial {
-  margin-left: 7vw;
+  margin-left: 6vw;
 }
 #system-title-label {
-  font-size: 2em;
+  font-size: 2vw;
   margin-bottom: 2.5%;
+  color: #15133C;
 }
 #tutorial-sub-desc {
-  font-size: 1.05em;
+  font-size: 1.2vw;
   margin-bottom: 2.5%;
   width: 45vw;
+  color: #0d0c24;
 }
 #navigate-tutorial {
-  border: 2px solid #000000;
+  border: 2px solid #251D3A;
+  font-size: 0.9vw;
   background-color: transparent;
   margin-top: 2%;
   padding: 2% 4%;
   font-weight: 550;
-  color: #000000;
+  color: #251D3A;
   transition: all 0.4s;
 }
 #navigate-tutorial:hover {
-  background-color: #000000;
+  background-color: #251D3A;
   color: white;
 }
 @media only screen and (max-width: 768px){
   .home-punch{
     z-index: -1;
-    margin-top: 15vh;
+    margin-top: 18vh;
     margin-left: 0;
     width: 83.95vw;
     height: 20vh;
@@ -179,14 +183,16 @@
     font-size: 2.5vw;
   }
   .home-opening-btn{
-    padding: 2% 4%;
+    padding: 3% 6%;
+    font-size: 1.7vw;
   }
   .home-aboutus{
     z-index: -1;
-    width: 83.95vw;
+    width: 90vw;
     height: 20vh;
     margin-left: 0;
     margin-top: 8vh;
+    border-radius: 0;
   }
   #home-aboutus-label{
     font-size: 4vw;
@@ -199,15 +205,15 @@
     width: 15vw;
   }
   .bulsu-vmgo{
-    margin-top: 6vh;
+    margin-top: -2vh;
   }
   #vmgo-label{
-    font-size: 3vw;
+    font-size: 5vw;
   }
   .vmgo-vision,
   .vmgo-mission{
-    width: 39vw;
-    font-size: 1.65vw;
+    width: 42vw;
+    font-size: 1.75vw;
     text-align: justify;
   }
   .vmgo-goals{
@@ -226,20 +232,29 @@
   }
   .home-get-started{
     z-index: -1;
-    width: 83.95vw;
+    width: 100vw;
     padding: 2vh;
   }
+  #home-bulsu-logo{
+    margin-top: 3vh;
+    width: 15vw;
+  }
   .to-tutorial{
-    margin-left: 5vw;
+    margin-top: 5vh;
+    margin-left: 7vw;
   }
   #system-title-label{
-    font-size: 3.5vw;
+    font-size: 4vw;
   }
   #tutorial-sub-desc{
     font-size: 2.5vw;
-    width: 60vw;
+    width: 70vw;
   }
   .announcement-content{
     margin: 20vh 0 5vh 8vw;
+  }
+  #navigate-tutorial{
+    padding: 2.5% 5%;
+    font-size: 2vw;
   }
 }
