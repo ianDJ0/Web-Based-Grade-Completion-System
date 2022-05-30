@@ -9,7 +9,8 @@
   margin: 0;
   padding: 0;
   width: 15vw;
-  background-color: #810000;
+  background-color: #F78812;
+  z-index: 2;
   position: fixed;
   height: 100%;
   overflow: auto;
@@ -20,9 +21,11 @@
   text-decoration: none;
   font-size: 1.5vw;
   padding: 15%;
+  transition: all 0.4s;
 }
 .sidebar span:hover {
-  background-color: #862323;
+  background-color: rgb(255,213,158, 0.2);
+  color: #041C32;
 }
 .name-logo {
   margin: 1vh 0 0 0.5vw;
