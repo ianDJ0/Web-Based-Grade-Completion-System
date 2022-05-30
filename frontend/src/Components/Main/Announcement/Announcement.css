@@ -12,12 +12,12 @@
 }
 /*Background per announcement*/
 .announcement-box {
-  background-color: #DFD8CA;
+  background-color: rgb(248,203,46, 0.8);
   background-image: url('https://www.nicepng.com/png/full/874-8745231_announcement-announce-icon-png-white.png');
   background-size: 220px 220px;
   background-repeat: no-repeat;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-  width: 35em;
+  width: 32em;
   min-height: 5em;
   height: auto;
   margin: 2%;
@@ -29,7 +29,7 @@
   transition: all 1s;
 }
 .announcement-box:hover {
-  background-color: #D2D3C9;
+  background-color: #FBCB0A;
   transform: translateY(-0.2em);
   cursor: pointer;
 }
@@ -45,7 +45,7 @@
 }
 /*Self explanatory*/
 .hr {
-  width: 78vw;
+  width: 75vw;
 }
 @media only screen and (max-width: 768px){
   .announcement{
