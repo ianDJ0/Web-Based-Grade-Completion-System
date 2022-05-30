@@ -10,9 +10,11 @@
 }
 #todate-filter {
   margin-left: 6%;
+  border: 1px solid gray
 }
 #fromdate-filter {
   margin-left: 3%;
+  border: 1px solid gray
 }
 .datepicker {
   padding: 1%;
@@ -43,10 +45,12 @@
   padding: 1%;
   border-radius: 1em;
   background-color: #8c0000;
+  font-size: 1vw;
   color: white;
+  transition: all 0.5s;
 }
 #clear-filter:hover {
-  background-color: #bd3a3a;
+  background-color: #6a0707;
 }
 #entry-label {
   margin-left: 15%;

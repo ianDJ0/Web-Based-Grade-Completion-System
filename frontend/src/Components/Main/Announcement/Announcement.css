@@ -14,10 +14,10 @@
 .announcement-box {
   background-color: #DFD8CA;
   background-image: url('https://www.nicepng.com/png/full/874-8745231_announcement-announce-icon-png-white.png');
-  background-size: 150px 150px;
+  background-size: 220px 220px;
   background-repeat: no-repeat;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-  width: 30em;
+  width: 35em;
   min-height: 5em;
   height: auto;
   margin: 2%;
@@ -35,11 +35,12 @@
 }
 /*Title per announcement*/
 .announcement-title {
-  font-size: 1.3em;
+  font-size: 1.3vw;
   padding: 1em;
 }
 /*Date per announcement*/
 .announcement-date {
+  font-size: 1vw;
   padding: 0.5em;
 }
 /*Self explanatory*/

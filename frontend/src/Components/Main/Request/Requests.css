@@ -15,17 +15,22 @@
   border: none;
   padding: 1%;
   border-radius: 2em;
+  font-size: 1vw;
   margin-bottom: 2%;
-  margin-left: 85%;
-  color: white;
-  font-weight: bold;
-  background-color: #8c0000;
+  margin-left: 83vw;
+  color: #630606;
+  font-weight: 550;
+  background-color: transparent;
+  border: 2px solid #630606;
 }
 #request-form-btn:hover {
-  background-color: #bd3a3a;
+  background-color: #630606;
+  color: white;
 }
 #request-label {
-  margin-left: 50.5%;
+  margin-left: 50.5vw;
+  margin-top: 1vh;
+  font-size: 2vw;
 }
 #request-log {
   width: 100%;
