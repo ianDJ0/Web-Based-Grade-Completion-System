@@ -148,7 +148,7 @@ const PDF = () => {
 
           {/* Action taken */}
           <div className="pdf-action-taken">
-            {!isPassed ? (
+            {isPassed ? (
               <>
                 <img
                   alt="check-mark"
