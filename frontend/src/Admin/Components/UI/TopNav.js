@@ -18,6 +18,9 @@ const TopNav = () => {
     navigate("/homepage");
   }
 
+  //Scroll to top
+  window.scrollTo(0, 0);
+
   return (
     <div className="admin-top-navigation">
       <h1 className="title-message">Grade Completion System</h1>

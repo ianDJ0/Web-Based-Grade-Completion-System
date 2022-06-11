@@ -22,7 +22,8 @@ const TopNav = (props) => {
   const profileHandler = () => {
     navigate("/profile");
   };
-  if (auth.userType === "Admin") { //will remove later
+  if (auth.userType === "Admin") {
+    //will remove later
     navigate("/admin");
   }
   const [dropDown, setDropDown] = useState(false);
@@ -65,6 +66,8 @@ const TopNav = (props) => {
     setPartnerID(messageContext.passFacultyID);
     setPartnerName(messageContext.passFacultyName);
   };
+
+  window.scrollTo(0, 0);
 
   return (
     <>
