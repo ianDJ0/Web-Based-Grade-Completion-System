@@ -236,6 +236,31 @@ const RegisterFull = (props) => {
 
   const pwField = useRef();
   const conpwField = useRef();
+  const pw_Icon = useRef();
+  const cpw_Icon = useRef();
+
+  const togglePW = () => {
+    if (pwField.current.type === "password") {
+      pwField.current.type = "text";
+      pwField.current.setAttribute("title", "Hide Password");
+      pw_Icon.current.classList.replace("fa-eye", "fa-eye-slash");
+    } else {
+      pwField.current.type = "password";
+      pwField.current.setAttribute("title", "Show Password");
+      pw_Icon.current.classList.replace("fa-eye-slash", "fa-eye");
+    }
+  };
+  const toggleCPW = () => {
+    if (conpwField.current.type === "password") {
+      pwField.current.title = "Hide Password";
+      conpwField.current.type = "text";
+      cpw_Icon.current.classList.replace("fa-eye", "fa-eye-slash");
+    } else {
+      pwField.current.title = "Show Password";
+      conpwField.current.type = "password";
+      cpw_Icon.current.classList.replace("fa-eye-slash", "fa-eye");
+    }
+  };
 
   return (
     <>
@@ -295,20 +320,10 @@ const RegisterFull = (props) => {
                 }}
                 required
               />
-              <img
-                onClick={() => {
-                  pwField.current.type =
-                    pwField.current.type === "password" ? "text" : "password";
-                }}
-                className="show-hide-pw"
-                src={require("./view.png")}
-                alt=""
-              />
-              {/* <img
-                className="show-hide-pw"
-                src={require("./hidden.png")}
-                alt=""
-              /> */}
+              {/* Eye toggle */}
+              <div className="show-hide-pw" onClick={togglePW}>
+                <i id="pw-icon" ref={pw_Icon} className="far fa-eye icon"></i>
+              </div>
             </div>
             <label htmlFor="conpwd">Confirm Password</label>
             <div className="conpw-container">
@@ -324,18 +339,16 @@ const RegisterFull = (props) => {
                 }}
                 required
               />
-              <img
-                onClick={() => {
-                  conpwField.current.type =
-                    conpwField.current.type === "password"
-                      ? "text"
-                      : "password";
-                }}
-                className="show-hide-pw"
-                src={require("./view.png")}
-                alt=""
-              />
+              {/* Eye toggle */}
+              <div className="show-hide-pw" onClick={toggleCPW}>
+                <i
+                  id="conpw-icon"
+                  ref={cpw_Icon}
+                  className="far fa-eye icon"
+                ></i>
+              </div>
             </div>
+
             {/* error messages */}
             {unequalErr}
             {errMsg}

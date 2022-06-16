@@ -142,24 +142,33 @@ input[type="file"]::file-selector-button:hover,
   margin-top: 3vh;
 }
 
-.password-container, .conpw-container{
+.password-container,
+.conpw-container {
   /* outline: 1px solid black; */
   position: relative;
 }
 
-.show-hide-pw{
-  position:absolute;
-  right: .5vw;
+.show-hide-pw {
+  position: absolute;
+  right: 0.5vw;
   top: 2vh;
   height: 25px;
   cursor: pointer;
 }
 
-@media only screen and (max-width: 768px){
-  #student-course, #student-section, #contact-no, #birth-date{
+
+.icon {
+  font-size: 1.5em;
+}
+
+@media only screen and (max-width: 768px) {
+  #student-course,
+  #student-section,
+  #contact-no,
+  #birth-date {
     width: 20vw;
   }
-  #student-year{
+  #student-year {
     width: 10vw;
   }
 }
