@@ -150,10 +150,25 @@ const createUser = async (req, res, next) => {
   }
   let registerUser;
   let hashedPassword;
+  if(typeof(req.body.registerPassword) === "object"){
+    req.body.registerPassword = req.body.registerPassword[0]
+  }
   try {
     hashedPassword = await bcrypt.hash(req.body.registerPassword, 6);
   } catch (error) {
     return next(error);
+  }
+  if(typeof(req.body.registerName) === "object"){
+    req.body.registerName = req.body.registerName[0]
+  }
+  if(typeof(req.body.registerEmail) === "object"){
+    req.body.registerEmail = req.body.registerEmail[0]
+  }
+  if(typeof(req.body.registerContactNumber) === "object"){
+    req.body.registerContactNumber = req.body.registerContactNumber[0]
+  }
+  if(typeof(req.body.registerBirthday) === "object"){
+    req.body.registerBirthday = req.body.registerBirthday[0]
   }
   let complete = {
     fullName: req.body.registerName,

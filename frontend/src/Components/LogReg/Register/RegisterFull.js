@@ -99,6 +99,9 @@ const RegisterFull = (props) => {
             navigate("/");
           })
           .catch(function (error) {
+            for (var key of formData.keys()) {
+              formData.delete(key);
+            }
             alert(error);
           });
       } else {
@@ -124,6 +127,9 @@ const RegisterFull = (props) => {
             setIsValid(true);
           })
           .catch(function (error) {
+            for (var key of formData.keys()) {
+              formData.delete(key);
+            }
             console.log(error);
           });
       }
