@@ -17,6 +17,7 @@ const Anouncement = () => {
       
       <div className="body-home">
         <div className="announcement-content">
+          
           <SingleAnnouncement AnList={events}/>
         </div>
       </div>
