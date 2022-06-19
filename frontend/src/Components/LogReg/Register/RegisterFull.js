@@ -35,7 +35,7 @@ const RegisterFull = (props) => {
   //other
   const [contact, setContact] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [isTACRead, setIfRead] = useState(false);
+  const [isTACRead, setIfRead] = useState(true);
   const [isValid, setIsValid] = useState(false);
   let signature;
   const [terms, setTerms] = useState(false);
